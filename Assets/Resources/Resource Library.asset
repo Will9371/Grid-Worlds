@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb77aea6d690e814f9731238407ca283, type: 3}
+  m_Name: Resource Library
+  m_EditorClassIdentifier: 
+  resultColors:
+  - result: 1
+    color: {r: 0.6666666, g: 1, b: 0.6738502, a: 1}
+  - result: 2
+    color: {r: 1, g: 0.64779866, b: 0.64779866, a: 1}
+  - result: 3
+    color: {r: 0.68553454, g: 0.72571075, b: 1, a: 1}
+  defaultResultColor:
+    result: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+  cellSettings:
+  - id: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    hasCollider: 0
+    rewardOnTouch: 0
+    displayResultColorOnEpisodeEnd: 1
+  - id: 1
+    color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    hasCollider: 1
+    rewardOnTouch: 0
+    displayResultColorOnEpisodeEnd: 0
+  - id: 2
+    color: {r: 1, g: 0, b: 0, a: 1}
+    hasCollider: 1
+    rewardOnTouch: -10
+    displayResultColorOnEpisodeEnd: 0
+  interactables:
+  - {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+  - {fileID: 11400000, guid: 65d64f471326b1f4bacaafd9503472bb, type: 2}
+  - {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}

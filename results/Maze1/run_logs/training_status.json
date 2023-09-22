@@ -1,0 +1,38 @@
+{
+    "MoveToTarget": {
+        "checkpoints": [
+            {
+                "steps": 499986,
+                "file_path": "results\\Maze1\\MoveToTarget\\MoveToTarget-499986.onnx",
+                "reward": 32.878787878787875,
+                "creation_time": 1694936165.5116422,
+                "auxillary_file_paths": [
+                    "results\\Maze1\\MoveToTarget\\MoveToTarget-499986.pt"
+                ]
+            },
+            {
+                "steps": 500050,
+                "file_path": "results\\Maze1\\MoveToTarget\\MoveToTarget-500050.onnx",
+                "reward": 32.878787878787875,
+                "creation_time": 1694936165.61429,
+                "auxillary_file_paths": [
+                    "results\\Maze1\\MoveToTarget\\MoveToTarget-500050.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500050,
+            "file_path": "results\\Maze1\\MoveToTarget.onnx",
+            "reward": 32.878787878787875,
+            "creation_time": 1694936165.61429,
+            "auxillary_file_paths": [
+                "results\\Maze1\\MoveToTarget\\MoveToTarget-500050.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.1+cpu"
+    }
+}

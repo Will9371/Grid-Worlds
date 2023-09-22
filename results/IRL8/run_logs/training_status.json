@@ -1,0 +1,51 @@
+{
+    "IRL": {
+        "checkpoints": [
+            {
+                "steps": 11176,
+                "file_path": "results\\IRL8\\IRL\\IRL-11176.onnx",
+                "reward": 0.0,
+                "creation_time": 1688002584.8026276,
+                "auxillary_file_paths": [
+                    "results\\IRL8\\IRL\\IRL-11176.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 11176,
+            "file_path": "results\\IRL8\\IRL.onnx",
+            "reward": 0.0,
+            "creation_time": 1688002584.8026276,
+            "auxillary_file_paths": [
+                "results\\IRL8\\IRL\\IRL-11176.pt"
+            ]
+        }
+    },
+    "MoveToTargetSimulated": {
+        "checkpoints": [
+            {
+                "steps": 2198,
+                "file_path": "results\\IRL8\\MoveToTargetSimulated\\MoveToTargetSimulated-2198.onnx",
+                "reward": 0.012196978769923856,
+                "creation_time": 1688002584.8324618,
+                "auxillary_file_paths": [
+                    "results\\IRL8\\MoveToTargetSimulated\\MoveToTargetSimulated-2198.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2198,
+            "file_path": "results\\IRL8\\MoveToTargetSimulated.onnx",
+            "reward": 0.012196978769923856,
+            "creation_time": 1688002584.8324618,
+            "auxillary_file_paths": [
+                "results\\IRL8\\MoveToTargetSimulated\\MoveToTargetSimulated-2198.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.1+cpu"
+    }
+}

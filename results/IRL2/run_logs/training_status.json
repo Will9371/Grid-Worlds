@@ -1,0 +1,60 @@
+{
+    "MoveToTargetSimulated": {
+        "checkpoints": [
+            {
+                "steps": 499968,
+                "file_path": "results\\IRL2\\MoveToTargetSimulated\\MoveToTargetSimulated-499968.onnx",
+                "reward": null,
+                "creation_time": 1687591119.8135514,
+                "auxillary_file_paths": [
+                    "results\\IRL2\\MoveToTargetSimulated\\MoveToTargetSimulated-499968.pt"
+                ]
+            },
+            {
+                "steps": 517056,
+                "file_path": "results\\IRL2\\MoveToTargetSimulated\\MoveToTargetSimulated-517056.onnx",
+                "reward": null,
+                "creation_time": 1687591133.1512148,
+                "auxillary_file_paths": [
+                    "results\\IRL2\\MoveToTargetSimulated\\MoveToTargetSimulated-517056.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 517056,
+            "file_path": "results\\IRL2\\MoveToTargetSimulated.onnx",
+            "reward": null,
+            "creation_time": 1687591133.1512148,
+            "auxillary_file_paths": [
+                "results\\IRL2\\MoveToTargetSimulated\\MoveToTargetSimulated-517056.pt"
+            ]
+        }
+    },
+    "IRL": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results\\IRL2\\IRL\\IRL-0.onnx",
+                "reward": null,
+                "creation_time": 1687591133.185176,
+                "auxillary_file_paths": [
+                    "results\\IRL2\\IRL\\IRL-0.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 0,
+            "file_path": "results\\IRL2\\IRL.onnx",
+            "reward": null,
+            "creation_time": 1687591133.185176,
+            "auxillary_file_paths": [
+                "results\\IRL2\\IRL\\IRL-0.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.1+cpu"
+    }
+}

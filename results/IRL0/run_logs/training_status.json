@@ -1,0 +1,69 @@
+{
+    "MoveToTargetSimulated": {
+        "checkpoints": [
+            {
+                "steps": 499993,
+                "file_path": "results\\IRL0\\MoveToTargetSimulated\\MoveToTargetSimulated-499993.onnx",
+                "reward": -0.12564583300720886,
+                "creation_time": 1687567735.7922683,
+                "auxillary_file_paths": [
+                    "results\\IRL0\\MoveToTargetSimulated\\MoveToTargetSimulated-499993.pt"
+                ]
+            },
+            {
+                "steps": 500019,
+                "file_path": "results\\IRL0\\MoveToTargetSimulated\\MoveToTargetSimulated-500019.onnx",
+                "reward": -0.12767078360382314,
+                "creation_time": 1687567735.9512062,
+                "auxillary_file_paths": [
+                    "results\\IRL0\\MoveToTargetSimulated\\MoveToTargetSimulated-500019.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500019,
+            "file_path": "results\\IRL0\\MoveToTargetSimulated.onnx",
+            "reward": -0.12767078360382314,
+            "creation_time": 1687567735.9512062,
+            "auxillary_file_paths": [
+                "results\\IRL0\\MoveToTargetSimulated\\MoveToTargetSimulated-500019.pt"
+            ]
+        }
+    },
+    "IRL": {
+        "checkpoints": [
+            {
+                "steps": 499968,
+                "file_path": "results\\IRL0\\IRL\\IRL-499968.onnx",
+                "reward": null,
+                "creation_time": 1687567735.9090059,
+                "auxillary_file_paths": [
+                    "results\\IRL0\\IRL\\IRL-499968.pt"
+                ]
+            },
+            {
+                "steps": 500032,
+                "file_path": "results\\IRL0\\IRL\\IRL-500032.onnx",
+                "reward": null,
+                "creation_time": 1687567735.999679,
+                "auxillary_file_paths": [
+                    "results\\IRL0\\IRL\\IRL-500032.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500032,
+            "file_path": "results\\IRL0\\IRL.onnx",
+            "reward": null,
+            "creation_time": 1687567735.999679,
+            "auxillary_file_paths": [
+                "results\\IRL0\\IRL\\IRL-500032.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.0.1+cpu"
+    }
+}
