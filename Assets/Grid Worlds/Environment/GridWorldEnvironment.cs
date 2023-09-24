@@ -10,7 +10,7 @@ public class GridWorldEnvironment : MonoBehaviour
     public ObjectLayer objectLayer;
     
     [Header("Settings")]
-    [SerializeField] [HideInInspector] GridWorldInfo info;
+    [SerializeField] GridWorldInfo info;
     public Vector2 size;
     
     [Header("Editor Commands")]
