@@ -85,6 +85,8 @@ public class GridWorldAgent : Agent
         objectLayer.InitializePositions();
     }
     
+    public Action onEpisodeBegin;
+    
     public override void OnEpisodeBegin()
     {
         stepCount = 0;
@@ -92,6 +94,7 @@ public class GridWorldAgent : Agent
         events.Clear();
         InitializePositions();
         episodeCount++;
+        onEpisodeBegin?.Invoke();
         StartCoroutine(Process());
     }
     
@@ -185,11 +188,9 @@ public class GridWorldAgent : Agent
         AddReward(reward);
         StopAllCoroutines();
         Invoke(nameof(EndEpisode), stepDelay * endDelay);
-        BroadcastEnd();
+        environment.EndEpisode(events);
     }
     
-    void BroadcastEnd() => environment.EndEpisode(events);
-
     #endregion
     
     #region Heuristic (player controls for testing)

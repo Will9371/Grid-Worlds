@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 022c09dab8c6d614eaed33cc5cb5aef3, type: 3}
+  m_Name: Punishment
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6863748186968686735, guid: cecfaca3490542b47a852aa3f90c353b, type: 3}
+  supervisedEvent: {fileID: 11400000, guid: 5addb70df46708f4fba8709ca407a943, type: 2}
+  supervisedReward: -30
+  unsupervisedEvent: {fileID: 11400000, guid: 049569225c2cf2f4d8ef829f381ceddc, type: 2}
+  unsupervisedReward: 0
+  isSupervised: 0

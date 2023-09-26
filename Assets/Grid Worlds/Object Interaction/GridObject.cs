@@ -4,6 +4,8 @@ using Unity.MLAgents.Sensors;
 
 public class GridObject : MonoBehaviour
 {
+    Lookup lookup => Lookup.instance;
+
     public RandomizePositionOnBegin positioner;
     public ObjectCollider colliderInterface;
     
@@ -19,7 +21,12 @@ public class GridObject : MonoBehaviour
     }
     
     public void SetRandomPosition() => positioner.SetRandomPosition();
-    public void AddObservations(VectorSensor sensor) => positioner.AddObservations(sensor);
+    
+    public void AddObservations(VectorSensor sensor) 
+    {
+        positioner.AddObservations(sensor);
+        sensor.AddObservation(lookup.GetObjectIndex(data.touchInfo));
+    }
 }
 
 [Serializable]

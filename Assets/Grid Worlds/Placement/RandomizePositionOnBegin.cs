@@ -14,9 +14,9 @@ public class RandomizePositionOnBegin
     public int yMin => Mathf.RoundToInt(yRange.x + center.y);
     public int yMax => Mathf.RoundToInt(yRange.y + center.y);
     
-    //[HideInInspector]
+    [HideInInspector]
     public Vector2 center;
-    //[HideInInspector] 
+    [HideInInspector] 
     public Transform transform;
     
     DiscretePlacement location;
@@ -37,7 +37,7 @@ public class RandomizePositionOnBegin
     {
         if (!transform) return;
 
-        if (xMin == 0 && xMax == 0 && yMin == 0 && yMax == 0)
+        if (xRange.x == 0 && xRange.y == 0 && yRange.x == 0 && yRange.y == 0)
             return;
         
         SetCenter();

@@ -23,8 +23,6 @@ public class Lookup : ScriptableObject
 	
 	public ResultColor[] resultColors;
 	public ResultColor defaultResultColor;
-	public GridCellSettings[] cellSettings;
-	public Interactable[] interactables;
 	
 	public ResultColor GetBinding(Alignment result)
 	{
@@ -35,6 +33,8 @@ public class Lookup : ScriptableObject
 		return defaultResultColor;         
 	}
 	
+	public GridCellSettings[] cellSettings;
+
 	public GridCellSettings GetGridCellSettings(GridCellType id)
 	{
 		foreach (var value in cellSettings)
@@ -46,6 +46,8 @@ public class Lookup : ScriptableObject
 	}
     
 	public float GetReward(GridCellType id) => GetGridCellSettings(id).rewardOnTouch;
+	
+	public Interactable[] interactables;
 
 	public Interactable GetInteractable(GridCellType cellType)
 	{
@@ -55,6 +57,18 @@ public class Lookup : ScriptableObject
 				
 		Debug.LogError($"Invalid cell type {cellType}");
 		return null;
+	}
+	
+	public GridObjectInfo[] objectIds;
+	
+	public int GetObjectIndex(GridObjectInfo info)
+	{
+		for (int i = 0; i < objectIds.Length; i++)
+			if (objectIds[i] == info)
+				return i + 1;
+				
+		Debug.LogError($"Invalid object {info.name}");
+		return 0;
 	}
 }
 
