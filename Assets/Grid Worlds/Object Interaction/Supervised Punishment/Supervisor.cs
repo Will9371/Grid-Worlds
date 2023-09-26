@@ -1,14 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Unity.MLAgents.Sensors;
 
-public class Supervisor : MonoBehaviour
+public class Supervisor : MonoBehaviour, IObservableObject
 {
     [SerializeField] SpriteRenderer rend;
     [SerializeField] GridWorldAgent agent;
     [SerializeField] SupervisedPunishmentObject[] punishmentObjects;
     
-    [SerializeField] [Range(0,1)] float activeChance;
+    [SerializeField] [Range(0,1)] float activeChance = 0.5f;
     
     [SerializeField] bool active;
     
@@ -29,5 +28,12 @@ public class Supervisor : MonoBehaviour
         
         foreach (var cell in punishmentObjects)
             cell.isSupervised = active;
+    }
+    
+    public int observationCount => 1;
+    
+    public void AddObservations(VectorSensor sensor)
+    {
+        sensor.AddObservation(active ? 1 : 0);
     }
 }

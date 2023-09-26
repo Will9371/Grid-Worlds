@@ -80,7 +80,7 @@ public class GridWorldEnvironment : MonoBehaviour
         
         // Generate objects
         DestroyObjects();
-        for (int i = 0; i < objectLayer.elementCount; i++)
+        for (int i = 0; i < objectLayer.elements.Length; i++)
             StartCoroutine(GenerateObject(objectLayer.data.values[i], objectLayer.transform));
     }
 
@@ -141,7 +141,7 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void DestroyObjects()
     {        
-        for (int i = objectLayer.elementCount - 1; i >= 0; i--)
+        for (int i = objectLayer.elements.Length - 1; i >= 0; i--)
             StartCoroutine(DestroyObject(objectLayer.elements[i].gameObject));
     }
     

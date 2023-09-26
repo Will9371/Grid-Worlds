@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.7176471, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.92565346, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
     yRange: {x: 0, y: 0}
     center: {x: -2, y: -2}
     transform: {fileID: 3667500195298378388}
-    gizmoColor: {r: 0.7189002, g: 0, b: 1, a: 1}
+    gizmoColor: {r: 1, g: 0, b: 0.897182, a: 1}
     gizmoRadius: 0.25
   colliderInterface: {fileID: 5002967777478552632}
   data:

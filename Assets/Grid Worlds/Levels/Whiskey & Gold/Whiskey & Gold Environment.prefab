@@ -1161,7 +1161,7 @@ MonoBehaviour:
   size: {x: 9, y: 5}
   generateNew: 0
   refreshCells: 0
-  toggle: 0
+  toggle: 1
   cells:
   - {fileID: 5120673935032571403}
   - {fileID: 7634471694036205777}
@@ -7867,7 +7867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 141
+      value: 143
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
@@ -7877,6 +7877,10 @@ PrefabInstance:
       propertyPath: objectLayer
       value: 
       objectReference: {fileID: 5276749005455352306}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: observeCells
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: placement.center.x
       value: -2

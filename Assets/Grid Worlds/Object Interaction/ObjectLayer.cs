@@ -4,7 +4,7 @@ using Unity.MLAgents.Sensors;
 
 public class ObjectLayer : MonoBehaviour
 {
-    #region Save System [Obsolete]
+    #region Save System [WIP, Future Use]
     
     [HideInInspector] public ObjectLayerData data;
     [HideInInspector] public bool refreshData = false;
@@ -32,8 +32,6 @@ public class ObjectLayer : MonoBehaviour
     }
     GridObject[] _elements;
     
-    public int elementCount => elements.Length;
-
     public void InitializePositions()
     {
         foreach (var element in elements)
@@ -43,6 +41,16 @@ public class ObjectLayer : MonoBehaviour
         }
     }
     
+    public int GetObservationCount()
+    {
+        int result = 0;
+        
+        foreach (var element in elements)
+            result += element.GetObservationCount();
+            
+        return result;
+    }
+
     public void AddObservations(VectorSensor sensor)
     {
         foreach (var element in elements)

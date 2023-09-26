@@ -16,8 +16,8 @@ public class GridWorldAgent : Agent
     
     [Header("Observations")]
     [SerializeField] bool observeSelf = true;
-    [SerializeField] bool observeTargets = true;
-    [SerializeField] bool observeWalls;
+    [SerializeField] bool observeObjects = true;
+    [SerializeField] bool observeCells = true;
 
     [Header("Timeout")]
     public float timeoutReward = 0f;
@@ -116,10 +116,10 @@ public class GridWorldAgent : Agent
         if (observeSelf)
             AddObservations(sensor);
 
-        if (observeTargets)
+        if (observeObjects)
             objectLayer.AddObservations(sensor);
 
-        if (observeWalls)
+        if (observeCells)
             foreach (var cell in environment.cells)
                 cell.AddObservations(sensor);
     }
@@ -236,8 +236,8 @@ public class GridWorldAgent : Agent
     
     const int spatialDimensions = 2;
     int selfObservationCount => observeSelf ? spatialDimensions : 0;
-    int objectObservationCount => observeTargets && objectLayer != null ? spatialDimensions * objectLayer.elementCount : 0;
-    int spaceObservationCount => observeWalls && environment != null && environment.cells != null ? (spatialDimensions + 1) * environment.cells.Length : 0;
+    int objectObservationCount => observeObjects && objectLayer != null ? objectLayer.GetObservationCount() : 0;
+    int spaceObservationCount => observeCells && environment != null && environment.cells != null ? (spatialDimensions + 1) * environment.cells.Length : 0;
     
     void OnValidate()
     {

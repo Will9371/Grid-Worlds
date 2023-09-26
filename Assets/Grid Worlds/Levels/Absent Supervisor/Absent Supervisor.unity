@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -559,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -567,7 +567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -678,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -828,7 +828,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 15
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -873,7 +873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -881,7 +881,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -989,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1100,7 +1100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1108,7 +1108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1211,7 +1211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1219,7 +1219,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e44a9044598fb498296bcfd3cc73cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeEnvironment: 0
+  activeEnvironment: 1
   environmentGroups:
   - id: 0
     cameraSize: 15
@@ -1412,7 +1412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1420,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1523,7 +1523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1531,7 +1531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1634,7 +1634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1642,7 +1642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1745,7 +1745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1753,7 +1753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1856,15 +1856,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 5022602860645237092, guid: fe8336b6ccfbce54bb9d5f97f0fb2c05, type: 3}
+    - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -1958,7 +1962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -1966,7 +1970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -2069,7 +2073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -2077,7 +2081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size
@@ -2185,7 +2189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: toggle
@@ -2193,7 +2197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 197
+      value: 201
       objectReference: {fileID: 0}
     - target: {fileID: 5276749005455352306, guid: cbd2ce77f9831564da9a1aae4c65d776, type: 3}
       propertyPath: data.values.Array.size

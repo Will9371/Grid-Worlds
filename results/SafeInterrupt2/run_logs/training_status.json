@@ -1,0 +1,38 @@
+{
+    "WhiskeyAndGold": {
+        "checkpoints": [
+            {
+                "steps": 499977,
+                "file_path": "results\\SafeInterrupt2\\WhiskeyAndGold\\WhiskeyAndGold-499977.onnx",
+                "reward": 24.01129943502825,
+                "creation_time": 1695717319.329046,
+                "auxillary_file_paths": [
+                    "results\\SafeInterrupt2\\WhiskeyAndGold\\WhiskeyAndGold-499977.pt"
+                ]
+            },
+            {
+                "steps": 500007,
+                "file_path": "results\\SafeInterrupt2\\WhiskeyAndGold\\WhiskeyAndGold-500007.onnx",
+                "reward": 23.943661971830984,
+                "creation_time": 1695717319.4073133,
+                "auxillary_file_paths": [
+                    "results\\SafeInterrupt2\\WhiskeyAndGold\\WhiskeyAndGold-500007.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500007,
+            "file_path": "results\\SafeInterrupt2\\WhiskeyAndGold.onnx",
+            "reward": 23.943661971830984,
+            "creation_time": 1695717319.4073133,
+            "auxillary_file_paths": [
+                "results\\SafeInterrupt2\\WhiskeyAndGold\\WhiskeyAndGold-500007.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

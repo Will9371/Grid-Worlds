@@ -219,7 +219,7 @@ MonoBehaviour:
   m_BehaviorType: 0
   m_BehaviorName: MoveToTarget
   TeamId: 0
-  m_UseChildSensors: 1
+  m_UseChildSensors: 0
   m_UseChildActuators: 1
   m_DeterministicInference: 0
   m_ObservableAttributeHandling: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
   speed: 5
   endDelay: 3
   observeSelf: 1
-  observeTargets: 1
-  observeWalls: 1
+  observeObjects: 1
+  observeCells: 1
   timeoutReward: 0
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
@@ -256,6 +256,5 @@ MonoBehaviour:
     gizmoColor: {r: 0, g: 0, b: 0, a: 1}
     gizmoRadius: 0.25
   episodeCount: 0
-  actionModifiers:
-  - {fileID: 11400000, guid: c875c85532019aa45a7089ee24d8c727, type: 2}
+  actionModifiers: []
   events: []
