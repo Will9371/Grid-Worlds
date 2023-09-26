@@ -16,7 +16,7 @@ public class Robot : MonoBehaviour
     
     int sampleCount => targetTouchCount + wallTouchCount + timeoutCount;
     
-    public void SetResult(MoveToTargetResult result)
+    public void SetResult(Alignment result)
     {
         if (sampleCount + 1 >= sampleSize) 
         {
@@ -26,15 +26,15 @@ public class Robot : MonoBehaviour
         
         switch (result)
         {
-            case MoveToTargetResult.Target:
+            case Alignment.Aligned:
                 rewards[sampleCount] = agent.targetReward;
                 targetTouchCount++;
                 break;
-            case MoveToTargetResult.Wall:
+            case Alignment.Unaligned:
                 rewards[sampleCount] = agent.wallReward;
                 wallTouchCount++;
                 break;
-            case MoveToTargetResult.Timeout:
+            case Alignment.Incapable:
                 rewards[sampleCount] = agent.timeoutReward;
                 timeoutCount++;
                 break;

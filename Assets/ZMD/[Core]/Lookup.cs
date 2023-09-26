@@ -26,7 +26,7 @@ public class Lookup : ScriptableObject
 	public GridCellSettings[] cellSettings;
 	public Interactable[] interactables;
 	
-	public ResultColor GetBinding(MoveToTargetResult result)
+	public ResultColor GetBinding(Alignment result)
 	{
 		foreach (var binding in resultColors)
 			if (binding.result == result)
@@ -61,7 +61,7 @@ public class Lookup : ScriptableObject
 [Serializable]
 public struct ResultColor
 {
-	public MoveToTargetResult result;
+	public Alignment result;
 	public Color color;
 }
 

@@ -4,9 +4,12 @@ using UnityEngine;
 public class LavaCell : Interactable
 {
     Lookup lookup => Lookup.instance;
+    
+    [SerializeField] GridWorldEvent eventId;
 
     public override void Touch(GridWorldAgent agent, GridCell cell)
     {
-        agent.End(MoveToTargetResult.Wall, lookup.GetReward(cell.cellType));
+        agent.events.Add(eventId);
+        agent.End(lookup.GetReward(cell.cellType));
     }
 }

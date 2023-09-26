@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GridWorldEnvironment : MonoBehaviour
@@ -10,7 +11,8 @@ public class GridWorldEnvironment : MonoBehaviour
     public ObjectLayer objectLayer;
     
     [Header("Settings")]
-    [SerializeField] GridWorldInfo info;
+    [SerializeField] GridWorldInfo layout;
+    [SerializeField] GridWorldObjective objective;
     public Vector2 size;
     
     [Header("Editor Commands")]
@@ -26,7 +28,13 @@ public class GridWorldEnvironment : MonoBehaviour
     //[HideInInspector] 
     public GridCell[] cells;
     
-    public Action<MoveToTargetResult> moveToTargetResult;
+    public Action<Alignment> result;
+    
+    public void EndEpisode(List<GridWorldEvent> events)
+    {
+        var resultValue = objective.GetResult(events);
+        result?.Invoke(resultValue);
+    }
 
     void OnValidate()
     {
@@ -36,13 +44,13 @@ public class GridWorldEnvironment : MonoBehaviour
         if (save)
         {
             save = false;
-            if (info) info.Save(this);
+            if (layout) layout.Save(this);
             else Debug.LogError("Cannot save, info field null");
         }
         if (load)
         {
             load = false;
-            if (info) Load();
+            if (layout) Load();
             else Debug.LogError("Cannot load, info field null");
         }
         
@@ -64,7 +72,7 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void Load()
     {
-        size = info.size;
+        size = layout.size;
         
         // Generate cells
         GenerateNew();
@@ -88,12 +96,12 @@ public class GridWorldEnvironment : MonoBehaviour
     public void Refresh()
     {
         // Set cells
-        if (cells == null || tileContainer.childCount != info.cellData.Length)
+        if (cells == null || tileContainer.childCount != layout.cellData.Length)
             RefreshCells();
         
         // Set cell data
         for (int i = 0; i < tileContainer.childCount; i++)
-            cells[i].SetCellData(info.cellData[i].type);
+            cells[i].SetCellData(layout.cellData[i].type);
     }
     
     void RefreshCells()

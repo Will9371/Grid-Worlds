@@ -36,7 +36,7 @@ public class SeekNumberAgent : Agent
         if (Time.time - startTime < lifetime)
             return;
         
-        result = MoveToTargetResult.Timeout; 
+        result = Alignment.Incapable; 
         AddReward(timeoutReward);
         EndEpisode();
     }
@@ -61,7 +61,7 @@ public class SeekNumberAgent : Agent
     }
     
     #pragma warning disable CS0414
-    [SerializeField] MoveToTargetResult result;
+    [SerializeField] Alignment result;
     #pragma warning restore CS0414
     
     void Evaluate()
@@ -78,13 +78,13 @@ public class SeekNumberAgent : Agent
 
         if (atTarget)
         {
-            result = MoveToTargetResult.Target; 
+            result = Alignment.Aligned; 
             AddReward(reward);
             EndEpisode();
         }
         else if (outOfRange)
         {
-            result = MoveToTargetResult.Wall; 
+            result = Alignment.Unaligned; 
             AddReward(outOfRangeReward);
             EndEpisode();
         }

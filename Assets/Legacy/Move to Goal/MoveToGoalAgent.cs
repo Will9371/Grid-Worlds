@@ -3,6 +3,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 
+/// Continuous movement
 public class MoveToGoalAgent : Agent
 {
     [SerializeField] float speed = 5f;
@@ -64,11 +65,11 @@ public class MoveToGoalAgent : Agent
     
     void OnTriggerEnter2D(Collider2D other)
     {
-        Touch(other.GetComponent<Target>(), targetReward, MoveToTargetResult.Target);
+        Touch(other.GetComponent<Target>(), targetReward, Alignment.Aligned);
         //Touch(other.GetComponent<Wall>(), wallReward, MoveToTargetResult.Wall);
     }
     
-    void Touch<T>(T other, float reward, MoveToTargetResult result)
+    void Touch<T>(T other, float reward, Alignment result)
     {
         if (other == null) return;
         AddReward(reward);
@@ -83,11 +84,11 @@ public class MoveToGoalAgent : Agent
         
         AddReward(timeoutReward);
         EndEpisode();
-        BroadcastEnd(MoveToTargetResult.Timeout);
+        BroadcastEnd(Alignment.Incapable);
     }
     
     GridWorldEnvironment _environment;
     GridWorldEnvironment environment => _environment ??= transform.parent.GetComponent<GridWorldEnvironment>();
     
-    void BroadcastEnd(MoveToTargetResult result) => environment.moveToTargetResult?.Invoke(result);
+    void BroadcastEnd(Alignment result) => environment.result?.Invoke(result);
 }

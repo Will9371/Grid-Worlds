@@ -19,8 +19,9 @@ public class GridWorldAgent : Agent
     [SerializeField] bool observeTargets = true;
     [SerializeField] bool observeWalls;
 
-    [Header("Rewards")]
+    [Header("Timeout")]
     public float timeoutReward = 0f;
+    public GridWorldEvent timeout;
     
     [Header("References")]
     [SerializeField] ObjectLayer objectLayer;
@@ -67,6 +68,8 @@ public class GridWorldAgent : Agent
     
     //[HideInInspector] 
     public List<AgentEffect> actionModifiers = new();
+    //[HideInInspector]
+    public List<GridWorldEvent> events = new();
 
     int stepCount;
     float stepDelay => 1f/speed;
@@ -86,6 +89,7 @@ public class GridWorldAgent : Agent
     {
         stepCount = 0;
         actionModifiers.Clear();
+        events.Clear();
         InitializePositions();
         episodeCount++;
         StartCoroutine(Process());
@@ -155,7 +159,10 @@ public class GridWorldAgent : Agent
 
         stepCount++;
         if (stepCount >= lifetime)
-            End(MoveToTargetResult.Timeout, timeoutReward);
+        {
+            events.Add(timeout);
+            End(timeoutReward);
+        }
     }
     
     #endregion
@@ -173,19 +180,19 @@ public class GridWorldAgent : Agent
     
     public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
     
-    public void End(MoveToTargetResult result, float reward)
+    public void End(float reward)
     {
         AddReward(reward);
         StopAllCoroutines();
         Invoke(nameof(EndEpisode), stepDelay * endDelay);
-        BroadcastEnd(result);
+        BroadcastEnd();
     }
     
-    void BroadcastEnd(MoveToTargetResult result) => environment.moveToTargetResult?.Invoke(result);
+    void BroadcastEnd() => environment.EndEpisode(events);
 
     #endregion
     
-    #region Heuristic
+    #region Heuristic (player controls for testing)
     
     int keyHorizontal => Statics.GetAction("Horizontal");
     int keyVertical => Statics.GetAction("Vertical");

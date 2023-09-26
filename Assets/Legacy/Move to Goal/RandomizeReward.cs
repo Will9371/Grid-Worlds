@@ -22,7 +22,7 @@ public class RandomizeReward : MonoBehaviour
         bindingIndex = 1;
     }
     
-    public void EndEpisode(MoveToTargetResult result)
+    public void EndEpisode(Alignment result)
     {
         if (!gameObject.activeSelf) return;
     

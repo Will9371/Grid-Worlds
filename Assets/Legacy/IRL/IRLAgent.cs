@@ -67,7 +67,7 @@ public class IRLAgent : Agent
     
     #endregion
     
-    public void SetResult(MoveToTargetResult result)
+    public void SetResult(Alignment result)
     {
         if (sampleCount + 1 >= sampleSize) 
         {
@@ -78,13 +78,13 @@ public class IRLAgent : Agent
         AddSample(result);
     }
     
-    float AddSample(MoveToTargetResult result)
+    float AddSample(Alignment result)
     {
         switch (result)
         {
-            case MoveToTargetResult.Target: return target.AddSample();
-            case MoveToTargetResult.Wall: return wall.AddSample();
-            case MoveToTargetResult.Timeout: return timeout.AddSample();
+            case Alignment.Aligned: return target.AddSample();
+            case Alignment.Unaligned: return wall.AddSample();
+            case Alignment.Incapable: return timeout.AddSample();
             default: return 0f;
         }
     }
@@ -147,7 +147,7 @@ public class IRLAgent : Agent
     public class Binding
     {
         [Tooltip("Serialized for debugging")]
-        public MoveToTargetResult result;
+        public Alignment result;
     
         [Tooltip("Number of times this outcome occured in the last sample of training runs")]
         public int sampleCount;

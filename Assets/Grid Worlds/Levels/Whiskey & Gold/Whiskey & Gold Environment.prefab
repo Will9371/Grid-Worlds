@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 8469585357191984717}
   - component: {fileID: 1841494600359960080}
   m_Layer: 0
-  m_Name: Whiskey & Gold
+  m_Name: Whiskey & Gold Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1156,7 +1156,8 @@ MonoBehaviour:
   tileTemplate: {fileID: 1087855923183612781, guid: 76da74b62c4c6ea4897af4ed1585704d, type: 3}
   tileContainer: {fileID: 159299104459178384}
   objectLayer: {fileID: 5276749005455352306}
-  info: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
+  layout: {fileID: 0}
+  objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   size: {x: 9, y: 5}
   generateNew: 0
   refreshCells: 0
@@ -7859,6 +7860,10 @@ PrefabInstance:
     - target: {fileID: 1798411977214008090, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: m_BehaviorName
+      value: WhiskeyAndGold
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize

@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f61f4b2a5d5c7c44832e8e95aeefeb7, type: 3}
-  m_Name: End Goal
+  m_Script: {fileID: 11500000, guid: 0e2fb371ac9e6a445a2ad59de84e2725, type: 3}
+  m_Name: Fall Into Lava
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7520592589302154403, guid: 40fbe7a7aa4588441a80701bcbb71b8b, type: 3}
-  reward: 50
-  eventId: {fileID: 11400000, guid: 64645dcf8a08eeb47b30afcfee95312c, type: 2}

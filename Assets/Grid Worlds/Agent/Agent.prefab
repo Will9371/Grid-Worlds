@@ -246,6 +246,7 @@ MonoBehaviour:
   observeTargets: 1
   observeWalls: 1
   timeoutReward: 0
+  timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
   placement:
     xRange: {x: 0, y: 0}
@@ -257,3 +258,4 @@ MonoBehaviour:
   episodeCount: 0
   actionModifiers:
   - {fileID: 11400000, guid: c875c85532019aa45a7089ee24d8c727, type: 2}
+  events: []

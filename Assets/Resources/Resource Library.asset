@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Resource Library
   m_EditorClassIdentifier: 
   resultColors:
+  - result: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
   - result: 1
-    color: {r: 0.6666666, g: 1, b: 0.6738502, a: 1}
-  - result: 2
-    color: {r: 1, g: 0.64779866, b: 0.64779866, a: 1}
-  - result: 3
     color: {r: 0.68553454, g: 0.72571075, b: 1, a: 1}
+  - result: 3
+    color: {r: 1, g: 0.64779866, b: 0.64779866, a: 1}
+  - result: 2
+    color: {r: 0.6666666, g: 1, b: 0.6738502, a: 1}
   defaultResultColor:
     result: 0
     color: {r: 1, g: 1, b: 1, a: 1}

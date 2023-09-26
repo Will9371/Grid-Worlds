@@ -3,10 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Grid Worlds/Object/End Goal")]
 public class EndGoal : GridObjectInfo
 {
-    public float reward;
+    [SerializeField] float reward;
+    [SerializeField] GridWorldEvent eventId;
 
     public override void Touch(GridWorldAgent agent, GameObject gridObject) 
     {
-        agent.End(MoveToTargetResult.Target, reward);
+        agent.events.Add(eventId);
+        agent.End(reward);
     }
 }
