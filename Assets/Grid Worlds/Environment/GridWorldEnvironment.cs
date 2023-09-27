@@ -32,6 +32,7 @@ public class GridWorldEnvironment : MonoBehaviour
     
     public void EndEpisode(List<GridWorldEvent> events)
     {
+        if (!objective) return;
         var resultValue = objective.GetResult(events);
         result?.Invoke(resultValue);
     }

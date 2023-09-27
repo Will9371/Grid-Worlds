@@ -1319,7 +1319,7 @@ MonoBehaviour:
   size: {x: 9, y: 7}
   generateNew: 0
   refreshCells: 0
-  toggle: 0
+  toggle: 1
   cells:
   - {fileID: 6968480903691939884}
   - {fileID: 7680108227702775336}

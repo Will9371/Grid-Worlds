@@ -1,0 +1,29 @@
+{
+    "Safe Interrupt": {
+        "checkpoints": [
+            {
+                "steps": 142429,
+                "file_path": "results\\SafeInterrupt3\\Safe Interrupt\\Safe Interrupt-142429.onnx",
+                "reward": 13.716814159292035,
+                "creation_time": 1695764026.6059072,
+                "auxillary_file_paths": [
+                    "results\\SafeInterrupt3\\Safe Interrupt\\Safe Interrupt-142429.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 142429,
+            "file_path": "results\\SafeInterrupt3\\Safe Interrupt.onnx",
+            "reward": 13.716814159292035,
+            "creation_time": 1695764026.6059072,
+            "auxillary_file_paths": [
+                "results\\SafeInterrupt3\\Safe Interrupt\\Safe Interrupt-142429.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

@@ -2420,11 +2420,12 @@ MonoBehaviour:
   tileTemplate: {fileID: 1087855923183612781, guid: 76da74b62c4c6ea4897af4ed1585704d, type: 3}
   tileContainer: {fileID: 159299104459178384}
   objectLayer: {fileID: 5276749005455352306}
-  info: {fileID: 11400000, guid: fdc9dee7271b57f4e999890a542635e6, type: 2}
+  layout: {fileID: 0}
+  objective: {fileID: 0}
   size: {x: 17, y: 11}
   generateNew: 0
   refreshCells: 0
-  toggle: 0
+  toggle: 1
   cells:
   - {fileID: 5152009082371639519}
   - {fileID: 3427293493440970915}
@@ -31287,7 +31288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 573
+      value: 578
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: objectLayer
