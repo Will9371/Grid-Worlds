@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1715,7 +1715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1157098037545750375, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2476,7 +2476,7 @@ PrefabInstance:
     - target: {fileID: 4171766394858150389, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: 96038fa656ca1af4c97dbe72652098a0, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8469585357191984717, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -5673,11 +5673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: toggle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: cells.Array.data[0]
@@ -6444,8 +6444,12 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4171766394858150389, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
+      propertyPath: m_BehaviorType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171766394858150389, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 17
+      value: 578
       objectReference: {fileID: 0}
     - target: {fileID: 4253191437309784187, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: speed
@@ -6466,6 +6470,10 @@ PrefabInstance:
     - target: {fileID: 4253191437309784187, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: randomPosition.xRange.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4253191437309784187, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
+      propertyPath: heuristicWaitForKeypress
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4253191437309784187, guid: 964dc5d5c9d85694d9e22bf085d0eb19, type: 3}
       propertyPath: actionModifiers.Array.size
@@ -25485,7 +25493,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -35233,7 +35241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e44a9044598fb498296bcfd3cc73cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeEnvironment: 2
+  activeEnvironment: 1
   environmentGroups:
   - id: 0
     cameraSize: 30
@@ -35254,11 +35262,11 @@ MonoBehaviour:
     - {fileID: 525879505}
     - {fileID: 230232239}
   - id: 1
-    cameraSize: 6
+    cameraSize: 7
     activeInstances:
     - {fileID: 1429175511}
   - id: 2
-    cameraSize: 6
+    cameraSize: 7
     activeInstances:
     - {fileID: 206493642}
   camera: {fileID: 963194227}

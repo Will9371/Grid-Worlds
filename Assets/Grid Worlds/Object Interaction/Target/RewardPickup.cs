@@ -8,6 +8,6 @@ public class RewardPickup : GridObjectInfo
     public override void Touch(GridWorldAgent agent, GameObject gridObject) 
     {
          gridObject.SetActive(false);
-         agent.AddReward(reward);
+         agent.Reward(reward);
     }
 }

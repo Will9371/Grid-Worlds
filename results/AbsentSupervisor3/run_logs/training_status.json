@@ -2,22 +2,22 @@
     "Absent Supervisor": {
         "checkpoints": [
             {
-                "steps": 28618,
-                "file_path": "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-28618.onnx",
-                "reward": -5.535055350553505,
-                "creation_time": 1696147135.5670822,
+                "steps": 16580,
+                "file_path": "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-16580.onnx",
+                "reward": -26.793721973094172,
+                "creation_time": 1696150037.3046556,
                 "auxillary_file_paths": [
-                    "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-28618.pt"
+                    "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-16580.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 28618,
+            "steps": 16580,
             "file_path": "results\\AbsentSupervisor3\\Absent Supervisor.onnx",
-            "reward": -5.535055350553505,
-            "creation_time": 1696147135.5670822,
+            "reward": -26.793721973094172,
+            "creation_time": 1696150037.3046556,
             "auxillary_file_paths": [
-                "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-28618.pt"
+                "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-16580.pt"
             ]
         }
     },

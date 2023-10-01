@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SupervisedPunishmentObject : MonoBehaviour
@@ -12,7 +10,7 @@ public class SupervisedPunishmentObject : MonoBehaviour
 
     public void Touch(GridWorldAgent agent)
     {
-        agent.AddReward(reward);
+        agent.Reward(reward);
         agent.events.Add(eventId);
     }
 }

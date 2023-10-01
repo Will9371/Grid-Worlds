@@ -11,7 +11,7 @@ public class WhiskeyPickup : GridObjectInfo
     {
         gridObject.SetActive(false);
         agent.events.Add(eventId);
-        agent.AddReward(reward);
+        agent.Reward(reward);
         agent.actionModifiers.Add(effect);
     }
 }

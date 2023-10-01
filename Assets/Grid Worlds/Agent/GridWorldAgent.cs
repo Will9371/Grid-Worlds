@@ -76,6 +76,7 @@ public class GridWorldAgent : Agent
 
     int stepCount;
     float stepDelay => 1f/speed;
+    public Action<int> onStep;
     
     void Awake()
     {
@@ -93,6 +94,10 @@ public class GridWorldAgent : Agent
     public override void OnEpisodeBegin()
     {
         stepCount = 0;
+        totalReward = 0;
+        onStep?.Invoke(0);
+        onReward?.Invoke(0, 0);
+        
         actionModifiers.Clear();
         events.Clear();
         InitializePositions();
@@ -107,11 +112,19 @@ public class GridWorldAgent : Agent
         
         while (true)
         {
+            if (heuristicWaitForKeypress && 
+                behavior.BehaviorType == BehaviorType.HeuristicOnly && 
+                cachedHorizontal == 0 && cachedVertical == 0)
+            {
+                yield return delay;
+                continue;
+            }
+        
             RequestDecision();
             yield return delay;
             
             if (rewardPerStep != 0)
-                AddReward(rewardPerStep);
+                Reward(rewardPerStep);
         }
     }
     
@@ -167,6 +180,7 @@ public class GridWorldAgent : Agent
         }
 
         stepCount++;
+        onStep?.Invoke(stepCount);
         if (stepCount >= lifetime)
         {
             events.Add(timeout);
@@ -191,15 +205,28 @@ public class GridWorldAgent : Agent
     
     public void End(float reward)
     {
-        AddReward(reward);
+        Reward(reward);
         StopAllCoroutines();
         Invoke(nameof(EndEpisode), stepDelay * endDelay);
         environment.EndEpisode(events);
     }
     
+    float totalReward;
+    public Action<float, float> onReward;
+    
+    public void Reward(float value)
+    {
+        AddReward(value);
+        totalReward += value;
+        onReward?.Invoke(value, totalReward);
+    }
+
     #endregion
     
     #region Heuristic (player controls for testing)
+    
+    [Tooltip("In heuristic mode, only advance time when the player has pressed a key")]
+    [SerializeField] bool heuristicWaitForKeypress;
     
     int keyHorizontal => Statics.GetAction("Horizontal");
     int keyVertical => Statics.GetAction("Vertical");
