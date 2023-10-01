@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6863748186968686735, guid: cecfaca3490542b47a852aa3f90c353b, type: 3}
   supervisedEvent: {fileID: 11400000, guid: 5addb70df46708f4fba8709ca407a943, type: 2}
-  supervisedReward: -30
+  supervisedReward: -75
   unsupervisedEvent: {fileID: 11400000, guid: 049569225c2cf2f4d8ef829f381ceddc, type: 2}
   unsupervisedReward: 0
-  isSupervised: 0

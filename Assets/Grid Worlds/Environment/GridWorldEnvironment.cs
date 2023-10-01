@@ -1,14 +1,12 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GridWorldEnvironment : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] GameObject tileTemplate;
-    public Transform tileContainer;
     public ObjectLayer objectLayer;
+    public CellLayer cellLayer;
     
     [Header("Settings")]
     [SerializeField] GridWorldInfo layout;
@@ -16,19 +14,23 @@ public class GridWorldEnvironment : MonoBehaviour
     public Vector2 size;
     
     [Header("Editor Commands")]
+    [Tooltip("Click this when changing the size of the grid (or to clear the cells)")]
     [SerializeField] bool generateNew;
+    [Tooltip("Click this if the cells array is off")]
     [SerializeField] bool refreshCells;
     
-    // Obsolete
-    bool save;
-    bool load;
+    [Tooltip("Copy data from environment to the layout ScriptableObject")]
+    [SerializeField] bool save;
+    [Tooltip("Copy data from the layout ScriptableObject to the environment")]
+    [HideInInspector] // WIP: reactivate when working
+    [SerializeField] bool load;
     
-    /// Mark scene as dirty on refresh
+    /// Mark scene as dirty on refresh, so that ScriptableObject gets saved
     [HideInInspector] public bool toggle;
-    //[HideInInspector] 
-    public GridCell[] cells;
-    
+
     public Action<Alignment> result;
+    
+    public GridCell[] cells => cellLayer.cells;
     
     public void EndEpisode(List<GridWorldEvent> events)
     {
@@ -41,7 +43,6 @@ public class GridWorldEnvironment : MonoBehaviour
     {
         size = new Vector2(Mathf.Floor(size.x), Mathf.Floor(size.y));
         
-        // Obsolete
         if (save)
         {
             save = false;
@@ -58,14 +59,13 @@ public class GridWorldEnvironment : MonoBehaviour
         if (generateNew)
         {
             generateNew = false;
-            GenerateNew();
-            Recenter();
+            cellLayer.GenerateNew(size);
         }
         
         if (refreshCells)
         {
             refreshCells = false;
-            RefreshCells();
+            cellLayer.RefreshCells();
         }
         
         toggle = !toggle;
@@ -73,97 +73,7 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void Load()
     {
-        size = layout.size;
-        
-        // Generate cells
-        GenerateNew();
-        BeginRefresh();
-        
-        // Generate objects
-        DestroyObjects();
-        for (int i = 0; i < objectLayer.elements.Length; i++)
-            StartCoroutine(GenerateObject(objectLayer.data.values[i], objectLayer.transform));
-    }
-
-    void GenerateNew()
-    {
-        DestroyCells();
-        
-        for (int y = 0; y < size.y; y++)
-            for (int x = 0; x < size.x; x++)
-                StartCoroutine(GenerateCell(tileTemplate, tileContainer, x, y));
-    }
-    
-    public void Refresh()
-    {
-        // Set cells
-        if (cells == null || tileContainer.childCount != layout.cellData.Length)
-            RefreshCells();
-        
-        // Set cell data
-        for (int i = 0; i < tileContainer.childCount; i++)
-            cells[i].SetCellData(layout.cellData[i].type);
-    }
-    
-    void RefreshCells()
-    {
-        cells = new GridCell[tileContainer.childCount];
-        for (int i = 0; i < cells.Length; i++)
-        {
-            var cell = tileContainer.GetChild(i).GetComponent<GridCell>();
-            if (!cell) Debug.LogError("No GridCell component", tileContainer.GetChild(i).gameObject);
-            cells[i] = cell;
-        }
-    }
-
-    IEnumerator GenerateObject(GridObjectData data, Transform container)
-    {
-        yield return null;
-        var newObject = Instantiate(data.touchInfo.prefab, container).GetComponent<GridObject>();
-        newObject.transform.localPosition = new Vector3(data.position.x, data.position.y, 0f);
-        newObject.data = data;
-        newObject.positioner.transform = newObject.transform;
-        newObject.positioner.xRange = data.xPlaceRange;
-        newObject.positioner.yRange = data.yPlaceRange;
-    }
-    
-    IEnumerator GenerateCell(GameObject prefab, Transform container, int x, int y)
-    {
-        yield return null;
-        var newObject = Instantiate(prefab, container);
-        newObject.transform.localPosition = new Vector3(x, y, 0f);
-    }
-    
-    void DestroyCells()
-    {
-        for (int i = tileContainer.childCount - 1; i >= 0; i--)
-            StartCoroutine(DestroyObject(tileContainer.GetChild(i).gameObject));
-    }
-    
-    void DestroyObjects()
-    {        
-        for (int i = objectLayer.elements.Length - 1; i >= 0; i--)
-            StartCoroutine(DestroyObject(objectLayer.elements[i].gameObject));
-    }
-    
-    IEnumerator DestroyObject(GameObject value)
-    {
-        yield return null;
-        DestroyImmediate(value);
-    }
-    
-    void Recenter()
-    {
-        var x = -(size.x - 1) / 2f;
-        var y = -(size.y - 1) / 2f;
-        tileContainer.localPosition = new Vector3(x, y, 0f);
-    }
-    
-    void BeginRefresh() => StartCoroutine(DelayRefresh());
-    IEnumerator DelayRefresh()
-    {
-        yield return null;
-        yield return null;
-        RefreshCells();
+        cellLayer.Load(layout);
+        objectLayer.Load();
     }
 }

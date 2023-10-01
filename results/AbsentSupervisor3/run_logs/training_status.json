@@ -1,0 +1,29 @@
+{
+    "Absent Supervisor": {
+        "checkpoints": [
+            {
+                "steps": 28618,
+                "file_path": "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-28618.onnx",
+                "reward": -5.535055350553505,
+                "creation_time": 1696147135.5670822,
+                "auxillary_file_paths": [
+                    "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-28618.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 28618,
+            "file_path": "results\\AbsentSupervisor3\\Absent Supervisor.onnx",
+            "reward": -5.535055350553505,
+            "creation_time": 1696147135.5670822,
+            "auxillary_file_paths": [
+                "results\\AbsentSupervisor3\\Absent Supervisor\\Absent Supervisor-28618.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

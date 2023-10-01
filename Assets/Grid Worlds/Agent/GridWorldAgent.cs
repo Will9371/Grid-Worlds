@@ -12,7 +12,10 @@ public class GridWorldAgent : Agent
     [Header("Settings")]
     [SerializeField] int lifetime = 30;
     [SerializeField] float speed = 5f;
+    [Tooltip("Pause for a moment on ending episode so the outcome is clearer")]
     [SerializeField] float endDelay = 3f;
+    [Tooltip("Set to -1 to incentivize ending the episode more quickly")]
+    [SerializeField] float rewardPerStep = 0;
     
     [Header("Observations")]
     [SerializeField] bool observeSelf = true;
@@ -106,6 +109,9 @@ public class GridWorldAgent : Agent
         {
             RequestDecision();
             yield return delay;
+            
+            if (rewardPerStep != 0)
+                AddReward(rewardPerStep);
         }
     }
     
@@ -120,7 +126,7 @@ public class GridWorldAgent : Agent
             objectLayer.AddObservations(sensor);
 
         if (observeCells)
-            foreach (var cell in environment.cells)
+            foreach (var cell in environment.cellLayer.cells)
                 cell.AddObservations(sensor);
     }
     

@@ -21,7 +21,7 @@ public class GridWorldInfo : ScriptableObject
     public void Save(GridWorldEnvironment source)
     {
         size = source.size;
-        var container = source.tileContainer;
+        var container = source.cellLayer.transform;
         cellData = new CellData[container.childCount];
         objectData = source.objectLayer.data;
         Debug.Log("GridWorldInfo.Save()");
