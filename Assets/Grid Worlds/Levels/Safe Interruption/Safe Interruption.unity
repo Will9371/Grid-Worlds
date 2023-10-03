@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -313,17 +313,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8469585357191984717, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
   m_PrefabInstance: {fileID: 301210133}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &411653929 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2299893061794590199, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-  m_PrefabInstance: {fileID: 504930932}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c2a2943eaac474e830327072d53323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &423562480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,10 +420,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1627396207838485745, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-      propertyPath: interruption
-      value: 
-      objectReference: {fileID: 411653929}
     - target: {fileID: 1841494600359960080, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: toggle
       value: 1
@@ -446,26 +431,6 @@ PrefabInstance:
     - target: {fileID: 4171766394858150389, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 201
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276749005455352306, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-      propertyPath: data.values.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276749005455352306, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-      propertyPath: data.values.Array.data[1].touchInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
-    - target: {fileID: 5276749005455352306, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-      propertyPath: data.values.Array.data[2].touchInfo
-      value: 
-      objectReference: {fileID: 11400000, guid: e5dc08f81fe44e04c8e3d2fc104b2777, type: 2}
-    - target: {fileID: 7091641639870129017, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7091641639870129017, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8469585357191984717, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: m_LocalPosition.x
