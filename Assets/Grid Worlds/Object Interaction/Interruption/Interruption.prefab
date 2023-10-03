@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5463206751952732192}
   - component: {fileID: 7199800460336226266}
   m_Layer: 0
-  m_Name: Interruption
+  m_Name: 
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,19 +74,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e4c5e10aaa210469974fe8894ebb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: 
+  setNameFromInfo: 1
+  info: {fileID: 0}
+  editPosition:
+    watch: 1
+    refreshRate: 0.1
+  xRange: {x: 0, y: 0}
+  yRange: {x: 0, y: 0}
+  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  gizmoRadius: 0.25
+  colliderInterface: {fileID: 4220639896643574837}
+  rend: {fileID: 5078810699761503014}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
     center: {x: 0, y: 0}
     transform: {fileID: 2095871599731338092}
-    gizmoColor: {r: 0.87699795, g: 0, b: 1, a: 1}
+    gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
-  colliderInterface: {fileID: 4220639896643574837}
   data:
+    name: 
+    touchInfo: {fileID: 0}
     position: {x: 0, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
-    touchInfo: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
+    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    gizmoRadius: 0.25
 --- !u!114 &7199800460336226266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
   agent: {fileID: 0}
+  active: 0
 --- !u!1 &4401902427787872296
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +192,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.9260869, a: 1}
+  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -244,4 +259,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a9ac472764c2849984b0a70d36fb9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
+  info: {fileID: 0}

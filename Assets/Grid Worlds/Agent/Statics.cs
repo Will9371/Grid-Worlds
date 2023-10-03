@@ -1,6 +1,7 @@
 // RENAME
 
 using System;
+using System.Collections;
 using UnityEngine;
 
 public static class Statics
@@ -23,6 +24,14 @@ public static class Statics
         if (value < 0f - sensitivity) return -1;
         if (value > 0f + sensitivity) return 1;
         return 0;
+    }
+    
+    public static IEnumerator DelayFunction(Action function, int delay = 1)
+    {
+        for (int i = 0; i < delay; i++)
+            yield return null;
+            
+        function?.Invoke();
     }
 }
 

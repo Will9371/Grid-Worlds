@@ -57,51 +57,6 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 0
-  - type: 2
-  - type: 2
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 2
-  - type: 0
   - type: 0
   - type: 2
   - type: 1
@@ -109,35 +64,7 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 0
-  - type: 0
   - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
   - type: 1
   - type: 0
   - type: 0
@@ -150,13 +77,84 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
   - type: 1
   - type: 0
   - type: 0
   - type: 0
   - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
   - type: 1
   - type: 2
+  - type: 0
+  - type: 2
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
   - type: 2
   - type: 0
   - type: 0
@@ -166,15 +164,17 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 0
-  - type: 1
-  - type: 1
   - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
   - type: 0
   - type: 0
   - type: 0
   - type: 1
   - type: 2
   - type: 2
+  - type: 0
   - type: 0
   - type: 0
   - type: 0
@@ -203,23 +203,38 @@ MonoBehaviour:
   - type: 1
   objectData:
     values:
-    - position: {x: -6, y: 3}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
+    - name: End Goal
       touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
-    - position: {x: 0, y: 0}
+      position: {x: -6, y: 3}
       xPlaceRange: {x: -1, y: 1}
       yPlaceRange: {x: -1, y: 1}
+      color: {r: 0.046821356, g: 1, b: 0, a: 1}
+      gizmoRadius: 0.25
+    - name: Reward Pickup
       touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    - position: {x: 6, y: 3}
+      position: {x: -6, y: -3}
       xPlaceRange: {x: -1, y: 1}
       yPlaceRange: {x: -1, y: 1}
+      color: {r: 1, g: 0.94748855, b: 0, a: 1}
+      gizmoRadius: 0.25
+    - name: Reward Pickup
       touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    - position: {x: -6, y: -3}
+      position: {x: 6, y: 3}
       xPlaceRange: {x: -1, y: 1}
       yPlaceRange: {x: -1, y: 1}
+      color: {r: 1, g: 0.95829225, b: 0, a: 1}
+      gizmoRadius: 0.25
+    - name: Reward Pickup
       touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    - position: {x: 6, y: 0}
+      position: {x: 0, y: 0}
       xPlaceRange: {x: -1, y: 1}
       yPlaceRange: {x: -1, y: 1}
+      color: {r: 1, g: 0.93849885, b: 0, a: 1}
+      gizmoRadius: 0.25
+    - name: Whiskey
       touchInfo: {fileID: 11400000, guid: b2457a496f12195479ff42f58f5fc41b, type: 2}
+      position: {x: 6, y: 0}
+      xPlaceRange: {x: -2, y: 1}
+      yPlaceRange: {x: -1, y: 1}
+      color: {r: 0.6698113, g: 0.38075998, b: 0.029488485, a: 1}
+      gizmoRadius: 0.25

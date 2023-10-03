@@ -17,12 +17,14 @@ public class GridWorldEnvironment : MonoBehaviour
     [Tooltip("Click this when changing the size of the grid (or to clear the cells)")]
     [SerializeField] bool generateNew;
     [Tooltip("Click this if the cells array is off")]
-    [SerializeField] bool refreshCells;
+    [SerializeField] bool refreshCellData;
+    [Tooltip("Click this if the object array is off")]
+    [SerializeField] bool refreshObjectData;
     
     [Tooltip("Copy data from environment to the layout ScriptableObject")]
     [SerializeField] bool save;
     [Tooltip("Copy data from the layout ScriptableObject to the environment")]
-    [HideInInspector] // WIP: reactivate when working
+    //[HideInInspector] // WIP: reactivate when working
     [SerializeField] bool load;
     
     /// Mark scene as dirty on refresh, so that ScriptableObject gets saved
@@ -62,10 +64,15 @@ public class GridWorldEnvironment : MonoBehaviour
             cellLayer.GenerateNew(size);
         }
         
-        if (refreshCells)
+        if (refreshCellData)
         {
-            refreshCells = false;
-            cellLayer.RefreshCells();
+            refreshCellData = false;
+            cellLayer.SetArrayFromHierarchy();
+        }
+        if (refreshObjectData)
+        {
+            refreshObjectData = false;
+            objectLayer.SetArrayFromHierarchy();
         }
         
         toggle = !toggle;
@@ -73,7 +80,8 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void Load()
     {
-        cellLayer.Load(layout);
-        objectLayer.Load();
+        Debug.Log($"GridWorldEnvironment.Load{layout.name}", layout);
+        cellLayer.Load(layout.cellData, layout.size);
+        objectLayer.Load(layout.objectData);
     }
 }

@@ -54,10 +54,10 @@ public class GridCell : MonoBehaviour
     
     void OnValidate()
     {
-        SetCellData(cellType);
+        Initialize();
     }
 
-    public void SetCellData(GridCellType cellType)
+    public void SetData(GridCellType cellType)
     {
         this.cellType = cellType;
         cellSettings = lookup.GetGridCellSettings(cellType);
@@ -68,7 +68,7 @@ public class GridCell : MonoBehaviour
         rend.color = cellSettings.color;
     }
 
-    public void Initialize() { SetCellData(cellType); }
+    public void Initialize() => SetData(cellType); 
     
     public void AddObservations(VectorSensor sensor)
     {

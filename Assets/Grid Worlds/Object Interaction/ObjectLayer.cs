@@ -8,17 +8,19 @@ public class ObjectLayer : MonoBehaviour
     #region Save System [WIP, Future Use]
     
     //[HideInInspector] 
-    public ObjectLayerData data;
-    [HideInInspector] public bool refreshData = false;
+    //public 
+    //[SerializeField]
+    //ObjectLayerData data;
+    //[HideInInspector] public bool refreshData = false;
     
-    void OnValidate()
+    /*void OnValidate()
     {
         if (data.values.Length != elements.Length || refreshData)
         {
             refreshData = false;
             data = new ObjectLayerData(this);
         }
-    }
+    }*/
     
     #endregion
 
@@ -27,12 +29,14 @@ public class ObjectLayer : MonoBehaviour
         get
         {
             if (_elements == null)
-                _elements = GetComponentsInChildren<GridObject>();
+                SetArrayFromHierarchy();
                 
             return _elements;
         }
     }
+    [SerializeField]
     GridObject[] _elements;
+    public void SetArrayFromHierarchy() => _elements = GetComponentsInChildren<GridObject>();
     
     public void InitializePositions()
     {
@@ -59,29 +63,39 @@ public class ObjectLayer : MonoBehaviour
             element.AddObservations(sensor);
     }
     
-    public void Load()
+    public void Load(ObjectLayerData data) => StartCoroutine(LoadRoutine(data));
+
+    IEnumerator LoadRoutine(ObjectLayerData data)
     {
-        // Generate objects
+        //this.data = data;
+        
         DestroyObjects();
+        yield return null;
+        yield return null;
+
+        // Generate objects
         for (int i = 0; i < elements.Length; i++)
             StartCoroutine(GenerateObject(data.values[i], transform));
+            
+        yield return null;
+        yield return null;
+        SetArrayFromHierarchy();        
     }
     
     IEnumerator GenerateObject(GridObjectData data, Transform container)
     {
         yield return null;
         var newObject = Instantiate(data.touchInfo.prefab, container).GetComponent<GridObject>();
-        newObject.transform.localPosition = new Vector3(data.position.x, data.position.y, 0f);
-        newObject.data = data;
-        newObject.positioner.transform = newObject.transform;
-        newObject.positioner.xRange = data.xPlaceRange;
-        newObject.positioner.yRange = data.yPlaceRange;
+        newObject.Initialize(data);
     }
 
     void DestroyObjects()
     {        
         for (int i = elements.Length - 1; i >= 0; i--)
+        {
+            if (!elements[i]) continue;
             StartCoroutine(DestroyObject(elements[i].gameObject));
+        }
     }
     
     IEnumerator DestroyObject(GameObject value)
@@ -100,6 +114,9 @@ public struct ObjectLayerData
     {
         values = new GridObjectData[source.elements.Length];
         for (int i = 0; i < values.Length; i++)
+        {
+            source.elements[i].OnValidate(); // SetDataFromHierarchy()
             values[i] = source.elements[i].data;
+        }
     }
 }

@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841494600359960080, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: toggle
@@ -429,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 838685802831316329, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1627396207838485745, guid: 6346206620c515c44a8966724e4d0b59, type: 3}
       propertyPath: interruption
@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e44a9044598fb498296bcfd3cc73cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeEnvironment: 1
+  activeEnvironment: 2
   environmentGroups:
   - id: 0
     cameraSize: 15

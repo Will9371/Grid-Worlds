@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,16 +9,10 @@ public class CellLayer : MonoBehaviour
 
     //[HideInInspector] 
     public GridCell[] cells;
+    //[HideInInspector]
+    public CellData[] data;
     Vector2 size;
-    
-    public void BeginRefresh() => StartCoroutine(DelayRefresh());
-    IEnumerator DelayRefresh()
-    {
-        yield return null;
-        yield return null;
-        RefreshCells();
-    }
-    
+
     public void GenerateNew(Vector2 size)
     {
         this.size = size;
@@ -37,18 +32,8 @@ public class CellLayer : MonoBehaviour
         transform.localPosition = new Vector3(x, y, 0f);
     }
 
-    public void Refresh(GridWorldInfo layout)
-    {
-        // Set cells
-        if (cells == null || transform.childCount != layout.cellData.Length)
-            RefreshCells();
-        
-        // Set cell data
-        for (int i = 0; i < transform.childCount; i++)
-            cells[i].SetCellData(layout.cellData[i].type);
-    }
-
-    public void RefreshCells()
+    //public void BeginSetDataFromHierarchy() => StartCoroutine(Statics.DelayFunction(SetDataFromHierarchy));
+    public void SetArrayFromHierarchy()
     {
         cells = new GridCell[transform.childCount];
         for (int i = 0; i < cells.Length; i++)
@@ -59,11 +44,25 @@ public class CellLayer : MonoBehaviour
         }
     }
     
-    public void Load(GridWorldInfo layout)
+    public void Load(CellData[] data, Vector2 size) => StartCoroutine(LoadRoutine(data, size));
+
+    IEnumerator LoadRoutine(CellData[] data, Vector2 size)
     {
-        // Generate cells
-        GenerateNew(layout.size);
-        BeginRefresh();
+        GenerateNew(size);
+        yield return null;
+        yield return null;
+        RefreshHierarchyFromData(data);
+    }
+    
+    void RefreshHierarchyFromData(CellData[] data)
+    {
+        this.data = data;
+        cells = new GridCell[data.Length];
+        SetArrayFromHierarchy();
+        
+        // Set cell data
+        for (int i = 0; i < transform.childCount; i++)
+            cells[i].SetData(data[i].type);
     }
     
     IEnumerator GenerateCell(GameObject prefab, Transform container, int x, int y)

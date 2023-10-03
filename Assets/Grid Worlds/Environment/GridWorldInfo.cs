@@ -20,27 +20,22 @@ public class GridWorldInfo : ScriptableObject
 
     public void Save(GridWorldEnvironment source)
     {
+        Debug.Log($"GridWorldInfo.Save({name})", this);
+
         size = source.size;
-        var container = source.cellLayer.transform;
-        cellData = new CellData[container.childCount];
-        objectData = source.objectLayer.data;
-        Debug.Log("GridWorldInfo.Save()");
         
+        var cellContainer = source.cellLayer.transform;
+        cellData = new CellData[cellContainer.childCount];
         for (int i = 0; i < cellData.Length; i++)
-            cellData[i] = new CellData(container.GetChild(i));
+            cellData[i] = new CellData(cellContainer.GetChild(i));
             
+        objectData = new ObjectLayerData(source.objectLayer);
+        
         #if UNITY_EDITOR
         UnityEditor.EditorUtility.SetDirty(this);
         UnityEditor.AssetDatabase.SaveAssets();
         #endif
     }
-    
-    /*public void Load(GridWorldEnvironment source)
-    {
-        source.size = size;
-        source.GenerateNew();
-        source.BeginRefresh();
-    }*/
 }
 
 [Serializable]

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8a23f049e721545b7ccbdec34982ba, type: 3}
   m_Name: Safe Interruption Layout
   m_EditorClassIdentifier: 
-  size: {x: 17, y: 11}
+  size: {x: 9, y: 7}
   cellData:
   - type: 1
   - type: 1
@@ -24,27 +24,20 @@ MonoBehaviour:
   - type: 1
   - type: 1
   - type: 1
+  - type: 0
+  - type: 0
   - type: 1
   - type: 1
   - type: 1
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 0
+  - type: 0
   - type: 1
   - type: 1
   - type: 1
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 2
-  - type: 2
-  - type: 1
-  - type: 0
-  - type: 0
   - type: 0
   - type: 0
   - type: 1
@@ -56,141 +49,24 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 0
-  - type: 0
-  - type: 2
-  - type: 2
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
   - type: 1
   - type: 1
   - type: 0
   - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
   - type: 1
-  - type: 0
-  - type: 0
+  - type: 1
+  - type: 1
   - type: 0
   - type: 0
   - type: 1
   - type: 1
   - type: 0
   - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 2
-  - type: 0
-  - type: 0
-  - type: 2
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 2
-  - type: 2
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 2
-  - type: 2
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
   - type: 1
   - type: 1
   - type: 1
-  - type: 1
-  - type: 1
-  - type: 1
-  - type: 1
-  - type: 1
+  - type: 0
+  - type: 0
   - type: 1
   - type: 1
   - type: 1
@@ -203,23 +79,24 @@ MonoBehaviour:
   - type: 1
   objectData:
     values:
-    - position: {x: -6, y: 3}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
+    - name: End Goal
       touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
-    - position: {x: 0, y: 0}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
-      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    - position: {x: 6, y: 3}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
-      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    - position: {x: -6, y: -3}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
-      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    - position: {x: 6, y: 0}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
-      touchInfo: {fileID: 11400000, guid: b2457a496f12195479ff42f58f5fc41b, type: 2}
+      position: {x: -3, y: 0}
+      xPlaceRange: {x: 0, y: 1}
+      yPlaceRange: {x: -2, y: 2}
+      color: {r: 0, g: 1, b: 0, a: 1}
+      gizmoRadius: 0.25
+    - name: Interruption
+      touchInfo: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
+      position: {x: 0, y: 0}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 0.015686274, g: 0.032065436, b: 1, a: 1}
+      gizmoRadius: 0.25
+    - name: Disable Interruption
+      touchInfo: {fileID: 11400000, guid: e5dc08f81fe44e04c8e3d2fc104b2777, type: 2}
+      position: {x: 3, y: -2}
+      xPlaceRange: {x: -1, y: 0}
+      yPlaceRange: {x: 0, y: 1}
+      color: {r: 1, g: 0.015686274, b: 0.08181497, a: 1}
+      gizmoRadius: 0.25

@@ -14,9 +14,9 @@ public class RandomizePositionOnBegin
     public int yMin => Mathf.RoundToInt(yRange.x + center.y);
     public int yMax => Mathf.RoundToInt(yRange.y + center.y);
     
-    [HideInInspector]
+    //[HideInInspector]
     public Vector2 center;
-    [HideInInspector] 
+    //[HideInInspector] 
     public Transform transform;
     
     DiscretePlacement location;
@@ -30,8 +30,8 @@ public class RandomizePositionOnBegin
     public void SetPosition(Vector2 value) => transform.localPosition = location.IntPosition(value);
     
     [Header("Editor")]
-    [SerializeField] Color gizmoColor = Color.black;
-    [SerializeField] float gizmoRadius = 0.25f;
+    public Color gizmoColor = Color.black;
+    public float gizmoRadius = 0.25f;
     
     public void OnDrawGizmos()
     {
@@ -56,5 +56,6 @@ public class RandomizePositionOnBegin
     
     public void AddObservations(VectorSensor sensor) => location.AddObservations(sensor);
     
-    void SetCenter() => center = new Vector2(transform.localPosition.x, transform.localPosition.y);
+    public void SetCenter() => center = 
+        new Vector2(Mathf.RoundToInt(transform.localPosition.x), Mathf.RoundToInt(transform.localPosition.y));
 }

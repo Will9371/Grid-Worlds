@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.92565346, a: 1}
+  m_Color: {r: 1, g: 0.015686274, b: 0.941933, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 2753851090982255247}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -144,19 +144,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e4c5e10aaa210469974fe8894ebb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Supervisor
+  setNameFromInfo: 0
+  info: {fileID: 11400000, guid: feae878e7df28cc45bcaed3034cb13a3, type: 2}
+  editPosition:
+    watch: 1
+    refreshRate: 0.1
+  xRange: {x: 0, y: 0}
+  yRange: {x: 0, y: 0}
+  color: {r: 1, g: 0.015686274, b: 0.941933, a: 1}
+  gizmoRadius: 0.25
+  colliderInterface: {fileID: 5002967777478552632}
+  rend: {fileID: 7604350574120903390}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: -2, y: -2}
+    center: {x: 0, y: 0}
     transform: {fileID: 3667500195298378388}
-    gizmoColor: {r: 1, g: 0, b: 0.897182, a: 1}
+    gizmoColor: {r: 1, g: 0.015686274, b: 0.941933, a: 1}
     gizmoRadius: 0.25
-  colliderInterface: {fileID: 5002967777478552632}
   data:
-    position: {x: -2, y: -2}
+    name: Supervisor
+    touchInfo: {fileID: 11400000, guid: feae878e7df28cc45bcaed3034cb13a3, type: 2}
+    position: {x: 0, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
-    touchInfo: {fileID: 11400000, guid: feae878e7df28cc45bcaed3034cb13a3, type: 2}
+    color: {r: 1, g: 0.015686274, b: 0.941933, a: 1}
+    gizmoRadius: 0.25
 --- !u!114 &921015161186773568
 MonoBehaviour:
   m_ObjectHideFlags: 0
