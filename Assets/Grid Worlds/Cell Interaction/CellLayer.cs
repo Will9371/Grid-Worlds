@@ -1,6 +1,6 @@
-using System;
+//using System;
 using System.Collections;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using UnityEngine;
 
 public class CellLayer : MonoBehaviour
@@ -9,8 +9,7 @@ public class CellLayer : MonoBehaviour
 
     //[HideInInspector] 
     public GridCell[] cells;
-    //[HideInInspector]
-    public CellData[] data;
+    [ReadOnly] public CellData[] data;
     Vector2 size;
 
     public void GenerateNew(Vector2 size)

@@ -16,16 +16,16 @@ public class WatchTransformInEditor
 {
     public bool watch = true;
     public float refreshRate = 0.1f;
-    public Action<Vector3> position;
+    public Action<Vector3> onSetPosition;
     
     IEnumerator tick;
     
-    public void OnValidate(MonoBehaviour mono, Action<Vector3> position)
+    public void OnValidate(MonoBehaviour mono, Action<Vector3> onSetPosition)
     {
         if (!watch || !mono.gameObject.activeInHierarchy)
             return;
         
-        this.position = position;
+        this.onSetPosition = onSetPosition;
     
         if (tick == null)
         {
@@ -39,7 +39,7 @@ public class WatchTransformInEditor
         var delay = new WaitForSecondsRealtime(refreshRate);
         while (watch && transform.gameObject.activeInHierarchy)
         {
-            position?.Invoke(transform.position);
+            onSetPosition?.Invoke(transform.position);
             yield return delay;
         }
         tick = null;
