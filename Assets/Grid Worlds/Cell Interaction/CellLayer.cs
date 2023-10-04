@@ -6,9 +6,8 @@ using UnityEngine;
 public class CellLayer : MonoBehaviour
 {
     [SerializeField] GameObject tileTemplate;
-
-    //[HideInInspector] 
-    public GridCell[] cells;
+    
+    [ReadOnly] public GridCell[] cells;
     [ReadOnly] public CellData[] data;
     Vector2 size;
 
@@ -26,12 +25,11 @@ public class CellLayer : MonoBehaviour
     
     void Recenter()
     {
-        var x = -(size.x - 1) / 2f;
-        var y = -(size.y - 1) / 2f;
+        var x = -Mathf.Floor((size.x - 1) / 2f);
+        var y = -Mathf.Floor((size.y - 1) / 2f);
         transform.localPosition = new Vector3(x, y, 0f);
     }
 
-    //public void BeginSetDataFromHierarchy() => StartCoroutine(Statics.DelayFunction(SetDataFromHierarchy));
     public void SetArrayFromHierarchy()
     {
         cells = new GridCell[transform.childCount];

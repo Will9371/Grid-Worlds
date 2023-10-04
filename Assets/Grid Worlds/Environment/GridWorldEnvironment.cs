@@ -16,16 +16,17 @@ public class GridWorldEnvironment : MonoBehaviour
     [Header("Editor Commands")]
     [Tooltip("Click this when changing the size of the grid (or to clear the cells)")]
     [SerializeField] bool generateNew;
-    [Tooltip("Click this if the cells array is off")]
-    [SerializeField] bool refreshCellData;
-    [Tooltip("Click this if the object array is off")]
-    [SerializeField] bool refreshObjectData;
-    
     [Tooltip("Copy data from environment to the layout ScriptableObject")]
     [SerializeField] bool save;
     [Tooltip("Copy data from the layout ScriptableObject to the environment")]
     //[HideInInspector] // WIP: reactivate when working
     [SerializeField] bool load;
+    
+    [Header("Debug")]
+    [Tooltip("Click this if the cells array is off")]
+    [SerializeField] bool refreshCellData;
+    [Tooltip("Click this if the object array is off")]
+    [SerializeField] bool refreshObjectData;
     
     /// Mark scene as dirty on refresh, so that ScriptableObject gets saved
     [HideInInspector] public bool toggle;

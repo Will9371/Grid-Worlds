@@ -10435,6 +10435,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5276749005455352306}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: observeCells
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: placement.center.x
       value: 3
       objectReference: {fileID: 0}

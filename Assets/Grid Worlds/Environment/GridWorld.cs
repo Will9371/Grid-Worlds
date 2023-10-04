@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 
+// TBD: place training environments in a parent so that only one needs to be set active, 
+// Include spacing variable to auto-place environments
+
 public class GridWorld : MonoBehaviour
 {
     enum ActiveEnvironment{ Training, Deployment, Heuristic }
@@ -13,7 +16,7 @@ public class GridWorld : MonoBehaviour
     {
         public ActiveEnvironment id;
         public float cameraSize;
-        public GameObject[] activeInstances;
+        public GameObject container;
     }
     
     void OnValidate() => SetActiveEnvironment();
@@ -23,12 +26,8 @@ public class GridWorld : MonoBehaviour
         foreach (var group in environmentGroups)
         {
             var active = group.id == activeEnvironment;
-            
-            foreach (var instance in group.activeInstances)
-                instance.SetActive(active);
-                
-            if (active)
-                camera.orthographicSize = group.cameraSize;
+            if (group.container) group.container.SetActive(active);
+            if (active) camera.orthographicSize = group.cameraSize;
         }
     }
 }

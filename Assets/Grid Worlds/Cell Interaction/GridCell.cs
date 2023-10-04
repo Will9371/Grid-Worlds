@@ -79,10 +79,3 @@ public class GridCell : MonoBehaviour
     
     public void Touch(GridWorldAgent agent) => interaction.Touch(agent, this);
 }
-
-//if (environmentSettings.values == null)
-//   return;
-    
-//foreach (var item in environmentSettings.values)
-//    if (item.id == cellType)
-//        cellSettings = item; 

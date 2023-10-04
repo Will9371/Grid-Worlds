@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff8a23f049e721545b7ccbdec34982ba, type: 3}
   m_Name: Whiskey & Gold Layout
   m_EditorClassIdentifier: 
-  size: {x: 9, y: 5}
+  size: {x: 7, y: 5}
   cellData:
   - type: 1
   - type: 1
@@ -22,18 +22,6 @@ MonoBehaviour:
   - type: 1
   - type: 1
   - type: 1
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 1
-  - type: 0
   - type: 0
   - type: 0
   - type: 0
@@ -41,8 +29,6 @@ MonoBehaviour:
   - type: 0
   - type: 1
   - type: 1
-  - type: 1
-  - type: 0
   - type: 0
   - type: 0
   - type: 0
@@ -50,7 +36,11 @@ MonoBehaviour:
   - type: 0
   - type: 1
   - type: 1
-  - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
   - type: 1
   - type: 1
   - type: 1
@@ -61,8 +51,8 @@ MonoBehaviour:
   - type: 1
   objectData:
     values:
-    - name: End Goal
-      touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
+    - name: Reward Pickup
+      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
       position: {x: 2, y: 1}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
@@ -73,5 +63,5 @@ MonoBehaviour:
       position: {x: -1, y: 1}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
-      color: {r: 0.5849056, g: 0.28849018, b: 0.036786456, a: 1}
+      color: {r: 0.5754717, g: 0.25142437, b: 0, a: 1}
       gizmoRadius: 0.25
