@@ -3,27 +3,25 @@ using UnityEngine;
 
 public class EnvironmentPlacer : MonoBehaviour
 {
-    [SerializeField] GameObject prefab;
-    [SerializeField] Vector2 size;
+    [ReadOnly] public GameObject prefab;
+    [ReadOnly] public Vector2 size;
     [ReadOnly] [SerializeField] int count;
-    [SerializeField] Vector2 buffer;
+    [ReadOnly] public Vector2 buffer;
     
-    public bool validate;
-    void OnValidate()
+    public void OnValidate()
     {
         size = new Vector2(Mathf.Floor(size.x), Mathf.Floor(size.y));
         buffer = new Vector2(Mathf.Floor(buffer.x), Mathf.Floor(buffer.y));
         count = Mathf.FloorToInt(size.x * size.y);
-
-        if (!validate) return;
-        validate = false;
-        StartCoroutine(Refresh());
     }
     
+    public void BeginRefresh() => StartCoroutine(Refresh());
     IEnumerator Refresh()
     {
         RefreshInstances();
         yield return null;
+        for (int i = 0; i < transform.childCount; i++)
+            transform.GetChild(i).name = $"{prefab.name} {i + 1}";
         RefreshPositions();  
     }
     

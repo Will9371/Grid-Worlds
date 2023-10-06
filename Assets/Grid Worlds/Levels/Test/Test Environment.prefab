@@ -4134,11 +4134,11 @@ MonoBehaviour:
   objective: {fileID: 0}
   size: {x: 17, y: 11}
   generateNew: 0
-  refreshCellData: 0
-  refreshObjectData: 0
   save: 0
   load: 0
-  toggle: 1
+  refreshCellData: 0
+  refreshObjectData: 0
+  toggle: 0
 --- !u!1 &914368882870324562
 GameObject:
   m_ObjectHideFlags: 0

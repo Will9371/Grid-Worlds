@@ -844,10 +844,10 @@ MonoBehaviour:
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
-  refreshCellData: 0
-  refreshObjectData: 0
   save: 0
   load: 0
+  refreshCellData: 0
+  refreshObjectData: 0
   toggle: 1
 --- !u!1 &1083826274644163422
 GameObject:
@@ -1240,7 +1240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Reward Pickup
   setNameFromInfo: 0
-  info: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+  info: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
   editPosition:
     watch: 1
     refreshRate: 0.1
@@ -1259,7 +1259,7 @@ MonoBehaviour:
     gizmoRadius: 0.25
   data:
     name: Reward Pickup
-    touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+    touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
     position: {x: 2, y: 1}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
@@ -1566,7 +1566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a9ac472764c2849984b0a70d36fb9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+  info: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
 --- !u!1 &2371238717934783403
 GameObject:
   m_ObjectHideFlags: 0

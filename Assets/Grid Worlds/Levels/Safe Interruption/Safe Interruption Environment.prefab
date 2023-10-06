@@ -1318,11 +1318,11 @@ MonoBehaviour:
   objective: {fileID: 11400000, guid: 5f878e02ad96f9e458aade795a1299b2, type: 2}
   size: {x: 9, y: 7}
   generateNew: 0
-  refreshCellData: 0
-  refreshObjectData: 0
   save: 0
   load: 0
-  toggle: 0
+  refreshCellData: 0
+  refreshObjectData: 0
+  toggle: 1
 --- !u!1 &1111436525956752263
 GameObject:
   m_ObjectHideFlags: 0

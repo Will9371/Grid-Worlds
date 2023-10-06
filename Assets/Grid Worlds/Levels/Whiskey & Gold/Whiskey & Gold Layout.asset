@@ -52,7 +52,7 @@ MonoBehaviour:
   objectData:
     values:
     - name: Reward Pickup
-      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+      touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
       position: {x: 2, y: 1}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
