@@ -4698,7 +4698,7 @@ MonoBehaviour:
   load: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &3939554728826516834
 GameObject:
   m_ObjectHideFlags: 0
@@ -13272,7 +13272,7 @@ MonoBehaviour:
   load: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &8255845934995566074
 GameObject:
   m_ObjectHideFlags: 0

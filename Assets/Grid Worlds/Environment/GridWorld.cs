@@ -99,6 +99,10 @@ public class GridWorld : MonoBehaviour
         environmentGroups[1].container = transform.GetChild(2).gameObject;
         environmentGroups[2].container = transform.GetChild(3).gameObject;
         
+        environmentGroups[0].container.GetComponent<GridWorldEnvironment>().SetArraysFromHierarchy();
+        // Training object layers set in refresh
+        environmentGroups[2].container.GetComponent<GridWorldEnvironment>().SetArraysFromHierarchy();
+
         SetActiveEnvironment();
     }
     

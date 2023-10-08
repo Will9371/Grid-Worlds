@@ -85,4 +85,10 @@ public class GridWorldEnvironment : MonoBehaviour
         cellLayer.Load(layout.cellData, layout.size);
         objectLayer.Load(layout.objectData);
     }
+    
+    public void SetArraysFromHierarchy()
+    {
+        cellLayer.SetArrayFromHierarchy();
+        objectLayer.SetArrayFromHierarchy();
+    }
 }

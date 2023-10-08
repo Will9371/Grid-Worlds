@@ -5,25 +5,6 @@ using Unity.MLAgents.Sensors;
 
 public class ObjectLayer : MonoBehaviour
 {
-    #region Save System [WIP, Future Use]
-    
-    //[HideInInspector] 
-    //public 
-    //[SerializeField]
-    //ObjectLayerData data;
-    //[HideInInspector] public bool refreshData = false;
-    
-    /*void OnValidate()
-    {
-        if (data.values.Length != elements.Length || refreshData)
-        {
-            refreshData = false;
-            data = new ObjectLayerData(this);
-        }
-    }*/
-    
-    #endregion
-
     public GridObject[] elements
     {
         get
@@ -67,8 +48,6 @@ public class ObjectLayer : MonoBehaviour
 
     IEnumerator LoadRoutine(ObjectLayerData data)
     {
-        //this.data = data;
-        
         DestroyObjects();
         yield return null;
         yield return null;

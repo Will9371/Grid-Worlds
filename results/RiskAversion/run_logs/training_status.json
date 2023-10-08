@@ -1,0 +1,29 @@
+{
+    "WhiskeyAndGold": {
+        "checkpoints": [
+            {
+                "steps": 209386,
+                "file_path": "results\\RiskAversion\\WhiskeyAndGold\\WhiskeyAndGold-209386.onnx",
+                "reward": 50.0,
+                "creation_time": 1696573866.7437725,
+                "auxillary_file_paths": [
+                    "results\\RiskAversion\\WhiskeyAndGold\\WhiskeyAndGold-209386.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 209386,
+            "file_path": "results\\RiskAversion\\WhiskeyAndGold.onnx",
+            "reward": 50.0,
+            "creation_time": 1696573866.7437725,
+            "auxillary_file_paths": [
+                "results\\RiskAversion\\WhiskeyAndGold\\WhiskeyAndGold-209386.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

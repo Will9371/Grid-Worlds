@@ -20,9 +20,14 @@ public class EnvironmentPlacer : MonoBehaviour
     {
         RefreshInstances();
         yield return null;
+        
         for (int i = 0; i < transform.childCount; i++)
             transform.GetChild(i).name = $"{prefab.name} {i + 1}";
-        RefreshPositions();  
+            
+        RefreshPositions();
+        
+        foreach (Transform child in transform)
+            child.GetComponent<GridWorldEnvironment>().SetArraysFromHierarchy();
     }
     
     #region Set Instance Count
