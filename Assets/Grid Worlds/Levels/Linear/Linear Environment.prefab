@@ -2792,8 +2792,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _elements:
   - {fileID: 3557655278643303427}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &5444391672970890959
 GameObject:
   m_ObjectHideFlags: 0
@@ -6729,7 +6727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 200
+      value: 194
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
