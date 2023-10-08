@@ -374,7 +374,7 @@ MonoBehaviour:
   load: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &978410373930428087
 GameObject:
   m_ObjectHideFlags: 0
@@ -2476,8 +2476,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
-  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+  cellType: 2
+  interaction: {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}
 --- !u!212 &2424919772399569154
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2520,7 +2520,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2537,7 +2537,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4887825267781762678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -2549,7 +2549,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4887825267781762678}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2634,8 +2634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
-  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+  cellType: 2
+  interaction: {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}
 --- !u!212 &35835830444032683
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2678,7 +2678,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155763445782934044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -2707,7 +2707,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5155763445782934044}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -4300,69 +4300,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileTemplate: {fileID: 1087855923183612781, guid: 76da74b62c4c6ea4897af4ed1585704d, type: 3}
   cells:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5798948883154014684}
+  - {fileID: 7876250270057752923}
+  - {fileID: 1248181364392503232}
+  - {fileID: 6172424203074264973}
+  - {fileID: 32215293324689173}
+  - {fileID: 5769586599133210172}
+  - {fileID: 3698363477132470600}
+  - {fileID: 4027837303973353396}
+  - {fileID: 1152707612569531483}
+  - {fileID: 5204338691740559259}
+  - {fileID: 3239405620388944824}
+  - {fileID: 242731968234495359}
+  - {fileID: 4472908882427385220}
+  - {fileID: 1007660433106713442}
+  - {fileID: 1862647493422956219}
+  - {fileID: 4631535056280509769}
+  - {fileID: 5297226969982483328}
+  - {fileID: 6146863178328320489}
+  - {fileID: 540433152060890547}
+  - {fileID: 8385106984574842133}
+  - {fileID: 1239131654371887808}
+  - {fileID: 5096731888330358985}
+  - {fileID: 4729295416017017257}
+  - {fileID: 1626211081588816484}
+  - {fileID: 4987761996401534176}
+  - {fileID: 4457663347291181387}
+  - {fileID: 1033324048783973980}
+  - {fileID: 6298014270712206007}
+  - {fileID: 3630352817093661498}
+  - {fileID: 2714956243183241051}
+  - {fileID: 6216936071651817780}
+  - {fileID: 6806075052863401199}
+  - {fileID: 6540376687932268282}
+  - {fileID: 7723212122777870656}
+  - {fileID: 1620050740872555564}
+  - {fileID: 8081668070163573707}
+  - {fileID: 9127092371794727258}
+  - {fileID: 9198631432346861486}
+  - {fileID: 9197914970197739491}
+  - {fileID: 2351357544995623797}
   data: []
 --- !u!1 &6201792049491364738
 GameObject:
@@ -6727,7 +6704,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 194
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime

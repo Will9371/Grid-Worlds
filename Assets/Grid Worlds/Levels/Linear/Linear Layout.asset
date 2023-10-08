@@ -27,7 +27,7 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 0
-  - type: 0
+  - type: 2
   - type: 0
   - type: 1
   - type: 1
@@ -35,7 +35,7 @@ MonoBehaviour:
   - type: 0
   - type: 0
   - type: 0
-  - type: 0
+  - type: 2
   - type: 0
   - type: 1
   - type: 1
@@ -58,7 +58,7 @@ MonoBehaviour:
     values:
     - name: End Goal
       touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
-      position: {x: -2, y: -2}
+      position: {x: 3, y: -1}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 0, g: 1, b: 0, a: 1}
