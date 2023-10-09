@@ -23,6 +23,8 @@ public class GridWorldEnvironment : MonoBehaviour
     [SerializeField] bool load;
     
     [Header("Debug")]
+    [Tooltip("Click this to prompt the editor to complete a refresh action")]
+    [SerializeField] bool tick;
     [Tooltip("Click this if the cells array is off")]
     [SerializeField] bool refreshCellData;
     [Tooltip("Click this if the object array is off")]
@@ -45,6 +47,8 @@ public class GridWorldEnvironment : MonoBehaviour
     void OnValidate()
     {
         size = new Vector2(Mathf.Floor(size.x), Mathf.Floor(size.y));
+        
+        if (tick) tick = false;
         
         if (save)
         {
