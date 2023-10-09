@@ -20,7 +20,6 @@ public class GridWorldEnvironment : MonoBehaviour
     [Tooltip("Copy data from environment to the layout ScriptableObject")]
     [SerializeField] bool save;
     [Tooltip("Copy data from the layout ScriptableObject to the environment")]
-    //[HideInInspector] // WIP: reactivate when working
     [SerializeField] bool load;
     
     [Header("Debug")]

@@ -15,7 +15,7 @@ public class ObjectLayer : MonoBehaviour
             return _elements;
         }
     }
-    [SerializeField]
+    [SerializeField] [ReadOnly]
     GridObject[] _elements;
     public void SetArrayFromHierarchy() => _elements = GetComponentsInChildren<GridObject>();
     
@@ -51,6 +51,8 @@ public class ObjectLayer : MonoBehaviour
         DestroyObjects();
         yield return null;
         yield return null;
+        
+        Debug.Log(data.values[0].touchInfo);  // OK
 
         // Generate objects
         for (int i = 0; i < elements.Length; i++)
@@ -64,6 +66,7 @@ public class ObjectLayer : MonoBehaviour
     IEnumerator GenerateObject(GridObjectData data, Transform container)
     {
         yield return null;
+        Debug.Log($"Prefab = {data.touchInfo.prefab}, info = {data.touchInfo}");
         var newObject = Instantiate(data.touchInfo.prefab, container).GetComponent<GridObject>();
         newObject.Initialize(data);
     }

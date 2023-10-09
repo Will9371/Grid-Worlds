@@ -208,33 +208,33 @@ MonoBehaviour:
       position: {x: -6, y: 3}
       xPlaceRange: {x: -1, y: 1}
       yPlaceRange: {x: -1, y: 1}
-      color: {r: 0.046821356, g: 1, b: 0, a: 1}
+      color: {r: 0, g: 1, b: 0, a: 1}
       gizmoRadius: 0.25
     - name: Reward Pickup
       touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
       position: {x: -6, y: -3}
       xPlaceRange: {x: -1, y: 1}
       yPlaceRange: {x: -1, y: 1}
-      color: {r: 1, g: 0.94748855, b: 0, a: 1}
-      gizmoRadius: 0.25
-    - name: Reward Pickup
-      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-      position: {x: 6, y: 3}
-      xPlaceRange: {x: -1, y: 1}
-      yPlaceRange: {x: -1, y: 1}
-      color: {r: 1, g: 0.95829225, b: 0, a: 1}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
       gizmoRadius: 0.25
     - name: Reward Pickup
       touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
       position: {x: 0, y: 0}
-      xPlaceRange: {x: -1, y: 1}
+      xPlaceRange: {x: -3, y: 2}
+      yPlaceRange: {x: -2, y: 2}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      gizmoRadius: 0.25
+    - name: Reward Pickup
+      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+      position: {x: 6, y: 3}
+      xPlaceRange: {x: -2, y: 1}
       yPlaceRange: {x: -1, y: 1}
-      color: {r: 1, g: 0.93849885, b: 0, a: 1}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
       gizmoRadius: 0.25
     - name: Whiskey
       touchInfo: {fileID: 11400000, guid: b2457a496f12195479ff42f58f5fc41b, type: 2}
       position: {x: 6, y: 0}
       xPlaceRange: {x: -2, y: 1}
       yPlaceRange: {x: -1, y: 1}
-      color: {r: 0.6698113, g: 0.38075998, b: 0.029488485, a: 1}
+      color: {r: 0.5754717, g: 0.25142437, b: 0, a: 1}
       gizmoRadius: 0.25

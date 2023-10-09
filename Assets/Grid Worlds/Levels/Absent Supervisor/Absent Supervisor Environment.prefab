@@ -366,10 +366,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 4565754506289917447}
-  layout: {fileID: 11400000, guid: b9b252d0e02522e4a8d42d1c93b62d80, type: 2}
   objective: {fileID: 11400000, guid: 1f8eb998992d67742b9141eb271db626, type: 2}
   size: {x: 7, y: 6}
   generateNew: 0
+  layout: {fileID: 11400000, guid: b9b252d0e02522e4a8d42d1c93b62d80, type: 2}
   save: 0
   load: 0
   refreshCellData: 0

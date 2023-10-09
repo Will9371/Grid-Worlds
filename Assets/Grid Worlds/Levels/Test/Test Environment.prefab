@@ -4130,10 +4130,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 8188018611762364318}
-  layout: {fileID: 11400000, guid: fdc9dee7271b57f4e999890a542635e6, type: 2}
   objective: {fileID: 0}
   size: {x: 17, y: 11}
   generateNew: 0
+  layout: {fileID: 11400000, guid: fdc9dee7271b57f4e999890a542635e6, type: 2}
   save: 0
   load: 0
   refreshCellData: 0

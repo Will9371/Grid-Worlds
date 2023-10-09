@@ -67,6 +67,8 @@ public class GridObject : MonoBehaviour
     public void Initialize(GridObjectData data)
     {
         this.data = data;
+        info = data.touchInfo;
+        this.name = data.name;
         gameObject.name = data.name;
         transform.localPosition = new Vector3(data.position.x, data.position.y, 0f);
         positioner.transform = transform;

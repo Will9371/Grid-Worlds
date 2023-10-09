@@ -20,8 +20,6 @@ public class GridWorldInfo : ScriptableObject
 
     public void Save(GridWorldEnvironment source)
     {
-        Debug.Log($"GridWorldInfo.Save({name})", this);
-
         size = source.size;
         
         var cellContainer = source.cellLayer.transform;
@@ -32,6 +30,7 @@ public class GridWorldInfo : ScriptableObject
         objectData = new ObjectLayerData(source.objectLayer);
         
         #if UNITY_EDITOR
+        Debug.Log($"GridWorldInfo.Save({name}) in editor", this);
         UnityEditor.EditorUtility.SetDirty(this);
         UnityEditor.AssetDatabase.SaveAssets();
         #endif

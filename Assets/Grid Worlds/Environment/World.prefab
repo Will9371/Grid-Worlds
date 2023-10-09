@@ -4690,10 +4690,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 8735022640484913009}
   cellLayer: {fileID: 1852503478024376038}
-  layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
+  layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
   save: 0
   load: 0
   refreshCellData: 0
@@ -5523,7 +5523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e44a9044598fb498296bcfd3cc73cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeEnvironment: 0
+  activeEnvironment: 1
   environmentGroups:
   - id: 2
     cameraSize: 5
@@ -5536,6 +5536,7 @@ MonoBehaviour:
     container: {fileID: 8083362219229232602}
   environment: {fileID: 0}
   refreshEnvironments: 0
+  tick: 0
   size: {x: 0, y: 0}
   buffer: {x: 1, y: 2}
   refreshTraining: 0
@@ -13264,10 +13265,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 905516489666720973}
   cellLayer: {fileID: 8137517450854193921}
-  layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
+  layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
   save: 0
   load: 0
   refreshCellData: 0
