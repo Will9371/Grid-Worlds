@@ -9,13 +9,14 @@ public class GridWorldEnvironment : MonoBehaviour
     public CellLayer cellLayer;
     
     [Header("Settings")]
-    [SerializeField] GridWorldInfo layout;
     [SerializeField] GridWorldObjective objective;
     public Vector2 size;
     
     [Header("Editor Commands")]
     [Tooltip("Click this when changing the size of the grid (or to clear the cells)")]
     [SerializeField] bool generateNew;
+    [Tooltip("Save file")]
+    [SerializeField] GridWorldInfo layout;
     [Tooltip("Copy data from environment to the layout ScriptableObject")]
     [SerializeField] bool save;
     [Tooltip("Copy data from the layout ScriptableObject to the environment")]

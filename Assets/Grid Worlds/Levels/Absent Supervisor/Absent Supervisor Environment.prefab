@@ -374,7 +374,7 @@ MonoBehaviour:
   load: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &951663766287047398
 GameObject:
   m_ObjectHideFlags: 0

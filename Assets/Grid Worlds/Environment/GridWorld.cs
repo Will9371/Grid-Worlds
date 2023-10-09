@@ -13,6 +13,8 @@ public class GridWorld : MonoBehaviour
     
     [SerializeField] GameObject environment;
     [SerializeField] bool refreshEnvironments;
+    [Tooltip("Click this a couple times after RefreshEnvironments to prompt Unity to effect the changes")]
+    [SerializeField] bool tick;
     
     [Header("Training")]
     [SerializeField] Vector2 size;
@@ -41,21 +43,34 @@ public class GridWorld : MonoBehaviour
         if (refreshEnvironments)
         {
             refreshEnvironments = false;
-            activeEnvironment = ActiveEnvironment.Training;
             StartCoroutine(RefreshEnvironments());
         }
         
         if (refreshTraining)
         {
             refreshTraining = false;
-            if (training)
-            {
-                training.size = size;
-                training.buffer = buffer;
-                training.OnValidate();
-                training.BeginRefresh();
-            }
+            RefreshTraining();
         }
+        
+        if (tick) tick = false;
+    }
+    
+    void RefreshTraining()
+    {
+        if (!training) return;
+        
+        var cachedEnvironment = activeEnvironment;
+        activeEnvironment = ActiveEnvironment.Training;
+        SetActiveEnvironment();
+        
+        training.prefab = environment;
+        training.size = size;
+        training.buffer = buffer;
+        training.OnValidate();
+        training.BeginRefresh();
+        
+        activeEnvironment = cachedEnvironment;
+        SetActiveEnvironment();
     }
 
     void SetActiveEnvironment()
@@ -85,11 +100,7 @@ public class GridWorld : MonoBehaviour
 
         training = GetComponentInChildren<EnvironmentPlacer>();
         training.transform.SetSiblingIndex(2);
-        training.prefab = environment;
-        training.size = size;
-        training.buffer = buffer;
-        training.OnValidate();
-        training.BeginRefresh();
+        RefreshTraining();
         
         transform.GetChild(1).name = "Heuristic";
         transform.GetChild(2).name = "Training";
@@ -102,8 +113,6 @@ public class GridWorld : MonoBehaviour
         environmentGroups[0].container.GetComponent<GridWorldEnvironment>().SetArraysFromHierarchy();
         // Training object layers set in refresh
         environmentGroups[2].container.GetComponent<GridWorldEnvironment>().SetArraysFromHierarchy();
-
-        SetActiveEnvironment();
     }
     
     IEnumerator GenerateInstance(GameObject prefab, Transform container)
