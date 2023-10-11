@@ -17,13 +17,22 @@ public class ObjectLayer : MonoBehaviour
     }
     [SerializeField] [ReadOnly]
     GridObject[] _elements;
-    public void SetArrayFromHierarchy() => _elements = GetComponentsInChildren<GridObject>();
+    public void SetArrayFromHierarchy() 
+    {
+        foreach (Transform child in transform)
+            child.gameObject.SetActive(true);
+    
+        _elements = GetComponentsInChildren<GridObject>();
+        
+        foreach (var element in _elements)
+            element.gameObject.SetActive(!element.data.hide);
+    }
     
     public void InitializePositions()
     {
         foreach (var element in elements)
         {
-            element.gameObject.SetActive(true);
+            element.gameObject.SetActive(!element.data.hide);
             element.SetRandomPosition();
         }
     }

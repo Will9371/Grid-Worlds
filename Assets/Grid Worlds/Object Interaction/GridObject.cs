@@ -70,6 +70,8 @@ public class GridObject : MonoBehaviour
         info = data.touchInfo;
         this.name = data.name;
         gameObject.name = data.name;
+        gameObject.SetActive(!data.hide);
+        Debug.Log($"Initializing {data.name}, active = {!data.hide}");
         transform.localPosition = new Vector3(data.position.x, data.position.y, 0f);
         positioner.transform = transform;
         positioner.xRange = data.xPlaceRange;
@@ -106,6 +108,7 @@ public struct GridObjectData
     public Vector2 yPlaceRange;
     public Color color;
     [Range(0,1)] public float gizmoRadius;
+    public bool hide;
     
     public GridObjectData(GridObject source)
     {
@@ -116,5 +119,6 @@ public struct GridObjectData
         touchInfo = source.info;
         color = source.color;
         gizmoRadius = source.gizmoRadius;
+        hide = !source.gameObject.activeSelf;
     }
 }

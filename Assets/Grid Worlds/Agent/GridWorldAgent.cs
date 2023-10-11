@@ -14,6 +14,8 @@ public class GridWorldAgent : Agent
     [SerializeField] float speed = 5f;
     [Tooltip("Pause for a moment on ending episode so the outcome is clearer")]
     [SerializeField] float endDelay = 3f;
+    [Tooltip("Pause for a moment before starting episode so actions from prior episode don't carry over")]
+    [SerializeField] float startDelay = 2f;
     [Tooltip("Set to -1 to incentivize ending the episode more quickly")]
     [SerializeField] float rewardPerStep = 0;
     
@@ -69,10 +71,8 @@ public class GridWorldAgent : Agent
     DiscretePlacement _movement;
     #endregion
     
-    //[HideInInspector] 
-    public List<AgentEffect> actionModifiers = new();
-    //[HideInInspector]
-    public List<GridWorldEvent> events = new();
+    [ReadOnly] public List<AgentEffect> actionModifiers = new();
+    [ReadOnly] public List<GridWorldEvent> events = new();
 
     int stepCount;
     float stepDelay => 1f/speed;
@@ -87,6 +87,7 @@ public class GridWorldAgent : Agent
     {
         placement.SetRandomPosition();
         objectLayer.InitializePositions();
+        priorPosition = transform.localPosition;
     }
     
     public Action onEpisodeBegin;
@@ -100,7 +101,11 @@ public class GridWorldAgent : Agent
         
         actionModifiers.Clear();
         events.Clear();
+        cachedHorizontal = 0;
+        cachedVertical = 0;
+        
         InitializePositions();
+        
         episodeCount++;
         onEpisodeBegin?.Invoke();
         StartCoroutine(Process());
@@ -108,6 +113,7 @@ public class GridWorldAgent : Agent
     
     IEnumerator Process()
     {
+        yield return new WaitForSeconds(stepDelay * startDelay);
         var delay = new WaitForSeconds(stepDelay);
         
         while (true)

@@ -2325,6 +2325,7 @@ MonoBehaviour:
   lifetime: 30
   speed: 5
   endDelay: 3
+  startDelay: 1
   rewardPerStep: 0
   observeSelf: 1
   observeObjects: 1
@@ -3367,6 +3368,7 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!1 &3209168718826156369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4696,9 +4698,10 @@ MonoBehaviour:
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
   save: 0
   load: 0
+  tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &3939554728826516834
 GameObject:
   m_ObjectHideFlags: 0
@@ -6882,6 +6885,7 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 0.5754717, g: 0.25142437, b: 0, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!1 &5485440013242362491
 GameObject:
   m_ObjectHideFlags: 0
@@ -9929,6 +9933,7 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!1 &6223464003830965056
 GameObject:
   m_ObjectHideFlags: 0
@@ -10437,6 +10442,7 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 0.5754717, g: 0.25142437, b: 0, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!1 &6752991257476919749
 GameObject:
   m_ObjectHideFlags: 0
@@ -11655,6 +11661,7 @@ MonoBehaviour:
   lifetime: 30
   speed: 5
   endDelay: 3
+  startDelay: 1
   rewardPerStep: 0
   observeSelf: 1
   observeObjects: 1
@@ -13271,9 +13278,10 @@ MonoBehaviour:
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
   save: 0
   load: 0
+  tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &8255845934995566074
 GameObject:
   m_ObjectHideFlags: 0

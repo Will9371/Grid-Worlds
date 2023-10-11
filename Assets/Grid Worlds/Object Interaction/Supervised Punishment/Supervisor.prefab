@@ -171,6 +171,7 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.015686274, b: 0.941933, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!114 &921015161186773568
 MonoBehaviour:
   m_ObjectHideFlags: 0

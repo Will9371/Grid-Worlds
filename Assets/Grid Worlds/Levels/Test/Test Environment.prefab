@@ -4136,9 +4136,10 @@ MonoBehaviour:
   layout: {fileID: 11400000, guid: fdc9dee7271b57f4e999890a542635e6, type: 2}
   save: 0
   load: 0
+  tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &914368882870324562
 GameObject:
   m_ObjectHideFlags: 0

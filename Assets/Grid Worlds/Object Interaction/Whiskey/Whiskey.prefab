@@ -244,3 +244,4 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 0.5754717, g: 0.25142437, b: 0, a: 1}
     gizmoRadius: 0.25
+    hide: 0

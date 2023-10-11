@@ -19,7 +19,17 @@ public class RandomizePositionOnBegin
     //[HideInInspector] 
     public Transform transform;
     
-    DiscretePlacement location;
+    DiscretePlacement _location;
+    DiscretePlacement location
+    {
+        get
+        {
+            if (_location == null)
+                _location = new DiscretePlacement(transform);
+                
+            return _location;
+        }
+    }
 
     public Vector2 GetRandomPlacement => new (Random.Range(xMin, xMax), Random.Range(yMin, yMax));
     
@@ -51,7 +61,6 @@ public class RandomizePositionOnBegin
     public void Awake()
     {
         SetCenter();
-        location = new DiscretePlacement(transform);
     }
     
     public void AddObservations(VectorSensor sensor) => location.AddObservations(sensor);

@@ -30,7 +30,7 @@ public class GridWorldInfo : ScriptableObject
         objectData = new ObjectLayerData(source.objectLayer);
         
         #if UNITY_EDITOR
-        Debug.Log($"GridWorldInfo.Save({name}) in editor", this);
+        //Debug.Log($"GridWorldInfo.Save({name}) in editor", this);
         UnityEditor.EditorUtility.SetDirty(this);
         UnityEditor.AssetDatabase.SaveAssets();
         #endif

@@ -100,6 +100,7 @@ MonoBehaviour:
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!1 &7520592590299057325
 GameObject:
   m_ObjectHideFlags: 0
