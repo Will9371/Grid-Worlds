@@ -1,6 +1,4 @@
-//using System;
 using System.Collections;
-//using System.Collections.Generic;
 using UnityEngine;
 
 public class CellLayer : MonoBehaviour
@@ -9,9 +7,9 @@ public class CellLayer : MonoBehaviour
     
     [ReadOnly] public GridCell[] cells;
     [ReadOnly] public CellData[] data;
-    Vector2 size;
+    Vector2Int size;
 
-    public void GenerateNew(Vector2 size)
+    public void GenerateNew(Vector2Int size)
     {
         this.size = size;
         DestroyCells();
@@ -41,9 +39,9 @@ public class CellLayer : MonoBehaviour
         }
     }
     
-    public void Load(CellData[] data, Vector2 size) => StartCoroutine(LoadRoutine(data, size));
+    public void Load(CellData[] data, Vector2Int size) => StartCoroutine(LoadRoutine(data, size));
 
-    IEnumerator LoadRoutine(CellData[] data, Vector2 size)
+    IEnumerator LoadRoutine(CellData[] data, Vector2Int size)
     {
         GenerateNew(size);
         yield return null;

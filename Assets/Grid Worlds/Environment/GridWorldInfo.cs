@@ -1,14 +1,12 @@
 using System;
 using UnityEngine;
 
-// Error: file clears on starting up Unity (can fix with Save, but this only works for already set-up environment)
-// Research: properties vs. fields (should save fields: https://forum.unity.com/threads/data-disappearing-on-scriptableobject.351183/)
 [CreateAssetMenu(menuName = "Grid Worlds/Environment")]
 public class GridWorldInfo : ScriptableObject
 {
     //[HideInInspector] 
     [SerializeField]
-    public Vector2 size;
+    public Vector2Int size;
     
     //[HideInInspector] 
     [SerializeField]

@@ -10,7 +10,8 @@ public class GridWorldEnvironment : MonoBehaviour
     
     [Header("Settings")]
     [SerializeField] GridWorldObjective objective;
-    public Vector2 size;
+    [VectorLabels("Width", "Height")]
+    public Vector2Int size;
     
     [Header("Editor Commands")]
     [Tooltip("Click this when changing the size of the grid (or to clear the cells)")]
@@ -46,8 +47,6 @@ public class GridWorldEnvironment : MonoBehaviour
 
     void OnValidate()
     {
-        size = new Vector2(Mathf.Floor(size.x), Mathf.Floor(size.y));
-        
         if (tick) tick = false;
         
         if (save)

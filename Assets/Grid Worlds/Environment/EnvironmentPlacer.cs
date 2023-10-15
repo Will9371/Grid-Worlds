@@ -4,15 +4,13 @@ using UnityEngine;
 public class EnvironmentPlacer : MonoBehaviour
 {
     [ReadOnly] public GameObject prefab;
-    [ReadOnly] public Vector2 size;
+    [ReadOnly] public Vector2Int size;
     [ReadOnly] [SerializeField] int count;
-    [ReadOnly] public Vector2 buffer;
+    [ReadOnly] public Vector2Int buffer;
     
     public void OnValidate()
     {
-        size = new Vector2(Mathf.Floor(size.x), Mathf.Floor(size.y));
-        buffer = new Vector2(Mathf.Floor(buffer.x), Mathf.Floor(buffer.y));
-        count = Mathf.FloorToInt(size.x * size.y);
+        count = size.x * size.y; 
     }
     
     public void BeginRefresh() => StartCoroutine(Refresh());

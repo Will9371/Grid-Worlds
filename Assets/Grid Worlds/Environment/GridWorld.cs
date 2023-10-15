@@ -17,8 +17,10 @@ public class GridWorld : MonoBehaviour
     [SerializeField] bool tick;
     
     [Header("Training")]
-    [SerializeField] Vector2 size;
-    [SerializeField] Vector2 buffer;
+    [VectorLabels("Columns", "Rows")]
+    [SerializeField] Vector2Int size;
+    [VectorLabels("Width", "Height")]
+    [SerializeField] Vector2Int buffer;
     [SerializeField] bool refreshTraining;
     
     [Header("Auto-Configured")]
