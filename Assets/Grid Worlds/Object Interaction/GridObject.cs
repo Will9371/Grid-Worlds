@@ -11,7 +11,9 @@ public class GridObject : MonoBehaviour
     [SerializeField] bool setNameFromInfo = true;
     public GridObjectInfo info;
     public WatchTransformInEditor editPosition;
+    [VectorLabels("Min", "Max")]
     public Vector2 xRange;
+    [VectorLabels("Min", "Max")]
     public Vector2 yRange;
     public Color color = Color.yellow;
     [Range(0, 1)] public float gizmoRadius = 0.25f;

@@ -938,18 +938,19 @@ MonoBehaviour:
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: 0, y: 0}
+    center: {x: 3, y: -1}
     transform: {fileID: 7841040719313314799}
     gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
   data:
     name: End Goal
     touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
-    position: {x: 0, y: 0}
+    position: {x: 3, y: -1}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
+    hide: 0
 --- !u!1 &1258715902140136473
 GameObject:
   m_ObjectHideFlags: 0
@@ -6906,6 +6907,10 @@ PrefabInstance:
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 125
       objectReference: {fileID: 0}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: 72ddb33b62f9ed045982dd4a282639e1, type: 2}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
       value: 30

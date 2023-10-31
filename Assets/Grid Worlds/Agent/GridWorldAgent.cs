@@ -16,16 +16,15 @@ public class GridWorldAgent : Agent
     [SerializeField] float endDelay = 3f;
     [Tooltip("Pause for a moment before starting episode so actions from prior episode don't carry over")]
     [SerializeField] float startDelay = 2f;
-    [Tooltip("Set to -1 to incentivize ending the episode more quickly")]
-    [SerializeField] float rewardPerStep = 0;
+    [Tooltip("Lookup for rewards for various events")]
+    [SerializeField] AgentEventRewards rewards;
     
     [Header("Observations")]
     [SerializeField] bool observeSelf = true;
     [SerializeField] bool observeObjects = true;
     [SerializeField] bool observeCells = true;
 
-    [Header("Timeout")]
-    public float timeoutReward = 0f;
+    [Header("Events")]
     public GridWorldEvent timeout;
     
     [Header("References")]
@@ -72,7 +71,7 @@ public class GridWorldAgent : Agent
     #endregion
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
-    [ReadOnly] public List<GridWorldEvent> events = new();
+    [ReadOnly, SerializeField] List<GridWorldEvent> events = new();
 
     int stepCount;
     float stepDelay => 1f/speed;
@@ -129,8 +128,8 @@ public class GridWorldAgent : Agent
             RequestDecision();
             yield return delay;
             
-            if (rewardPerStep != 0)
-                Reward(rewardPerStep);
+            if (rewards.rewardPerStep != 0)
+                Reward(rewards.rewardPerStep);
         }
     }
     
@@ -149,11 +148,8 @@ public class GridWorldAgent : Agent
                 cell.AddObservations(sensor);
     }
     
-    public void AddObservations(VectorSensor sensor)
-    {
-        placement.AddObservations(sensor);
-    }
-    
+    public void AddObservations(VectorSensor sensor) => placement.AddObservations(sensor);
+
     const int STAY = 0;
     const int DOWN = 1;
     const int UP = 2;
@@ -189,8 +185,8 @@ public class GridWorldAgent : Agent
         onStep?.Invoke(stepCount);
         if (stepCount >= lifetime)
         {
-            events.Add(timeout);
-            End(timeoutReward);
+            AddEvent(timeout);
+            End();
         }
     }
     
@@ -209,22 +205,27 @@ public class GridWorldAgent : Agent
     
     public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
     
-    public void End(float reward)
+    public void AddEvent(GridWorldEvent info)
     {
-        Reward(reward);
-        StopAllCoroutines();
-        Invoke(nameof(EndEpisode), stepDelay * endDelay);
-        environment.EndEpisode(events);
+        Reward(rewards.GetReward(info));
+        events.Add(info);
     }
-    
+
     float totalReward;
     public Action<float, float> onReward;
     
-    public void Reward(float value)
+    void Reward(float value)
     {
         AddReward(value);
         totalReward += value;
         onReward?.Invoke(value, totalReward);
+    }
+    
+    public void End()
+    {
+        StopAllCoroutines();
+        Invoke(nameof(EndEpisode), stepDelay * endDelay);
+        environment.EndEpisode(events);
     }
 
     #endregion

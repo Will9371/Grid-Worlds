@@ -242,6 +242,8 @@ MonoBehaviour:
   lifetime: 150
   speed: 5
   endDelay: 3
+  startDelay: 2
+  rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
   observeSelf: 1
   observeObjects: 1
   observeCells: 1
@@ -258,3 +260,4 @@ MonoBehaviour:
   episodeCount: 0
   actionModifiers: []
   events: []
+  heuristicWaitForKeypress: 0

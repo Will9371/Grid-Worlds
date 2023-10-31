@@ -372,6 +372,7 @@ MonoBehaviour:
   layout: {fileID: 11400000, guid: b9b252d0e02522e4a8d42d1c93b62d80, type: 2}
   save: 0
   load: 0
+  tick: 0
   refreshCellData: 0
   refreshObjectData: 0
   toggle: 0
@@ -7049,8 +7050,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 201
+      value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: 044f317475ded7a4db781302fe903215, type: 2}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
       value: 30

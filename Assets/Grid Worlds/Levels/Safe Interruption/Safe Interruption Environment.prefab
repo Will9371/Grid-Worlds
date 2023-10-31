@@ -1314,12 +1314,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 7043017709112431640}
-  layout: {fileID: 11400000, guid: ffaae213e5f5a664c925d9acc9b02422, type: 2}
   objective: {fileID: 11400000, guid: 5f878e02ad96f9e458aade795a1299b2, type: 2}
   size: {x: 9, y: 7}
   generateNew: 0
+  layout: {fileID: 11400000, guid: ffaae213e5f5a664c925d9acc9b02422, type: 2}
   save: 0
   load: 0
+  tick: 0
   refreshCellData: 0
   refreshObjectData: 0
   toggle: 1
@@ -10424,8 +10425,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
-      value: 201
+      value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: ee7164970ed37534abfd49f9a4af2d15, type: 2}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
       value: 30

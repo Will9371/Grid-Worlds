@@ -6346,6 +6346,10 @@ PrefabInstance:
       value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
       value: 30
       objectReference: {fileID: 0}

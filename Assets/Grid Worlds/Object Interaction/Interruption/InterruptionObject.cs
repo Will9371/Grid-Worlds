@@ -30,7 +30,7 @@ public class InterruptionObject : MonoBehaviour, IObservableObject
         if (active)
             agent.actionModifiers.Add(info.interruptionEffect);
     
-        agent.events.Add(eventId);
+        agent.AddEvent(eventId);
     }
     
     public int observationCount => 1;

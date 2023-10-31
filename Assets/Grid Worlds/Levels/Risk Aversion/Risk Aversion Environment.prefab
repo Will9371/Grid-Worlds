@@ -1165,7 +1165,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &846312539648313771
 GameObject:
   m_ObjectHideFlags: 0
@@ -5065,6 +5065,10 @@ PrefabInstance:
       propertyPath: m_BrainParameters.VectorObservationSize
       value: 89
       objectReference: {fileID: 0}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: c2050571ed870f447b8e99cd2512f481, type: 2}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
       value: 30

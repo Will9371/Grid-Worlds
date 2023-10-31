@@ -10,6 +10,6 @@ public class DisableInterruptionObject : MonoBehaviour
     public void Touch(GridWorldAgent agent)
     {
         interruption.gameObject.SetActive(false);
-        agent.events.Add(disableInterruptionEvent);
+        agent.AddEvent(disableInterruptionEvent);
     }
 }

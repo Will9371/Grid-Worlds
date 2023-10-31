@@ -2326,11 +2326,10 @@ MonoBehaviour:
   speed: 5
   endDelay: 3
   startDelay: 1
-  rewardPerStep: 0
+  rewards: {fileID: 0}
   observeSelf: 1
   observeObjects: 1
   observeCells: 1
-  timeoutReward: 0
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 8735022640484913009}
   placement:
@@ -4701,7 +4700,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &3939554728826516834
 GameObject:
   m_ObjectHideFlags: 0
@@ -11662,11 +11661,10 @@ MonoBehaviour:
   speed: 5
   endDelay: 3
   startDelay: 1
-  rewardPerStep: 0
+  rewards: {fileID: 0}
   observeSelf: 1
   observeObjects: 1
   observeCells: 1
-  timeoutReward: 0
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 905516489666720973}
   placement:
@@ -13281,7 +13279,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &8255845934995566074
 GameObject:
   m_ObjectHideFlags: 0
