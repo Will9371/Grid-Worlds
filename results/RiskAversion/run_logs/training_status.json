@@ -2,22 +2,22 @@
     "RiskAversion": {
         "checkpoints": [
             {
-                "steps": 82012,
-                "file_path": "results\\RiskAversion\\RiskAversion\\RiskAversion-82012.onnx",
-                "reward": null,
-                "creation_time": 1697006198.723845,
+                "steps": 210711,
+                "file_path": "results\\RiskAversion\\RiskAversion\\RiskAversion-210711.onnx",
+                "reward": 10.0,
+                "creation_time": 1698818754.7652283,
                 "auxillary_file_paths": [
-                    "results\\RiskAversion\\RiskAversion\\RiskAversion-82012.pt"
+                    "results\\RiskAversion\\RiskAversion\\RiskAversion-210711.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 82012,
+            "steps": 210711,
             "file_path": "results\\RiskAversion\\RiskAversion.onnx",
-            "reward": null,
-            "creation_time": 1697006198.723845,
+            "reward": 10.0,
+            "creation_time": 1698818754.7652283,
             "auxillary_file_paths": [
-                "results\\RiskAversion\\RiskAversion\\RiskAversion-82012.pt"
+                "results\\RiskAversion\\RiskAversion\\RiskAversion-210711.pt"
             ]
         }
     },

@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 1798411977214008091}
   - component: {fileID: 1798411977214008093}
   - component: {fileID: 1879820011453657747}
+  - component: {fileID: 691350218699962029}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 2
+    VectorObservationSize: -1
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -239,7 +240,28 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  lifetime: 150
+  gridWorldAgent: {fileID: 691350218699962029}
+  speed: 5
+  endDelay: 3
+  startDelay: 2
+  rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
+  objectLayer: {fileID: 0}
+  actionModifiers: []
+  events: []
+  heuristicWaitForKeypress: 0
+--- !u!114 &691350218699962029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798411977214008089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00db38f473fdb241a2bd74ae0e0c535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 30
   speed: 5
   endDelay: 3
   startDelay: 2
@@ -247,7 +269,6 @@ MonoBehaviour:
   observeSelf: 1
   observeObjects: 1
   observeCells: 1
-  timeoutReward: 0
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
   placement:
@@ -255,7 +276,7 @@ MonoBehaviour:
     yRange: {x: 0, y: 0}
     center: {x: 0, y: 0}
     transform: {fileID: 1798411977214008090}
-    gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+    gizmoColor: {r: 0, g: 0.6692562, b: 1, a: 1}
     gizmoRadius: 0.25
   episodeCount: 0
   actionModifiers: []

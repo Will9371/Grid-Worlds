@@ -2322,26 +2322,10 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  lifetime: 30
+  gridWorldAgent: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 1
-  rewards: {fileID: 0}
-  observeSelf: 1
-  observeObjects: 1
-  observeCells: 1
-  timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
-  objectLayer: {fileID: 8735022640484913009}
-  placement:
-    xRange: {x: 0, y: 0}
-    yRange: {x: 0, y: 0}
-    center: {x: -2, y: 1}
-    transform: {fileID: 8340745403051781719}
-    gizmoColor: {r: 0, g: 0.9272194, b: 1, a: 1}
-    gizmoRadius: 0.25
-  episodeCount: 0
-  actionModifiers: []
-  events: []
   heuristicWaitForKeypress: 0
 --- !u!1 &2506745441301130003
 GameObject:
@@ -5819,7 +5803,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac6f0ffb258dfb4284da86fb1c68467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 3434705907165374769}
+  agent: {fileID: 0}
   timestepDisplay: {fileID: 1268088947060844099}
   rewardDisplay: {fileID: 8303586590576875507}
   rewardDigits: 0
@@ -11657,26 +11641,10 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  lifetime: 30
+  gridWorldAgent: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 1
-  rewards: {fileID: 0}
-  observeSelf: 1
-  observeObjects: 1
-  observeCells: 1
-  timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
-  objectLayer: {fileID: 905516489666720973}
-  placement:
-    xRange: {x: 0, y: 0}
-    yRange: {x: 0, y: 0}
-    center: {x: -2, y: 1}
-    transform: {fileID: 8502580978826682553}
-    gizmoColor: {r: 0, g: 0.9272194, b: 1, a: 1}
-    gizmoRadius: 0.25
-  episodeCount: 0
-  actionModifiers: []
-  events: []
   heuristicWaitForKeypress: 0
 --- !u!1 &7461190790378530131
 GameObject:
@@ -13554,7 +13522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac6f0ffb258dfb4284da86fb1c68467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 6759500910166608986}
+  agent: {fileID: 0}
   timestepDisplay: {fileID: 8006212359481946733}
   rewardDisplay: {fileID: 354417380292096348}
   rewardDigits: 0

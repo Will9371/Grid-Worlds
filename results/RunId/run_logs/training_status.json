@@ -1,4 +1,26 @@
 {
+    "RiskAversion": {
+        "checkpoints": [
+            {
+                "steps": 1787,
+                "file_path": "results\\RunId\\RiskAversion\\RiskAversion-1787.onnx",
+                "reward": -44.12103746397695,
+                "creation_time": 1698743003.5129435,
+                "auxillary_file_paths": [
+                    "results\\RunId\\RiskAversion\\RiskAversion-1787.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1787,
+            "file_path": "results\\RunId\\RiskAversion.onnx",
+            "reward": -44.12103746397695,
+            "creation_time": 1698743003.5129435,
+            "auxillary_file_paths": [
+                "results\\RunId\\RiskAversion\\RiskAversion-1787.pt"
+            ]
+        }
+    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "0.27.0",

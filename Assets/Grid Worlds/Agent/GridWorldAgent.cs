@@ -1,24 +1,15 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.MLAgents;
-using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Sensors;
-using Unity.MLAgents.Policies;
 
-public class GridWorldAgent : Agent
+[Serializable]
+public class GridWorldAgent : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] int lifetime = 30;
-    [SerializeField] float speed = 5f;
-    [Tooltip("Pause for a moment on ending episode so the outcome is clearer")]
-    [SerializeField] float endDelay = 3f;
-    [Tooltip("Pause for a moment before starting episode so actions from prior episode don't carry over")]
-    [SerializeField] float startDelay = 2f;
     [Tooltip("Lookup for rewards for various events")]
     [SerializeField] AgentEventRewards rewards;
-    
+
     [Header("Observations")]
     [SerializeField] bool observeSelf = true;
     [SerializeField] bool observeObjects = true;
@@ -56,25 +47,16 @@ public class GridWorldAgent : Agent
         }
     }
     GridWorldEnvironment _environment;
-    BehaviorParameters behavior
-    {
-        get
-        {
-            if (_behavior == null)
-                _behavior = GetComponent<BehaviorParameters>();
-            return _behavior;
-        }
-    }
-    BehaviorParameters _behavior;
     DiscretePlacement movement => _movement ??= new DiscretePlacement(transform);
     DiscretePlacement _movement;
     #endregion
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
     [ReadOnly, SerializeField] List<GridWorldEvent> events = new();
+    
+    AgentObservations observations = new();
 
     int stepCount;
-    float stepDelay => 1f/speed;
     public Action<int> onStep;
     
     void Awake()
@@ -90,8 +72,8 @@ public class GridWorldAgent : Agent
     }
     
     public Action onEpisodeBegin;
-    
-    public override void OnEpisodeBegin()
+
+    public void Reset()
     {
         stepCount = 0;
         totalReward = 0;
@@ -107,49 +89,29 @@ public class GridWorldAgent : Agent
         
         episodeCount++;
         onEpisodeBegin?.Invoke();
-        StartCoroutine(Process());
     }
-    
-    IEnumerator Process()
-    {
-        yield return new WaitForSeconds(stepDelay * startDelay);
-        var delay = new WaitForSeconds(stepDelay);
-        
-        while (true)
-        {
-            if (heuristicWaitForKeypress && 
-                behavior.BehaviorType == BehaviorType.HeuristicOnly && 
-                cachedHorizontal == 0 && cachedVertical == 0)
-            {
-                yield return delay;
-                continue;
-            }
-        
-            RequestDecision();
-            yield return delay;
-            
-            if (rewards.rewardPerStep != 0)
-                Reward(rewards.rewardPerStep);
-        }
-    }
-    
+
     #region I/O
     
-    public override void CollectObservations(VectorSensor sensor)
+    public AgentObservations CollectObservations()
     {
+        observations.Clear();
+
         if (observeSelf)
-            AddObservations(sensor);
+            AddObservations(observations);
 
         if (observeObjects)
-            objectLayer.AddObservations(sensor);
+            objectLayer.AddObservations(observations);
 
         if (observeCells)
             foreach (var cell in environment.cellLayer.cells)
-                cell.AddObservations(sensor);
+                cell.AddObservations(observations);
+                
+        return observations;
     }
     
-    public void AddObservations(VectorSensor sensor) => placement.AddObservations(sensor);
-
+    public void AddObservations(AgentObservations sensor) => placement.AddObservations(sensor);
+    
     const int STAY = 0;
     const int DOWN = 1;
     const int UP = 2;
@@ -158,12 +120,12 @@ public class GridWorldAgent : Agent
     
     Vector3 priorPosition;
 
-    public override void OnActionReceived(ActionBuffers actions)
+    public void OnActionReceived(int[] actions)
     {
         priorPosition = transform.localPosition;
         
-        var horizontal = actions.DiscreteActions[0];
-        var vertical = actions.DiscreteActions[1];
+        var horizontal = actions[0];
+        var vertical = actions[1];
         
         foreach (var modifier in actionModifiers)
             modifier.ModifyActions(ref horizontal, ref vertical);
@@ -183,6 +145,10 @@ public class GridWorldAgent : Agent
 
         stepCount++;
         onStep?.Invoke(stepCount);
+        
+        if (rewards.rewardPerStep != 0)
+            Reward(rewards.rewardPerStep);
+        
         if (stepCount >= lifetime)
         {
             AddEvent(timeout);
@@ -216,16 +182,16 @@ public class GridWorldAgent : Agent
     
     void Reward(float value)
     {
-        AddReward(value);
         totalReward += value;
         onReward?.Invoke(value, totalReward);
     }
     
+    public Action onEnd;
+    
     public void End()
     {
-        StopAllCoroutines();
-        Invoke(nameof(EndEpisode), stepDelay * endDelay);
         environment.EndEpisode(events);
+        onEnd?.Invoke();
     }
 
     #endregion
@@ -259,19 +225,22 @@ public class GridWorldAgent : Agent
         }
     }
 
-    public override void Heuristic(in ActionBuffers actionsOut)
+    int[] actions = new int[2];
+    public int[] PlayerControl()
     {
         var horizontal = cachedHorizontal == 0 ? keyHorizontal : cachedHorizontal;
         var vertical = cachedVertical == 0 ? keyVertical : cachedVertical;
         
-        ActionSegment<int> actionsIn = actionsOut.DiscreteActions;
-        actionsIn[0] = horizontal;
-        actionsIn[1] = vertical;
+        actions[0] = horizontal;
+        actions[1] = vertical;
         
         cachedHorizontal = 0;
         cachedVertical = 0;
+        return actions;
     }
     
+    public bool moveKeyPressed => heuristicWaitForKeypress && cachedHorizontal == 0 && cachedVertical == 0;
+
     #endregion
     
     const int spatialDimensions = 2;
@@ -279,12 +248,13 @@ public class GridWorldAgent : Agent
     int objectObservationCount => observeObjects && objectLayer != null ? objectLayer.GetObservationCount() : 0;
     int spaceObservationCount => observeCells && environment != null && environment.cells != null ? (spatialDimensions + 1) * environment.cells.Length : 0;
     
-    void OnValidate()
+    public int GetObservationCount()
     {
         placement.transform = transform;
-        if (transform.parent == null || transform.parent.name == "Prefab Mode in Context") return;
-        behavior.BrainParameters.VectorObservationSize = selfObservationCount + objectObservationCount + spaceObservationCount;
+        if (transform.parent == null || transform.parent.name == "Prefab Mode in Context") return -1;
+        return selfObservationCount + objectObservationCount + spaceObservationCount;
     }
 
     void OnDrawGizmos() => placement.OnDrawGizmos();
+
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unity.MLAgents.Sensors;
 
 public class InterruptionObject : MonoBehaviour, IObservableObject
 {
@@ -35,8 +34,8 @@ public class InterruptionObject : MonoBehaviour, IObservableObject
     
     public int observationCount => 1;
     
-    public void AddObservations(VectorSensor sensor)
+    public void AddObservations(AgentObservations sensor)
     {
-        sensor.AddObservation(active ? 1 : 0);
+        sensor.Add($"{eventId.name}", active ? 1 : 0);
     }
 }

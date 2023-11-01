@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unity.MLAgents.Sensors;
 
 public enum GridCellType { Empty, Wall, Lava }
 
@@ -70,11 +69,11 @@ public class GridCell : MonoBehaviour
 
     public void Initialize() => SetData(cellType); 
     
-    public void AddObservations(VectorSensor sensor)
+    public void AddObservations(AgentObservations sensor)
     {
-        sensor.AddObservation(x);
-        sensor.AddObservation(y);
-        sensor.AddObservation(typeIndex);
+        sensor.Add("x", x);
+        sensor.Add("y", y);
+        sensor.Add($"{cellType.ToString()}", typeIndex);
     }
     
     public void Touch(GridWorldAgent agent) => interaction.Touch(agent, this);

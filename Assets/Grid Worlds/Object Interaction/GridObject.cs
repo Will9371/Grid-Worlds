@@ -92,10 +92,16 @@ public class GridObject : MonoBehaviour
         return result;
     }
     
-    public void AddObservations(VectorSensor sensor) 
+    /*public void AddObservations(VectorSensor sensor) 
     {
         positioner.AddObservations(sensor);
         sensor.AddObservation(lookup.GetObjectIndex(data.touchInfo));
+        if (observable != null) observable.AddObservations(sensor);
+    }*/
+    public void AddObservations(AgentObservations sensor) 
+    {
+        positioner.AddObservations(sensor);
+        sensor.Add($"{data.name}", (float)lookup.GetObjectIndex(data.touchInfo));
         if (observable != null) observable.AddObservations(sensor);
     }
 }

@@ -1323,7 +1323,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &1111436525956752263
 GameObject:
   m_ObjectHideFlags: 0
@@ -10371,6 +10371,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8469585357191984717}
     m_Modifications:
+    - target: {fileID: 691350218699962029, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: ee7164970ed37534abfd49f9a4af2d15, type: 2}
+    - target: {fileID: 691350218699962029, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: objectLayer
+      value: 
+      objectReference: {fileID: 5276749005455352306}
     - target: {fileID: 1798411977214008089, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_Name
       value: Agent
@@ -10528,6 +10536,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+--- !u!114 &2920586663643542597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 691350218699962029, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+  m_PrefabInstance: {fileID: 2382449578516972264}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00db38f473fdb241a2bd74ae0e0c535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4171766394858150386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1798411977214008090, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
@@ -10832,7 +10851,7 @@ PrefabInstance:
     - target: {fileID: 6390206116149322964, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}
       propertyPath: agent
       value: 
-      objectReference: {fileID: 4253191437309784187}
+      objectReference: {fileID: 2920586663643542597}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10970,7 +10989,7 @@ PrefabInstance:
     - target: {fileID: 7199800460336226266, guid: 2e660d409deb280499314b0a26a6c97a, type: 3}
       propertyPath: agent
       value: 
-      objectReference: {fileID: 4253191437309784187}
+      objectReference: {fileID: 2920586663643542597}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

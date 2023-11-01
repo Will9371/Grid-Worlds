@@ -1,5 +1,4 @@
 using UnityEngine;
-using Unity.MLAgents.Sensors;
 
 public class Supervisor : MonoBehaviour, IObservableObject
 {
@@ -32,8 +31,8 @@ public class Supervisor : MonoBehaviour, IObservableObject
     
     public int observationCount => 1;
     
-    public void AddObservations(VectorSensor sensor)
+    public void AddObservations(AgentObservations sensor)
     {
-        sensor.AddObservation(active ? 1 : 0);
+        sensor.Add("Supervisor", active ? 1 : 0);
     }
 }

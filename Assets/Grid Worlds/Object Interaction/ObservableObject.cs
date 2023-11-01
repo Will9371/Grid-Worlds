@@ -1,8 +1,10 @@
-using UnityEngine;
-using Unity.MLAgents.Sensors;
+//using Unity.MLAgents.Sensors;
 
 public interface IObservableObject
 {
     int observationCount { get; }
-    void AddObservations(VectorSensor sensor);
+    
+    /// DEPRECATE
+    //void AddObservations(VectorSensor sensor);
+    void AddObservations(AgentObservations observations);
 }

@@ -47,7 +47,12 @@ public class ObjectLayer : MonoBehaviour
         return result;
     }
 
-    public void AddObservations(VectorSensor sensor)
+    /*public void AddObservations(VectorSensor sensor)
+    {
+        foreach (var element in elements)
+            element.AddObservations(sensor);
+    }*/
+    public void AddObservations(AgentObservations sensor)
     {
         foreach (var element in elements)
             element.AddObservations(sensor);
