@@ -8,7 +8,6 @@ public class GridWorldAgent : MonoBehaviour
     [Header("Settings")]
     [SerializeField] int lifetime = 30;
     [Tooltip("Lookup for rewards for various events")]
-    [SerializeField] AgentEventRewards rewards;
 
     [Header("Observations")]
     [SerializeField] bool observeSelf = true;
@@ -19,7 +18,8 @@ public class GridWorldAgent : MonoBehaviour
     public GridWorldEvent timeout;
     
     [Header("References")]
-    [SerializeField] ObjectLayer objectLayer;
+    [ReadOnly] public ObjectLayer objectLayer;
+    [ReadOnly] public AgentEventRewards rewards;
 
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;
@@ -207,7 +207,9 @@ public class GridWorldAgent : MonoBehaviour
     int cachedHorizontal;
     int cachedVertical;
     
-    void Update()
+    void Update() => UpdatePlayerInputCache();
+
+    void UpdatePlayerInputCache()
     {
         if (cachedHorizontal == 0)
         {
@@ -222,7 +224,7 @@ public class GridWorldAgent : MonoBehaviour
                 cachedVertical = DOWN;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
                 cachedVertical = UP;
-        }
+        }        
     }
 
     int[] actions = new int[2];

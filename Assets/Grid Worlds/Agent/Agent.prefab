@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: MoveToTarget
+  m_BehaviorName: Grid World
   TeamId: 0
   m_UseChildSensors: 0
   m_UseChildActuators: 1
@@ -241,13 +241,10 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   gridWorldAgent: {fileID: 691350218699962029}
+  behavior: {fileID: 1798411977214008093}
   speed: 5
   endDelay: 3
   startDelay: 2
-  rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
-  objectLayer: {fileID: 0}
-  actionModifiers: []
-  events: []
   heuristicWaitForKeypress: 0
 --- !u!114 &691350218699962029
 MonoBehaviour:
@@ -262,15 +259,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 30
-  speed: 5
-  endDelay: 3
-  startDelay: 2
-  rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
   observeSelf: 1
   observeObjects: 1
   observeCells: 1
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
+  rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
   placement:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}

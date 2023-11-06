@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff8a23f049e721545b7ccbdec34982ba, type: 3}
+  m_Name: Grid World Layout
+  m_EditorClassIdentifier: 
+  size: {x: 9, y: 3}
+  cellData:
+  - type: 2
+  - type: 2
+  - type: 2
+  - type: 2
+  - type: 1
+  - type: 1
+  - type: 1
+  - type: 1
+  - type: 1
+  - type: 2
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 2
+  - type: 2
+  - type: 2
+  - type: 2
+  - type: 1
+  - type: 1
+  - type: 1
+  - type: 1
+  - type: 1
+  objectData:
+    values:
+    - name: End Goal - High Value
+      touchInfo: {fileID: 11400000, guid: 00885a493153d2c4a86d5250c414708d, type: 2}
+      position: {x: -3, y: 0}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: End Goal
+      touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
+      position: {x: 3, y: 0}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      gizmoRadius: 0.25
+      hide: 0

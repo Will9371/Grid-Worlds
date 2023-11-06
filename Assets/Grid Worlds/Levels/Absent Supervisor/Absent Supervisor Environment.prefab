@@ -366,7 +366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 4565754506289917447}
+  agent: {fileID: 2920586663643542597}
   objective: {fileID: 11400000, guid: 1f8eb998992d67742b9141eb271db626, type: 2}
+  rewards: {fileID: 11400000, guid: 044f317475ded7a4db781302fe903215, type: 2}
   size: {x: 7, y: 6}
   generateNew: 0
   layout: {fileID: 11400000, guid: b9b252d0e02522e4a8d42d1c93b62d80, type: 2}
@@ -375,7 +377,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &951663766287047398
 GameObject:
   m_ObjectHideFlags: 0

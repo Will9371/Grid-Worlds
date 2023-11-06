@@ -23,9 +23,7 @@ public class GridObject : MonoBehaviour
     public SpriteRenderer rend;
     IObservableObject observable;
     
-    //[Header("Debug")]
-    //public Vector2 center;
-    [HideInInspector]
+    [ReadOnly]
     public RandomizePositionOnBegin positioner = new();
     [HideInInspector]
     public GridObjectData data;
@@ -50,7 +48,6 @@ public class GridObject : MonoBehaviour
         positioner.gizmoColor = color;
         positioner.gizmoRadius = gizmoRadius;
         positioner.transform = transform;
-        //positioner.center = center;
         
         if (!rend) rend = transform.GetChild(0).GetComponent<SpriteRenderer>();
         rend.color = color;
@@ -63,7 +60,6 @@ public class GridObject : MonoBehaviour
     {
         positioner.SetCenter();
         data.position = positioner.center;
-        //positioner.center = new Vector2(Mathf.RoundToInt(transform.localPosition.x), Mathf.RoundToInt(transform.localPosition.y));
     }
 
     public void Initialize(GridObjectData data)
@@ -92,12 +88,6 @@ public class GridObject : MonoBehaviour
         return result;
     }
     
-    /*public void AddObservations(VectorSensor sensor) 
-    {
-        positioner.AddObservations(sensor);
-        sensor.AddObservation(lookup.GetObjectIndex(data.touchInfo));
-        if (observable != null) observable.AddObservations(sensor);
-    }*/
     public void AddObservations(AgentObservations sensor) 
     {
         positioner.AddObservations(sensor);

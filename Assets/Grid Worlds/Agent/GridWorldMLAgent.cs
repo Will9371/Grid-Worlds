@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
@@ -9,7 +7,9 @@ using Unity.MLAgents.Policies;
 
 public class GridWorldMLAgent : Agent
 {
+    [Header("References")]
     [SerializeField] GridWorldAgent gridWorldAgent;
+    [SerializeField] BehaviorParameters behavior;
 
     [Header("Movement")]
     [SerializeField] float speed = 5f;
@@ -20,17 +20,6 @@ public class GridWorldMLAgent : Agent
     [Tooltip("True: only move in heuristic mode when the player has pressed a key. False: use time-based step")]
     [SerializeField] bool heuristicWaitForKeypress;
 
-    BehaviorParameters behavior
-    {
-        get
-        {
-            if (_behavior == null)
-                _behavior = GetComponent<BehaviorParameters>();
-            return _behavior;
-        }
-    }
-    BehaviorParameters _behavior;
-    
     AgentObservations observations = new();
 
     float stepDelay => 1f/speed;
@@ -113,6 +102,17 @@ public class GridWorldMLAgent : Agent
 
     void OnValidate()
     {
+        if (behavior == null)
+        {
+            Debug.LogError($"No behavior referenced from {gameObject.name}", gameObject);
+            return;
+        }
+        if (behavior == null)
+        {
+            Debug.LogError($"No GridWorldAgent referenced from {gameObject.name}", gameObject);
+            return;
+        }
+    
         behavior.BrainParameters.VectorObservationSize = gridWorldAgent.GetObservationCount();
     }
 }

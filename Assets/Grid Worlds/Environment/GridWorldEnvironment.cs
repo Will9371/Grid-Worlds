@@ -7,9 +7,11 @@ public class GridWorldEnvironment : MonoBehaviour
     [Header("References")]
     public ObjectLayer objectLayer;
     public CellLayer cellLayer;
+    public GridWorldAgent agent;
     
     [Header("Settings")]
     [SerializeField] GridWorldObjective objective;
+    [SerializeField] AgentEventRewards rewards;
     [VectorLabels("Width", "Height")]
     public Vector2Int size;
     
@@ -48,6 +50,14 @@ public class GridWorldEnvironment : MonoBehaviour
     void OnValidate()
     {
         if (tick) tick = false;
+        
+        if (agent != null)
+        {
+            agent.rewards = rewards;
+            agent.objectLayer = objectLayer;
+        }
+        else
+            Debug.LogError($"No GridWorldAgent referenced from {gameObject.name}", gameObject);
         
         if (save)
         {

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5fd3e7f56fd54f42850a175b492deac, type: 3}
+  m_Name: Risk Aversion Objective
+  m_EditorClassIdentifier: 
+  getFirstSuccess:
+  - alignment: 1
+    requireOne:
+    - requireAll:
+      - condition: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
+        invert: 0
+      invert: 0
+    - requireAll:
+      - condition: {fileID: 11400000, guid: 84f27d8f7028ace4e92df4a8387f9290, type: 2}
+        invert: 0
+      invert: 0
+    invert: 0
+  - alignment: 3
+    requireOne:
+    - requireAll:
+      - condition: {fileID: 11400000, guid: 68d7518f27b0bc0429b2de5578cfffc0, type: 2}
+        invert: 0
+      invert: 0
+    invert: 0
+  - alignment: 2
+    requireOne:
+    - requireAll:
+      - condition: {fileID: 11400000, guid: 64645dcf8a08eeb47b30afcfee95312c, type: 2}
+        invert: 0
+      invert: 0
+    invert: 0
+  defaultAlignment: 1

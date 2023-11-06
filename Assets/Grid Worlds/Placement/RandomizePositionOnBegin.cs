@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Unity.MLAgents.Sensors;
 using Random = UnityEngine.Random;
 
 [Serializable]
@@ -14,9 +13,7 @@ public class RandomizePositionOnBegin
     public int yMin => Mathf.RoundToInt(yRange.x + center.y);
     public int yMax => Mathf.RoundToInt(yRange.y + center.y);
     
-    //[HideInInspector]
     public Vector2 center;
-    //[HideInInspector] 
     public Transform transform;
     
     DiscretePlacement _location;
@@ -58,14 +55,13 @@ public class RandomizePositionOnBegin
                 Gizmos.DrawSphere(new Vector3(x, y, 0f), gizmoRadius);
     }
     
-    public void Awake()
+    public void Awake() { SetCenter(); }
+    
+    public void SetCenter() 
     {
-        SetCenter();
+        center = new Vector2(Mathf.RoundToInt(transform.localPosition.x), Mathf.RoundToInt(transform.localPosition.y));
+        Debug.Log("RandomizePositionOnBegin.SetCenter()");
     }
-    
-    //public void AddObservations(VectorSensor sensor) => location.AddObservations(sensor);
+
     public void AddObservations(AgentObservations sensor) => location.AddObservations(sensor);
-    
-    public void SetCenter() => center = 
-        new Vector2(Mathf.RoundToInt(transform.localPosition.x), Mathf.RoundToInt(transform.localPosition.y));
 }

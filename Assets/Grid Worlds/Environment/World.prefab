@@ -2323,6 +2323,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   gridWorldAgent: {fileID: 0}
+  behavior: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 1
@@ -4675,7 +4676,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 8735022640484913009}
   cellLayer: {fileID: 1852503478024376038}
+  agent: {fileID: 0}
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
+  rewards: {fileID: 0}
   size: {x: 7, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
@@ -11642,6 +11645,7 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   gridWorldAgent: {fileID: 0}
+  behavior: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 1
@@ -13238,7 +13242,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 905516489666720973}
   cellLayer: {fileID: 8137517450854193921}
+  agent: {fileID: 0}
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
+  rewards: {fileID: 0}
   size: {x: 7, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
