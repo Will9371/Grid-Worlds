@@ -28,7 +28,7 @@ public class RandomizePositionOnBegin
         }
     }
 
-    public Vector2 GetRandomPlacement => new (Random.Range(xMin, xMax), Random.Range(yMin, yMax));
+    public Vector2 GetRandomPlacement => new(Random.Range(xMin, xMax + 1), Random.Range(yMin, yMax + 1));
     
     public void SetRandomPosition(DiscretePlacement placement) => placement.position = GetRandomPlacement;
     public void SetRandomPosition(Transform transform) => SetRandomPosition(new DiscretePlacement(transform));
@@ -57,11 +57,8 @@ public class RandomizePositionOnBegin
     
     public void Awake() { SetCenter(); }
     
-    public void SetCenter() 
-    {
+    public void SetCenter() =>
         center = new Vector2(Mathf.RoundToInt(transform.localPosition.x), Mathf.RoundToInt(transform.localPosition.y));
-        Debug.Log("RandomizePositionOnBegin.SetCenter()");
-    }
-
+    
     public void AddObservations(AgentObservations sensor) => location.AddObservations(sensor);
 }

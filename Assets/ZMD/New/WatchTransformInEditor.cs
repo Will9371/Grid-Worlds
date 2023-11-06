@@ -18,7 +18,7 @@ public class WatchTransformInEditor
         
         this.onSetPosition = onSetPosition;
     
-        if (tick == null)
+        if (tick == null && !Application.isPlaying)
         {
             tick = Tick(mono.transform);
             mono.StartCoroutine(Tick(mono.transform));
@@ -28,7 +28,7 @@ public class WatchTransformInEditor
     IEnumerator Tick(Transform transform)
     {
         var delay = new WaitForSecondsRealtime(refreshRate);
-        while (watch && transform.gameObject.activeInHierarchy)
+        while (watch && transform.gameObject.activeInHierarchy && !Application.isPlaying)
         {
             onSetPosition?.Invoke(transform.position);
             yield return delay;
