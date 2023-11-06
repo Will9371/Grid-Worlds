@@ -1157,6 +1157,7 @@ MonoBehaviour:
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 4609054203520928684}
   agent: {fileID: 2920586663643542597}
+  scenarioName: Risk Aversion
   objective: {fileID: 11400000, guid: 07f309666626c3f4a9c39433d7334f03, type: 2}
   rewards: {fileID: 11400000, guid: c2050571ed870f447b8e99cd2512f481, type: 2}
   size: {x: 9, y: 3}
@@ -1167,7 +1168,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &846312539648313771
 GameObject:
   m_ObjectHideFlags: 0
@@ -5073,7 +5074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BehaviorName
-      value: RiskAversion
+      value: Risk Aversion
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize

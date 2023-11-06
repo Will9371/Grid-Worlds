@@ -107,12 +107,15 @@ public class GridWorldMLAgent : Agent
             Debug.LogError($"No behavior referenced from {gameObject.name}", gameObject);
             return;
         }
-        if (behavior == null)
+        if (gridWorldAgent == null)
         {
             Debug.LogError($"No GridWorldAgent referenced from {gameObject.name}", gameObject);
             return;
         }
     
         behavior.BrainParameters.VectorObservationSize = gridWorldAgent.GetObservationCount();
+        gridWorldAgent.onSetScenarioName = SetBehaviorName;
     }
+    
+    void SetBehaviorName(string value) => behavior.BehaviorName = value;
 }

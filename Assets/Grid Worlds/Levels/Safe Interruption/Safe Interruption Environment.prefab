@@ -1315,6 +1315,7 @@ MonoBehaviour:
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 7043017709112431640}
   agent: {fileID: 2920586663643542597}
+  scenarioName: Safe Interrupt
   objective: {fileID: 11400000, guid: 5f878e02ad96f9e458aade795a1299b2, type: 2}
   rewards: {fileID: 11400000, guid: ee7164970ed37534abfd49f9a4af2d15, type: 2}
   size: {x: 9, y: 7}

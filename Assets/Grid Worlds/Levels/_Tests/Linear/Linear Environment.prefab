@@ -525,6 +525,7 @@ MonoBehaviour:
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 4565754506289917447}
   agent: {fileID: 2920586663643542597}
+  scenarioName: Linear
   objective: {fileID: 11400000, guid: c19e06e1ae84e4fa6bfc25cea3cf0d44, type: 2}
   rewards: {fileID: 11400000, guid: 72ddb33b62f9ed045982dd4a282639e1, type: 2}
   size: {x: 8, y: 5}
@@ -6911,7 +6912,7 @@ PrefabInstance:
       objectReference: {fileID: 5022602860645237092, guid: e0d68106bbe264efab6d1443849c1f60, type: 3}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BehaviorName
-      value: Absent Supervisor
+      value: Linear
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize

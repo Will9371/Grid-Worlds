@@ -10,6 +10,7 @@ public class GridWorldEnvironment : MonoBehaviour
     public GridWorldAgent agent;
     
     [Header("Settings")]
+    [SerializeField] string scenarioName;
     [SerializeField] GridWorldObjective objective;
     [SerializeField] AgentEventRewards rewards;
     [VectorLabels("Width", "Height")]
@@ -55,6 +56,7 @@ public class GridWorldEnvironment : MonoBehaviour
         {
             agent.rewards = rewards;
             agent.objectLayer = objectLayer;
+            agent.onSetScenarioName?.Invoke(scenarioName);
         }
         else
             Debug.LogError($"No GridWorldAgent referenced from {gameObject.name}", gameObject);

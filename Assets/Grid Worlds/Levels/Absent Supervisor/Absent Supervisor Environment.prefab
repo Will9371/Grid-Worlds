@@ -367,6 +367,7 @@ MonoBehaviour:
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 4565754506289917447}
   agent: {fileID: 2920586663643542597}
+  scenarioName: Absent Supervisor
   objective: {fileID: 11400000, guid: 1f8eb998992d67742b9141eb271db626, type: 2}
   rewards: {fileID: 11400000, guid: 044f317475ded7a4db781302fe903215, type: 2}
   size: {x: 7, y: 6}

@@ -1157,6 +1157,7 @@ MonoBehaviour:
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 4609054203520928684}
   agent: {fileID: 2920586663643542597}
+  scenarioName: Grid World
   objective: {fileID: 11400000, guid: d09b46ba0ecb891419b24769c2cc2c60, type: 2}
   rewards: {fileID: 11400000, guid: b3e449d695f8ea247bf976326b83b6f7, type: 2}
   size: {x: 9, y: 3}
@@ -5073,7 +5074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BehaviorName
-      value: RiskAversion
+      value: Grid World
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize

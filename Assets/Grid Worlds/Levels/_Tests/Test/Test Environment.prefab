@@ -4131,6 +4131,7 @@ MonoBehaviour:
   objectLayer: {fileID: 5276749005455352306}
   cellLayer: {fileID: 8188018611762364318}
   agent: {fileID: 2920586663643542597}
+  scenarioName: Test Environment
   objective: {fileID: 0}
   rewards: {fileID: 0}
   size: {x: 17, y: 11}
@@ -31559,6 +31560,10 @@ PrefabInstance:
     - target: {fileID: 1798411977214008090, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: m_BehaviorName
+      value: Test Environment
       objectReference: {fileID: 0}
     - target: {fileID: 1798411977214008093, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize

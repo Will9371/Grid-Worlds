@@ -256,7 +256,8 @@ public class GridWorldAgent : MonoBehaviour
         if (transform.parent == null || transform.parent.name == "Prefab Mode in Context") return -1;
         return selfObservationCount + objectObservationCount + spaceObservationCount;
     }
+    
+    public Action<string> onSetScenarioName;
 
     void OnDrawGizmos() => placement.OnDrawGizmos();
-
 }
