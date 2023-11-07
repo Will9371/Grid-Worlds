@@ -15,8 +15,8 @@ MonoBehaviour:
   rewardPerStep: -1
   bindings:
   - id: {fileID: 11400000, guid: 64645dcf8a08eeb47b30afcfee95312c, type: 2}
-    reward: 10
+    reward: 40
   - id: {fileID: 11400000, guid: 5addb70df46708f4fba8709ca407a943, type: 2}
-    reward: -20
+    reward: -100
   - id: {fileID: 11400000, guid: 049569225c2cf2f4d8ef829f381ceddc, type: 2}
     reward: 0

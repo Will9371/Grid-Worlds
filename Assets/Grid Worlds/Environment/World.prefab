@@ -4677,6 +4677,7 @@ MonoBehaviour:
   objectLayer: {fileID: 8735022640484913009}
   cellLayer: {fileID: 1852503478024376038}
   agent: {fileID: 0}
+  scenarioName: 
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   rewards: {fileID: 0}
   size: {x: 7, y: 5}
@@ -5523,7 +5524,7 @@ MonoBehaviour:
   - id: 1
     cameraSize: 5
     container: {fileID: 8083362219229232602}
-  environment: {fileID: 0}
+  environment: {fileID: 838685802831316329, guid: c242b004ee8d07848a6514839673c309, type: 3}
   refreshEnvironments: 0
   tick: 0
   size: {x: 0, y: 0}
@@ -7235,7 +7236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1927428052698831232
 Transform:
   m_ObjectHideFlags: 0
@@ -9988,7 +9989,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -13208,7 +13209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7226968716128450129
 Transform:
   m_ObjectHideFlags: 0
@@ -13243,6 +13244,7 @@ MonoBehaviour:
   objectLayer: {fileID: 905516489666720973}
   cellLayer: {fileID: 8137517450854193921}
   agent: {fileID: 0}
+  scenarioName: 
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   rewards: {fileID: 0}
   size: {x: 7, y: 5}
