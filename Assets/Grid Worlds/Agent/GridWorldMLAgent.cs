@@ -17,8 +17,6 @@ public class GridWorldMLAgent : Agent
     [SerializeField] float endDelay = 3f;
     [Tooltip("Pause for a moment before starting episode so actions from prior episode don't carry over")]
     [SerializeField] float startDelay = 2f;
-    [Tooltip("True: only move in heuristic mode when the player has pressed a key. False: use time-based step")]
-    [SerializeField] bool heuristicWaitForKeypress;
 
     AgentObservations observations = new();
 

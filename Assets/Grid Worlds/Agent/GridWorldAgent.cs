@@ -25,7 +25,7 @@ public class GridWorldAgent : MonoBehaviour
     [SerializeField] RandomizePositionOnBegin placement;
 
     [Header("Debug")]
-    [SerializeField] int episodeCount;
+    [SerializeField, ReadOnly] int episodeCount;
     
     #region Dependencies
     GridWorldEnvironment environment
@@ -117,6 +117,8 @@ public class GridWorldAgent : MonoBehaviour
     const int UP = 2;
     const int LEFT = 1;
     const int RIGHT = 2;
+    
+    public int actionCount = 2;
     
     Vector3 priorPosition;
 

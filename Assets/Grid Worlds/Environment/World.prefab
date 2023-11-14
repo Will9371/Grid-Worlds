@@ -2225,6 +2225,7 @@ GameObject:
   - component: {fileID: 6126864682264051438}
   - component: {fileID: 8949662697094193673}
   - component: {fileID: 6759500910166608986}
+  - component: {fileID: 8466978603362473686}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -2300,7 +2301,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: WhiskeyAndGold
+  m_BehaviorName: 
   TeamId: 0
   m_UseChildSensors: 0
   m_UseChildActuators: 1
@@ -2322,11 +2323,41 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  gridWorldAgent: {fileID: 0}
-  behavior: {fileID: 0}
+  gridWorldAgent: {fileID: 8466978603362473686}
+  behavior: {fileID: 8949662697094193673}
   speed: 5
   endDelay: 3
   startDelay: 1
+--- !u!114 &8466978603362473686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2278405307734601729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00db38f473fdb241a2bd74ae0e0c535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 30
+  observeSelf: 1
+  observeObjects: 1
+  observeCells: 1
+  timeout: {fileID: 0}
+  objectLayer: {fileID: 8735022640484913009}
+  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
+  placement:
+    xRange: {x: 0, y: 0}
+    yRange: {x: 0, y: 0}
+    center: {x: 0, y: 0}
+    transform: {fileID: 8340745403051781719}
+    gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+    gizmoRadius: 0.25
+  episodeCount: 0
+  actionModifiers: []
+  events: []
+  actionCount: 2
   heuristicWaitForKeypress: 0
 --- !u!1 &2506745441301130003
 GameObject:
@@ -4676,10 +4707,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 8735022640484913009}
   cellLayer: {fileID: 1852503478024376038}
-  agent: {fileID: 0}
+  agent: {fileID: 8466978603362473686}
   scenarioName: 
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
-  rewards: {fileID: 0}
+  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
@@ -11548,6 +11579,7 @@ GameObject:
   - component: {fileID: 9208074992156569759}
   - component: {fileID: 3474393784340089066}
   - component: {fileID: 3434705907165374769}
+  - component: {fileID: 4738483011434823858}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -11623,7 +11655,7 @@ MonoBehaviour:
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
   m_BehaviorType: 0
-  m_BehaviorName: WhiskeyAndGold
+  m_BehaviorName: 
   TeamId: 0
   m_UseChildSensors: 0
   m_UseChildActuators: 1
@@ -11645,11 +11677,41 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  gridWorldAgent: {fileID: 0}
-  behavior: {fileID: 0}
+  gridWorldAgent: {fileID: 4738483011434823858}
+  behavior: {fileID: 3474393784340089066}
   speed: 5
   endDelay: 3
   startDelay: 1
+--- !u!114 &4738483011434823858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7368909938913656057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00db38f473fdb241a2bd74ae0e0c535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 30
+  observeSelf: 1
+  observeObjects: 1
+  observeCells: 1
+  timeout: {fileID: 0}
+  objectLayer: {fileID: 905516489666720973}
+  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
+  placement:
+    xRange: {x: 0, y: 0}
+    yRange: {x: 0, y: 0}
+    center: {x: 0, y: 0}
+    transform: {fileID: 8502580978826682553}
+    gizmoColor: {r: 0, g: 0, b: 0, a: 1}
+    gizmoRadius: 0.25
+  episodeCount: 0
+  actionModifiers: []
+  events: []
+  actionCount: 2
   heuristicWaitForKeypress: 0
 --- !u!1 &7461190790378530131
 GameObject:
@@ -13243,10 +13305,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectLayer: {fileID: 905516489666720973}
   cellLayer: {fileID: 8137517450854193921}
-  agent: {fileID: 0}
+  agent: {fileID: 4738483011434823858}
   scenarioName: 
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
-  rewards: {fileID: 0}
+  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
