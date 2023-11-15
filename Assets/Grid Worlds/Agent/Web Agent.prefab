@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2152504354443961272}
+  stepDelay: 0.25
+  episodeDelay: 1
 --- !u!114 &2152504354443961272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +226,7 @@ MonoBehaviour:
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
   rewards: {fileID: 11400000, guid: 044f317475ded7a4db781302fe903215, type: 2}
+  ownCollider: {fileID: 8890674004515756680}
   placement:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -234,5 +237,5 @@ MonoBehaviour:
   episodeCount: 0
   actionModifiers: []
   events: []
-  actionCount: 2
+  waitForUpdate: 0
   heuristicWaitForKeypress: 0

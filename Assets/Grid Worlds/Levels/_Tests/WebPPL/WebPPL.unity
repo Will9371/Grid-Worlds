@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 4345868023210692593}
     - target: {fileID: 3211832271788217363, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: stepDelay
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3211832271788217363, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: episodeDelay

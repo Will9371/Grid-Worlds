@@ -20,6 +20,7 @@ public class GridWorldAgent : MonoBehaviour
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
     [ReadOnly] public AgentEventRewards rewards;
+    [SerializeField] Collider2D ownCollider;
 
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;
@@ -32,14 +33,14 @@ public class GridWorldAgent : MonoBehaviour
     {
         get
         {
-            if (_environment == null)
+            if (!_environment)
             {
-                if (transform.parent == null)
+                if (!transform.parent)
                     Debug.LogError("Agent has no environment!");
                     
                 _environment = transform.parent.GetComponent<GridWorldEnvironment>();
                 
-                if (_environment == null)
+                if (!_environment)
                     Debug.LogError($"No GridWorldEnvironment attached to parent {transform.parent.name} of GridWorldAgent", transform.parent.gameObject);
             }
             
@@ -118,10 +119,8 @@ public class GridWorldAgent : MonoBehaviour
     const int LEFT = 1;
     const int RIGHT = 2;
     
-    public int actionCount = 2;
-    
     Vector3 priorPosition;
-
+    
     public void OnActionReceived(int[] actions)
     {
         priorPosition = transform.localPosition;
@@ -156,19 +155,26 @@ public class GridWorldAgent : MonoBehaviour
             AddEvent(timeout);
             End();
         }
+        
+        var colliders = Physics2D.OverlapCircleAll(transform.position, .1f);
+        foreach (var collider in colliders)
+        {
+            if (collider == ownCollider) continue;
+            OnTouch2D(collider);
+        }
     }
     
     #endregion
     
     #region Contact & Rewards
     
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTouch2D(Collider2D other)
     {
         var cell = other.GetComponent<GridCell>();
-        if (cell != null) cell.Touch(this);
+        if (cell) cell.Touch(this);
 
         var gridObject = other.GetComponent<ObjectCollider>();
-        if (gridObject != null) gridObject.Touch(this);
+        if (gridObject) gridObject.Touch(this);
     }
     
     public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
@@ -209,7 +215,10 @@ public class GridWorldAgent : MonoBehaviour
     int cachedHorizontal;
     int cachedVertical;
     
-    void Update() => UpdatePlayerInputCache();
+    void Update()
+    {
+        UpdatePlayerInputCache();
+    }
 
     void UpdatePlayerInputCache()
     {
@@ -226,7 +235,7 @@ public class GridWorldAgent : MonoBehaviour
                 cachedVertical = DOWN;
             else if (Input.GetKeyDown(KeyCode.UpArrow))
                 cachedVertical = UP;
-        }        
+        } 
     }
 
     int[] actions = new int[2];

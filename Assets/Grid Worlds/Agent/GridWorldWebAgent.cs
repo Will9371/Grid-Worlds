@@ -5,7 +5,8 @@ public class GridWorldWebAgent : MonoBehaviour
 {
     [SerializeField] GridWorldAgent agent;
     [SerializeField] float stepDelay = .25f;
-    [SerializeField] float episodeDelay = 1f;
+    [SerializeField] float beginEpisodeDelay = .5f;
+    [SerializeField] float endEpisodeDelay = 0.5f;
     
     AgentObservations observations = new();
     WebServer server = new();
@@ -15,7 +16,7 @@ public class GridWorldWebAgent : MonoBehaviour
     void Start()
     {
         agent.onEnd += EndEpisode;
-        server.onResponse = ReceiveActions;
+        server.onResponse = BeginReceiveActions;
         StartCoroutine(Initialize());
     }
     
@@ -26,11 +27,12 @@ public class GridWorldWebAgent : MonoBehaviour
     
     IEnumerator Initialize()
     {
-        yield return new WaitForSeconds(episodeDelay);
+        yield return new WaitForSeconds(beginEpisodeDelay);
         active = true;
         agent.Reset();
-        yield return new WaitForSeconds(episodeDelay);
-        yield return CollectObservations();
+        yield return new WaitForSeconds(endEpisodeDelay);
+        
+        StartCoroutine(CollectObservations());
     }
     
     IEnumerator CollectObservations()
@@ -41,16 +43,18 @@ public class GridWorldWebAgent : MonoBehaviour
         yield return server.SendData(inputs, actions);
     }
     
-    void ReceiveActions(int[] actions)
+    void BeginReceiveActions(int[] actions) => StartCoroutine(ReceiveActions(actions));
+    
+    
+    IEnumerator ReceiveActions(int[] actions)
     {
-        if (!active) return;
+        if (!active) yield break;
         agent.OnActionReceived(actions);
         StartCoroutine(CollectObservations());
     }
     
     void EndEpisode()
     {
-        StopAllCoroutines();
         active = false;
         StartCoroutine(Initialize());
     }

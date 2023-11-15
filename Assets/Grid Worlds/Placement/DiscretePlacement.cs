@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Unity.MLAgents.Sensors;
 
 [Serializable]
 public class DiscretePlacement
@@ -27,11 +26,6 @@ public class DiscretePlacement
     public void MoveUp() => position += Vector2.up;
     public void MoveDown() => position += Vector2.down;
     
-    /*public void AddObservations(VectorSensor sensor)
-    {
-        sensor.AddObservation((float)x);
-        sensor.AddObservation((float)y);
-    }*/
     public void AddObservations(AgentObservations sensor)
     {
         sensor.Add("x", x);

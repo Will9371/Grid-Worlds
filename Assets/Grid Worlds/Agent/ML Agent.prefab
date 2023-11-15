@@ -245,7 +245,6 @@ MonoBehaviour:
   speed: 5
   endDelay: 3
   startDelay: 2
-  heuristicWaitForKeypress: 0
 --- !u!114 &691350218699962029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +264,7 @@ MonoBehaviour:
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
   rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
+  ownCollider: {fileID: 1798411976634256727}
   placement:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -275,4 +275,5 @@ MonoBehaviour:
   episodeCount: 0
   actionModifiers: []
   events: []
+  waitForUpdate: 0
   heuristicWaitForKeypress: 0
