@@ -4,10 +4,21 @@ const app = express();
 
 app.use(bodyParser.json());
 
+global.actionCount = 0;
+
+// Define a route to handle setting actionCount
+app.post('/setActionCount', (req, res) => {
+    // Log the received data
+    //console.log('Received data:', req.body);
+
+    // Handle the incoming data to set actionCount
+    global.actionCount = req.body.count;
+    res.send('Action count set: ' + global.actionCount);
+});
+
 // Define a route to handle POST requests
-app.post('/sendData', (req, res) => 
-{
-    // Handle the incoming data from Unity here
+// Handle the incoming data from Unity here
+app.post('/sendData', (req, res) => {
     const receivedData = req.body;
     // Process the data with your WebPPL algorithm and send a response
     const responseData = processWithWebPPLAlgorithm(receivedData);
@@ -15,8 +26,7 @@ app.post('/sendData', (req, res) =>
 });
 
 // Define a route for the root path ("/")
-app.get('/sendData', (req, res) => 
-{
+app.get('/sendData', (req, res) => {
     // You can customize the response message.
     res.send('Server is running.'); 
 });
@@ -24,20 +34,36 @@ app.get('/sendData', (req, res) =>
 
 // Start the server on a specific port (e.g., 3000)
 const port = 3000;
-app.listen(port, () => 
-{
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
 function processWithWebPPLAlgorithm(data) 
 {
-    // Assuming data.floats is an array of floats sent from Unity
-    // You can use the data as needed in your WebPPL algorithm
-
-    // Generate two random integers between 0 and 2
-    const randomInt1 = Math.floor(Math.random() * 3);  // 0, 1, or 2
-    const randomInt2 = Math.floor(Math.random() * 3);  // 0, 1, or 2
-
     // Return the response data as an array of integers
-    return { ints: [randomInt1, randomInt2] };
+    // Replace with actual WebPPL logic
+    return { ints: generateRandomNumbers(global.actionCount) };
 }
+
+// Define a function to generate random numbers with a specified length
+var generateRandomNumbers = function(length) 
+{
+    // Ensure that length is a non-negative integer
+    if (typeof length !== 'number' || length < 0) {
+        throw new Error('Invalid length ' + length);
+    }
+
+    // Base case: when length is 0, return an empty array
+    if (length === 0) {
+        return [];
+    }
+    // Recursive case: generate a random number and concatenate it with the rest of the array
+    else {
+        return [randomInteger(0, 2)].concat(generateRandomNumbers(length - 1));
+    }
+};
+
+function randomInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
