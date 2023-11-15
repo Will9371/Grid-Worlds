@@ -29,7 +29,7 @@ public class GridWorldWebAgent : MonoBehaviour
         yield return new WaitForSeconds(episodeDelay);
         active = true;
         agent.Reset();
-        yield return server.Initialize(agent.actionCount);
+        yield return new WaitForSeconds(episodeDelay);
         yield return CollectObservations();
     }
     
@@ -37,7 +37,8 @@ public class GridWorldWebAgent : MonoBehaviour
     {
         yield return new WaitForSeconds(stepDelay);
         var inputs = observations.GetValues(agent.CollectObservations());
-        yield return server.SendData(inputs);
+        var actions = new[] { 2, 2 };  // * Get from GridWorldAgent
+        yield return server.SendData(inputs, actions);
     }
     
     void ReceiveActions(int[] actions)
