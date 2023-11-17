@@ -13,21 +13,10 @@ public class GridWorldWebAgent : MonoBehaviour
     
     bool active;
     
-    [SerializeField] bool getParameters;
-    
-    void OnValidate()
-    {
-        if (getParameters)
-        {
-            getParameters = false;
-            StartCoroutine(server.GetParameters());
-        }
-    }
-    
     void Start()
     {
         agent.onEnd += OnEnd;
-        server.onResponse = BeginReceiveActions;
+        server.onGetActions = BeginReceiveActions;
         StartCoroutine(BeginEpisode());
     }
     

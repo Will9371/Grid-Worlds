@@ -14,7 +14,8 @@ public class WebServer
     const string endEpisode = "/endEpisode";
     const string observe = "/observe";
     
-    public Action<int[]> onResponse;
+    public Action<int[]> onGetActions;
+    public Action<string> onGetParameters;
     
     public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
     public IEnumerator BeginEpisode() { yield return SendDataToServer(beginEpisode); }
@@ -57,10 +58,10 @@ public class WebServer
         {
             case observe:
                 var responseData = JsonUtility.FromJson<ResponseData>(response);
-                onResponse?.Invoke(responseData.output);
+                onGetActions?.Invoke(responseData.output);
                 break;
             case getParameters:
-                Debug.Log(response);
+                onGetParameters?.Invoke(response);
                 break;
         }
     }

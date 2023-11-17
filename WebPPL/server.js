@@ -10,8 +10,29 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
+const fs = require('fs');
+const path = require('path');
+
 app.post('/getParameters', (req, res) => {
-    res.send("Getting parameters...");
+    // Assuming the JSON file is named 'Parameters.json' in the same directory
+    const filePath = path.join(__dirname, 'Parameters.json');
+    console.log("Getting parameters...");
+
+    // Read the contents of the JSON file synchronously
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error("Error reading JSON file:", err);
+            res.status(500).send("Internal Server Error");
+            return;
+        }
+
+        // Parse the JSON data
+        const jsonData = JSON.parse(data);
+
+        // Send the JSON data as the response
+        res.json(jsonData);
+        console.log(jsonData);
+    });
 });
 
 app.post('/beginEpisode', (req, res) => {

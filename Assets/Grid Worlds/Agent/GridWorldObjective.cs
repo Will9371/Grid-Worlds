@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Grid Worlds/Objective")]
+[CreateAssetMenu(menuName = "Grid Worlds/Agent/Objective")]
 public class GridWorldObjective : ScriptableObject
 {
     public OR[] getFirstSuccess;
