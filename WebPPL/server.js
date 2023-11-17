@@ -16,7 +16,6 @@ const path = require('path');
 app.post('/getParameters', (req, res) => {
     // Assuming the JSON file is named 'Parameters.json' in the same directory
     const filePath = path.join(__dirname, 'Parameters.json');
-    console.log("Getting parameters...");
 
     // Read the contents of the JSON file synchronously
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -31,7 +30,27 @@ app.post('/getParameters', (req, res) => {
 
         // Send the JSON data as the response
         res.json(jsonData);
-        console.log(jsonData);
+    });
+});
+
+app.post('/setParameters', (req, res) => {
+    // Assuming the JSON file is named 'Parameters.json' in the same directory
+    const filePath = path.join(__dirname, 'Parameters.json');
+    console.log("Setting parameters")
+
+    // Convert the new data to JSON format
+    const updatedJson = JSON.stringify(req.body, null, 2);
+
+    // Write the updated JSON data to the file, overwriting its contents
+    fs.writeFile(filePath, updatedJson, 'utf8', (err) => {
+        if (err) {
+            console.error("Error writing to JSON file:", err);
+            res.status(500).send("Internal Server Error");
+            return;
+        }
+
+        console.log("Parameters updated successfully");
+        res.send("Parameters updated successfully");
     });
 });
 

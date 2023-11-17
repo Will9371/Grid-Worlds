@@ -10,6 +10,7 @@ public class WebServer
     
     /// Server functions
     const string getParameters = "/getParameters";
+    const string setParameters = "/setParameters";
     const string beginEpisode = "/beginEpisode";
     const string endEpisode = "/endEpisode";
     const string observe = "/observe";
@@ -18,6 +19,7 @@ public class WebServer
     public Action<string> onGetParameters;
     
     public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
+    public IEnumerator SetParameters(WebParameters parameters) { Debug.Log("WebServer.SetParameters"); yield return SendDataToServer(setParameters, parameters); }
     public IEnumerator BeginEpisode() { yield return SendDataToServer(beginEpisode); }
     public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
 

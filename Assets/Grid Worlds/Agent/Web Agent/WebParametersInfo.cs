@@ -23,8 +23,8 @@ public struct WebParameters
 [Serializable]
 public struct WebParameter
 {
-    public string key;
-    public string description;
+    [ReadOnly] public string key;
+    [ReadOnly] public string description;
     public string value;
     
     public WebParameter(WebParameter original)

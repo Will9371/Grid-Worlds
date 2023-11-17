@@ -16,10 +16,10 @@ MonoBehaviour:
     items:
     - key: aspirationLow
       description: Minimal total reward
-      value: -10000000000
+      value: -100
     - key: aspirationHigh
       description: Maximal total reward
-      value: 10000000000
+      value: 100
     - key: entropyPenalty
       description: Unpredictable behavior penalization
       value: 1

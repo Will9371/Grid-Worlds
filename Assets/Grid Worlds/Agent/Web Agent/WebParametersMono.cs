@@ -6,11 +6,11 @@ public class WebParametersMono : MonoBehaviour
     { JsonToDataAndInfo, JsonToInfo, JsonToData, InfoToData, DataToInfo }
 
     [SerializeField] bool transfer;
-    [Tooltip("Json = externally stored JSON file, Data = values stored on this component and used by agents, Info = ScriptableObject for saving variants")]
+    [Tooltip("Json = externally stored JSON file; Data = working values, visible on this component; Info = ScriptableObject used by agents and for saving variants")]
     [SerializeField] TransferType transferType;
 
-    [SerializeField]  WebParametersInfo info;
-    [SerializeField]  WebParameters data;
+    [SerializeField] WebParametersInfo info;
+    [SerializeField] WebParameters data;
     
     WebServer server = new();
     

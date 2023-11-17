@@ -4,6 +4,7 @@ using UnityEngine;
 public class GridWorldWebAgent : MonoBehaviour
 {
     [SerializeField] GridWorldAgent agent;
+    [SerializeField] WebParametersInfo parameters;
     [SerializeField] float stepDelay = .25f;
     [SerializeField] float beginEpisodeDelay = .5f;
     [SerializeField] float endEpisodeDelay = 0.5f;
@@ -13,16 +14,23 @@ public class GridWorldWebAgent : MonoBehaviour
     
     bool active;
     
+    
     void Start()
     {
         agent.onEnd += OnEnd;
         server.onGetActions = BeginReceiveActions;
-        StartCoroutine(BeginEpisode());
+        StartCoroutine(Initialize());
     }
     
     void OnDestroy()
     {
         if (agent) agent.onEnd -= OnEnd;
+    }
+    
+    IEnumerator Initialize()
+    {
+        yield return server.SetParameters(parameters.data);
+        StartCoroutine(BeginEpisode());
     }
     
     IEnumerator BeginEpisode()

@@ -205,8 +205,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2152504354443961272}
+  parameters: {fileID: 11400000, guid: 2c68b63448956fc44a218e8389161210, type: 2}
   stepDelay: 0.25
-  episodeDelay: 1
+  beginEpisodeDelay: 0.5
+  endEpisodeDelay: 0.5
 --- !u!114 &2152504354443961272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,5 +239,4 @@ MonoBehaviour:
   episodeCount: 0
   actionModifiers: []
   events: []
-  waitForUpdate: 0
   heuristicWaitForKeypress: 0
