@@ -13,25 +13,35 @@ public class GridWorldWebAgent : MonoBehaviour
     
     bool active;
     
+    [SerializeField] bool getParameters;
+    
+    void OnValidate()
+    {
+        if (getParameters)
+        {
+            getParameters = false;
+            StartCoroutine(server.GetParameters());
+        }
+    }
+    
     void Start()
     {
-        agent.onEnd += EndEpisode;
+        agent.onEnd += OnEnd;
         server.onResponse = BeginReceiveActions;
-        StartCoroutine(Initialize());
+        StartCoroutine(BeginEpisode());
     }
     
     void OnDestroy()
     {
-        if (agent) agent.onEnd -= EndEpisode;
+        if (agent) agent.onEnd -= OnEnd;
     }
     
-    IEnumerator Initialize()
+    IEnumerator BeginEpisode()
     {
-        yield return new WaitForSeconds(beginEpisodeDelay);
         active = true;
         agent.Reset();
-        yield return new WaitForSeconds(endEpisodeDelay);
-        
+        yield return server.BeginEpisode();
+        yield return new WaitForSeconds(beginEpisodeDelay);
         StartCoroutine(CollectObservations());
     }
     
@@ -53,9 +63,12 @@ public class GridWorldWebAgent : MonoBehaviour
         StartCoroutine(CollectObservations());
     }
     
-    void EndEpisode()
+    void OnEnd() => StartCoroutine(EndEpisode());
+    IEnumerator EndEpisode()
     {
         active = false;
-        StartCoroutine(Initialize());
+        yield return server.EndEpisode();
+        yield return new WaitForSeconds(endEpisodeDelay);
+        StartCoroutine(BeginEpisode());
     }
 }

@@ -6,7 +6,7 @@ public class AgentEventRewards : ScriptableObject
 {
     [Tooltip("Set to -1 to incentivize ending the episode more quickly")]
     public float rewardPerStep = 0;
-
+    
     public EventRewardBinding[] bindings;
     
     public float GetReward(GridWorldEvent id)

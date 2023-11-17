@@ -5,17 +5,28 @@ using UnityEngine.Networking;
 
 public class WebServer
 {
-    string serverURL = "http://localhost:3000"; // Replace with your server's URL
+    /// Server URL
+    string serverURL = "http://localhost:3000";
+    
+    /// Server functions
+    const string getParameters = "/getParameters";
+    const string beginEpisode = "/beginEpisode";
+    const string endEpisode = "/endEpisode";
+    const string observe = "/observe";
     
     public Action<int[]> onResponse;
+    
+    public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
+    public IEnumerator BeginEpisode() { yield return SendDataToServer(beginEpisode); }
+    public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
 
     public IEnumerator SendData(float[] observations, int[] actions)
     {
         ResponseData data = new ResponseData { input = observations, output = actions };
-        yield return SendDataToServer("/sendData", data);
+        yield return SendDataToServer(observe, data);
     }
     
-    IEnumerator SendDataToServer(string route, object data)
+    IEnumerator SendDataToServer(string route, object data = null)
     {
         // Convert the data to a JSON string
         var jsonData = JsonUtility.ToJson(data);
@@ -31,20 +42,26 @@ public class WebServer
         // Set the request header for JSON content
         request.SetRequestHeader("Content-Type", "application/json");
 
-        // Send the request
         yield return request.SendWebRequest();
 
         // Check for errors during the request
         if (request.isNetworkError || request.isHttpError)
         {
             Debug.LogError("Error: " + request.error);
+            yield break;
         }
-        // Request was successful, and you can handle the response here
-        else
+        
+        // Request was successful. Handle response, if applicable
+        var response = request.downloadHandler.text;
+        switch (route)
         {
-            var response = request.downloadHandler.text;
-            var responseData = JsonUtility.FromJson<ResponseData>(response);
-            onResponse?.Invoke(responseData.output);
+            case observe:
+                var responseData = JsonUtility.FromJson<ResponseData>(response);
+                onResponse?.Invoke(responseData.output);
+                break;
+            case getParameters:
+                Debug.Log(response);
+                break;
         }
     }
 
