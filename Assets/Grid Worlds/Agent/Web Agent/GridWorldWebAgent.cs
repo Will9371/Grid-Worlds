@@ -18,13 +18,18 @@ public class GridWorldWebAgent : MonoBehaviour
     void Start()
     {
         agent.onEnd += OnEnd;
+        agent.onEvent += AgentEvent;
         server.onGetActions = BeginReceiveActions;
         StartCoroutine(Initialize());
     }
     
     void OnDestroy()
     {
-        if (agent) agent.onEnd -= OnEnd;
+        if (agent)
+        {
+            agent.onEnd -= OnEnd;
+            agent.onEvent -= AgentEvent;
+        }
     }
     
     IEnumerator Initialize()
@@ -51,14 +56,14 @@ public class GridWorldWebAgent : MonoBehaviour
     }
     
     void BeginReceiveActions(int[] actions) => StartCoroutine(ReceiveActions(actions));
-    
-    
     IEnumerator ReceiveActions(int[] actions)
     {
         if (!active) yield break;
         agent.OnActionReceived(actions);
         StartCoroutine(CollectObservations());
     }
+    
+    void AgentEvent(GridWorldEvent info) => StartCoroutine(server.SendEvent(info));
     
     void OnEnd() => StartCoroutine(EndEpisode());
     IEnumerator EndEpisode()

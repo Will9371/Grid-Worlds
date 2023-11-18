@@ -36,7 +36,6 @@ app.post('/getParameters', (req, res) => {
 app.post('/setParameters', (req, res) => {
     // Assuming the JSON file is named 'Parameters.json' in the same directory
     const filePath = path.join(__dirname, 'Parameters.json');
-    console.log("Setting parameters")
 
     // Convert the new data to JSON format
     const updatedJson = JSON.stringify(req.body, null, 2);
@@ -49,7 +48,6 @@ app.post('/setParameters', (req, res) => {
             return;
         }
 
-        console.log("Parameters updated successfully");
         res.send("Parameters updated successfully");
     });
 });
@@ -59,6 +57,11 @@ app.post('/beginEpisode', (req, res) => {
 });
 
 app.post('/endEpisode', (req, res) => {
+    res.send();
+});
+
+app.post('/agentEvent', (req, res) => {
+    console.log(req.body);
     res.send();
 });
 

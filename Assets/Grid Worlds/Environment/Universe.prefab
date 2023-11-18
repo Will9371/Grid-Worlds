@@ -2325,9 +2325,11 @@ MonoBehaviour:
   MaxStep: 0
   gridWorldAgent: {fileID: 8466978603362473686}
   behavior: {fileID: 8949662697094193673}
+  ui: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 1
+  rewards: {fileID: 0}
 --- !u!114 &8466978603362473686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,7 +2348,6 @@ MonoBehaviour:
   observeCells: 1
   timeout: {fileID: 0}
   objectLayer: {fileID: 8735022640484913009}
-  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
   ownCollider: {fileID: 0}
   placement:
     xRange: {x: 0, y: 0}
@@ -4710,7 +4711,6 @@ MonoBehaviour:
   agent: {fileID: 8466978603362473686}
   scenarioName: 
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
-  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
@@ -4719,7 +4719,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &3939554728826516834
 GameObject:
   m_ObjectHideFlags: 0
@@ -11679,9 +11679,11 @@ MonoBehaviour:
   MaxStep: 0
   gridWorldAgent: {fileID: 4738483011434823858}
   behavior: {fileID: 3474393784340089066}
+  ui: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 1
+  rewards: {fileID: 0}
 --- !u!114 &4738483011434823858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11700,7 +11702,6 @@ MonoBehaviour:
   observeCells: 1
   timeout: {fileID: 0}
   objectLayer: {fileID: 905516489666720973}
-  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
   ownCollider: {fileID: 0}
   placement:
     xRange: {x: 0, y: 0}
@@ -13308,7 +13309,6 @@ MonoBehaviour:
   agent: {fileID: 4738483011434823858}
   scenarioName: 
   objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
-  rewards: {fileID: 11400000, guid: 6184c7eacf7696f4ab7c47031c6e7d69, type: 2}
   size: {x: 7, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: 63c874a6e7f8b3f4b8a91a3177f8493e, type: 2}
@@ -13317,7 +13317,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &8255845934995566074
 GameObject:
   m_ObjectHideFlags: 0

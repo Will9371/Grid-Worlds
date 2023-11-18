@@ -10,6 +10,7 @@ public class GridWorldMLAgent : Agent
     [Header("References")]
     [SerializeField] GridWorldAgent gridWorldAgent;
     [SerializeField] BehaviorParameters behavior;
+    [SerializeField] EnvironmentUI ui;
 
     [Header("Movement")]
     [SerializeField] float speed = 5f;
@@ -17,6 +18,9 @@ public class GridWorldMLAgent : Agent
     [SerializeField] float endDelay = 3f;
     [Tooltip("Pause for a moment before starting episode so actions from prior episode don't carry over")]
     [SerializeField] float startDelay = 2f;
+    
+    [Header("Parameters")]
+    public AgentEventRewards rewards;
 
     AgentObservations observations = new();
 
@@ -24,7 +28,7 @@ public class GridWorldMLAgent : Agent
     
     void Start()
     {
-        gridWorldAgent.onReward += Reward;
+        gridWorldAgent.onEvent += OnEvent;
         gridWorldAgent.onEnd += End;
     }
     
@@ -32,18 +36,28 @@ public class GridWorldMLAgent : Agent
     {
         if (gridWorldAgent) 
         {
-            gridWorldAgent.onReward -= Reward;
+            gridWorldAgent.onEvent -= OnEvent;
             gridWorldAgent.onEnd -= End;
         }
     }
     
-    void Reward(float current, float total = 0f) => AddReward(current);
+    void OnEvent(GridWorldEvent value)
+    {
+        Reward(rewards.GetReward(value));
+    }
+    
+    void Reward(float current)
+    {
+        AddReward(current);
+        ui.AddReward(current);
+    }
 
     public override void OnEpisodeBegin() => BeginEpisode();
 
     void BeginEpisode()
     {
         gridWorldAgent.Reset();
+        ui.ResetReward();
         StartCoroutine(Process());        
     }
     
@@ -81,6 +95,9 @@ public class GridWorldMLAgent : Agent
             actionData[i] = actions.DiscreteActions[i];
             
         gridWorldAgent.OnActionReceived(actionData);
+        
+        if (rewards.rewardPerStep != 0)
+            Reward(rewards.rewardPerStep);
     }
     
     public void End()

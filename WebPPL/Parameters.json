@@ -3,12 +3,12 @@
     {
       "key": "aspirationLow",
       "description": "Minimal total reward",
-      "value": "-999"
+      "value": "-100"
     },
     {
       "key": "aspirationHigh",
       "description": "Maximal total reward",
-      "value": "999"
+      "value": "100"
     },
     {
       "key": "entropyPenalty",

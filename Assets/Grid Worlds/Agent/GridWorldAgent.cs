@@ -19,7 +19,6 @@ public class GridWorldAgent : MonoBehaviour
     
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
-    [ReadOnly] public AgentEventRewards rewards;
     [SerializeField] Collider2D ownCollider;
 
     [Header("Starting Position")]
@@ -77,9 +76,7 @@ public class GridWorldAgent : MonoBehaviour
     public void Reset()
     {
         stepCount = 0;
-        totalReward = 0;
         onStep?.Invoke(0);
-        onReward?.Invoke(0, 0);
         
         actionModifiers.Clear();
         events.Clear();
@@ -147,9 +144,6 @@ public class GridWorldAgent : MonoBehaviour
         stepCount++;
         onStep?.Invoke(stepCount);
         
-        if (rewards.rewardPerStep != 0)
-            Reward(rewards.rewardPerStep);
-        
         if (stepCount >= lifetime)
         {
             AddEvent(timeout);
@@ -179,19 +173,12 @@ public class GridWorldAgent : MonoBehaviour
     
     public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
     
+    public Action<GridWorldEvent> onEvent;
+    
     public void AddEvent(GridWorldEvent info)
     {
-        Reward(rewards.GetReward(info));
         events.Add(info);
-    }
-
-    float totalReward;
-    public Action<float, float> onReward;
-    
-    void Reward(float value)
-    {
-        totalReward += value;
-        onReward?.Invoke(value, totalReward);
+        onEvent?.Invoke(info);
     }
     
     public Action onEnd;

@@ -4777,7 +4777,6 @@ MonoBehaviour:
   agent: {fileID: 7046242698376439691}
   scenarioName: WebPPL
   objective: {fileID: 11400000, guid: 38821551f70a2294ebfb1e5d528d9f64, type: 2}
-  rewards: {fileID: 11400000, guid: 1e01d13a671ed2843b19d155f5fb2814, type: 2}
   size: {x: 9, y: 5}
   generateNew: 0
   layout: {fileID: 11400000, guid: e3cec7a77cbd82842acff3ad81c7ca77, type: 2}

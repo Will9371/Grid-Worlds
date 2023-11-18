@@ -12,7 +12,6 @@ public class GridWorldEnvironment : MonoBehaviour
     [Header("Settings")]
     [SerializeField] string scenarioName;
     [SerializeField] GridWorldObjective objective;
-    [SerializeField] AgentEventRewards rewards;
     [VectorLabels("Width", "Height")]
     public Vector2Int size;
     
@@ -54,7 +53,6 @@ public class GridWorldEnvironment : MonoBehaviour
         
         if (agent != null)
         {
-            agent.rewards = rewards;
             agent.objectLayer = objectLayer;
             agent.onSetScenarioName?.Invoke(scenarioName);
         }

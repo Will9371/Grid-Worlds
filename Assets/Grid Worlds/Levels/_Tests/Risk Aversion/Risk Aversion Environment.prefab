@@ -1159,7 +1159,6 @@ MonoBehaviour:
   agent: {fileID: 2920586663643542597}
   scenarioName: Risk Aversion
   objective: {fileID: 11400000, guid: 07f309666626c3f4a9c39433d7334f03, type: 2}
-  rewards: {fileID: 11400000, guid: c2050571ed870f447b8e99cd2512f481, type: 2}
   size: {x: 9, y: 3}
   generateNew: 0
   layout: {fileID: 11400000, guid: 6658df7c366521149a19c86cf1a75d2d, type: 2}
@@ -5081,6 +5080,10 @@ PrefabInstance:
       value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 1379499655041318338}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: rewards
       value: 
       objectReference: {fileID: 11400000, guid: c2050571ed870f447b8e99cd2512f481, type: 2}
@@ -5310,6 +5313,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}
+--- !u!114 &1379499655041318338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6390206116149322964, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}
+  m_PrefabInstance: {fileID: 5443274405857270038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac6f0ffb258dfb4284da86fb1c68467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6303324217665713031 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2086154818951178897, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}

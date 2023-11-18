@@ -14,14 +14,16 @@ public class WebServer
     const string beginEpisode = "/beginEpisode";
     const string endEpisode = "/endEpisode";
     const string observe = "/observe";
+    const string agentEvent = "/agentEvent";
     
     public Action<int[]> onGetActions;
     public Action<string> onGetParameters;
     
     public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
-    public IEnumerator SetParameters(WebParameters parameters) { Debug.Log("WebServer.SetParameters"); yield return SendDataToServer(setParameters, parameters); }
+    public IEnumerator SetParameters(WebParameters parameters) { yield return SendDataToServer(setParameters, parameters); }
     public IEnumerator BeginEpisode() { yield return SendDataToServer(beginEpisode); }
     public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
+    public IEnumerator SendEvent(GridWorldEvent value) { yield return SendDataToServer(agentEvent, new EventData { id = value.name }); }
 
     public IEnumerator SendData(float[] observations, int[] actions)
     {
@@ -73,5 +75,11 @@ public class WebServer
     {
         public float[] input;
         public int[] output;
+    }
+    
+    [Serializable]
+    public class EventData
+    {
+        public string id;
     }
 }

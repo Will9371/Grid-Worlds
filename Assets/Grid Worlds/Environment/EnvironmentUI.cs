@@ -8,19 +8,30 @@ public class EnvironmentUI : MonoBehaviour
     [SerializeField] TMP_Text rewardDisplay;
     [SerializeField] int rewardDigits = 0;
     
+    float _totalReward;
+    float totalReward
+    {
+        get => _totalReward;
+        set
+        {
+            _totalReward = value;
+            rewardDisplay.text = value.ToString($"F{rewardDigits}");
+        }
+    }
+    
     void Start()
     {
         agent.onStep += SetTimestep;
-        agent.onReward += SetReward;
     }
     
     void OnDestroy()
     {
         if (!agent) return;
         agent.onStep += SetTimestep;
-        agent.onReward += SetReward;
     }
     
     void SetTimestep(int value) => timestepDisplay.text = value.ToString();
-    void SetReward(float value, float total) => rewardDisplay.text = total.ToString($"F{rewardDigits}");
+    
+    public void ResetReward() => totalReward = 0;
+    public void AddReward(float value) => totalReward += value;
 }
