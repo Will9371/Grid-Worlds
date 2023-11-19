@@ -68,7 +68,7 @@ public class GridWorldMLAgent : Agent
         
         while (true)
         {
-            if (behavior.BehaviorType == BehaviorType.HeuristicOnly && gridWorldAgent.moveKeyPressed)
+            if (behavior.BehaviorType == BehaviorType.HeuristicOnly && gridWorldAgent.MoveKeyPressed())
             {
                 yield return delay;
                 continue;
@@ -129,7 +129,18 @@ public class GridWorldMLAgent : Agent
         }
     
         behavior.BrainParameters.VectorObservationSize = gridWorldAgent.GetObservationCount();
+        behavior.BrainParameters.ActionSpec = new ActionSpec(0, GetActionSpace(gridWorldAgent.moveType));
         gridWorldAgent.onSetScenarioName = SetBehaviorName;
+    }
+    
+    int[] GetActionSpace(AgentMovementType moveType)
+    {
+        switch (moveType)
+        {
+            case AgentMovementType.Axis2Direction8: return new int[] { 3, 3 };
+            case AgentMovementType.Direction4: return new int[] { 5 };
+            default: return new int[] { 0 };
+        }
     }
     
     void SetBehaviorName(string value) => behavior.BehaviorName = value;

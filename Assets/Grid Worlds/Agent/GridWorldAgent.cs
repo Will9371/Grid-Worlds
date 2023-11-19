@@ -47,8 +47,6 @@ public class GridWorldAgent : MonoBehaviour
         }
     }
     GridWorldEnvironment _environment;
-    DiscretePlacement movement => _movement ??= new DiscretePlacement(transform);
-    DiscretePlacement _movement;
     #endregion
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
@@ -62,6 +60,13 @@ public class GridWorldAgent : MonoBehaviour
     void Awake()
     {
         placement.Awake();
+        
+        switch (moveType)
+        {
+            case AgentMovementType.Axis2Direction8 : movement = new AgentMovement2Axis(); break;
+            case AgentMovementType.Direction4 : movement = new AgentMovement4Direction(); break;
+        }
+        movement.Awake(new DiscretePlacement(transform), actionModifiers);
     }
 
     void InitializePositions()
@@ -80,8 +85,7 @@ public class GridWorldAgent : MonoBehaviour
         
         actionModifiers.Clear();
         events.Clear();
-        cachedHorizontal = 0;
-        cachedVertical = 0;
+        movement.ClearCache();
         
         InitializePositions();
         
@@ -110,36 +114,12 @@ public class GridWorldAgent : MonoBehaviour
     
     public void AddObservations(AgentObservations sensor) => placement.AddObservations(sensor);
     
-    const int STAY = 0;
-    const int DOWN = 1;
-    const int UP = 2;
-    const int LEFT = 1;
-    const int RIGHT = 2;
-    
     Vector3 priorPosition;
     
     public void OnActionReceived(int[] actions)
     {
         priorPosition = transform.localPosition;
-        
-        var horizontal = actions[0];
-        var vertical = actions[1];
-        
-        foreach (var modifier in actionModifiers)
-            modifier.ModifyActions(ref horizontal, ref vertical);
-    
-        switch(horizontal)
-        {
-            case STAY: break;
-            case LEFT: movement.MoveLeft(); break;
-            case RIGHT: movement.MoveRight(); break;
-        }
-        switch(vertical)
-        {
-            case STAY: break;
-            case DOWN: movement.MoveDown(); break;
-            case UP: movement.MoveUp(); break;
-        }
+        movement.Move(actions);
 
         stepCount++;
         onStep?.Invoke(stepCount);
@@ -193,53 +173,12 @@ public class GridWorldAgent : MonoBehaviour
     
     #region Heuristic (player controls for testing)
     
-    [Tooltip("In heuristic mode, only advance time when the player has pressed a key")]
-    [SerializeField] bool heuristicWaitForKeypress;
+    public AgentMovementType moveType;
+    public IAgentMovement movement;
     
-    int keyHorizontal => Statics.GetAction("Horizontal");
-    int keyVertical => Statics.GetAction("Vertical");
-
-    int cachedHorizontal;
-    int cachedVertical;
-    
-    void Update()
-    {
-        UpdatePlayerInputCache();
-    }
-
-    void UpdatePlayerInputCache()
-    {
-        if (cachedHorizontal == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-                cachedHorizontal = LEFT;
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
-                cachedHorizontal = RIGHT;
-        }
-        if (cachedVertical == 0)
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-                cachedVertical = DOWN;
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
-                cachedVertical = UP;
-        } 
-    }
-
-    int[] actions = new int[2];
-    public int[] PlayerControl()
-    {
-        var horizontal = cachedHorizontal == 0 ? keyHorizontal : cachedHorizontal;
-        var vertical = cachedVertical == 0 ? keyVertical : cachedVertical;
-        
-        actions[0] = horizontal;
-        actions[1] = vertical;
-        
-        cachedHorizontal = 0;
-        cachedVertical = 0;
-        return actions;
-    }
-    
-    public bool moveKeyPressed => heuristicWaitForKeypress && cachedHorizontal == 0 && cachedVertical == 0;
+    void Update() => movement.Update();
+    public int[] PlayerControl() => movement.PlayerControl();
+    public bool MoveKeyPressed() => movement.MoveKeyPressed();
 
     #endregion
     

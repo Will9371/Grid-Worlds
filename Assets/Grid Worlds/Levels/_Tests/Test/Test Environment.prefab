@@ -4132,8 +4132,7 @@ MonoBehaviour:
   cellLayer: {fileID: 8188018611762364318}
   agent: {fileID: 2920586663643542597}
   scenarioName: Test Environment
-  objective: {fileID: 0}
-  rewards: {fileID: 0}
+  objective: {fileID: 11400000, guid: 72b287569bcfc5a448135ab4de7a9610, type: 2}
   size: {x: 17, y: 11}
   generateNew: 0
   layout: {fileID: 11400000, guid: fdc9dee7271b57f4e999890a542635e6, type: 2}
@@ -4142,7 +4141,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &914368882870324562
 GameObject:
   m_ObjectHideFlags: 0
@@ -31570,6 +31569,14 @@ PrefabInstance:
       value: 578
       objectReference: {fileID: 0}
     - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: ui
+      value: 
+      objectReference: {fileID: 723551804065339072}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
+      propertyPath: rewards
+      value: 
+      objectReference: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
+    - target: {fileID: 1879820011453657747, guid: 47f43fbbbaa116c4eb040ceb2cc7309b, type: 3}
       propertyPath: lifetime
       value: 150
       objectReference: {fileID: 0}
@@ -31791,6 +31798,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}
+--- !u!114 &723551804065339072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6390206116149322964, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}
+  m_PrefabInstance: {fileID: 5954884690429325844}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac6f0ffb258dfb4284da86fb1c68467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5645124496814659717 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2086154818951178897, guid: 00ebc0276e6259c43add6fabb52adcb5, type: 3}

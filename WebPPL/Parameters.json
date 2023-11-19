@@ -3,17 +3,32 @@
     {
       "key": "aspirationLow",
       "description": "Minimal total reward",
-      "value": "-100"
+      "value": "-1000"
     },
     {
       "key": "aspirationHigh",
       "description": "Maximal total reward",
-      "value": "100"
+      "value": "1000"
     },
     {
       "key": "entropyPenalty",
       "description": "Unpredictable behavior penalization",
       "value": "1"
+    },
+    {
+      "key": "lavaPenalty",
+      "description": "Penalty for falling into lava",
+      "value": "-50"
+    },
+    {
+      "key": "targetReward",
+      "description": "Reward for reaching the target",
+      "value": "10"
+    },
+    {
+      "key": "timestepPenalty",
+      "description": "Penalty for each timestep elapsed before reaching the target",
+      "value": "-1"
     }
   ]
 }

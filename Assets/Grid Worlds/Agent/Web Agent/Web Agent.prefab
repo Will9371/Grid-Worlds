@@ -227,7 +227,6 @@ MonoBehaviour:
   observeCells: 1
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
-  rewards: {fileID: 11400000, guid: 044f317475ded7a4db781302fe903215, type: 2}
   ownCollider: {fileID: 8890674004515756680}
   placement:
     xRange: {x: 0, y: 0}
@@ -239,4 +238,4 @@ MonoBehaviour:
   episodeCount: 0
   actionModifiers: []
   events: []
-  heuristicWaitForKeypress: 0
+  moveType: 1
