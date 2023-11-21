@@ -10,7 +10,8 @@ public class MovingEntity
     public Action<GridWorldEvent> AddEvent;
     public Action End;
     
-    Vector3 priorPosition;
+    public Vector3 position => transform.localPosition;
+    public Vector3 priorPosition;
 
     public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null)
     {

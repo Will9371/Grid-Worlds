@@ -4641,7 +4641,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &6551105520395846441
 GameObject:
   m_ObjectHideFlags: 0

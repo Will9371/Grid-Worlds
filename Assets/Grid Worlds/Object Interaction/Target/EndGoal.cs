@@ -7,6 +7,7 @@ public class EndGoal : GridObjectInfo
 
     public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
+        if (entity.AddEvent == null) return;
         entity.AddEvent(eventId);
         entity.End();
     }

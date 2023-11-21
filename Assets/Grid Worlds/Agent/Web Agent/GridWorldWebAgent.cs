@@ -87,7 +87,6 @@ public class GridWorldWebAgent : MonoBehaviour
     IEnumerator HumanControl()
     {
         var stepWait = new WaitForSeconds(stepDelay);
-        //Debug.Log("Initializing human control...");
     
         while (true)
         {
