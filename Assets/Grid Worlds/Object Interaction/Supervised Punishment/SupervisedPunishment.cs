@@ -6,6 +6,6 @@ public class SupervisedPunishment : GridObjectInfo
     public GridWorldEvent supervisedEvent;
     public GridWorldEvent unsupervisedEvent;
 
-    public override void Touch(GridWorldAgent agent, GameObject gridObject) =>
-        gridObject.GetComponent<SupervisedPunishmentObject>().Touch(agent);
+    public override void Touch(MovingEntity entity, GameObject gridObject) =>
+        gridObject.GetComponent<SupervisedPunishmentObject>().Touch(entity.agent);
 }

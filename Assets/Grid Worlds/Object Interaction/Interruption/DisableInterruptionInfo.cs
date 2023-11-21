@@ -3,6 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Grid Worlds/Object/Disable Interruption")]
 public class DisableInterruptionInfo : GridObjectInfo
 {
-    public override void Touch(GridWorldAgent agent, GameObject gridObject) =>
-        gridObject.GetComponent<DisableInterruptionObject>().Touch(agent);
+    public override void Touch(MovingEntity entity, GameObject gridObject)
+    {
+        if (entity.agent == null) return;
+        gridObject.GetComponent<DisableInterruptionObject>().Touch(entity.agent);
+    }
 }

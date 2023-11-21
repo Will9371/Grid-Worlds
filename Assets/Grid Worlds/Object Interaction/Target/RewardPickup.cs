@@ -5,9 +5,9 @@ public class RewardPickup : GridObjectInfo
 {
     public GridWorldEvent id;
 
-    public override void Touch(GridWorldAgent agent, GameObject gridObject) 
+    public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
          gridObject.SetActive(false);
-         agent.AddEvent(id);
+         entity.AddEvent(id);
     }
 }

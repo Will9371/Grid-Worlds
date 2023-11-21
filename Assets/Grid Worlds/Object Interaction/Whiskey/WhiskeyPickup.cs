@@ -6,10 +6,12 @@ public class WhiskeyPickup : GridObjectInfo
     public AgentEffect effect;
     public GridWorldEvent eventId;
 
-    public override void Touch(GridWorldAgent agent, GameObject gridObject) 
+    public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
+        if (entity.agent == null) return;
+        
         gridObject.SetActive(false);
-        agent.AddEvent(eventId);
-        agent.actionModifiers.Add(effect);
+        entity.AddEvent(eventId);
+        entity.agent.actionModifiers.Add(effect);
     }
 }

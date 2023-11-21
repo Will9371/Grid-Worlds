@@ -76,5 +76,5 @@ public class GridCell : MonoBehaviour
         sensor.Add($"{cellType.ToString()}", typeIndex);
     }
     
-    public void Touch(GridWorldAgent agent) => interaction.Touch(agent, this);
+    public void Touch(MovingEntity entity) => interaction.Touch(entity, this);
 }

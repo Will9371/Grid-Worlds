@@ -20,6 +20,7 @@ public class GridWorldAgent : MonoBehaviour
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
     [SerializeField] Collider2D ownCollider;
+    MovingEntity body;
 
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;
@@ -60,6 +61,9 @@ public class GridWorldAgent : MonoBehaviour
     void Awake()
     {
         placement.Awake();
+        body = new MovingEntity(transform, ownCollider, this);
+        body.AddEvent = AddEvent;
+        body.End = End;
         
         switch (moveType)
         {
@@ -67,13 +71,16 @@ public class GridWorldAgent : MonoBehaviour
             case AgentMovementType.Direction4 : movement = new AgentMovement4Direction(); break;
         }
         movement.Awake(new DiscretePlacement(transform), actionModifiers);
+        
+        alive = true;
     }
 
     void InitializePositions()
     {
         placement.SetRandomPosition();
         objectLayer.InitializePositions();
-        priorPosition = position;
+        //priorPosition = position;
+        body.SetPriorPosition();
     }
     
     public Action onEpisodeBegin;
@@ -91,6 +98,8 @@ public class GridWorldAgent : MonoBehaviour
         
         episodeCount++;
         onEpisodeBegin?.Invoke();
+        
+        alive = true;
     }
 
     #region I/O
@@ -114,17 +123,9 @@ public class GridWorldAgent : MonoBehaviour
     
     public void AddObservations(AgentObservations sensor) => placement.AddObservations(sensor);
     
-    [HideInInspector] public Vector3 priorPosition;
-    public Vector3 position => transform.localPosition;
-    
     public void OnActionReceived(int[] actions)
     {
-        //var result = "";
-        //foreach (var item in actions)
-        //    result += item.ToString();
-        //Debug.Log($"{result}, {Time.time}");  // OK
-    
-        priorPosition = position;
+        body.SetPriorPosition();
         movement.Move(actions);
 
         stepCount++;
@@ -136,28 +137,12 @@ public class GridWorldAgent : MonoBehaviour
             End();
         }
         
-        var colliders = Physics2D.OverlapCircleAll(transform.position, .1f);
-        foreach (var collider in colliders)
-        {
-            if (collider == ownCollider) continue;
-            OnTouch2D(collider);
-        }
+        body.CheckForColliders();
     }
     
     #endregion
     
     #region Contact & Rewards
-    
-    void OnTouch2D(Collider2D other)
-    {
-        var cell = other.GetComponent<GridCell>();
-        if (cell) cell.Touch(this);
-
-        var gridObject = other.GetComponent<ObjectCollider>();
-        if (gridObject) gridObject.Touch(this);
-    }
-    
-    public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
     
     public Action<GridWorldEvent> onEvent;
     
@@ -168,9 +153,11 @@ public class GridWorldAgent : MonoBehaviour
     }
     
     public Action onEnd;
+    [ReadOnly] public bool alive;
     
     public void End()
     {
+        alive = false;
         environment.EndEpisode(events);
         onEnd?.Invoke();
     }

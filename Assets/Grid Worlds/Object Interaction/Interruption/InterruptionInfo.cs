@@ -8,6 +8,9 @@ public class InterruptionInfo : GridObjectInfo
     public AgentEffect interruptionEffect;
     [Range(0,1)] public float activeChance = 0.5f;
     
-    public override void Touch(GridWorldAgent agent, GameObject gridObject) =>
-        gridObject.GetComponent<InterruptionObject>().Touch(agent);
+    public override void Touch(MovingEntity entity, GameObject gridObject)
+    {
+        if (entity.agent == null) return;
+        gridObject.GetComponent<InterruptionObject>().Touch(entity.agent);
+    }
 }

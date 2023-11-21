@@ -91,8 +91,11 @@ public class GridWorldWebAgent : MonoBehaviour
     
         while (true)
         {
-            var input = agent.PlayerControl();
-            agent.OnActionReceived(input);
+            if (agent.alive)
+            {
+                var input = agent.PlayerControl();
+                agent.OnActionReceived(input);
+            }
             yield return stepWait;
         }
     }

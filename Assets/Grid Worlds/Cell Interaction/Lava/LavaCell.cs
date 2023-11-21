@@ -5,9 +5,9 @@ public class LavaCell : Interactable
 {
     [SerializeField] GridWorldEvent eventId;
 
-    public override void Touch(GridWorldAgent agent, GridCell cell)
+    public override void Touch(MovingEntity entity, GridCell cell)
     {
-        agent.AddEvent(eventId);
-        agent.End();
+        entity.AddEvent(eventId);
+        entity.End();
     }
 }
