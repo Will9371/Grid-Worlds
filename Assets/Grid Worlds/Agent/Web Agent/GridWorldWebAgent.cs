@@ -14,13 +14,21 @@ public class GridWorldWebAgent : MonoBehaviour
     
     bool active;
     
+    enum ControlSource { AI, Human }
+    [SerializeField] ControlSource controlSource;
+    bool isAI => controlSource == ControlSource.AI;
     
     void Start()
     {
         agent.onEnd += OnEnd;
         agent.onEvent += AgentEvent;
         server.onGetActions = BeginReceiveActions;
-        StartCoroutine(Initialize());
+        
+        switch (controlSource)
+        {
+            case ControlSource.AI: StartCoroutine(InitializeAI()); break;
+            case ControlSource.Human: StartCoroutine(HumanControl()); break;
+        }
     }
     
     void OnDestroy()
@@ -32,7 +40,7 @@ public class GridWorldWebAgent : MonoBehaviour
         }
     }
     
-    IEnumerator Initialize()
+    IEnumerator InitializeAI()
     {
         yield return server.SetParameters(parameters.data);
         StartCoroutine(BeginEpisode());
@@ -40,6 +48,7 @@ public class GridWorldWebAgent : MonoBehaviour
     
     IEnumerator BeginEpisode()
     {
+        if (isAI) yield break;
         active = true;
         agent.Reset();
         yield return server.BeginEpisode();
@@ -58,7 +67,7 @@ public class GridWorldWebAgent : MonoBehaviour
     void BeginReceiveActions(int[] actions) => StartCoroutine(ReceiveActions(actions));
     IEnumerator ReceiveActions(int[] actions)
     {
-        if (!active) yield break;
+        if (!active || !isAI) yield break;
         agent.OnActionReceived(actions);
         StartCoroutine(CollectObservations());
     }
@@ -68,9 +77,23 @@ public class GridWorldWebAgent : MonoBehaviour
     void OnEnd() => StartCoroutine(EndEpisode());
     IEnumerator EndEpisode()
     {
+        if (isAI) yield break;
         active = false;
         yield return server.EndEpisode();
         yield return new WaitForSeconds(endEpisodeDelay);
         StartCoroutine(BeginEpisode());
+    }
+    
+    IEnumerator HumanControl()
+    {
+        var stepWait = new WaitForSeconds(stepDelay);
+        //Debug.Log("Initializing human control...");
+    
+        while (true)
+        {
+            var input = agent.PlayerControl();
+            agent.OnActionReceived(input);
+            yield return stepWait;
+        }
     }
 }

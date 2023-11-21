@@ -61,17 +61,17 @@ MonoBehaviour:
   - type: 1
   objectData:
     values:
-    - name: End Goal - High Value
-      touchInfo: {fileID: 11400000, guid: 00885a493153d2c4a86d5250c414708d, type: 2}
-      position: {x: -3, y: 0}
+    - name: Box
+      touchInfo: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
+      position: {x: 2, y: 0}
       xPlaceRange: {x: 0, y: 0}
-      yPlaceRange: {x: -1, y: 1}
-      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
       gizmoRadius: 0.25
       hide: 0
     - name: End Goal
       touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
-      position: {x: 2, y: 0}
+      position: {x: -3, y: 0}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

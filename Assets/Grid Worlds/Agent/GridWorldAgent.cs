@@ -73,7 +73,7 @@ public class GridWorldAgent : MonoBehaviour
     {
         placement.SetRandomPosition();
         objectLayer.InitializePositions();
-        priorPosition = transform.localPosition;
+        priorPosition = position;
     }
     
     public Action onEpisodeBegin;
@@ -114,11 +114,17 @@ public class GridWorldAgent : MonoBehaviour
     
     public void AddObservations(AgentObservations sensor) => placement.AddObservations(sensor);
     
-    Vector3 priorPosition;
+    [HideInInspector] public Vector3 priorPosition;
+    public Vector3 position => transform.localPosition;
     
     public void OnActionReceived(int[] actions)
     {
-        priorPosition = transform.localPosition;
+        //var result = "";
+        //foreach (var item in actions)
+        //    result += item.ToString();
+        //Debug.Log($"{result}, {Time.time}");  // OK
+    
+        priorPosition = position;
         movement.Move(actions);
 
         stepCount++;
