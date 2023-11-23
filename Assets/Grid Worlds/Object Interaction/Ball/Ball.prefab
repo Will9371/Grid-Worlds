@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &703756816452866935
+--- !u!1 &1149868158789818340
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2095871599731338092}
-  - component: {fileID: 6611050179440247378}
-  - component: {fileID: 5463206751952732192}
-  - component: {fileID: 7199800460336226266}
+  - component: {fileID: 8900943277740674417}
+  - component: {fileID: 3446250995029634718}
+  - component: {fileID: 1262063954056992424}
+  - component: {fileID: 3754393995935762165}
   m_Layer: 0
-  m_Name: 
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2095871599731338092
+--- !u!4 &8900943277740674417
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703756816452866935}
+  m_GameObject: {fileID: 1149868158789818340}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3854310863368999013}
+  - {fileID: 269072363031886250}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &6611050179440247378
+--- !u!50 &3446250995029634718
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703756816452866935}
+  m_GameObject: {fileID: 1149868158789818340}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -62,63 +62,63 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5463206751952732192
+--- !u!114 &1262063954056992424
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703756816452866935}
+  m_GameObject: {fileID: 1149868158789818340}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12e4c5e10aaa210469974fe8894ebb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  setNameFromInfo: 1
-  info: {fileID: 0}
+  name: Ball
+  setNameFromInfo: 0
+  info: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}
   editPosition:
     watch: 1
     refreshRate: 0.1
   xRange: {x: 0, y: 0}
   yRange: {x: 0, y: 0}
   overrideColor: 0
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   gizmoRadius: 0.25
-  colliderInterface: {fileID: 4220639896643574837}
-  rend: {fileID: 5078810699761503014}
+  colliderInterface: {fileID: 5214798792330397417}
+  rend: {fileID: 4063605448959152614}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: 0, y: 0}
-    transform: {fileID: 2095871599731338092}
-    gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    center: {x: 2, y: 0}
+    transform: {fileID: 8900943277740674417}
+    gizmoColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     gizmoRadius: 0.25
   data:
-    name: 
-    touchInfo: {fileID: 0}
-    position: {x: 0, y: 0}
+    name: Ball
+    touchInfo: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}
+    position: {x: 2, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
     gizmoRadius: 0.25
     hide: 0
---- !u!114 &7199800460336226266
+--- !u!114 &3754393995935762165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703756816452866935}
+  m_GameObject: {fileID: 1149868158789818340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c2a2943eaac474e830327072d53323, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a08c3a44e3995b4892e2fe16e4edd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
-  agent: {fileID: 0}
-  active: 0
---- !u!1 &4401902427787872296
+  root: {fileID: 8900943277740674417}
+  collider: {fileID: 2290415160634620351}
+  lightweight: 1
+--- !u!1 &9181592253965603360
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,10 +126,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3854310863368999013}
-  - component: {fileID: 5078810699761503014}
-  - component: {fileID: 71918268653461487}
-  - component: {fileID: 4220639896643574837}
+  - component: {fileID: 269072363031886250}
+  - component: {fileID: 4063605448959152614}
+  - component: {fileID: 2290415160634620351}
+  - component: {fileID: 5214798792330397417}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -137,28 +137,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3854310863368999013
+--- !u!4 &269072363031886250
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4401902427787872296}
+  m_GameObject: {fileID: 9181592253965603360}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2095871599731338092}
+  m_Father: {fileID: 8900943277740674417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5078810699761503014
+--- !u!212 &4063605448959152614
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4401902427787872296}
+  m_GameObject: {fileID: 9181592253965603360}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -193,8 +193,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 60fd65b9b3329f948aeac15a981622b8, type: 3}
+  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -204,13 +204,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &71918268653461487
+--- !u!61 &2290415160634620351
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4401902427787872296}
+  m_GameObject: {fileID: 9181592253965603360}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -240,7 +240,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -249,16 +249,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &4220639896643574837
+--- !u!114 &5214798792330397417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4401902427787872296}
+  m_GameObject: {fileID: 9181592253965603360}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4a9ac472764c2849984b0a70d36fb9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  info: {fileID: 0}
+  info: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}

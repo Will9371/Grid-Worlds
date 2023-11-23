@@ -3,18 +3,26 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Grid Worlds/Object/Box")]
 public class PushableBox : GridObjectInfo
 {
-    public override void Touch(MovingEntity entity, GameObject gridObject) 
+    public override void Touch(MovingEntity source, GameObject self) 
     {
-        var box = gridObject.GetComponent<MovingEntityMono>();
-        if (!box) return;
+        var pushable = self.GetComponent<MovingEntityMono>();
+        if (!pushable) return;
         
-        box.process.SetPriorPosition();
-        var movement = (entity.position - entity.priorPosition).normalized;
-        gridObject.transform.localPosition += movement;
+        pushable.process.SetPriorPosition();
         
-        box.process.CheckForColliders();
+        if (!source.lightweight) 
+        {
+            var movement = (source.position - source.priorPosition).normalized;
+            self.transform.localPosition += movement;
+        }
         
-        if (box.process.priorPosition == box.process.position)
-            entity.ReturnToPriorPosition();
+        pushable.process.CheckForColliders();
+        
+        if (pushable.process.priorPosition == pushable.process.position)
+            source.ReturnToPriorPosition();
+        else
+            Success(source, self);
     }
+    
+    protected virtual void Success(MovingEntity source, GameObject self) { }
 }

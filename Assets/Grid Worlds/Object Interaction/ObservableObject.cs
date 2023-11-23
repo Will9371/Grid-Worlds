@@ -1,10 +1,7 @@
-//using Unity.MLAgents.Sensors;
+// Consider deprecation
 
 public interface IObservableObject
 {
     int observationCount { get; }
-    
-    /// DEPRECATE
-    //void AddObservations(VectorSensor sensor);
     void AddObservations(AgentObservations observations);
 }

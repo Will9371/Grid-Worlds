@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c4154d40c9e424382b177a2fe96731, type: 3}
-  m_Name: Reward Pickup
+  m_Script: {fileID: 11500000, guid: 429e26e51e9774f4981e3bac7d06344a, type: 3}
+  m_Name: Ball
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7520592589302154403, guid: 40fbe7a7aa4588441a80701bcbb71b8b, type: 3}
-  solid: 1
-  destructible: 0
-  id: {fileID: 0}
+  prefab: {fileID: 1149868158789818340, guid: e847c08f3de9e704daab3edac1a56a83, type: 3}
+  solid: 0
+  destructible: 1
+  rollChance: 1

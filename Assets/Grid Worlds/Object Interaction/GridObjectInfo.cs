@@ -4,12 +4,12 @@ public class GridObjectInfo : ScriptableObject
 {
     public GameObject prefab;
     
-    public bool solidInteractable;
+    public bool solid;
     public bool destructible;
     
-    public virtual void Touch(MovingEntity entity, GameObject gridObject) 
+    public virtual void Touch(MovingEntity source, GameObject self) 
     {
-        if (solidInteractable && !entity.agent)
-            entity.ReturnToPriorPosition();
+        if (solid && !source.agent)
+            source.ReturnToPriorPosition();
     }
 }

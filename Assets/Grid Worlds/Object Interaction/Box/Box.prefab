@@ -82,7 +82,7 @@ MonoBehaviour:
     refreshRate: 0.1
   xRange: {x: 0, y: 0}
   yRange: {x: 0, y: 0}
-  useSprite: 0
+  overrideColor: 0
   color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
   gizmoRadius: 0.25
   colliderInterface: {fileID: 5214798792330397417}
@@ -117,21 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 8900943277740674417}
   collider: {fileID: 2290415160634620351}
-  onEnd:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1149868158789818340}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  lightweight: 0
 --- !u!1 &9181592253965603360
 GameObject:
   m_ObjectHideFlags: 0
@@ -208,7 +194,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e56a23f72b0f2a54492b5e8c5a95f0c3, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

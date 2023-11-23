@@ -6,18 +6,20 @@ public class MovingEntity
     public Transform transform;
     public Collider2D collider;
     public GridWorldAgent agent;
-    
+    public bool lightweight;
+
     public Action<GridWorldEvent> AddEvent;
     public Action End;
     
     public Vector3 position => transform.localPosition;
     public Vector3 priorPosition;
 
-    public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null)
+    public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null, bool lightweight = false)
     {
         this.transform = transform;
         this.collider = collider;
         this.agent = agent;
+        this.lightweight = lightweight;
     }
 
     public void CheckForColliders()

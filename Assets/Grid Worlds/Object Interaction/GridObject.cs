@@ -14,7 +14,7 @@ public class GridObject : MonoBehaviour
     public Vector2 xRange;
     [VectorLabels("Min", "Max")]
     public Vector2 yRange;
-    [SerializeField] bool useSprite;
+    [SerializeField] bool overrideColor;
     public Color color = Color.yellow;
     [Range(0, 1)] public float gizmoRadius = 0.25f;
     
@@ -50,7 +50,7 @@ public class GridObject : MonoBehaviour
         positioner.transform = transform;
         
         if (!rend) rend = transform.GetChild(0).GetComponent<SpriteRenderer>();
-        rend.color = rend.sprite ? Color.white : data.color;
+        if (!overrideColor) rend.color = data.color;
 
         data = new GridObjectData(this);
         observable = GetComponent<IObservableObject>(); 
@@ -76,7 +76,7 @@ public class GridObject : MonoBehaviour
         positioner.yRange = data.yPlaceRange;
         positioner.gizmoRadius = data.gizmoRadius;
         positioner.gizmoColor = data.color;
-        rend.color = useSprite ? Color.white : data.color;
+        if (!overrideColor) rend.color = data.color;
     }
     
     public void SetRandomPosition() => positioner.SetRandomPosition();
