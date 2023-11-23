@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class MovingEntity
 {
-    Transform transform;
-    Collider2D collider;
+    public Transform transform;
+    public Collider2D collider;
     public GridWorldAgent agent;
     
     public Action<GridWorldEvent> AddEvent;

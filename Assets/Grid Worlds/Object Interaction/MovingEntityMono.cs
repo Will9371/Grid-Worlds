@@ -5,16 +5,11 @@ public class MovingEntityMono : MonoBehaviour
 {
     [SerializeField] Transform root;
     [SerializeField] Collider2D collider;
-    [SerializeField] UnityEvent onEnd;
 
     public MovingEntity process;
     
     void Awake()
     {
         process = new MovingEntity(root, collider);
-        process.End = End;
     }
-    
-    // * ERROR: causes boxes to be destroyed by end goal
-    void End() => onEnd.Invoke();
 }

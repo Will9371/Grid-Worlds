@@ -10,6 +10,8 @@ public class LavaCell : Interactable
         entity.AddEvent?.Invoke(eventId);
         entity.End?.Invoke();
         
-        // Move destroy here
+        var gridObject = entity.transform.GetComponent<GridObject>();
+        if (gridObject && gridObject.info.destructible)
+            gridObject.gameObject.SetActive(false);
     }
 }

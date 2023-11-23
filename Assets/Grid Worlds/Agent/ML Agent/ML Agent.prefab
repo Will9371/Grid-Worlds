@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.72825956, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: aec084585ac7e6f419b619d59ce9c1b4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.8, y: 0.8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -242,9 +242,11 @@ MonoBehaviour:
   MaxStep: 0
   gridWorldAgent: {fileID: 691350218699962029}
   behavior: {fileID: 1798411977214008093}
+  ui: {fileID: 0}
   speed: 5
   endDelay: 3
   startDelay: 2
+  rewards: {fileID: 0}
 --- !u!114 &691350218699962029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,17 +265,16 @@ MonoBehaviour:
   observeCells: 1
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   objectLayer: {fileID: 0}
-  rewards: {fileID: 11400000, guid: 5823ca29148417949b342cf8a293efff, type: 2}
   ownCollider: {fileID: 1798411976634256727}
   placement:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
     center: {x: 0, y: 0}
     transform: {fileID: 1798411977214008090}
-    gizmoColor: {r: 0, g: 0.6692562, b: 1, a: 1}
+    gizmoColor: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
   episodeCount: 0
   actionModifiers: []
   events: []
-  waitForUpdate: 0
-  heuristicWaitForKeypress: 0
+  alive: 0
+  moveType: 0
