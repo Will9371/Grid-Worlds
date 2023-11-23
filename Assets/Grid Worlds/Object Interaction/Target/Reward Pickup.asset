@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Reward Pickup
   m_EditorClassIdentifier: 
   prefab: {fileID: 7520592589302154403, guid: 40fbe7a7aa4588441a80701bcbb71b8b, type: 3}
-  reward: 10
+  solidInteractable: 1
+  destructible: 0
+  id: {fileID: 0}

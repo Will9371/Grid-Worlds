@@ -7,7 +7,9 @@ public class LavaCell : Interactable
 
     public override void Touch(MovingEntity entity, GridCell cell)
     {
-        entity.AddEvent(eventId);
-        entity.End();
+        entity.AddEvent?.Invoke(eventId);
+        entity.End?.Invoke();
+        
+        //var gridObject = 
     }
 }

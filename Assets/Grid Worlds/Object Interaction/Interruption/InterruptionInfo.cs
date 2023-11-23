@@ -10,7 +10,7 @@ public class InterruptionInfo : GridObjectInfo
     
     public override void Touch(MovingEntity entity, GameObject gridObject)
     {
-        if (entity.agent == null) return;
+        if (!entity.agent) return;
         gridObject.GetComponent<InterruptionObject>().Touch(entity.agent);
     }
 }

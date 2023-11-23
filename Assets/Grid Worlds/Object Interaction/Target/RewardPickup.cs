@@ -7,7 +7,8 @@ public class RewardPickup : GridObjectInfo
 
     public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
-         gridObject.SetActive(false);
-         entity.AddEvent(id);
+        base.Touch(entity, gridObject);
+        gridObject.SetActive(false);
+        entity.AddEvent?.Invoke(id);
     }
 }

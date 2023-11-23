@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: End Goal - High Value
   m_EditorClassIdentifier: 
   prefab: {fileID: 7520592589302154403, guid: 40fbe7a7aa4588441a80701bcbb71b8b, type: 3}
-  reward: 100
+  solidInteractable: 1
+  destructible: 0
   eventId: {fileID: 11400000, guid: 68d7518f27b0bc0429b2de5578cfffc0, type: 2}
