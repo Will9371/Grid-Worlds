@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aec084585ac7e6f419b619d59ce9c1b4, type: 3}
   m_Color: {r: 0, g: 0.72825956, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.8, y: 0.8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   stepDelay: 0.25
   beginEpisodeDelay: 0.5
   endEpisodeDelay: 0.5
+  controlSource: 0
 --- !u!114 &2152504354443961272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,9 +234,10 @@ MonoBehaviour:
     yRange: {x: 0, y: 0}
     center: {x: 0, y: 0}
     transform: {fileID: 7526238815045591020}
-    gizmoColor: {r: 0, g: 0.6692562, b: 1, a: 1}
+    gizmoColor: {r: 0, g: 0.7646501, b: 1, a: 1}
     gizmoRadius: 0.25
   episodeCount: 0
   actionModifiers: []
   events: []
+  alive: 0
   moveType: 1

@@ -27,16 +27,19 @@ MonoBehaviour:
   cellSettings:
   - id: 0
     color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
     hasCollider: 0
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 1
   - id: 1
-    color: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: 21300000, guid: fc0003707961cd247bc5c6654d091b8f, type: 3}
     hasCollider: 1
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 0
   - id: 2
-    color: {r: 1, g: 0, b: 0, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: 21300000, guid: 5aa9473bfa36af047a7d265200ae38ce, type: 3}
     hasCollider: 1
     rewardOnTouch: -10
     displayResultColorOnEpisodeEnd: 0

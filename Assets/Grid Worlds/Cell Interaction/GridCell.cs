@@ -65,6 +65,7 @@ public class GridCell : MonoBehaviour
         displayLastResult.enabled = cellSettings.displayResultColorOnEpisodeEnd;
         boxCollider.enabled = cellSettings.hasCollider;
         rend.color = cellSettings.color;
+        rend.sprite = cellSettings.sprite;
     }
 
     public void Initialize() => SetData(cellType); 

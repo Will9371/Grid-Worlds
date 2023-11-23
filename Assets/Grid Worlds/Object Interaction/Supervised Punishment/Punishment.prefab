@@ -82,6 +82,7 @@ MonoBehaviour:
     refreshRate: 0.1
   xRange: {x: 0, y: 0}
   yRange: {x: 0, y: 0}
+  useSprite: 0
   color: {r: 0.49278098, g: 0.015686274, b: 1, a: 1}
   gizmoRadius: 0.25
   colliderInterface: {fileID: 7788527070902407117}
@@ -192,7 +193,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.49278098, g: 0.015686274, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

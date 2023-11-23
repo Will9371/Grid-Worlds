@@ -9,7 +9,7 @@ public class GridObjectInfo : ScriptableObject
     
     public virtual void Touch(MovingEntity entity, GameObject gridObject) 
     {
-        if (solidInteractable)
+        if (solidInteractable && !entity.agent)
             entity.ReturnToPriorPosition();
     }
 }

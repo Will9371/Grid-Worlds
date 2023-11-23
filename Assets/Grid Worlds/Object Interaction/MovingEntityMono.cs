@@ -15,5 +15,6 @@ public class MovingEntityMono : MonoBehaviour
         process.End = End;
     }
     
+    // * ERROR: causes boxes to be destroyed by end goal
     void End() => onEnd.Invoke();
 }

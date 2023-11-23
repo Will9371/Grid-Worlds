@@ -84,6 +84,7 @@ public struct GridCellSettings
 {
 	public GridCellType id;
 	public Color color;
+	public Sprite sprite;
 	public bool hasCollider;
 	public float rewardOnTouch;
 	public bool displayResultColorOnEpisodeEnd;
