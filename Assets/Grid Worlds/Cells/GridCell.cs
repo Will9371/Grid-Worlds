@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GridCellType { Empty, Wall, Lava }
+public enum GridCellType { Empty, Wall, Lava, Ice }
 
 public class GridCell : MonoBehaviour
 {

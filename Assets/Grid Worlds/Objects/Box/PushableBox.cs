@@ -19,7 +19,10 @@ public class PushableBox : GridObjectInfo
         pushable.process.CheckForColliders();
         
         if (pushable.process.priorPosition == pushable.process.position)
+        {
+            Debug.Log("Resist");
             source.ReturnToPriorPosition();
+        }
         else
             Success(source, self);
     }

@@ -337,9 +337,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1189818092456889134, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322673989519867277, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: toggle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2563385353363194766, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: m_Enabled
@@ -409,6 +421,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WebPPL Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 7174779434998095160, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
     - target: {fileID: 7377385470701428667, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: m_LocalPosition.y
       value: -2

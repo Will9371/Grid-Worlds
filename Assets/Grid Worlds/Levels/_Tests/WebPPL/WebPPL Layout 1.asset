@@ -41,6 +41,19 @@ MonoBehaviour:
   - type: 0
   - type: 1
   - type: 1
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
   - type: 2
   - type: 0
   - type: 0
@@ -54,19 +67,6 @@ MonoBehaviour:
   - type: 0
   - type: 1
   - type: 1
-  - type: 2
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
   - type: 0
   - type: 0
   - type: 0
@@ -93,22 +93,9 @@ MonoBehaviour:
   - type: 0
   - type: 1
   - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
+  - type: 3
+  - type: 3
+  - type: 3
   - type: 0
   - type: 0
   - type: 0
@@ -119,9 +106,22 @@ MonoBehaviour:
   - type: 0
   - type: 1
   - type: 1
+  - type: 3
+  - type: 3
+  - type: 3
   - type: 0
   - type: 0
   - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 3
+  - type: 3
+  - type: 3
   - type: 0
   - type: 0
   - type: 0
@@ -146,9 +146,33 @@ MonoBehaviour:
   - type: 1
   objectData:
     values:
+    - name: Ball
+      touchInfo: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}
+      position: {x: -2, y: 1}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
     - name: Box
       touchInfo: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
       position: {x: 2, y: 0}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: Box
+      touchInfo: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
+      position: {x: 2, y: 3}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: Box
+      touchInfo: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
+      position: {x: 4, y: 1}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}

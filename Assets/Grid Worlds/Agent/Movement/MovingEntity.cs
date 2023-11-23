@@ -22,6 +22,8 @@ public class MovingEntity
         this.lightweight = lightweight;
     }
 
+    // * Consider reversing this so it checks whether movement is available
+    // Rather than assuming movement and sometimes sending the agent back
     public void CheckForColliders()
     {
         var others = Physics2D.OverlapCircleAll(transform.position, .1f);

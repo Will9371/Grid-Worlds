@@ -47,6 +47,7 @@ public class Lookup : ScriptableObject
     
 	public float GetReward(GridCellType id) => GetGridCellSettings(id).rewardOnTouch;
 	
+	// * Condense with GridCellType
 	public Interactable[] interactables;
 
 	public Interactable GetInteractable(GridCellType cellType)
