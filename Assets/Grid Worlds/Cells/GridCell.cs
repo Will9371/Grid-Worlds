@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GridCellType { Empty, Wall, Lava, Ice }
+public enum GridCellType { Empty, Wall, Lava, Ice, ActivatedWall }
 
 public class GridCell : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class GridCell : MonoBehaviour
     {
         get
         {
-            if (_displayLastResult == null)
+            if (!_displayLastResult)
                 _displayLastResult = GetComponent<DisplayLastResult>();
             return _displayLastResult;
         }
@@ -21,7 +21,7 @@ public class GridCell : MonoBehaviour
     {
          get
          {
-            if (_boxCollider == null)
+            if (!_boxCollider)
                 _boxCollider = GetComponent<BoxCollider2D>();
                 
             return _boxCollider;
@@ -32,7 +32,7 @@ public class GridCell : MonoBehaviour
     {
         get
         {
-            if (_rend == null)
+            if (!_rend)
                 _rend = GetComponent<SpriteRenderer>();
             return _rend;
         }
@@ -43,7 +43,7 @@ public class GridCell : MonoBehaviour
     [Header("Settings")]
     public GridCellType cellType;
     [HideInInspector]
-    public Interactable interaction;
+    public GridCellInfo interaction;
     
     GridCellSettings cellSettings;
     
@@ -78,4 +78,9 @@ public class GridCell : MonoBehaviour
     }
     
     public void Touch(MovingEntity entity) => interaction.Touch(entity, this);
+    public void Exit() => interaction.Exit(this);
+    
+    GridCellType startType;
+    void Awake() => startType = cellType;
+    public void BeginEpisode() => SetData(startType);
 }

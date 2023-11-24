@@ -78,4 +78,10 @@ public class CellLayer : MonoBehaviour
         yield return null;
         DestroyImmediate(value);
     }
+    
+    public void BeginEpisode()
+    {
+        foreach (var cell in cells)
+            cell.BeginEpisode();
+    }
 }

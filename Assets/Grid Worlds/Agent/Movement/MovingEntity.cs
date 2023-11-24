@@ -21,9 +21,7 @@ public class MovingEntity
         this.agent = agent;
         this.lightweight = lightweight;
     }
-
-    // * Consider reversing this so it checks whether movement is available
-    // Rather than assuming movement and sometimes sending the agent back
+    
     public void CheckForColliders()
     {
         var others = Physics2D.OverlapCircleAll(transform.position, .1f);
@@ -45,4 +43,17 @@ public class MovingEntity
     
     public void SetPriorPosition() => priorPosition = transform.localPosition;
     public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
+    public bool AtPriorPosition() => priorPosition == transform.position;
+    
+    public void RequestLeaveCell()
+    {
+        if (AtPriorPosition()) return;
+        var others = Physics2D.OverlapCircleAll(priorPosition, .1f);
+        foreach (var other in others)
+        {
+            var cell = other.GetComponent<GridCell>();
+            if (!cell) continue;
+            cell.Exit();
+        }
+    }
 }

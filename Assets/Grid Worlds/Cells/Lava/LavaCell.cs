@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Grid Worlds/Cell/Fire")]
-public class LavaCell : Interactable
+public class LavaCell : GridCellInfo
 {
     [SerializeField] GridWorldEvent eventId;
 

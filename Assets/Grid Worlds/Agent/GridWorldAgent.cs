@@ -94,6 +94,7 @@ public class GridWorldAgent : MonoBehaviour
         movement.ClearCache();
         
         InitializePositions();
+        environment.BeginEpisode();
         
         episodeCount++;
         onEpisodeBegin?.Invoke();
@@ -137,6 +138,7 @@ public class GridWorldAgent : MonoBehaviour
         }
         
         body.CheckForColliders();
+        body.RequestLeaveCell();
     }
     
     #endregion

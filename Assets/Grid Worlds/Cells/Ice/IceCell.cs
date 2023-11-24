@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Grid Worlds/Cell/Ice")]
-public class IceCell : Interactable
+public class IceCell : GridCellInfo
 {
     [SerializeField, Range(0, 1)] float slideChance = 0.5f;
 

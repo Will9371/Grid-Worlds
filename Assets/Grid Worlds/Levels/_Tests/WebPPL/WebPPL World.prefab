@@ -2045,8 +2045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
-  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+  cellType: 4
+  interaction: {fileID: 11400000, guid: d8cbdee44ee98b34e97feb373898fc2b, type: 2}
 --- !u!212 &1528286817629269224
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2088,7 +2088,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e5bf98f792336c4cb5dd6360844d682, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092177290421928669}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -2118,7 +2118,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1092177290421928669}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -8596,8 +8596,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
-  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+  cellType: 4
+  interaction: {fileID: 11400000, guid: d8cbdee44ee98b34e97feb373898fc2b, type: 2}
 --- !u!212 &6720481553921510751
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8639,7 +8639,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e5bf98f792336c4cb5dd6360844d682, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -8657,7 +8657,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4677870854859784399}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -8669,7 +8669,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4677870854859784399}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -14346,8 +14346,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 0
-  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+  cellType: 4
+  interaction: {fileID: 11400000, guid: d8cbdee44ee98b34e97feb373898fc2b, type: 2}
 --- !u!212 &4443617236957296661
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14389,7 +14389,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e5bf98f792336c4cb5dd6360844d682, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14407,7 +14407,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6745148331930824732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -14419,7 +14419,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6745148331930824732}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
