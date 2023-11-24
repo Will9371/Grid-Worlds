@@ -20,7 +20,7 @@ public class GridWorldAgent : MonoBehaviour
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
     [SerializeField] Collider2D ownCollider;
-    MovingEntity body;
+    public MovingEntity body;
 
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;

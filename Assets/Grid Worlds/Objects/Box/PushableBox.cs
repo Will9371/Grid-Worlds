@@ -17,14 +17,18 @@ public class PushableBox : GridObjectInfo
         }
         
         pushable.process.CheckForColliders();
+        source.ReturnToPriorPosition();
         
-        if (pushable.process.priorPosition == pushable.process.position)
+        if (pushable.process.priorPosition != pushable.process.position)
+            Success(source, self);
+        
+        /*if (pushable.process.priorPosition == pushable.process.position)
         {
-            Debug.Log("Resist");
             source.ReturnToPriorPosition();
         }
         else
             Success(source, self);
+            */
     }
     
     protected virtual void Success(MovingEntity source, GameObject self) { }
