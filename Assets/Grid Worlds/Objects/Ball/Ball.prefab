@@ -82,25 +82,25 @@ MonoBehaviour:
     refreshRate: 0.1
   xRange: {x: 0, y: 0}
   yRange: {x: 0, y: 0}
-  overrideColor: 0
-  color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  overrideColor: 1
+  color: {r: 1, g: 1, b: 1, a: 1}
   gizmoRadius: 0.25
   colliderInterface: {fileID: 5214798792330397417}
   rend: {fileID: 4063605448959152614}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: 2, y: 0}
+    center: {x: -2, y: 1}
     transform: {fileID: 8900943277740674417}
-    gizmoColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+    gizmoColor: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
   data:
     name: Ball
     touchInfo: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}
-    position: {x: 2, y: 0}
+    position: {x: -2, y: 1}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
-    color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
     hide: 0
 --- !u!114 &3754393995935762165
@@ -193,8 +193,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 60fd65b9b3329f948aeac15a981622b8, type: 3}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 4025f9b68032fc6449bd5fb99e4d4ce8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

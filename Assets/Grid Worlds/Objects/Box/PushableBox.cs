@@ -10,26 +10,29 @@ public class PushableBox : GridObjectInfo
         
         pushable.process.SetPriorPosition();
         
+        var movement = Vector3.zero;
         if (!source.lightweight) 
         {
-            var movement = (source.position - source.priorPosition).normalized;
-            self.transform.localPosition += movement;
+            movement = (source.position - source.priorPosition).normalized;
+            pushable.process.position += movement;
         }
         
         pushable.process.CheckForColliders();
         source.ReturnToPriorPosition();
         
         if (pushable.process.priorPosition != pushable.process.position)
-            Success(source, self);
-        
-        /*if (pushable.process.priorPosition == pushable.process.position)
-        {
-            source.ReturnToPriorPosition();
-        }
-        else
-            Success(source, self);
-            */
+            Success(this, pushable.process, movement);
     }
     
-    protected virtual void Success(MovingEntity source, GameObject self) { }
+    public void Touch(PushableBox info, MovingEntity instance, Vector3 movement) 
+    {
+        instance.SetPriorPosition();
+        instance.position += movement;
+        instance.CheckForColliders();
+        
+        if (instance.priorPosition != instance.position)
+            Success(info, instance, movement);
+    }
+    
+    protected virtual void Success(PushableBox info, MovingEntity instance, Vector3 movement) { }
 }
