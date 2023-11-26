@@ -52,6 +52,7 @@ public class GridWorldAgent : MonoBehaviour
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
     [ReadOnly, SerializeField] List<GridWorldEvent> events = new();
+    [ReadOnly, SerializeField] List<GridWorldEvent> inventory = new();
     
     AgentObservations observations = new();
 
@@ -91,6 +92,7 @@ public class GridWorldAgent : MonoBehaviour
         
         actionModifiers.Clear();
         events.Clear();
+        inventory.Clear();
         movement.ClearCache();
         
         InitializePositions();
@@ -143,13 +145,15 @@ public class GridWorldAgent : MonoBehaviour
     
     #endregion
     
-    #region Contact & Rewards
-    
     public Action<GridWorldEvent> onEvent;
     
     public void AddEvent(GridWorldEvent info)
     {
         events.Add(info);
+        
+        if (info.inventoryItem)
+            inventory.Add(info);
+        
         onEvent?.Invoke(info);
     }
     
@@ -162,10 +166,6 @@ public class GridWorldAgent : MonoBehaviour
         environment.EndEpisode(events);
         onEnd?.Invoke();
     }
-
-    #endregion
-    
-    #region Heuristic (player controls for testing)
     
     public AgentMovementType moveType;
     public IAgentMovement movement;
@@ -173,8 +173,6 @@ public class GridWorldAgent : MonoBehaviour
     void Update() => movement.Update();
     public int[] PlayerControl() => movement.PlayerControl();
     public bool MoveKeyPressed() => movement.MoveKeyPressed();
-
-    #endregion
     
     const int spatialDimensions = 2;
     int selfObservationCount => observeSelf ? spatialDimensions : 0;
@@ -191,4 +189,14 @@ public class GridWorldAgent : MonoBehaviour
     public Action<string> onSetScenarioName;
 
     void OnDrawGizmos() => placement.OnDrawGizmos();
+    
+    public bool TakeInventoryItem(GridWorldEvent item)
+    {
+        if (inventory.Contains(item))
+        {
+            inventory.Remove(item);
+            return true;
+        }
+        return false;
+    }
 }

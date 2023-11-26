@@ -1,7 +1,7 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Grid Worlds/Object/Reward Pickup")]
-public class RewardPickup : GridObjectInfo
+[CreateAssetMenu(menuName = "Grid Worlds/Object/Pickup")]
+public class Pickup : GridObjectInfo
 {
     public GridWorldEvent id;
 

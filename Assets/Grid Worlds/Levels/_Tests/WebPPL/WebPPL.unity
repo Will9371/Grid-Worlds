@@ -329,6 +329,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WebPPL Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 6801109226352202524, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

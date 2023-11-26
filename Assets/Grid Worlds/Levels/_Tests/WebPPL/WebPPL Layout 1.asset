@@ -31,38 +31,38 @@ MonoBehaviour:
   - type: 2
   - type: 2
   - type: 2
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
   - type: 2
   - type: 0
   - type: 0
   - type: 0
   - type: 0
+  - type: 4
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
   - type: 0
   - type: 0
   - type: 0
   - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 4
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 2
+  - type: 2
+  - type: 2
+  - type: 2
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 0
+  - type: 4
   - type: 0
   - type: 0
   - type: 1
@@ -95,10 +95,23 @@ MonoBehaviour:
   - type: 1
   - type: 3
   - type: 3
+  - type: 0
+  - type: 3
+  - type: 3
   - type: 3
   - type: 0
   - type: 0
   - type: 0
+  - type: 0
+  - type: 0
+  - type: 1
+  - type: 1
+  - type: 3
+  - type: 3
+  - type: 0
+  - type: 3
+  - type: 3
+  - type: 3
   - type: 0
   - type: 0
   - type: 0
@@ -109,22 +122,9 @@ MonoBehaviour:
   - type: 3
   - type: 3
   - type: 3
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 0
-  - type: 1
-  - type: 1
   - type: 3
   - type: 3
   - type: 3
-  - type: 0
-  - type: 0
-  - type: 0
   - type: 0
   - type: 0
   - type: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
       position: {x: -2, y: 1}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
-      color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+      color: {r: 1, g: 1, b: 1, a: 1}
       gizmoRadius: 0.25
       hide: 0
     - name: Box
@@ -181,6 +181,22 @@ MonoBehaviour:
     - name: End Goal
       touchInfo: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
       position: {x: -4, y: -2}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: Key
+      touchInfo: {fileID: 11400000, guid: 2681e28457902fd45a2ce5437e2e4ad1, type: 2}
+      position: {x: 4, y: -2}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: Key
+      touchInfo: {fileID: 11400000, guid: 2681e28457902fd45a2ce5437e2e4ad1, type: 2}
+      position: {x: 5, y: -2}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

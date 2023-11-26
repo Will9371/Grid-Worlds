@@ -11,6 +11,8 @@ public class PushableBox : GridObjectInfo
         pushable.process.SetPriorPosition();
         
         var movement = Vector3.zero;
+        
+        // Lighter objects (e.g. ball) cannot push heavier objects (e.g. box)
         if (!source.lightweight) 
         {
             movement = (source.position - source.priorPosition).normalized;

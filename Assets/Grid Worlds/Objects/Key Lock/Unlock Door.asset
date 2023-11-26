@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c4154d40c9e424382b177a2fe96731, type: 3}
-  m_Name: Reward Pickup
+  m_Script: {fileID: 11500000, guid: 0e2fb371ac9e6a445a2ad59de84e2725, type: 3}
+  m_Name: Unlock Door
   m_EditorClassIdentifier: 
-  prefab: {fileID: 7520592589302154403, guid: 40fbe7a7aa4588441a80701bcbb71b8b, type: 3}
-  solid: 1
-  destructible: 0
-  id: {fileID: 11400000, guid: 620fdac9e9a7ce64ab9e55385a092040, type: 2}
+  inventoryItem: 0

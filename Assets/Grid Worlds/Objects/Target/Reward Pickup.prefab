@@ -81,25 +81,25 @@ MonoBehaviour:
     refreshRate: 0.1
   xRange: {x: 0, y: 0}
   yRange: {x: 0, y: 0}
-  overrideColor: 0
-  color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  overrideColor: 1
+  color: {r: 1, g: 1, b: 1, a: 1}
   gizmoRadius: 0.25
   colliderInterface: {fileID: 3681856824185592195}
   rend: {fileID: 7520592590299057327}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: 0, y: 0}
+    center: {x: -3, y: 0}
     transform: {fileID: 7520592589302154402}
-    gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    gizmoColor: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
   data:
     name: Reward Pickup
     touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
-    position: {x: 0, y: 0}
+    position: {x: -3, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
-    color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
     hide: 0
 --- !u!1 &7520592590299057325
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 496280b614c699d4e87cfe95a8ef09ee, type: 3}
-  m_Color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  m_Color: {r: 0.9716981, g: 0.9716981, b: 0.9716981, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
