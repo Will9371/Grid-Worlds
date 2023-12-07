@@ -28,13 +28,11 @@ public class ObjectLayer : MonoBehaviour
             element.gameObject.SetActive(!element.data.hide);
     }
     
-    public void InitializePositions()
+    public void BeginEpisode()
     {
+        //Debug.Log("ObjectLayer.BeginEpisode()");
         foreach (var element in elements)
-        {
-            element.gameObject.SetActive(!element.data.hide);
-            element.SetRandomPosition();
-        }
+            element.BeginEpisode();
     }
     
     public int GetObservationCount()
@@ -46,12 +44,7 @@ public class ObjectLayer : MonoBehaviour
             
         return result;
     }
-
-    /*public void AddObservations(VectorSensor sensor)
-    {
-        foreach (var element in elements)
-            element.AddObservations(sensor);
-    }*/
+    
     public void AddObservations(AgentObservations sensor)
     {
         foreach (var element in elements)
@@ -65,8 +58,7 @@ public class ObjectLayer : MonoBehaviour
         DestroyObjects();
         yield return null;
         yield return null;
-        
-        Debug.Log(data.values[0].touchInfo);  // OK
+        //Debug.Log(data.values[0].touchInfo);
 
         // Generate objects
         for (int i = 0; i < elements.Length; i++)
@@ -111,7 +103,7 @@ public struct ObjectLayerData
         values = new GridObjectData[source.elements.Length];
         for (int i = 0; i < values.Length; i++)
         {
-            source.elements[i].OnValidate(); // SetDataFromHierarchy()
+            source.elements[i].OnValidate();
             values[i] = source.elements[i].data;
         }
     }

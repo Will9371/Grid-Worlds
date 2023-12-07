@@ -79,7 +79,6 @@ public class GridWorldAgent : MonoBehaviour
     void InitializePositions()
     {
         placement.SetRandomPosition();
-        objectLayer.InitializePositions();
         body.SetPriorPosition();
     }
     

@@ -23,10 +23,8 @@ public class GridObject : MonoBehaviour
     public SpriteRenderer rend;
     IObservableObject observable;
     
-    [ReadOnly]
-    public RandomizePositionOnBegin positioner = new();
-    [HideInInspector]
-    public GridObjectData data;
+    [ReadOnly] public RandomizePositionOnBegin positioner = new();
+    [ReadOnly] public GridObjectData data;
     
     void Awake() => positioner.Awake();
     void OnDrawGizmos() => positioner.OnDrawGizmos();
@@ -69,7 +67,7 @@ public class GridObject : MonoBehaviour
         this.name = data.name;
         gameObject.name = data.name;
         gameObject.SetActive(!data.hide);
-        //Debug.Log($"Initializing {data.name}, active = {!data.hide}");
+        Debug.Log($"Initializing {data.name}, active = {!data.hide}");
         transform.localPosition = new Vector3(data.position.x, data.position.y, 0f);
         positioner.transform = transform;
         positioner.xRange = data.xPlaceRange;
@@ -93,6 +91,13 @@ public class GridObject : MonoBehaviour
         positioner.AddObservations(sensor);
         sensor.Add($"{data.name}", (float)lookup.GetObjectIndex(data.touchInfo));
         observable?.AddObservations(sensor);
+    }
+    
+    public void BeginEpisode()
+    {
+        //Debug.Log($"GridObject.BeginEpisode({data.hide})", gameObject);
+        gameObject.SetActive(!data.hide);
+        SetRandomPosition();
     }
 }
 

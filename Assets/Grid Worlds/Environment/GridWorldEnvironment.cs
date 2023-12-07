@@ -40,7 +40,12 @@ public class GridWorldEnvironment : MonoBehaviour
     
     public GridCell[] cells => cellLayer.cells;
     
-    public void BeginEpisode() => cellLayer.BeginEpisode();
+    public void BeginEpisode() 
+    {
+        //Debug.Log("Environment.BeginEpisode()"); 
+        cellLayer.BeginEpisode();
+        objectLayer.BeginEpisode();
+    }
     
     public void EndEpisode(List<GridWorldEvent> events)
     {
