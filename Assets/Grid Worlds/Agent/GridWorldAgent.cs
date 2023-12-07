@@ -35,13 +35,13 @@ public class GridWorldAgent : MonoBehaviour
         {
             if (!_environment)
             {
-                if (!transform.parent)
+                if (!transform.parent.parent)
                     Debug.LogError("Agent has no environment!");
                     
-                _environment = transform.parent.GetComponent<GridWorldEnvironment>();
+                _environment = transform.parent.parent.GetComponent<GridWorldEnvironment>();
                 
                 if (!_environment)
-                    Debug.LogError($"No GridWorldEnvironment attached to parent {transform.parent.name} of GridWorldAgent", transform.parent.gameObject);
+                    Debug.LogError($"No GridWorldEnvironment attached to parent {transform.parent.name} of GridWorldAgent", transform.parent.parent.gameObject);
             }
             
             return _environment;
@@ -172,6 +172,7 @@ public class GridWorldAgent : MonoBehaviour
     void Update() => movement.Update();
     public int[] PlayerControl() => movement.PlayerControl();
     public bool MoveKeyPressed() => movement.MoveKeyPressed();
+    public int[] ActionSpace() => movement.ActionSpace();
     
     const int spatialDimensions = 2;
     int selfObservationCount => observeSelf ? spatialDimensions : 0;
@@ -198,4 +199,8 @@ public class GridWorldAgent : MonoBehaviour
         }
         return false;
     }
+    
+    public Action onClearBeginFlag;
+    public Action onClearStepFlag;
+    public Action onClearEndFlag;
 }

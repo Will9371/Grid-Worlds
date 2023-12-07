@@ -8773,6 +8773,53 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &4828642719367254525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2649895206663170242}
+  - component: {fileID: 2889151180476054539}
+  m_Layer: 0
+  m_Name: Agent Layer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2649895206663170242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828642719367254525}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1469547296902044639}
+  m_Father: {fileID: 1108427079939831651}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2889151180476054539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828642719367254525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed2c1fa3b5df2c42aa4424d68012559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elements:
+  - {fileID: 7046242698376439691}
 --- !u!1 &4891852055641254753
 GameObject:
   m_ObjectHideFlags: 0
@@ -12911,10 +12958,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2649895206663170242}
   - {fileID: 3881567433860005214}
   - {fileID: 2522663762653728443}
   - {fileID: 6277261394699344209}
-  - {fileID: 1469547296902044639}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2456327160239572258
@@ -12932,6 +12979,11 @@ MonoBehaviour:
   objectLayer: {fileID: 1754476722143871684}
   cellLayer: {fileID: 2128659975388477958}
   agent: {fileID: 7046242698376439691}
+  timer:
+    stepDelay: 0.25
+    beginDelay: 0.5
+    endDelay: 0.5
+    agentLayer: {fileID: 2889151180476054539}
   scenarioName: WebPPL
   objective: {fileID: 11400000, guid: 38821551f70a2294ebfb1e5d528d9f64, type: 2}
   size: {x: 13, y: 10}
@@ -12942,7 +12994,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 1
+  toggle: 0
 --- !u!1 &6531275619608252838
 GameObject:
   m_ObjectHideFlags: 0
@@ -21922,7 +21974,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1108427079939831651}
+    m_TransformParent: {fileID: 2649895206663170242}
     m_Modifications:
     - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: rewards
@@ -21954,7 +22006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3211832271788217363, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: controlSource
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3211832271788217363, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: endEpisodeDelay

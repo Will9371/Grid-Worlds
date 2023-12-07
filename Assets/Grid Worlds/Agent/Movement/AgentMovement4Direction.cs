@@ -82,4 +82,6 @@ public class AgentMovement4Direction : IAgentMovement
     
     public void ClearCache() => cachedDirection = 0;
     public bool MoveKeyPressed() => heuristicWaitForKeypress && cachedDirection == 0;
+    
+    public int[] ActionSpace() => new[] { 4 };
 }

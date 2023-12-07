@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentMovement2Axis : IAgentMovement
 {
-    [Tooltip("In heuristic mode, only advance time when the player has pressed a key")]
-    [SerializeField] bool heuristicWaitForKeypress;
+    [Tooltip("In heuristic mode, only advance time when the player has pressed a key")]     // Inactive, future use
+    bool heuristicWaitForKeypress;
     
     int keyHorizontal => Statics.GetAction("Horizontal");
     int keyVertical => Statics.GetAction("Vertical");
@@ -90,4 +89,6 @@ public class AgentMovement2Axis : IAgentMovement
     }
     
     public bool MoveKeyPressed() => heuristicWaitForKeypress && cachedHorizontal == 0 && cachedVertical == 0;
+    
+    public int[] ActionSpace() => new[] { 2, 2 };
 }

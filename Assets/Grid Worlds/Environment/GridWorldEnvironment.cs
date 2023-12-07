@@ -8,6 +8,7 @@ public class GridWorldEnvironment : MonoBehaviour
     public ObjectLayer objectLayer;
     public CellLayer cellLayer;
     public GridWorldAgent agent;
+    public EpisodeTimer timer;
     
     [Header("Settings")]
     [SerializeField] string scenarioName;
@@ -40,11 +41,18 @@ public class GridWorldEnvironment : MonoBehaviour
     
     public GridCell[] cells => cellLayer.cells;
     
+    void Start()
+    {
+        timer.Start(this);
+        BeginEpisode();
+    }
+    
     public void BeginEpisode() 
     {
         //Debug.Log("Environment.BeginEpisode()"); 
         cellLayer.BeginEpisode();
         objectLayer.BeginEpisode();
+        timer.BeginEpisode();
     }
     
     public void EndEpisode(List<GridWorldEvent> events)
@@ -52,6 +60,7 @@ public class GridWorldEnvironment : MonoBehaviour
         if (!objective) return;
         var resultValue = objective.GetResult(events);
         result?.Invoke(resultValue);
+        timer.EndEpisode();
     }
 
     void OnValidate()

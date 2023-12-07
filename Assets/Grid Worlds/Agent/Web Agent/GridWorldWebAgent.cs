@@ -5,24 +5,33 @@ public class GridWorldWebAgent : MonoBehaviour
 {
     [SerializeField] GridWorldAgent agent;
     [SerializeField] WebParametersInfo parameters;
-    [SerializeField] float stepDelay = .25f;
-    [SerializeField] float beginEpisodeDelay = .5f;
-    [SerializeField] float endEpisodeDelay = 0.5f;
     
     AgentObservations observations = new();
     WebServer server = new();
     
-    bool active;
+    [ReadOnly, SerializeField] bool active;
     
     enum ControlSource { AI, Human }
     [SerializeField] ControlSource controlSource;
     bool isAI => controlSource == ControlSource.AI;
+    
+    [Header("Debug")]
+    [ReadOnly] public bool beginFlag = true;
+    [ReadOnly] public bool stepFlag = true;
+    [ReadOnly] public bool endFlag = true;
+    void ClearBeginFlag() => beginFlag = false;
+    void ClearStepFlag() => stepFlag = false;
+    void ClearEndFlag() => endFlag = false;
     
     void Start()
     {
         agent.onEnd += OnEnd;
         agent.onEvent += AgentEvent;
         server.onGetActions = BeginReceiveActions;
+        
+        agent.onClearBeginFlag = ClearBeginFlag;
+        agent.onClearStepFlag = ClearStepFlag;
+        agent.onClearEndFlag = ClearEndFlag;
         
         switch (controlSource)
         {
@@ -43,24 +52,32 @@ public class GridWorldWebAgent : MonoBehaviour
     IEnumerator InitializeAI()
     {
         yield return server.SetParameters(parameters.data);
-        StartCoroutine(BeginEpisode());
+        StartCoroutine(BeginEpisodeAsAI());
     }
     
-    IEnumerator BeginEpisode()
+    IEnumerator BeginEpisodeAsAI()
     {
-        if (isAI) yield break;
+        if (!isAI) yield break;
         active = true;
         agent.Reset();
+        
         yield return server.BeginEpisode();
-        yield return new WaitForSeconds(beginEpisodeDelay);
+        
+        while (beginFlag) yield return null;
+        beginFlag = true;
+        
         StartCoroutine(CollectObservations());
     }
     
     IEnumerator CollectObservations()
     {
-        yield return new WaitForSeconds(stepDelay);
+        while (stepFlag) yield return null;
+        stepFlag = true;
+        
         var inputs = observations.GetValues(agent.CollectObservations());
-        var actions = new[] { 2, 2 };  // * Get from GridWorldAgent
+        var actions = agent.ActionSpace();
+        //new[] { 4 };  // * Get from GridWorldAgent, movement (can be {2, 2})
+        
         yield return server.SendData(inputs, actions);
     }
     
@@ -79,15 +96,17 @@ public class GridWorldWebAgent : MonoBehaviour
     {
         if (isAI) yield break;
         active = false;
+        
         yield return server.EndEpisode();
-        yield return new WaitForSeconds(endEpisodeDelay);
-        StartCoroutine(BeginEpisode());
+        
+        while (endFlag) yield return null;
+        endFlag = true;
+        
+        StartCoroutine(BeginEpisodeAsAI());
     }
     
     IEnumerator HumanControl()
     {
-        var stepWait = new WaitForSeconds(stepDelay);
-    
         while (true)
         {
             if (agent.alive)
@@ -95,7 +114,9 @@ public class GridWorldWebAgent : MonoBehaviour
                 var input = agent.PlayerControl();
                 agent.OnActionReceived(input);
             }
-            yield return stepWait;
+            
+            while (stepFlag) yield return null;
+            stepFlag = true;
         }
     }
 }

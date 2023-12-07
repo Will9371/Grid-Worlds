@@ -1,17 +1,30 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
+[Serializable]
 public class EpisodeTimer
 {
+    MonoBehaviour mono;
+
     [SerializeField] float stepDelay = .25f;
     [SerializeField] float beginDelay = .5f;
     [SerializeField] float endDelay = 0.5f;
-    [SerializeField] GridWorldAgent[] agents;
+    [SerializeField] AgentLayer agentLayer;
     
-    public void Start(MonoBehaviour mono) => mono.StartCoroutine(EpisodeRoutine());
+    public void Start(MonoBehaviour mono) 
+    {
+        this.mono = mono;
+    }
     
     bool episodeInProgress = true;
     public void EndEpisode() => episodeInProgress = false;
+    
+    public void BeginEpisode() 
+    {
+        mono.StopAllCoroutines();
+        mono.StartCoroutine(EpisodeRoutine());
+    }
     
     IEnumerator EpisodeRoutine()
     {
@@ -22,16 +35,17 @@ public class EpisodeTimer
         while (true)
         {
             episodeInProgress = true;
-            // agents reset
             yield return begin;
+            agentLayer.Begin();
             
             while(episodeInProgress)
             {
-                // agents step
                 yield return step;
+                agentLayer.Step();
             }
             
             yield return end;
+            agentLayer.End();
         }
     }
 }

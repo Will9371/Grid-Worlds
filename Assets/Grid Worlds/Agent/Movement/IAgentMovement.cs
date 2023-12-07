@@ -8,6 +8,7 @@ public interface IAgentMovement
     int[] PlayerControl() { return null; }
     void Move(int[] actions) { }
     bool MoveKeyPressed () { return false; }
+    int[] ActionSpace();
 }
 
 public enum AgentMovementType
