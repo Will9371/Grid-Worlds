@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AgentLayer : MonoBehaviour
@@ -10,20 +8,23 @@ public class AgentLayer : MonoBehaviour
     {
         //Debug.Log("Agents.Begin");
         foreach (var element in elements)
-            element.onClearBeginFlag?.Invoke();
+        {
+            element.ClearBeginFlag();
+            element.Reset();
+        }
     }
     
     public void Step()
     {
         //Debug.Log("Agents.Step");
         foreach (var element in elements)
-            element.onClearStepFlag?.Invoke();
+            element.ClearStepFlag();
     }
     
     public void End()
     {
         //Debug.Log("Agents.End");
         foreach (var element in elements)
-            element.onClearEndFlag?.Invoke();
+            element.ClearEndFlag();
     }
 }

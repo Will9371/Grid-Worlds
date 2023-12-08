@@ -10,15 +10,16 @@ public class EpisodeTimer
     [SerializeField] float stepDelay = .25f;
     [SerializeField] float beginDelay = .5f;
     [SerializeField] float endDelay = 0.5f;
-    [SerializeField] AgentLayer agentLayer;
     
-    public void Start(MonoBehaviour mono) 
+    public void Initialize(MonoBehaviour mono, Action step, Action end)
     {
         this.mono = mono;
+        this.step = step;
+        this.end = end;
     }
     
     bool episodeInProgress = true;
-    public void EndEpisode() => episodeInProgress = false;
+    public void ClearEpisodeInProgressFlag() => episodeInProgress = false; 
     
     public void BeginEpisode() 
     {
@@ -26,26 +27,30 @@ public class EpisodeTimer
         mono.StartCoroutine(EpisodeRoutine());
     }
     
+    //public Action begin;
+    public Action step;
+    public Action end;
+    
     IEnumerator EpisodeRoutine()
     {
-        var step = new WaitForSeconds(stepDelay);
-        var begin = new WaitForSeconds(beginDelay);
-        var end = new WaitForSeconds(endDelay);
+        var stepWait = new WaitForSeconds(stepDelay);
+        var beginWait = new WaitForSeconds(beginDelay);
+        var endWait = new WaitForSeconds(endDelay);
         
         while (true)
         {
             episodeInProgress = true;
-            yield return begin;
-            agentLayer.Begin();
+            yield return beginWait;
+            //begin?.Invoke();
             
             while(episodeInProgress)
             {
-                yield return step;
-                agentLayer.Step();
+                yield return stepWait;
+                step?.Invoke();
             }
             
-            yield return end;
-            agentLayer.End();
+            yield return endWait;
+            end?.Invoke();
         }
     }
 }

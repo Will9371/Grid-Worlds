@@ -5,10 +5,10 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Policies;
 
-public class GridWorldMLAgent : Agent
+public class GridWorldMLAgent : Agent, IAgent
 {
     [Header("References")]
-    [SerializeField] GridWorldAgent gridWorldAgent;
+    GridWorldAgent gridWorldAgent;
     [SerializeField] BehaviorParameters behavior;
     [SerializeField] EnvironmentUI ui;
 
@@ -26,25 +26,9 @@ public class GridWorldMLAgent : Agent
 
     float stepDelay => 1f/speed;
     
-    void Start()
-    {
-        gridWorldAgent.onEvent += OnEvent;
-        gridWorldAgent.onEnd += End;
-    }
+    public void Inject(GridWorldAgent agent) => gridWorldAgent = agent;
     
-    void OnDestroy()
-    {
-        if (gridWorldAgent) 
-        {
-            gridWorldAgent.onEvent -= OnEvent;
-            gridWorldAgent.onEnd -= End;
-        }
-    }
-    
-    void OnEvent(GridWorldEvent value)
-    {
-        Reward(rewards.GetReward(value));
-    }
+    public void AddEvent(GridWorldEvent value) => Reward(rewards.GetReward(value));
     
     void Reward(float current)
     {
@@ -56,7 +40,7 @@ public class GridWorldMLAgent : Agent
 
     void BeginEpisode()
     {
-        gridWorldAgent.Reset();
+        //gridWorldAgent.Reset();
         ui.ResetReward();
         StartCoroutine(Process());        
     }
@@ -123,6 +107,8 @@ public class GridWorldMLAgent : Agent
             return;
         }
         if (gridWorldAgent == null)
+            gridWorldAgent = GetComponent<GridWorldAgent>();
+        if (gridWorldAgent == null)
         {
             Debug.LogError($"No GridWorldAgent referenced from {gameObject.name}", gameObject);
             return;
@@ -144,4 +130,11 @@ public class GridWorldMLAgent : Agent
     }
     
     void SetBehaviorName(string value) => behavior.BehaviorName = value;
+    
+    bool beginFlag = true;
+    bool stepFlag = true;
+    bool endFlag = true;
+    public void SetBeginFlag(bool value) => beginFlag = value;
+    public void SetStepFlag(bool value) => stepFlag = value;
+    public void SetEndFlag(bool value) => endFlag = value;
 }

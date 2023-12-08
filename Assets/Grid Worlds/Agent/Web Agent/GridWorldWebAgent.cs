@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class GridWorldWebAgent : MonoBehaviour
+public class GridWorldWebAgent : MonoBehaviour, IAgent
 {
-    [SerializeField] GridWorldAgent agent;
+    GridWorldAgent agent;
     [SerializeField] WebParametersInfo parameters;
     
     AgentObservations observations = new();
@@ -15,37 +15,23 @@ public class GridWorldWebAgent : MonoBehaviour
     [SerializeField] ControlSource controlSource;
     bool isAI => controlSource == ControlSource.AI;
     
-    [Header("Debug")]
-    [ReadOnly] public bool beginFlag = true;
-    [ReadOnly] public bool stepFlag = true;
-    [ReadOnly] public bool endFlag = true;
-    void ClearBeginFlag() => beginFlag = false;
-    void ClearStepFlag() => stepFlag = false;
-    void ClearEndFlag() => endFlag = false;
+    bool beginFlag = true;
+    bool stepFlag = true;
+    bool endFlag = true;
+    public void SetBeginFlag(bool value) => beginFlag = value;
+    public void SetStepFlag(bool value) => stepFlag = value;
+    public void SetEndFlag(bool value) => endFlag = value;
+    
+    public void Inject(GridWorldAgent agent) => this.agent = agent;
     
     void Start()
     {
-        agent.onEnd += OnEnd;
-        agent.onEvent += AgentEvent;
         server.onGetActions = BeginReceiveActions;
-        
-        agent.onClearBeginFlag = ClearBeginFlag;
-        agent.onClearStepFlag = ClearStepFlag;
-        agent.onClearEndFlag = ClearEndFlag;
         
         switch (controlSource)
         {
             case ControlSource.AI: StartCoroutine(InitializeAI()); break;
             case ControlSource.Human: StartCoroutine(HumanControl()); break;
-        }
-    }
-    
-    void OnDestroy()
-    {
-        if (agent)
-        {
-            agent.onEnd -= OnEnd;
-            agent.onEvent -= AgentEvent;
         }
     }
     
@@ -59,7 +45,7 @@ public class GridWorldWebAgent : MonoBehaviour
     {
         if (!isAI) yield break;
         active = true;
-        agent.Reset();
+        //agent.Reset();
         
         yield return server.BeginEpisode();
         
@@ -76,7 +62,6 @@ public class GridWorldWebAgent : MonoBehaviour
         
         var inputs = observations.GetValues(agent.CollectObservations());
         var actions = agent.ActionSpace();
-        //new[] { 4 };  // * Get from GridWorldAgent, movement (can be {2, 2})
         
         yield return server.SendData(inputs, actions);
     }
@@ -89,9 +74,9 @@ public class GridWorldWebAgent : MonoBehaviour
         StartCoroutine(CollectObservations());
     }
     
-    void AgentEvent(GridWorldEvent info) => StartCoroutine(server.SendEvent(info));
+    public void AddEvent(GridWorldEvent info) => StartCoroutine(server.SendEvent(info));
     
-    void OnEnd() => StartCoroutine(EndEpisode());
+    public void End() => StartCoroutine(EndEpisode());
     IEnumerator EndEpisode()
     {
         if (isAI) yield break;
@@ -109,9 +94,11 @@ public class GridWorldWebAgent : MonoBehaviour
     {
         while (true)
         {
+            
             if (agent.alive)
             {
                 var input = agent.PlayerControl();
+                //Debug.Log(input[0]);
                 agent.OnActionReceived(input);
             }
             

@@ -2,6 +2,17 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IAgent
+{
+    void Inject(GridWorldAgent agent);
+    void AddEvent(GridWorldEvent value);
+    void End();
+    
+    void SetBeginFlag(bool value);
+    void SetStepFlag(bool value);
+    void SetEndFlag(bool value);
+}
+
 [Serializable]
 public class GridWorldAgent : MonoBehaviour
 {
@@ -48,6 +59,8 @@ public class GridWorldAgent : MonoBehaviour
         }
     }
     GridWorldEnvironment _environment;
+    
+    IAgent implementation;
     #endregion
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
@@ -61,6 +74,9 @@ public class GridWorldAgent : MonoBehaviour
     
     void Awake()
     {
+        implementation = GetComponent<IAgent>();
+        implementation.Inject(this);
+        
         placement.Awake();
         body = new MovingEntity(transform, ownCollider, this);
         body.AddEvent = AddEvent;
@@ -75,12 +91,6 @@ public class GridWorldAgent : MonoBehaviour
         
         alive = true;
     }
-
-    void InitializePositions()
-    {
-        placement.SetRandomPosition();
-        body.SetPriorPosition();
-    }
     
     public Action onEpisodeBegin;
 
@@ -94,8 +104,9 @@ public class GridWorldAgent : MonoBehaviour
         inventory.Clear();
         movement.ClearCache();
         
-        InitializePositions();
-        environment.BeginEpisode();
+        placement.SetRandomPosition();
+        body.SetPriorPosition();
+        //environment.BeginEpisode();
         
         episodeCount++;
         onEpisodeBegin?.Invoke();
@@ -144,8 +155,6 @@ public class GridWorldAgent : MonoBehaviour
     
     #endregion
     
-    public Action<GridWorldEvent> onEvent;
-    
     public void AddEvent(GridWorldEvent info)
     {
         events.Add(info);
@@ -153,17 +162,16 @@ public class GridWorldAgent : MonoBehaviour
         if (info.inventoryItem)
             inventory.Add(info);
         
-        onEvent?.Invoke(info);
+        implementation.AddEvent(info);
     }
     
-    public Action onEnd;
     [ReadOnly] public bool alive;
     
     public void End()
     {
         alive = false;
-        environment.EndEpisode(events);
-        onEnd?.Invoke();
+        environment.EndEpisodeForAgent(events);
+        implementation.End();
     }
     
     public AgentMovementType moveType;
@@ -200,7 +208,7 @@ public class GridWorldAgent : MonoBehaviour
         return false;
     }
     
-    public Action onClearBeginFlag;
-    public Action onClearStepFlag;
-    public Action onClearEndFlag;
+    public void ClearBeginFlag() => implementation.SetBeginFlag(false);
+    public void ClearStepFlag() => implementation.SetStepFlag(false);
+    public void ClearEndFlag() => implementation.SetEndFlag(false);
 }

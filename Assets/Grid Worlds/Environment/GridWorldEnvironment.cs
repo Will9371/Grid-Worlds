@@ -5,6 +5,7 @@ using UnityEngine;
 public class GridWorldEnvironment : MonoBehaviour
 {
     [Header("References")]
+    public AgentLayer agentLayer;
     public ObjectLayer objectLayer;
     public CellLayer cellLayer;
     public GridWorldAgent agent;
@@ -43,25 +44,43 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void Start()
     {
-        timer.Start(this);
+        timer.Initialize(this, Step, Reset);
+        
         BeginEpisode();
     }
     
-    public void BeginEpisode() 
+    void Step()
+    {
+        agentLayer.Step();
+    }
+    
+    void BeginEpisode() 
     {
         //Debug.Log("Environment.BeginEpisode()"); 
         cellLayer.BeginEpisode();
         objectLayer.BeginEpisode();
+        agentLayer.Begin();
         timer.BeginEpisode();
     }
     
-    public void EndEpisode(List<GridWorldEvent> events)
+    /// Future-use layer for when there are multiple agents
+    public void EndEpisodeForAgent(List<GridWorldEvent> events) => EndEpisode(events);
+    
+    void EndEpisode(List<GridWorldEvent> events)
+    {
+        //Debug.Log("Environment.EndEpisode");
+        timer.ClearEpisodeInProgressFlag();
+        BroadcastResult(events);
+    }
+    
+    void BroadcastResult(List<GridWorldEvent> events)
     {
         if (!objective) return;
         var resultValue = objective.GetResult(events);
         result?.Invoke(resultValue);
-        timer.EndEpisode();
     }
+    
+    void Reset() => BeginEpisode();
 
     void OnValidate()
     {

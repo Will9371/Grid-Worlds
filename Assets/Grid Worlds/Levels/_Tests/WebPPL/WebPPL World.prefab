@@ -12976,6 +12976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55ecb159340b7c4484977aa090fbe6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agentLayer: {fileID: 2889151180476054539}
   objectLayer: {fileID: 1754476722143871684}
   cellLayer: {fileID: 2128659975388477958}
   agent: {fileID: 7046242698376439691}
@@ -12983,7 +12984,6 @@ MonoBehaviour:
     stepDelay: 0.25
     beginDelay: 0.5
     endDelay: 0.5
-    agentLayer: {fileID: 2889151180476054539}
   scenarioName: WebPPL
   objective: {fileID: 11400000, guid: 38821551f70a2294ebfb1e5d528d9f64, type: 2}
   size: {x: 13, y: 10}
