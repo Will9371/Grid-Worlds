@@ -8,31 +8,33 @@ public class PushableBox : GridObjectInfo
         var pushable = self.GetComponent<MovingEntityMono>();
         if (!pushable) return;
         
-        pushable.process.SetPriorPosition();
+        pushable.process.ResetPath();
         
         var movement = Vector3.zero;
         
         // Lighter objects (e.g. ball) cannot push heavier objects (e.g. box)
         if (!source.lightweight) 
         {
-            movement = (source.position - source.priorPosition).normalized;
+            movement = source.MoveDirection();
             pushable.process.position += movement;
+            pushable.process.AddToPath();
         }
         
         pushable.process.CheckForColliders();
-        source.ReturnToPriorPosition();
+        source.ReturnToLastPosition();
         
-        if (pushable.process.priorPosition != pushable.process.position)
+        if (!pushable.process.AtLastPosition())
             Success(this, pushable.process, movement);
     }
     
     public void Touch(PushableBox info, MovingEntity instance, Vector3 movement) 
     {
-        instance.SetPriorPosition();
+        instance.ResetPath();
         instance.position += movement;
+        instance.AddToPath();
         instance.CheckForColliders();
         
-        if (instance.priorPosition != instance.position)
+        if (!instance.AtLastPosition())
             Success(info, instance, movement);
     }
     

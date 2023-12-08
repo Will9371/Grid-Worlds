@@ -11,6 +11,6 @@ public class GridObjectInfo : ScriptableObject
     public virtual void Touch(MovingEntity source, GameObject self) 
     {
         if (solid && !source.agent)
-            source.ReturnToPriorPosition();
+            source.ReturnToLastPosition();
     }
 }

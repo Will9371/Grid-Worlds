@@ -9,11 +9,11 @@ public class IceCell : GridCellInfo
     {
         if (Random.Range(0f, 1f) > slideChance) return;
         
-        var movement = (entity.position - entity.priorPosition).normalized;
+        var movement = entity.MoveDirection();
         if (movement == Vector3.zero) return;
         
-        entity.SetPriorPosition();
         entity.transform.localPosition += movement;
+        entity.AddToPath();
         entity.CheckForColliders();
     }
 }

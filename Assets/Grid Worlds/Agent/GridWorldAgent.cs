@@ -105,8 +105,8 @@ public class GridWorldAgent : MonoBehaviour
         movement.ClearCache();
         
         placement.SetRandomPosition();
-        body.SetPriorPosition();
-        //environment.BeginEpisode();
+        //body.SetPriorPosition();
+        body.ResetPath();
         
         episodeCount++;
         onEpisodeBegin?.Invoke();
@@ -137,8 +137,10 @@ public class GridWorldAgent : MonoBehaviour
     
     public void OnActionReceived(int[] actions)
     {
-        body.SetPriorPosition();
+        //body.SetPriorPosition();
+        body.ResetPath();
         movement.Move(actions);
+        body.AddToPath();
 
         stepCount++;
         onStep?.Invoke(stepCount);

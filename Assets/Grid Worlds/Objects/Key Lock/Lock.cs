@@ -18,6 +18,6 @@ public class Lock : GridObjectInfo
             entity.AddEvent?.Invoke(unlock);
         }
         else
-            entity.ReturnToPriorPosition();
+            entity.ReturnToLastPosition();
     }
 }

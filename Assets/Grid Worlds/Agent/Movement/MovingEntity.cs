@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingEntity
@@ -16,7 +17,6 @@ public class MovingEntity
         get => transform.localPosition;
         set => transform.localPosition = value;
     }
-    public Vector3 priorPosition;
 
     public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null, bool lightweight = false)
     {
@@ -45,14 +45,10 @@ public class MovingEntity
         if (gridObject) gridObject.Touch(this);
     }
     
-    public void SetPriorPosition() => priorPosition = transform.localPosition;
-    public void ReturnToPriorPosition() => transform.localPosition = priorPosition;
-    public bool AtPriorPosition() => priorPosition == transform.position;
-    
     public void RequestLeaveCell()
     {
-        if (AtPriorPosition()) return;
-        var others = Physics2D.OverlapCircleAll(priorPosition, .1f);
+        if (AtLastPosition()) return;
+        var others = Physics2D.OverlapCircleAll(stepPath[0], .1f); // * temp hack
         foreach (var other in others)
         {
             var cell = other.GetComponent<GridCell>();
@@ -60,4 +56,15 @@ public class MovingEntity
             cell.Exit();
         }
     }
+    
+    [ReadOnly] public List<Vector3> stepPath = new();
+    public void ResetPath()
+    {
+        stepPath.Clear();
+        AddToPath();
+    }
+    public void ReturnToLastPosition() => transform.localPosition = stepPath.Count > 1 ? stepPath[^2] : stepPath[^1];
+    public void AddToPath() => stepPath.Add(transform.localPosition);
+    public bool AtLastPosition() => transform.localPosition == stepPath[^1];
+    public Vector3 MoveDirection() => stepPath.Count > 1 ? (stepPath[^1] - stepPath[^2]).normalized : Vector3.zero;
 }
