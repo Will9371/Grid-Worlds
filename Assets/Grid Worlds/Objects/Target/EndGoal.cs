@@ -5,10 +5,11 @@ public class EndGoal : GridObjectInfo
 {
     [SerializeField] GridWorldEvent eventId;
 
-    public override void Touch(MovingEntity entity, GameObject gridObject) 
+    public override bool Touch(MovingEntity entity, GameObject gridObject) 
     {
         base.Touch(entity, gridObject);
         entity.AddEvent?.Invoke(eventId);
         entity.End?.Invoke();
+        return !entity.agent;
     }
 }

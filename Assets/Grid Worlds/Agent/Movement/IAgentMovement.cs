@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public interface IAgentMovement
 {
@@ -6,7 +7,7 @@ public interface IAgentMovement
     void Update() { }
     void ClearCache() { }
     int[] PlayerControl() { return null; }
-    void Move(int[] actions) { }
+    Vector3 Move(int[] actions) { return Vector3.zero; }
     bool MoveKeyPressed () { return false; }
     int[] ActionSpace();
 }

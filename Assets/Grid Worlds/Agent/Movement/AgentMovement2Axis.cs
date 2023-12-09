@@ -50,23 +50,25 @@ public class AgentMovement2Axis : IAgentMovement
         } 
     }
     
-    public void Move(int[] actions)
+    public Vector3 Move(int[] actions)
     {
         foreach (var modifier in actionModifiers)
             modifier.ModifyActions(ref actions, 3);
     
+        var result = setPosition.Zero();
         switch(actions[0])
         {
             case STAY: break;
-            case LEFT: setPosition.MoveLeft(); break;
-            case RIGHT: setPosition.MoveRight(); break;
+            case LEFT: result += Vector3.left; break;
+            case RIGHT: result += Vector3.right; break;
         }
         switch(actions[1])
         {
             case STAY: break;
-            case DOWN: setPosition.MoveDown(); break;
-            case UP: setPosition.MoveUp(); break;
+            case DOWN: result += Vector3.down; break;
+            case UP: result += Vector3.up; break;
         }
+        return result;
     }
 
     int[] actions = new int[2];

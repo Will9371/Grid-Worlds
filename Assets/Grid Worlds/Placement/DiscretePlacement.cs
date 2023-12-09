@@ -21,10 +21,11 @@ public class DiscretePlacement
         set => transform.localPosition = IntPosition(value);
     }
     
-    public void MoveLeft() => position += Vector2.left;
-    public void MoveRight() => position += Vector2.right;
-    public void MoveUp() => position += Vector2.up;
-    public void MoveDown() => position += Vector2.down;
+    public Vector3 Left() => position + Vector2.left;
+    public Vector3 Right() => position + Vector2.right;
+    public Vector3 Up() => position + Vector2.up;
+    public Vector3 Down() => position + Vector2.down;
+    public Vector3 Zero() => position;
     
     public void AddObservations(AgentObservations sensor)
     {

@@ -137,10 +137,25 @@ public class GridWorldAgent : MonoBehaviour
     
     public void OnActionReceived(int[] actions)
     {
-        //body.SetPriorPosition();
         body.ResetPath();
-        movement.Move(actions);
-        body.AddToPath();
+        var lastPosition = body.stepPath[^1];
+        var nextPosition = movement.Move(actions);
+        body.moveDirection = nextPosition - body.position;
+        body.AddToPath(nextPosition);
+        
+        var isBlocked = body.CheckForColliders(nextPosition);
+        if (isBlocked)
+            body.stepPath.RemoveAt(body.stepPath.Count - 1);
+        else
+            body.LeaveCell(lastPosition);
+            
+        /*if (!isBlocked) 
+        {
+            body.AddToPath(nextPosition);
+            
+            if (nextPosition != transform.position)
+                body.LeaveCell(transform.position);
+        }*/
 
         stepCount++;
         onStep?.Invoke(stepCount);
@@ -150,9 +165,8 @@ public class GridWorldAgent : MonoBehaviour
             AddEvent(timeout);
             End();
         }
-        
-        body.CheckForColliders();
-        body.RequestLeaveCell();
+         
+        transform.localPosition = body.stepPath[^1];
     }
     
     #endregion

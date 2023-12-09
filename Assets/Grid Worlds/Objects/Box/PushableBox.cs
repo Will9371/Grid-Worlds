@@ -3,39 +3,40 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Grid Worlds/Object/Box")]
 public class PushableBox : GridObjectInfo
 {
-    public override void Touch(MovingEntity source, GameObject self) 
+    public override bool Touch(MovingEntity source, GameObject self) 
     {
         var pushable = self.GetComponent<MovingEntityMono>();
-        if (!pushable) return;
+        if (!pushable) return true;
         
         pushable.process.ResetPath();
-        
+        var nextPosition = pushable.process.position;
         var movement = Vector3.zero;
         
         // Lighter objects (e.g. ball) cannot push heavier objects (e.g. box)
-        if (!source.lightweight) 
+        bool success = !source.lightweight;
+        if (!success) return true;
+        
+        movement = source.moveDirection;
+        nextPosition += movement;
+        success = !pushable.process.CheckForColliders(nextPosition);
+        
+        if (!success) return true;
         {
-            movement = source.MoveDirection();
-            pushable.process.position += movement;
             pushable.process.AddToPath();
-        }
-        
-        pushable.process.CheckForColliders();
-        source.ReturnToLastPosition();
-        
-        if (!pushable.process.AtLastPosition())
+            pushable.transform.localPosition = nextPosition;
             Success(this, pushable.process, movement);
+        }
+        return true;
     }
     
     public void Touch(PushableBox info, MovingEntity instance, Vector3 movement) 
     {
-        instance.ResetPath();
-        instance.position += movement;
-        instance.AddToPath();
-        instance.CheckForColliders();
+        var newPosition = instance.position + movement;
+        var success = !instance.CheckForColliders(newPosition);
+        if (!success) return;
         
-        if (!instance.AtLastPosition())
-            Success(info, instance, movement);
+        instance.AddToPath();
+        Success(info, instance, movement);
     }
     
     protected virtual void Success(PushableBox info, MovingEntity instance, Vector3 movement) { }

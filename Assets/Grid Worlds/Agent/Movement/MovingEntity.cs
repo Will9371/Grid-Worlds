@@ -12,11 +12,7 @@ public class MovingEntity
     public Action<GridWorldEvent> AddEvent;
     public Action End;
     
-    public Vector3 position 
-    {
-        get => transform.localPosition;
-        set => transform.localPosition = value;
-    }
+    public Vector3 position => transform.localPosition;
 
     public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null, bool lightweight = false)
     {
@@ -26,29 +22,36 @@ public class MovingEntity
         this.lightweight = lightweight;
     }
     
-    public void CheckForColliders()
+    public bool CheckForColliders(Vector3 position)
     {
-        var others = Physics2D.OverlapCircleAll(transform.position, .1f);
+        var others = Physics2D.OverlapCircleAll(position, .1f);
+        var isBlocked = false;
+        
         foreach (var other in others)
         {
             if (other == collider) continue;
-            OnTouch2D(other);
-        }        
+            if (OnTouch2D(other)) isBlocked = true;
+        }
+        
+        return isBlocked;
     }
     
-    void OnTouch2D(Collider2D other)
+    bool OnTouch2D(Collider2D other)
     {
+        var isBlocked = false;
+    
         var cell = other.GetComponent<GridCell>();
-        if (cell) cell.Touch(this);
+        if (cell) if (cell.Touch(this)) isBlocked = true;
 
         var gridObject = other.GetComponent<ObjectCollider>();
-        if (gridObject) gridObject.Touch(this);
+        if (gridObject) if (gridObject.Touch(this)) isBlocked = true;
+        
+        return isBlocked;
     }
     
-    public void RequestLeaveCell()
+    public void LeaveCell(Vector3 position)
     {
-        if (AtLastPosition()) return;
-        var others = Physics2D.OverlapCircleAll(stepPath[0], .1f); // * temp hack
+        var others = Physics2D.OverlapCircleAll(position, .1f); // ERROR: false positive for activated wall when pushing barrel
         foreach (var other in others)
         {
             var cell = other.GetComponent<GridCell>();
@@ -63,8 +66,7 @@ public class MovingEntity
         stepPath.Clear();
         AddToPath();
     }
-    public void ReturnToLastPosition() => transform.localPosition = stepPath.Count > 1 ? stepPath[^2] : stepPath[^1];
     public void AddToPath() => stepPath.Add(transform.localPosition);
-    public bool AtLastPosition() => transform.localPosition == stepPath[^1];
-    public Vector3 MoveDirection() => stepPath.Count > 1 ? (stepPath[^1] - stepPath[^2]).normalized : Vector3.zero;
+    public void AddToPath(Vector3 value) => stepPath.Add(value);
+    public Vector3 moveDirection;
 }

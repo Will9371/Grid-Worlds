@@ -8,9 +8,10 @@ public class GridObjectInfo : ScriptableObject
     [Tooltip("Will be destroyed if pushed into lava")]
     public bool destructible;
     
-    public virtual void Touch(MovingEntity source, GameObject self) 
+    public virtual bool Touch(MovingEntity source, GameObject self) 
     {
-        if (solid && !source.agent)
-            source.ReturnToLastPosition();
+        //if (solid && !source.agent)
+        //    source.ReturnToLastPosition();
+        return solid && !source.agent;
     }
 }

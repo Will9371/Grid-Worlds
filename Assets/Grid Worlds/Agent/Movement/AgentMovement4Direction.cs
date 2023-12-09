@@ -42,7 +42,7 @@ public class AgentMovement4Direction : IAgentMovement
             cachedDirection = UP;
     }
     
-    public void Move(int[] actions)
+    public Vector3 Move(int[] actions)
     {
         foreach (var modifier in actionModifiers)
             modifier.ModifyActions(ref actions, 5);
@@ -50,11 +50,12 @@ public class AgentMovement4Direction : IAgentMovement
         switch(actions[0])
         {
             case STAY: break;
-            case LEFT: setPosition.MoveLeft(); break;
-            case RIGHT: setPosition.MoveRight(); break;
-            case DOWN: setPosition.MoveDown(); break;
-            case UP: setPosition.MoveUp(); break;
+            case LEFT: return setPosition.Left();
+            case RIGHT: return setPosition.Right();
+            case DOWN: return setPosition.Down();
+            case UP: return setPosition.Up();
         }
+        return setPosition.Zero();
     }
 
     int[] actions = new int[1];
