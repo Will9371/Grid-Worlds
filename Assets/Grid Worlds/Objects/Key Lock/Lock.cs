@@ -12,14 +12,11 @@ public class Lock : GridObjectInfo
         if (!entity.agent) return true;
         
         // Try to consume one key
-        if (entity.agent.TakeInventoryItem(key))
-        {
-            gridObject.SetActive(false);
-            entity.AddEvent(unlock);
-            return false;
-        }
-        //else
-        //    entity.ReturnToLastPosition();
-        return true;
+        if (!entity.agent.TakeInventoryItem(key))
+            return true;
+        
+        gridObject.SetActive(false);
+        entity.AddEvent(unlock);
+        return false;
     }
 }

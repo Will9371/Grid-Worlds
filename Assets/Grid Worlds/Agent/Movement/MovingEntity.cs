@@ -56,8 +56,10 @@ public class MovingEntity
         return isBlocked;
     }
     
-    public void LeaveCell(Vector3 position)
+    public void RequestLeaveCell()
     {
+        if (atLastPosition) return;
+        
         var others = Physics2D.OverlapCircleAll(position, .1f); // ERROR (verify): false positive for activated wall when pushing barrel
         foreach (var other in others)
         {
@@ -72,6 +74,7 @@ public class MovingEntity
     public void AddToPath(Vector3 value) => stepPath.Add(value);
     public void RemoveLastFromPath() => stepPath.RemoveAt(stepPath.Count - 1);
     public Vector3 lastPosition => stepPath[^1];
+    public bool atLastPosition => transform.localPosition == lastPosition;
     
     public void RefreshPosition()
     {

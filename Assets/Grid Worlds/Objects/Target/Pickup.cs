@@ -8,8 +8,12 @@ public class Pickup : GridObjectInfo
     public override bool Touch(MovingEntity entity, GameObject gridObject) 
     {
         base.Touch(entity, gridObject);
+        
+        if (!entity.agent)
+            return true;
+        
         gridObject.SetActive(false);
         entity.AddEvent(id);
-        return !entity.agent;
+        return false;
     }
 }
