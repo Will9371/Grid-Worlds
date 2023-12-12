@@ -37,6 +37,9 @@ public class MovingEntity
             if (OnTouch2D(other)) isBlocked = true;
         }
         
+        if (isBlocked) 
+            RemoveLastFromPath();
+            
         return isBlocked;
     }
     
@@ -65,20 +68,21 @@ public class MovingEntity
     }
     
     [ReadOnly] public List<Vector3> stepPath = new();
-    public void AddToPath() => stepPath.Add(transform.localPosition);
+    public void AddCurrentPositionToPath() => stepPath.Add(transform.localPosition);
     public void AddToPath(Vector3 value) => stepPath.Add(value);
     public void RemoveLastFromPath() => stepPath.RemoveAt(stepPath.Count - 1);
+    public Vector3 lastPosition => stepPath[^1];
     
     public void RefreshPosition()
     {
         if (stepPath.Count == 0) return;
-        transform.localPosition = stepPath[^1];
+        transform.localPosition = lastPosition;
         ResetPath();
     }
     void ResetPath()
     {
         stepPath.Clear();
-        AddToPath();
+        AddCurrentPositionToPath();
     }
     
     public Vector3 moveDirection;

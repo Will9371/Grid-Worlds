@@ -12,18 +12,13 @@ public class IceCell : GridCellInfo
         var movement = entity.moveDirection; 
         if (movement == Vector3.zero) return false;
         
-        var lastPosition = entity.stepPath[^1];
+        var lastPosition = entity.lastPosition;
         var nextPosition = lastPosition + movement;
         entity.AddToPath(nextPosition);
         //Debug.Log($"{lastPosition} {movement} {nextPosition} {entity.stepPath.Count}");
         //Debug.Log($"Full path:  {string.Join(", ", entity.stepPath)}"); 
         
-        var hitObstacle = entity.CheckForColliders(nextPosition);
-        if (hitObstacle) 
-        {
-            entity.RemoveLastFromPath();
-            return false;
-        }
+        entity.CheckForColliders(nextPosition);
         return false;
     }
 }

@@ -117,7 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 8900943277740674417}
   collider: {fileID: 2290415160634620351}
-  lightweight: 1
+  lightweight: 0
 --- !u!1 &9181592253965603360
 GameObject:
   m_ObjectHideFlags: 0

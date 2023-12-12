@@ -15,4 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 1149868158789818340, guid: e847c08f3de9e704daab3edac1a56a83, type: 3}
   solid: 0
   destructible: 1
-  rollChance: 0.5
+  rollChance: 0.9
