@@ -9,7 +9,7 @@ public class Pickup : GridObjectInfo
     {
         base.Touch(entity, gridObject);
         gridObject.SetActive(false);
-        entity.AddEvent?.Invoke(id);
+        entity.AddEvent(id);
         return !entity.agent;
     }
 }

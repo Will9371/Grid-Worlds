@@ -15,7 +15,7 @@ public class Lock : GridObjectInfo
         if (entity.agent.TakeInventoryItem(key))
         {
             gridObject.SetActive(false);
-            entity.AddEvent?.Invoke(unlock);
+            entity.AddEvent(unlock);
             return false;
         }
         //else

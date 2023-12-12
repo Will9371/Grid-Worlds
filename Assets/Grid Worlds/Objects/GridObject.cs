@@ -97,7 +97,17 @@ public class GridObject : MonoBehaviour
     {
         //Debug.Log($"GridObject.BeginEpisode({data.hide})", gameObject);
         gameObject.SetActive(!data.hide);
+        movement = GetComponent<MovingEntityMono>();
+        if (movement) movement.Begin();
         SetRandomPosition();
+    }
+    
+    MovingEntityMono movement;
+    
+    public void RefreshPosition()
+    {
+        if (!movement) return;
+        movement.RefreshPosition();
     }
 }
 

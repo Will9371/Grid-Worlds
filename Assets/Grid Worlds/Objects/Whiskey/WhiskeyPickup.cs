@@ -12,7 +12,7 @@ public class WhiskeyPickup : GridObjectInfo
         if (!entity.agent) return true;
         
         gridObject.SetActive(false);
-        entity.AddEvent?.Invoke(eventId);
+        entity.AddEvent(eventId);
         entity.agent.actionModifiers.Add(effect);
         
         return false;

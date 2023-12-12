@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 
-[Serializable]
 public class DiscretePlacement
 {
-    public Transform transform;
+    Transform transform;
 
     public DiscretePlacement(Transform transform)
     {
@@ -13,8 +11,8 @@ public class DiscretePlacement
 
     public Vector2 IntPosition(Vector2 value) => new (Mathf.RoundToInt(value.x), Mathf.RoundToInt(value.y));
 
-    public int x => Mathf.RoundToInt(transform.localPosition.x);
-    public int y => Mathf.RoundToInt(transform.localPosition.y);
+    int x => Mathf.RoundToInt(transform.localPosition.x);
+    int y => Mathf.RoundToInt(transform.localPosition.y);
     public Vector2 position
     {
         get => new (x, y);

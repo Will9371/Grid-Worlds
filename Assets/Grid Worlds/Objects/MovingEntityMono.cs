@@ -6,10 +6,17 @@ public class MovingEntityMono : MonoBehaviour
     [SerializeField] Collider2D collider;
     [SerializeField] bool lightweight;
 
-    public MovingEntity process;
-    
-    void Awake()
+    MovingEntity _process;
+    public MovingEntity process
     {
-        process = new MovingEntity(root, collider, null, lightweight);
+        get
+        {
+            if (_process == null)
+                _process = new MovingEntity(root, collider, null, lightweight);
+            return _process;
+        }
     }
+    
+    public void Begin() => process.Begin();
+    public void RefreshPosition() => process.RefreshPosition();
 }

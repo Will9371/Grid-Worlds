@@ -16,12 +16,12 @@ public class IceCell : GridCellInfo
         var nextPosition = lastPosition + movement;
         entity.AddToPath(nextPosition);
         //Debug.Log($"{lastPosition} {movement} {nextPosition} {entity.stepPath.Count}");
-        //Debug.Log($"Full path:  {string.Join(", ", entity.stepPath)}");  // List length changes, 2nd+ values are all the same
+        //Debug.Log($"Full path:  {string.Join(", ", entity.stepPath)}"); 
         
         var hitObstacle = entity.CheckForColliders(nextPosition);
         if (hitObstacle) 
         {
-            entity.stepPath.RemoveAt(entity.stepPath.Count - 1);
+            entity.RemoveLastFromPath();
             return false;
         }
         return false;

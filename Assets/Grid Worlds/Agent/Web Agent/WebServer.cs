@@ -35,6 +35,7 @@ public class WebServer
     {
         // Convert the data to a JSON string
         var jsonData = JsonUtility.ToJson(data);
+        Debug.Log($"Sending data to server: {jsonData}");
 
         // Set up the UnityWebRequest with POST method and the server URL
         var request = new UnityWebRequest(serverURL + route, "POST");

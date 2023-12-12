@@ -7,8 +7,8 @@ public class LavaCell : GridCellInfo
 
     public override bool Touch(MovingEntity entity, GridCell cell)
     {
-        entity.AddEvent?.Invoke(eventId);
-        entity.End?.Invoke();
+        entity.AddEvent(eventId);
+        entity.Die();
         
         var gridObject = entity.transform.GetComponent<GridObject>();
         if (gridObject && gridObject.info.destructible)

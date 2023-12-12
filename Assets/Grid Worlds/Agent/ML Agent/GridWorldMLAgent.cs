@@ -36,9 +36,9 @@ public class GridWorldMLAgent : Agent, IAgent
         ui.AddReward(current);
     }
 
-    public override void OnEpisodeBegin() => BeginEpisode();
+    public override void OnEpisodeBegin() => Begin();
 
-    void BeginEpisode()
+    public void Begin()
     {
         //gridWorldAgent.Reset();
         ui.ResetReward();
@@ -62,6 +62,9 @@ public class GridWorldMLAgent : Agent, IAgent
             yield return delay;
         }
     }
+    
+    // TBD: implement centralized timer refactor
+    public void Step() { } 
     
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -123,18 +126,11 @@ public class GridWorldMLAgent : Agent, IAgent
     {
         switch (moveType)
         {
-            case AgentMovementType.Axis2Direction8: return new int[] { 3, 3 };
-            case AgentMovementType.Direction4: return new int[] { 5 };
-            default: return new int[] { 0 };
+            case AgentMovementType.Axis2Direction8: return new[] { 3, 3 };
+            case AgentMovementType.Direction4: return new[] { 5 };
+            default: return new[] { 0 };
         }
     }
     
     void SetBehaviorName(string value) => behavior.BehaviorName = value;
-    
-    bool beginFlag = true;
-    bool stepFlag = true;
-    bool endFlag = true;
-    public void SetBeginFlag(bool value) => beginFlag = value;
-    public void SetStepFlag(bool value) => stepFlag = value;
-    public void SetEndFlag(bool value) => endFlag = value;
 }

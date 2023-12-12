@@ -8,8 +8,8 @@ public class EndGoal : GridObjectInfo
     public override bool Touch(MovingEntity entity, GameObject gridObject) 
     {
         base.Touch(entity, gridObject);
-        entity.AddEvent?.Invoke(eventId);
-        entity.End?.Invoke();
+        entity.AddEvent(eventId);
+        entity.Die();
         return !entity.agent;
     }
 }

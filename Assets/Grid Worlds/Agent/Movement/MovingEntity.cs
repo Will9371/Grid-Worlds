@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +7,8 @@ public class MovingEntity
     public Collider2D collider;
     public GridWorldAgent agent;
     public bool lightweight;
-
-    public Action<GridWorldEvent> AddEvent;
-    public Action End;
     
+    Vector3 startPosition;
     public Vector3 position => transform.localPosition;
 
     public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null, bool lightweight = false)
@@ -20,6 +17,13 @@ public class MovingEntity
         this.collider = collider;
         this.agent = agent;
         this.lightweight = lightweight;
+        startPosition = transform.localPosition;
+    }
+    
+    public void Begin() 
+    {
+        transform.localPosition = startPosition;
+        ResetPath();
     }
     
     public bool CheckForColliders(Vector3 position)
@@ -51,7 +55,7 @@ public class MovingEntity
     
     public void LeaveCell(Vector3 position)
     {
-        var others = Physics2D.OverlapCircleAll(position, .1f); // ERROR: false positive for activated wall when pushing barrel
+        var others = Physics2D.OverlapCircleAll(position, .1f); // ERROR (verify): false positive for activated wall when pushing barrel
         foreach (var other in others)
         {
             var cell = other.GetComponent<GridCell>();
@@ -61,12 +65,31 @@ public class MovingEntity
     }
     
     [ReadOnly] public List<Vector3> stepPath = new();
-    public void ResetPath()
+    public void AddToPath() => stepPath.Add(transform.localPosition);
+    public void AddToPath(Vector3 value) => stepPath.Add(value);
+    public void RemoveLastFromPath() => stepPath.RemoveAt(stepPath.Count - 1);
+    
+    public void RefreshPosition()
+    {
+        if (stepPath.Count == 0) return;
+        transform.localPosition = stepPath[^1];
+        ResetPath();
+    }
+    void ResetPath()
     {
         stepPath.Clear();
         AddToPath();
     }
-    public void AddToPath() => stepPath.Add(transform.localPosition);
-    public void AddToPath(Vector3 value) => stepPath.Add(value);
+    
     public Vector3 moveDirection;
+    
+    public void AddEvent(GridWorldEvent id)
+    {
+        if (agent) agent.AddEvent(id);
+    }
+    
+    public void Die()
+    {
+        if (agent) agent.End();
+    }
 }

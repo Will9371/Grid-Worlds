@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public class EpisodeTimer
 {
-    MonoBehaviour mono;
+    /*MonoBehaviour mono;
 
     [SerializeField] float stepDelay = .25f;
     [SerializeField] float beginDelay = .5f;
@@ -52,5 +52,5 @@ public class EpisodeTimer
             yield return endWait;
             end?.Invoke();
         }
-    }
+    }*/
 }

@@ -35,6 +35,12 @@ public class ObjectLayer : MonoBehaviour
             element.BeginEpisode();
     }
     
+    public void RefreshPosition()
+    {
+        foreach (var element in elements)
+            element.RefreshPosition();
+    }
+    
     public int GetObservationCount()
     {
         int result = 0;

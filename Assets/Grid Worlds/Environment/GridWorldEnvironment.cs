@@ -8,14 +8,15 @@ public class GridWorldEnvironment : MonoBehaviour
     public AgentLayer agentLayer;
     public ObjectLayer objectLayer;
     public CellLayer cellLayer;
-    public GridWorldAgent agent;
-    public EpisodeTimer timer;
     
     [Header("Settings")]
     [SerializeField] string scenarioName;
     [SerializeField] GridWorldObjective objective;
     [VectorLabels("Width", "Height")]
     public Vector2Int size;
+    [SerializeField] float stepDelay = .25f;
+    [SerializeField] float beginDelay = .5f;
+    [SerializeField] float endDelay = 0.5f;
     
     [Header("Editor Commands")]
     [Tooltip("Click this when changing the size of the grid (or to clear the cells)")]
@@ -44,14 +45,8 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void Start()
     {
-        timer.Initialize(this, Step, Reset);
-        
+        agentLayer.Initialize(BeginComplete, StepComplete, EndComplete);
         BeginEpisode();
-    }
-    
-    void Step()
-    {
-        agentLayer.Step();
     }
     
     void BeginEpisode() 
@@ -60,17 +55,32 @@ public class GridWorldEnvironment : MonoBehaviour
         cellLayer.BeginEpisode();
         objectLayer.BeginEpisode();
         agentLayer.Begin();
-        timer.BeginEpisode();
     }
     
-    /// Future-use layer for when there are multiple agents
-    public void EndEpisodeForAgent(List<GridWorldEvent> events) => EndEpisode(events);
-    
-    void EndEpisode(List<GridWorldEvent> events)
+    // TBD: check if all agents complete (on AgentLayer)
+    void BeginComplete(GridWorldAgent agent)
     {
-        //Debug.Log("Environment.EndEpisode");
-        timer.ClearEpisodeInProgressFlag();
-        BroadcastResult(events);
+        Invoke(nameof(Step), beginDelay);
+    }
+    
+    void Step()
+    {
+        agentLayer.Step();
+    }
+    
+    // TBD: check if all agents complete (on AgentLayer)
+    void StepComplete(GridWorldAgent agent)
+    {
+        agentLayer.RefreshPosition();
+        objectLayer.RefreshPosition();
+        Invoke(nameof(Step), stepDelay);
+    }
+    
+    // TBD: check if all agents complete (on AgentLayer)
+    void EndComplete(GridWorldAgent agent)
+    {
+        BroadcastResult(agent.events);
+        Invoke(nameof(BeginEpisode), endDelay);
     }
     
     void BroadcastResult(List<GridWorldEvent> events)
@@ -80,19 +90,12 @@ public class GridWorldEnvironment : MonoBehaviour
         result?.Invoke(resultValue);
     }
     
-    void Reset() => BeginEpisode();
-
     void OnValidate()
     {
         if (tick) tick = false;
         
-        if (agent != null)
-        {
-            agent.objectLayer = objectLayer;
-            agent.onSetScenarioName?.Invoke(scenarioName);
-        }
-        else
-            Debug.LogError($"No GridWorldAgent referenced from {gameObject.name}", gameObject);
+        // Stabilize version and verify necessary before uncommenting or deleting
+        //agentLayer.Validate(objectLayer, scenarioName);
         
         if (save)
         {
@@ -112,7 +115,6 @@ public class GridWorldEnvironment : MonoBehaviour
             generateNew = false;
             cellLayer.GenerateNew(size);
         }
-        
         if (refreshCellData)
         {
             refreshCellData = false;

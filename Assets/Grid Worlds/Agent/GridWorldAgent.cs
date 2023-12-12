@@ -6,11 +6,10 @@ public interface IAgent
 {
     void Inject(GridWorldAgent agent);
     void AddEvent(GridWorldEvent value);
-    void End();
     
-    void SetBeginFlag(bool value);
-    void SetStepFlag(bool value);
-    void SetEndFlag(bool value);
+    void Begin();
+    void Step();
+    void End();
 }
 
 [Serializable]
@@ -35,9 +34,6 @@ public class GridWorldAgent : MonoBehaviour
 
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;
-
-    [Header("Debug")]
-    [SerializeField, ReadOnly] int episodeCount;
     
     #region Dependencies
     GridWorldEnvironment environment
@@ -64,24 +60,32 @@ public class GridWorldAgent : MonoBehaviour
     #endregion
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
-    [ReadOnly, SerializeField] List<GridWorldEvent> events = new();
+    [ReadOnly] public List<GridWorldEvent> events = new();
     [ReadOnly, SerializeField] List<GridWorldEvent> inventory = new();
     
     AgentObservations observations = new();
+    
+    Action<GridWorldAgent> beginComplete;
+    Action<GridWorldAgent> stepComplete;
+    Action<GridWorldAgent> endComplete;
+    public void BeginComplete() => beginComplete?.Invoke(this);
+    public void StepComplete() => stepComplete?.Invoke(this);
+    public void EndComplete() => endComplete?.Invoke(this);
 
     int stepCount;
     public Action<int> onStep;
     
-    void Awake()
+    public void Initialize(Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
     {
+        this.beginComplete = beginComplete;
+        this.stepComplete = stepComplete;
+        this.endComplete = endComplete;
+    
         implementation = GetComponent<IAgent>();
         implementation.Inject(this);
         
-        placement.Awake();
         body = new MovingEntity(transform, ownCollider, this);
-        body.AddEvent = AddEvent;
-        body.End = End;
-        
+
         switch (moveType)
         {
             case AgentMovementType.Axis2Direction8 : movement = new AgentMovement2Axis(); break;
@@ -89,12 +93,10 @@ public class GridWorldAgent : MonoBehaviour
         }
         movement.Awake(new DiscretePlacement(transform), actionModifiers);
         
-        alive = true;
+        placement.Awake();
     }
     
-    public Action onEpisodeBegin;
-
-    public void Reset()
+    public void Begin()
     {
         stepCount = 0;
         onStep?.Invoke(0);
@@ -105,16 +107,19 @@ public class GridWorldAgent : MonoBehaviour
         movement.ClearCache();
         
         placement.SetRandomPosition();
-        //body.SetPriorPosition();
-        body.ResetPath();
-        
-        episodeCount++;
-        onEpisodeBegin?.Invoke();
+        body.Begin();
         
         alive = true;
+        implementation.Begin();
     }
 
     #region I/O
+    
+    public void Step() 
+    {
+        if (!alive) return;
+        implementation.Step();
+    }
     
     public AgentObservations CollectObservations()
     {
@@ -137,7 +142,6 @@ public class GridWorldAgent : MonoBehaviour
     
     public void OnActionReceived(int[] actions)
     {
-        body.ResetPath();
         var lastPosition = body.stepPath[^1];
         var nextPosition = movement.Move(actions);
         body.moveDirection = nextPosition - body.position;
@@ -148,14 +152,6 @@ public class GridWorldAgent : MonoBehaviour
             body.stepPath.RemoveAt(body.stepPath.Count - 1);
         else
             body.LeaveCell(lastPosition);
-            
-        /*if (!isBlocked) 
-        {
-            body.AddToPath(nextPosition);
-            
-            if (nextPosition != transform.position)
-                body.LeaveCell(transform.position);
-        }*/
 
         stepCount++;
         onStep?.Invoke(stepCount);
@@ -165,9 +161,13 @@ public class GridWorldAgent : MonoBehaviour
             AddEvent(timeout);
             End();
         }
-         
-        transform.localPosition = body.stepPath[^1];
+        
+        StepComplete();
+        //SetPositionAtEndOfPath();
     }
+    
+    // TBD: Lerp movement
+    public void SetPositionAtEndOfPath() => transform.localPosition = body.stepPath[^1];
     
     #endregion
     
@@ -184,9 +184,8 @@ public class GridWorldAgent : MonoBehaviour
     [ReadOnly] public bool alive;
     
     public void End()
-    {
+    { 
         alive = false;
-        environment.EndEpisodeForAgent(events);
         implementation.End();
     }
     
@@ -197,6 +196,7 @@ public class GridWorldAgent : MonoBehaviour
     public int[] PlayerControl() => movement.PlayerControl();
     public bool MoveKeyPressed() => movement.MoveKeyPressed();
     public int[] ActionSpace() => movement.ActionSpace();
+    public void ApplyPlayerControl() => OnActionReceived(PlayerControl());
     
     const int spatialDimensions = 2;
     int selfObservationCount => observeSelf ? spatialDimensions : 0;
@@ -223,8 +223,4 @@ public class GridWorldAgent : MonoBehaviour
         }
         return false;
     }
-    
-    public void ClearBeginFlag() => implementation.SetBeginFlag(false);
-    public void ClearStepFlag() => implementation.SetStepFlag(false);
-    public void ClearEndFlag() => implementation.SetEndFlag(false);
 }

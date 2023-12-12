@@ -5,27 +5,31 @@ public class PushableBox : GridObjectInfo
 {
     public override bool Touch(MovingEntity source, GameObject self) 
     {
-        var pushable = self.GetComponent<MovingEntityMono>();
-        if (!pushable) return true;
+        var pushableMono = self.GetComponent<MovingEntityMono>();
+        if (!pushableMono) return true;
+        var pushable = pushableMono.process;
         
-        pushable.process.ResetPath();
-        var nextPosition = pushable.process.position;
+        var nextPosition = pushable.position;
         var movement = Vector3.zero;
         
         // Lighter objects (e.g. ball) cannot push heavier objects (e.g. box)
-        bool success = !source.lightweight;
-        if (!success) return true;
+        if (source.lightweight) return true;
         
         movement = source.moveDirection;
         nextPosition += movement;
-        success = !pushable.process.CheckForColliders(nextPosition);
+        pushable.AddToPath(nextPosition);
         
-        if (!success) return true;
+        var hitObstacle = pushable.CheckForColliders(nextPosition);
+        
+        Debug.Log($"{movement} {nextPosition} {pushable.stepPath.Count}");
+        Debug.Log($"Full path:  {string.Join(", ", pushable.stepPath)}");  
+        if (hitObstacle) 
         {
-            pushable.process.AddToPath();
-            pushable.transform.localPosition = nextPosition;
-            Success(this, pushable.process, movement);
+            pushable.RemoveLastFromPath();
+            return true;
         }
+        
+        Success(this, pushable, movement);
         return true;
     }
     

@@ -12,12 +12,12 @@ public class Supervisor : MonoBehaviour, IObservableObject
     
     void Awake()
     {
-        agent.onEpisodeBegin += OnEpisodeBegin;
+        //agent.onEpisodeBegin += OnEpisodeBegin;
     }
     
     void OnDestroy()
     {
-        if (agent) agent.onEpisodeBegin -= OnEpisodeBegin;
+        //if (agent) agent.onEpisodeBegin -= OnEpisodeBegin;
     }
     
     void OnEpisodeBegin()

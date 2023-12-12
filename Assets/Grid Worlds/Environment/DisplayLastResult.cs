@@ -11,8 +11,16 @@ public class DisplayLastResult : MonoBehaviour
 {
     Lookup lookup => Lookup.instance;
 
-    SpriteRenderer background => _background ??= GetComponent<SpriteRenderer>();
     SpriteRenderer _background;
+    SpriteRenderer background
+    {
+        get
+        {
+            if (!_background)
+                _background = GetComponent<SpriteRenderer>();
+            return _background;
+        }
+    }
     GridWorldEnvironment environment => _environment ??= transform.parent.parent.GetComponent<GridWorldEnvironment>();
     GridWorldEnvironment _environment;
 

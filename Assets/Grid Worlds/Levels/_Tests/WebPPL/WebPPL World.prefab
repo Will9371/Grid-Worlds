@@ -8818,7 +8818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed2c1fa3b5df2c42aa4424d68012559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elements:
+  agents:
   - {fileID: 7046242698376439691}
 --- !u!1 &4891852055641254753
 GameObject:
@@ -12979,14 +12979,12 @@ MonoBehaviour:
   agentLayer: {fileID: 2889151180476054539}
   objectLayer: {fileID: 1754476722143871684}
   cellLayer: {fileID: 2128659975388477958}
-  agent: {fileID: 7046242698376439691}
-  timer:
-    stepDelay: 0.25
-    beginDelay: 0.5
-    endDelay: 0.5
   scenarioName: WebPPL
   objective: {fileID: 11400000, guid: 38821551f70a2294ebfb1e5d528d9f64, type: 2}
   size: {x: 13, y: 10}
+  stepDelay: 0.25
+  beginDelay: 0.5
+  endDelay: 0.5
   generateNew: 0
   layout: {fileID: 11400000, guid: e3cec7a77cbd82842acff3ad81c7ca77, type: 2}
   save: 0
@@ -12994,7 +12992,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &6531275619608252838
 GameObject:
   m_ObjectHideFlags: 0

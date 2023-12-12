@@ -1,30 +1,40 @@
+using System;
 using UnityEngine;
 
 public class AgentLayer : MonoBehaviour
 {
-    [SerializeField] GridWorldAgent[] elements;
+    [SerializeField] GridWorldAgent[] agents;
+    
+    public void Initialize(Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
+    {
+        foreach (var agent in agents)
+            agent.Initialize(beginComplete, stepComplete, endComplete);
+    }
     
     public void Begin()
     {
-        //Debug.Log("Agents.Begin");
-        foreach (var element in elements)
-        {
-            element.ClearBeginFlag();
-            element.Reset();
-        }
+        foreach (var agent in agents)
+            agent.Begin();
     }
     
     public void Step()
     {
-        //Debug.Log("Agents.Step");
-        foreach (var element in elements)
-            element.ClearStepFlag();
+        foreach (var agent in agents)
+            agent.Step();
     }
     
-    public void End()
+    public void RefreshPosition()
     {
-        //Debug.Log("Agents.End");
-        foreach (var element in elements)
-            element.ClearEndFlag();
+        foreach (var agent in agents)
+            agent.SetPositionAtEndOfPath();
+    }
+    
+    public void Validate(ObjectLayer objectLayer, string scenarioName)
+    {
+        foreach (var agent in agents)
+        {
+            agent.objectLayer = objectLayer;
+            agent.onSetScenarioName?.Invoke(scenarioName);
+        }
     }
 }

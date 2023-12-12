@@ -14,7 +14,9 @@ public class RandomizePositionOnBegin
     public int yMax => Mathf.RoundToInt(yRange.y + center.y);
     
     public Vector2 center;
+    
     public Transform transform;
+    
     
     DiscretePlacement _location;
     DiscretePlacement location
