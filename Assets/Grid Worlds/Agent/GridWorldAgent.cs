@@ -144,11 +144,7 @@ public class GridWorldAgent : MonoBehaviour
     {
         var nextPosition = movement.Move(actions);
         body.moveDirection = nextPosition - body.position;
-        body.AddToPath(nextPosition);
-        
-        //var isBlocked = 
-        body.CheckForColliders(nextPosition);
-        //if (!isBlocked) body.RequestLeaveCell();
+        body.AddToPathIfOpen(nextPosition);
 
         stepCount++;
         onStep?.Invoke(stepCount);
@@ -160,14 +156,12 @@ public class GridWorldAgent : MonoBehaviour
         }
         
         StepComplete();
-        //SetPositionAtEndOfPath();
     }
     
-    // TBD: Lerp movement
     public void SetPositionAtEndOfPath() 
     {
         body.RequestLeaveCell();
-        transform.localPosition = body.lastPosition;
+        body.RefreshPosition();
     }
     
     #endregion

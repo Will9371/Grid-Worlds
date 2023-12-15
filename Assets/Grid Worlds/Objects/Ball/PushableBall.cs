@@ -14,14 +14,7 @@ public class PushableBall : PushableBox
     void ExtraTouch(PushableBox info, MovingEntity instance, Vector3 movement) 
     {
         var newPosition = instance.lastPosition + movement;
-        instance.AddToPath(newPosition);
-        
-        //Debug.Log($"Movement: {movement}, last position: {instance.lastPosition}, new position: {newPosition}, path count: {instance.stepPath.Count}");
-        //Debug.Log($"Full path:  {string.Join(", ", instance.stepPath)}"); 
-
-        var isBlocked = instance.CheckForColliders(newPosition);
-        if (isBlocked) return;
-        
-        Success(info, instance, movement);
+        var isBlocked = instance.AddToPathIfOpen(newPosition);
+        if (!isBlocked) Success(info, instance, movement);
     }
 }

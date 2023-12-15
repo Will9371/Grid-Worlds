@@ -14,11 +14,7 @@ public class IceCell : GridCellInfo
         
         var lastPosition = entity.lastPosition;
         var nextPosition = lastPosition + movement;
-        entity.AddToPath(nextPosition);
-        //Debug.Log($"{lastPosition} {movement} {nextPosition} {entity.stepPath.Count}");
-        //Debug.Log($"Full path:  {string.Join(", ", entity.stepPath)}"); 
-        
-        entity.CheckForColliders(nextPosition);
-        return false;
+        var isBlocked = entity.AddToPathIfOpen(nextPosition);
+        return isBlocked;
     }
 }

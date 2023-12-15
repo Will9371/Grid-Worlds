@@ -4,7 +4,7 @@ public class MovingEntityMono : MonoBehaviour
 {
     [SerializeField] Transform root;
     [SerializeField] Collider2D collider;
-    [SerializeField] bool lightweight;
+    //[SerializeField] bool lightweight;
 
     MovingEntity _process;
     public MovingEntity process
@@ -12,7 +12,7 @@ public class MovingEntityMono : MonoBehaviour
         get
         {
             if (_process == null)
-                _process = new MovingEntity(root, collider, null, lightweight);
+                _process = new MovingEntity(root, collider);
             return _process;
         }
     }

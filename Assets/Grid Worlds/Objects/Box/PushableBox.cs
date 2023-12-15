@@ -16,12 +16,8 @@ public class PushableBox : GridObjectInfo
         
         var movement = source.moveDirection;
         nextPosition += movement;
-        pushable.AddToPath(nextPosition);
         
-        //Debug.Log($"{movement} {nextPosition} {pushable.stepPath.Count}");
-        //Debug.Log($"Full path:  {string.Join(", ", pushable.stepPath)}"); 
-        
-        var isBlocked = pushable.CheckForColliders(nextPosition);
+        var isBlocked = pushable.AddToPathIfOpen(nextPosition);
         if (isBlocked) return true;
         
         Success(this, pushable, movement);
