@@ -12,11 +12,11 @@ public class MovingEntityMono : MonoBehaviour
         get
         {
             if (_process == null)
-                _process = new MovingEntity(root, collider);
+                _process = new MovingEntity(root, collider, this);
             return _process;
         }
     }
     
     public void Begin() => process.Begin();
-    public void RefreshPosition() => process.RefreshPosition();
+    public void RefreshPosition(float lerpTime) => process.RefreshPosition(lerpTime);
 }

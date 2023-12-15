@@ -23,10 +23,10 @@ public class AgentLayer : MonoBehaviour
             agent.Step();
     }
     
-    public void RefreshPosition()
+    public void RefreshPosition(float lerpTime)
     {
         foreach (var agent in agents)
-            agent.SetPositionAtEndOfPath();
+            agent.SetPositionAtEndOfPath(lerpTime);
     }
     
     public void Validate(ObjectLayer objectLayer, string scenarioName)

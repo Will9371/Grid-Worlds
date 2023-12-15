@@ -71,8 +71,8 @@ public class GridWorldEnvironment : MonoBehaviour
     // TBD: check if all agents complete (on AgentLayer)
     void StepComplete(GridWorldAgent agent)
     {
-        agentLayer.RefreshPosition();
-        objectLayer.RefreshPosition();
+        agentLayer.RefreshPosition(stepDelay - 0.05f);      // Expose buffer
+        objectLayer.RefreshPosition(stepDelay - 0.05f);
         Invoke(nameof(Step), stepDelay);
     }
     

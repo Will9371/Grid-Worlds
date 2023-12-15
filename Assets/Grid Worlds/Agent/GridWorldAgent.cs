@@ -158,10 +158,10 @@ public class GridWorldAgent : MonoBehaviour
         StepComplete();
     }
     
-    public void SetPositionAtEndOfPath() 
+    public void SetPositionAtEndOfPath(float lerpTime) 
     {
         body.RequestLeaveCell();
-        body.RefreshPosition();
+        body.RefreshPosition(lerpTime);
     }
     
     #endregion

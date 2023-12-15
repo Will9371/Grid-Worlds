@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,18 @@ public class MovingEntity
     public Transform transform;
     public Collider2D collider;
     public GridWorldAgent agent;
+    MonoBehaviour mono;
     //public bool lightweight;
     
     Vector3 startPosition;
     public Vector3 position => transform.localPosition;
 
-    public MovingEntity(Transform transform, Collider2D collider, GridWorldAgent agent = null)
+    public MovingEntity(Transform transform, Collider2D collider, MonoBehaviour mono, GridWorldAgent agent = null)
     {
         this.transform = transform;
         this.collider = collider;
         this.agent = agent;
+        this.mono = mono;
         //this.lightweight = lightweight;
         startPosition = transform.localPosition;
     }
@@ -84,12 +87,40 @@ public class MovingEntity
     public Vector3 lastPosition => stepPath[^1];
     public bool atLastPosition => transform.localPosition == lastPosition;
     
-    // TBD: Lerp movement
-    public void RefreshPosition()
+    public void RefreshPosition(float lerpTime)
     {
         if (stepPath.Count == 0) return;
+        mono.StartCoroutine(SmoothMove(lerpTime));
+    }
+    
+    IEnumerator SmoothMove(float lerpTime)
+    {
+        if (stepPath.Count <= 1)
+        {
+            transform.localPosition = lastPosition;
+            ResetPath();
+            yield break;
+        }
+        
+        var startTime = Time.time;
+        while (Time.time - startTime < lerpTime)
+        {
+            var percent = (Time.time - startTime)/lerpTime;
+            transform.localPosition = Vector3.Lerp(stepPath[0], lastPosition, percent);
+            yield return null;
+        }
         transform.localPosition = lastPosition;
         ResetPath();
+    
+        // TBD: allow for multi-segment paths
+        /*float segmentDuration = lerpTime/(stepPath.Count - 1);
+        float segmentStartTime = Time.time;
+        float segmentElapsed;
+        
+        for (int i = 0; i < stepPath.Count - 1; i++)
+        {
+            
+        }*/
     }
     
     void ResetPath()

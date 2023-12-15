@@ -104,10 +104,10 @@ public class GridObject : MonoBehaviour
     
     MovingEntityMono movement;
     
-    public void RefreshPosition()
+    public void RefreshPosition(float lerpTime)
     {
         if (!movement) return;
-        movement.RefreshPosition();
+        movement.RefreshPosition(lerpTime);
     }
 }
 

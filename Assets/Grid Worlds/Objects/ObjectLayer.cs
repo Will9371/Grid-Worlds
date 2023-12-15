@@ -35,10 +35,10 @@ public class ObjectLayer : MonoBehaviour
             element.BeginEpisode();
     }
     
-    public void RefreshPosition()
+    public void RefreshPosition(float lerpTime)
     {
         foreach (var element in elements)
-            element.RefreshPosition();
+            element.RefreshPosition(lerpTime);
     }
     
     public int GetObservationCount()
