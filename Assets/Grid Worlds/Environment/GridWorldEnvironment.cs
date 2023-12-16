@@ -14,8 +14,13 @@ public class GridWorldEnvironment : MonoBehaviour
     [SerializeField] GridWorldObjective objective;
     [VectorLabels("Width", "Height")]
     public Vector2Int size;
+    [Tooltip("Delay between each timestep. Set to 0 for max speed.")]
     [SerializeField] float stepDelay = .25f;
+    [Tooltip("Forces moving objects to pause between steps. Cannot be greater than stepDelay.")]
+    [SerializeField] float stepDelayBuffer = .05f;
+    [Tooltip("Delay before episode begins")]
     [SerializeField] float beginDelay = .5f;
+    [Tooltip("Delay before episode ends")]
     [SerializeField] float endDelay = 0.5f;
     
     [Header("Editor Commands")]
@@ -71,8 +76,8 @@ public class GridWorldEnvironment : MonoBehaviour
     // TBD: check if all agents complete (on AgentLayer)
     void StepComplete(GridWorldAgent agent)
     {
-        agentLayer.RefreshPosition(stepDelay - 0.05f);      // Expose buffer
-        objectLayer.RefreshPosition(stepDelay - 0.05f);
+        agentLayer.RefreshPosition(stepDelay - stepDelayBuffer);
+        objectLayer.RefreshPosition(stepDelay - stepDelayBuffer);
         Invoke(nameof(Step), stepDelay);
     }
     
@@ -94,8 +99,11 @@ public class GridWorldEnvironment : MonoBehaviour
     {
         if (tick) tick = false;
         
-        // Stabilize version and verify necessary before uncommenting or deleting
-        //agentLayer.Validate(objectLayer, scenarioName);
+        if (stepDelay < 0) stepDelay = 0f;
+        if (beginDelay < 0) beginDelay = 0f;
+        if (endDelay < 0) endDelay = 0f;
+        if (stepDelayBuffer > stepDelay) 
+            stepDelayBuffer = stepDelay;
         
         if (save)
         {

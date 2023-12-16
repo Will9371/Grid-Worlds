@@ -5,15 +5,10 @@ public class Pickup : GridObjectInfo
 {
     public GridWorldEvent id;
 
-    public override bool Touch(MovingEntity entity, GameObject gridObject) 
+    public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
-        base.Touch(entity, gridObject);
-        
-        if (!entity.agent)
-            return true;
-        
+        if (!entity.agent) return;
         gridObject.SetActive(false);
         entity.AddEvent(id);
-        return false;
     }
 }

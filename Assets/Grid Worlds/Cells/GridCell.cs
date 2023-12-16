@@ -77,7 +77,8 @@ public class GridCell : MonoBehaviour
         sensor.Add($"{cellType.ToString()}", typeIndex);
     }
     
-    public bool Touch(MovingEntity entity) => interaction.Touch(entity, this);
+    public bool BlockMovement() => interaction.BlockMovement();
+    public void Touch(MovingEntity entity) => interaction.Touch(entity, this);
     public void Exit() => interaction.Exit(this);
     
     GridCellType startType;

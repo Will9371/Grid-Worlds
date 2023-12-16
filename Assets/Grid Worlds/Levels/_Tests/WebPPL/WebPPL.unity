@@ -322,6 +322,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: save
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: toggle
       value: 1
       objectReference: {fileID: 0}

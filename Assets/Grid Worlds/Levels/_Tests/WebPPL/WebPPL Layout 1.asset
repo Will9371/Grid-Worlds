@@ -95,7 +95,7 @@ MonoBehaviour:
   - type: 1
   - type: 3
   - type: 3
-  - type: 0
+  - type: 3
   - type: 3
   - type: 3
   - type: 3
@@ -108,7 +108,7 @@ MonoBehaviour:
   - type: 1
   - type: 3
   - type: 3
-  - type: 0
+  - type: 3
   - type: 3
   - type: 3
   - type: 3
@@ -146,9 +146,17 @@ MonoBehaviour:
   - type: 1
   objectData:
     values:
+    - name: Reward Pickup
+      touchInfo: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+      position: {x: -3, y: 0}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 1, b: 1, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
     - name: Ball
       touchInfo: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}
-      position: {x: -2, y: 1}
+      position: {x: 1, y: 3}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 1, g: 1, b: 1, a: 1}
@@ -156,7 +164,7 @@ MonoBehaviour:
       hide: 0
     - name: Box
       touchInfo: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
-      position: {x: 2, y: 0}
+      position: {x: 3, y: 2}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
@@ -164,7 +172,7 @@ MonoBehaviour:
       hide: 0
     - name: Box
       touchInfo: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
-      position: {x: 2, y: 3}
+      position: {x: 1, y: 2}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
@@ -197,6 +205,22 @@ MonoBehaviour:
     - name: Key
       touchInfo: {fileID: 11400000, guid: 2681e28457902fd45a2ce5437e2e4ad1, type: 2}
       position: {x: 5, y: -2}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: Lock
+      touchInfo: {fileID: 11400000, guid: 6c1d3099aecd3ea4ca8731701761560a, type: 2}
+      position: {x: 4, y: -3}
+      xPlaceRange: {x: 0, y: 0}
+      yPlaceRange: {x: 0, y: 0}
+      color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+      gizmoRadius: 0.25
+      hide: 0
+    - name: Lock
+      touchInfo: {fileID: 11400000, guid: 6c1d3099aecd3ea4ca8731701761560a, type: 2}
+      position: {x: 5, y: -3}
       xPlaceRange: {x: 0, y: 0}
       yPlaceRange: {x: 0, y: 0}
       color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

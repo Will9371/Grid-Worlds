@@ -5,18 +5,14 @@ public class Lock : GridObjectInfo
 {
     public GridWorldEvent key;
     public GridWorldEvent unlock;
-
-    public override bool Touch(MovingEntity entity, GameObject gridObject) 
+    
+    public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
-        base.Touch(entity, gridObject);
-        if (!entity.agent) return true;
+        var consumeKey = entity.agent.TakeInventoryItem(key);
+        if (!consumeKey) return;
         
-        // Try to consume one key
-        if (!entity.agent.TakeInventoryItem(key))
-            return true;
-        
+        // Success: lock opens
         gridObject.SetActive(false);
         entity.AddEvent(unlock);
-        return false;
     }
 }

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wall
   m_EditorClassIdentifier: 
   cellType: 1
+  solid: 1

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Key
   m_EditorClassIdentifier: 
   prefab: {fileID: 7485419162296915091, guid: d19fb36ed48f51c46bf9c9c3925836f2, type: 3}
-  solid: 1
+  solid: 0
   destructible: 0
   id: {fileID: 11400000, guid: 712a2dc85ae3f8045b428b24cd3c5988, type: 2}

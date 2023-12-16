@@ -8,10 +8,10 @@ public class MovingEntity
     public Collider2D collider;
     public GridWorldAgent agent;
     MonoBehaviour mono;
-    //public bool lightweight;
     
     Vector3 startPosition;
     public Vector3 position => transform.localPosition;
+    bool isAgent => agent != null;
 
     public MovingEntity(Transform transform, Collider2D collider, MonoBehaviour mono, GridWorldAgent agent = null)
     {
@@ -19,7 +19,6 @@ public class MovingEntity
         this.collider = collider;
         this.agent = agent;
         this.mono = mono;
-        //this.lightweight = lightweight;
         startPosition = transform.localPosition;
     }
     
@@ -35,12 +34,11 @@ public class MovingEntity
     {
         AddToPath(position);
         var isBlocked = CheckForColliders(position);
-        //Debug.Log($"{transform.name} blocked = {isBlocked} at time {Time.time}.  Checking position {position}, from position {transform.position}");
         if (isBlocked) RemoveLastFromPath();
         return isBlocked;
     }
     
-    public bool CheckForColliders(Vector3 position)
+    bool CheckForColliders(Vector3 position)
     {
         var others = Physics2D.OverlapCircleAll(position, .1f);
         var isBlocked = false;
@@ -56,15 +54,19 @@ public class MovingEntity
     
     bool OnTouch2D(Collider2D other)
     {
-        var isBlocked = false;
-    
-        var cell = other.GetComponent<GridCell>();
-        if (cell) if (cell.Touch(this)) isBlocked = true;
-
         var gridObject = other.GetComponent<ObjectCollider>();
-        if (gridObject) if (gridObject.Touch(this)) isBlocked = true;
-        
-        return isBlocked;
+        if (gridObject) 
+        {
+            gridObject.Touch(this);
+            if (gridObject.BlockMovement(isAgent)) 
+                return true;
+        }
+    
+        // REFACTOR: separate IsBlocked from Touch
+        var cell = other.GetComponent<GridCell>();
+        if (!cell) return false;
+        cell.Touch(this);
+        return cell.BlockMovement();
     }
     
     public void RequestLeaveCell()
@@ -89,8 +91,14 @@ public class MovingEntity
     
     public void RefreshPosition(float lerpTime)
     {
-        if (stepPath.Count == 0) return;
-        mono.StartCoroutine(SmoothMove(lerpTime));
+        if (stepPath.Count == 0 || !mono.isActiveAndEnabled) return;
+        if (lerpTime <= 0f)
+        {
+            transform.localPosition = lastPosition;
+            ResetPath();            
+        }
+        else
+            mono.StartCoroutine(SmoothMove(lerpTime));
     }
     
     IEnumerator SmoothMove(float lerpTime)

@@ -84,7 +84,7 @@ public class GridWorldAgent : MonoBehaviour
         implementation = GetComponent<IAgent>();
         implementation.Inject(this);
         
-        body = new MovingEntity(transform, ownCollider, this);
+        body = new MovingEntity(transform, ownCollider, this, this);
 
         switch (moveType)
         {

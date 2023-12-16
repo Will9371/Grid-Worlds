@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Box
   m_EditorClassIdentifier: 
   prefab: {fileID: 1149868158789818340, guid: 98dd16a1e3e8d454e964cf3bf9913401, type: 3}
-  solidInteractable: 0
+  solid: 1
   destructible: 1

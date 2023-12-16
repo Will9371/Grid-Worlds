@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ice
   m_EditorClassIdentifier: 
   cellType: 3
-  slideChance: 0.5
+  slideChance: 0.9

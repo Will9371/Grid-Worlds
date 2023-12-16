@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Whiskey
   m_EditorClassIdentifier: 
   prefab: {fileID: 7837287151261914243, guid: 2718cd37abd6b7044a1acbae464ee894, type: 3}
-  solid: 1
+  solid: 0
   destructible: 0
   effect: {fileID: 11400000, guid: c875c85532019aa45a7089ee24d8c727, type: 2}
   eventId: {fileID: 11400000, guid: 80445b269e6224a4ab01f29e046d8761, type: 2}
