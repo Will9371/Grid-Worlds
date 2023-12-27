@@ -30,43 +30,63 @@ public class MovingEntity
     
     /// Adds position to stepPath if there are no blocking colliders at that position.
     /// Returns true if the position is blocked, false if it is open.
-    public bool AddToPathIfOpen(Vector3 position)
+    public bool AddToPathIfOpen(Vector2 position, bool isSliding)
     {
         AddToPath(position);
-        var isBlocked = CheckForColliders(position);
+        var overlaps = Physics2D.OverlapCircleAll(position, .1f);
+        var isBlocked = CheckForColliders(overlaps);
         if (isBlocked) RemoveLastFromPath();
+        TouchPosition(overlaps, isSliding, isBlocked);
         return isBlocked;
     }
     
-    bool CheckForColliders(Vector3 position)
+    bool CheckForColliders(Collider2D[] overlaps)
     {
-        var others = Physics2D.OverlapCircleAll(position, .1f);
-        var isBlocked = false;
-        
-        foreach (var other in others)
+        foreach (var other in overlaps)
         {
-            if (other == collider) continue;
-            if (OnTouch2D(other)) isBlocked = true;
+            if (!other || other == collider) continue;
+            if (IsBlocker(other)) return true;
         }
             
-        return isBlocked;
+        return false;
     }
     
-    bool OnTouch2D(Collider2D other)
+    bool IsBlocker(Collider2D other)
     {
         var gridObject = other.GetComponent<ObjectCollider>();
-        if (gridObject) 
-        {
-            gridObject.Touch(this);
-            if (gridObject.BlockMovement(isAgent)) 
-                return true;
-        }
-    
-        // REFACTOR: separate IsBlocked from Touch
+        if (gridObject) return gridObject.BlockMovement(isAgent);
+        
         var cell = other.GetComponent<GridCell>();
-        if (!cell) return false;
-        cell.Touch(this);
-        return cell.BlockMovement();
+        if (cell) return cell.BlockMovement();
+        
+        return false;
+    }
+    
+    void TouchPosition(Collider2D[] others, bool isSliding, bool isBlocked)
+    {
+        foreach (var other in others)
+        {
+            // Don't interact with invalid colliders or self
+            if (!other || other == collider) continue;
+            
+            // Prevent sliding objects from moving other objects (or they will appear to move at the same time)
+            if (!isSliding) TouchObject(other);
+            
+            // Only interact with cells when actually stepping on them
+            if (!isBlocked) TouchCell(other);
+        }
+    }
+    
+    void TouchObject(Collider2D other)
+    {
+        var gridObject = other.GetComponent<ObjectCollider>();
+        if (gridObject) gridObject.Touch(this);
+    }
+    
+    void TouchCell(Collider2D other)
+    {
+        var cell = other.GetComponent<GridCell>();
+        if (cell) cell.Touch(this);        
     }
     
     public void RequestLeaveCell()
@@ -135,6 +155,7 @@ public class MovingEntity
     {
         stepPath.Clear();
         AddCurrentPositionToPath();
+        moveDirection = Vector3.zero;
     }
     
     public Vector3 moveDirection;

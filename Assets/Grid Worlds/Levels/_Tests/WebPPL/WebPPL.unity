@@ -281,6 +281,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 217750630919670908, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1108427079939831651, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -321,13 +325,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1302132655757198638, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: save
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: toggle
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825430065286579608, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: m_Camera
@@ -344,6 +352,14 @@ PrefabInstance:
     - target: {fileID: 6801109226352202524, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034460396557484803, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8624721067084346614, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

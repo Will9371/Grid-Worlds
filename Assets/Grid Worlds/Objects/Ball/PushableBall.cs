@@ -14,7 +14,7 @@ public class PushableBall : PushableBox
     void ExtraTouch(PushableBox info, MovingEntity instance, Vector3 movement) 
     {
         var newPosition = instance.lastPosition + movement;
-        var isBlocked = instance.AddToPathIfOpen(newPosition);
+        var isBlocked = instance.AddToPathIfOpen(newPosition, false);
         if (!isBlocked) Success(info, instance, movement);
     }
 }

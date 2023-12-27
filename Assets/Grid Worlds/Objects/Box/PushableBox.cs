@@ -13,9 +13,10 @@ public class PushableBox : GridObjectInfo
         var nextPosition = pushable.position;
         
         var movement = source.moveDirection;
+        pushable.moveDirection = movement;
         nextPosition += movement;
         
-        var isBlocked = pushable.AddToPathIfOpen(nextPosition);
+        var isBlocked = pushable.AddToPathIfOpen(nextPosition, false);
         if (isBlocked) return;
         
         Success(this, pushable, movement);

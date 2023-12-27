@@ -144,7 +144,7 @@ public class GridWorldAgent : MonoBehaviour
     {
         var nextPosition = movement.Move(actions);
         body.moveDirection = nextPosition - body.position;
-        body.AddToPathIfOpen(nextPosition);
+        body.AddToPathIfOpen(nextPosition, false);
 
         stepCount++;
         onStep?.Invoke(stepCount);
