@@ -12,6 +12,8 @@ public class MovingEntity
     Vector3 startPosition;
     public Vector3 position => transform.localPosition;
     bool isAgent => agent != null;
+    
+    bool isAlive;
 
     public MovingEntity(Transform transform, Collider2D collider, MonoBehaviour mono, GridWorldAgent agent = null)
     {
@@ -25,6 +27,7 @@ public class MovingEntity
     public void Begin() 
     {
         transform.localPosition = startPosition;
+        isAlive = true;
         ResetPath();
     }
     
@@ -32,10 +35,13 @@ public class MovingEntity
     /// Returns true if the position is blocked, false if it is open.
     public bool AddToPathIfOpen(Vector2 position, bool isSliding)
     {
+        if (!isAlive) return false;
         AddToPath(position);
+        
         var overlaps = Physics2D.OverlapCircleAll(position, .1f);
         var isBlocked = CheckForColliders(overlaps);
         if (isBlocked) RemoveLastFromPath();
+        
         TouchPosition(overlaps, isSliding, isBlocked);
         return isBlocked;
     }
@@ -130,25 +136,25 @@ public class MovingEntity
             yield break;
         }
         
-        var startTime = Time.time;
-        while (Time.time - startTime < lerpTime)
+        var segmentDuration = lerpTime/(stepPath.Count - 1);
+        for (int i = 0; i < stepPath.Count - 1; i++)
         {
-            var percent = (Time.time - startTime)/lerpTime;
-            transform.localPosition = Vector3.Lerp(stepPath[0], lastPosition, percent);
-            yield return null;
+            var startTime = Time.time;
+            while (Time.time - startTime < segmentDuration)
+            {
+                var percent = (Time.time - startTime)/segmentDuration;
+                transform.localPosition = Vector3.Lerp(stepPath[i], stepPath[i+1], percent);
+                yield return null;
+            }            
         }
         transform.localPosition = lastPosition;
         ResetPath();
-    
-        // TBD: allow for multi-segment paths
-        /*float segmentDuration = lerpTime/(stepPath.Count - 1);
-        float segmentStartTime = Time.time;
-        float segmentElapsed;
         
-        for (int i = 0; i < stepPath.Count - 1; i++)
+        if (!isAlive)
         {
-            
-        }*/
+            if (isAgent) agent.End();
+            else mono.gameObject.SetActive(false);
+        }
     }
     
     void ResetPath()
@@ -167,6 +173,7 @@ public class MovingEntity
     
     public void Die()
     {
-        if (agent) agent.End();
+        //if (agent) agent.End();
+        isAlive = false;
     }
 }

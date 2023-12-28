@@ -10,8 +10,8 @@ public class LavaCell : GridCellInfo
         entity.AddEvent(eventId);
         entity.Die();
         
-        var gridObject = entity.transform.GetComponent<GridObject>();
-        if (gridObject && gridObject.info.destructible)
-            gridObject.gameObject.SetActive(false);
+        //var gridObject = entity.transform.GetComponent<GridObject>();
+        //if (gridObject && gridObject.info.destructible)
+        //    gridObject.gameObject.SetActive(false);
     }
 }
