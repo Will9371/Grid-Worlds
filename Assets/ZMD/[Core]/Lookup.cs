@@ -46,19 +46,8 @@ public class Lookup : ScriptableObject
 	}
     
 	public float GetReward(GridCellType id) => GetGridCellSettings(id).rewardOnTouch;
-	
-	// * Condense with GridCellType
-	public GridCellInfo[] interactables;
 
-	public GridCellInfo GetInteractable(GridCellType cellType)
-	{
-		foreach (var interactable in interactables)
-			if (interactable.cellType == cellType)
-				return interactable;
-				
-		Debug.LogError($"Invalid cell type {cellType}");
-		return null;
-	}
+	public GridCellInfo GetInteractable(GridCellType id) => GetGridCellSettings(id).info;
 	
 	public GridObjectInfo[] objectIds;
 	
@@ -83,10 +72,12 @@ public struct ResultColor
 [Serializable]
 public struct GridCellSettings
 {
+	public GridCellInfo info;
 	public GridCellType id;
 	public Color color;
 	public Sprite sprite;
 	public bool hasCollider;
 	public float rewardOnTouch;
 	public bool displayResultColorOnEpisodeEnd;
+	public bool setPerInstance;
 }

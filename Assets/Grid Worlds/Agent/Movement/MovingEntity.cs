@@ -35,6 +35,12 @@ public class MovingEntity
     /// Returns true if the position is blocked, false if it is open.
     public bool AddToPathIfOpen(Vector2 position, bool isSliding)
     {
+        if (stepPath.Count > 20)
+        {
+            Debug.LogError("max path length exceeded");
+            return false;
+        }
+    
         if (!isAlive) return false;
         AddToPath(position);
         
@@ -143,7 +149,12 @@ public class MovingEntity
             while (Time.time - startTime < segmentDuration)
             {
                 var percent = (Time.time - startTime)/segmentDuration;
+                
+                if (i < 0 || i >= stepPath.Count || i + 1 < 0 || i + 1 >= stepPath.Count)
+                    Debug.LogError(i);  // Index out of range error on line 156, but this log doesn't occur...
+                
                 transform.localPosition = Vector3.Lerp(stepPath[i], stepPath[i+1], percent);
+                
                 yield return null;
             }            
         }

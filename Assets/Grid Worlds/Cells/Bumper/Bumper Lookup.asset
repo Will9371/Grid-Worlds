@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d830ea3311ff39d4ba59940ad28e163c, type: 3}
+  m_Name: Bumper Lookup
+  m_EditorClassIdentifier: 
+  bindings:
+  - directions:
+      left: 1
+      right: 1
+      up: 1
+      down: 1
+    info: {fileID: 11400000, guid: 1490c871efff6da4fa840967a5cb28b3, type: 2}
+  - directions:
+      left: 1
+      right: 0
+      up: 0
+      down: 0
+    info: {fileID: 11400000, guid: 1d79a4e3923aee4438d9daf916bbc8d2, type: 2}
+  - directions:
+      left: 0
+      right: 1
+      up: 0
+      down: 0
+    info: {fileID: 11400000, guid: b8715629eb859c444a3ff455f72caaa4, type: 2}
+  - directions:
+      left: 0
+      right: 0
+      up: 1
+      down: 0
+    info: {fileID: 11400000, guid: 2c4254bb5bfdafc4bbd8fc346aed48cd, type: 2}
+  - directions:
+      left: 0
+      right: 0
+      up: 0
+      down: 1
+    info: {fileID: 11400000, guid: ab0ed999fe3ff9f488ce8f724d3af603, type: 2}
+  - directions:
+      left: 1
+      right: 1
+      up: 0
+      down: 0
+    info: {fileID: 11400000, guid: 0c2b084483d6de9489b7463413d4a068, type: 2}
+  - directions:
+      left: 0
+      right: 0
+      up: 1
+      down: 1
+    info: {fileID: 11400000, guid: 638ced45f7dbea048813813d30081f9b, type: 2}
+  - directions:
+      left: 1
+      right: 0
+      up: 1
+      down: 0
+    info: {fileID: 11400000, guid: 6914fc8c12b11bf42a2a9458f1b50c89, type: 2}
+  - directions:
+      left: 1
+      right: 0
+      up: 0
+      down: 1
+    info: {fileID: 11400000, guid: 9ab9abcf96a57ed4e8219c85860b8d48, type: 2}
+  - directions:
+      left: 0
+      right: 1
+      up: 1
+      down: 0
+    info: {fileID: 11400000, guid: aa820cfdd3408fa48a4757d15f81ad3b, type: 2}
+  - directions:
+      left: 0
+      right: 1
+      up: 0
+      down: 1
+    info: {fileID: 11400000, guid: db4dc14707c5dd74dbf662221c3270fd, type: 2}
+  - directions:
+      left: 1
+      right: 1
+      up: 1
+      down: 0
+    info: {fileID: 11400000, guid: 621ed9d057b7f644d9d00968e0048cce, type: 2}
+  - directions:
+      left: 1
+      right: 1
+      up: 0
+      down: 1
+    info: {fileID: 11400000, guid: 4ce557c27efd8dc44a1c3c7405ee47b8, type: 2}
+  - directions:
+      left: 1
+      right: 0
+      up: 1
+      down: 1
+    info: {fileID: 11400000, guid: 1f9cc82857dbf2a44ba76aafcc8c897a, type: 2}
+  - directions:
+      left: 0
+      right: 1
+      up: 1
+      down: 1
+    info: {fileID: 11400000, guid: ca9e4a88e46959f4793e2802c35f9625, type: 2}

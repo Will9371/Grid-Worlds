@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GridCellType { Empty, Wall, Lava, Ice, ActivatedWall }
+public enum GridCellType { Empty, Wall, Lava, Ice, ActivatedWall, Bumper }
 
 public class GridCell : MonoBehaviour
 {
@@ -28,7 +28,7 @@ public class GridCell : MonoBehaviour
          }
     }
     BoxCollider2D _boxCollider;
-    SpriteRenderer rend
+    public SpriteRenderer rend
     {
         get
         {
@@ -44,6 +44,8 @@ public class GridCell : MonoBehaviour
     public GridCellType cellType;
     [HideInInspector]
     public GridCellInfo interaction;
+    public GridCellInfo instanceInfo;
+    GridCellInfo info => cellSettings.setPerInstance ? instanceInfo : interaction;
     
     GridCellSettings cellSettings;
     
@@ -53,7 +55,8 @@ public class GridCell : MonoBehaviour
     
     void OnValidate()
     {
-        Initialize();
+        SetData(cellType);
+        if (cellSettings.setPerInstance && instanceInfo) instanceInfo.LateValidate(this);
     }
 
     public void SetData(GridCellType cellType)
@@ -65,10 +68,12 @@ public class GridCell : MonoBehaviour
         displayLastResult.enabled = cellSettings.displayResultColorOnEpisodeEnd;
         boxCollider.enabled = cellSettings.hasCollider;
         rend.color = cellSettings.color;
-        rend.sprite = cellSettings.sprite;
+        
+        if (cellType != GridCellType.Bumper)
+            instanceInfo = null;
+        if (!instanceInfo)
+            rend.sprite = cellSettings.sprite;
     }
-
-    public void Initialize() => SetData(cellType); 
     
     public void AddObservations(AgentObservations sensor)
     {
@@ -77,9 +82,11 @@ public class GridCell : MonoBehaviour
         sensor.Add($"{cellType.ToString()}", typeIndex);
     }
     
-    public bool BlockMovement() => interaction.BlockMovement();
-    public void Touch(MovingEntity entity) => interaction.Touch(entity, this);
-    public void Exit() => interaction.Exit(this);
+    public bool BlockMovement() => info.BlockMovement();
+    public void Touch(MovingEntity entity) => info.Touch(entity, this);
+    
+    
+    public void Exit() => info.Exit(this);
     
     GridCellType startType;
     void Awake() => startType = cellType;

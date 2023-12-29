@@ -8,6 +8,8 @@ public class Lock : GridObjectInfo
     
     public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
+        if (!entity.agent) return;
+        
         var consumeKey = entity.agent.TakeInventoryItem(key);
         if (!consumeKey) return;
         

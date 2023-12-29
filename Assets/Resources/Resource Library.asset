@@ -25,42 +25,54 @@ MonoBehaviour:
     result: 0
     color: {r: 1, g: 1, b: 1, a: 1}
   cellSettings:
-  - id: 0
+  - info: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
+    id: 0
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
     hasCollider: 0
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 1
-  - id: 1
+    setPerInstance: 0
+  - info: {fileID: 11400000, guid: 65d64f471326b1f4bacaafd9503472bb, type: 2}
+    id: 1
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: fc0003707961cd247bc5c6654d091b8f, type: 3}
     hasCollider: 1
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 0
-  - id: 2
+    setPerInstance: 0
+  - info: {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}
+    id: 2
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 5aa9473bfa36af047a7d265200ae38ce, type: 3}
     hasCollider: 1
     rewardOnTouch: -10
     displayResultColorOnEpisodeEnd: 0
-  - id: 3
+    setPerInstance: 0
+  - info: {fileID: 11400000, guid: 0bb0f1ebedaf3ad46948cc069f13ee2e, type: 2}
+    id: 3
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 067ccc489b2b1ec4096613323306effb, type: 3}
     hasCollider: 1
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 0
-  - id: 4
+    setPerInstance: 0
+  - info: {fileID: 11400000, guid: d8cbdee44ee98b34e97feb373898fc2b, type: 2}
+    id: 4
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 21300000, guid: 3e5bf98f792336c4cb5dd6360844d682, type: 3}
     hasCollider: 1
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 0
-  interactables:
-  - {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
-  - {fileID: 11400000, guid: 65d64f471326b1f4bacaafd9503472bb, type: 2}
-  - {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}
-  - {fileID: 11400000, guid: 0bb0f1ebedaf3ad46948cc069f13ee2e, type: 2}
-  - {fileID: 11400000, guid: d8cbdee44ee98b34e97feb373898fc2b, type: 2}
+    setPerInstance: 0
+  - info: {fileID: 0}
+    id: 5
+    color: {r: 1, g: 1, b: 1, a: 1}
+    sprite: {fileID: 0}
+    hasCollider: 1
+    rewardOnTouch: 0
+    displayResultColorOnEpisodeEnd: 1
+    setPerInstance: 1
   objectIds:
   - {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
   - {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}

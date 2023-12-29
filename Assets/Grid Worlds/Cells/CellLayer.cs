@@ -6,7 +6,7 @@ public class CellLayer : MonoBehaviour
     [SerializeField] GameObject tileTemplate;
     
     [ReadOnly] public GridCell[] cells;
-    [ReadOnly] public CellData[] data;
+    //[ReadOnly] public CellData[] data;
     Vector2Int size;
 
     public void GenerateNew(Vector2Int size)
@@ -30,6 +30,7 @@ public class CellLayer : MonoBehaviour
 
     public void SetArrayFromHierarchy()
     {
+        Debug.Log("CellLayer.SetArrayFromHierarchy()");
         cells = new GridCell[transform.childCount];
         for (int i = 0; i < cells.Length; i++)
         {
@@ -51,7 +52,8 @@ public class CellLayer : MonoBehaviour
     
     void RefreshHierarchyFromData(CellData[] data)
     {
-        this.data = data;
+        //this.data = data;
+        Debug.Log("CellLayer.RefreshHierarchyFromData()");
         cells = new GridCell[data.Length];
         SetArrayFromHierarchy();
         
@@ -69,6 +71,7 @@ public class CellLayer : MonoBehaviour
     
     void DestroyCells()
     {
+        Debug.Log("CellLayer.DestroyCells()");
         for (int i = transform.childCount - 1; i >= 0; i--)
             StartCoroutine(DestroyObject(transform.GetChild(i).gameObject));
     }
