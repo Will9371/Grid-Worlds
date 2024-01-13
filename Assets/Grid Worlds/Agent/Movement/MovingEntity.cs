@@ -151,7 +151,7 @@ public class MovingEntity
                 var percent = (Time.time - startTime)/segmentDuration;
                 
                 if (i < 0 || i >= stepPath.Count || i + 1 < 0 || i + 1 >= stepPath.Count)
-                    Debug.LogError(i);  // Index out of range error on line 156, but this log doesn't occur...
+                    Debug.LogError($"{i}, {stepPath.Count}");   // Error (line 156) with i=1
                 
                 transform.localPosition = Vector3.Lerp(stepPath[i], stepPath[i+1], percent);
                 

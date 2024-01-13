@@ -84,6 +84,7 @@ public class GridWorldEnvironment : MonoBehaviour
     // TBD: check if all agents complete (on AgentLayer)
     void EndComplete(GridWorldAgent agent)
     {
+        //Debug.Log("Environment.EndComplete()");
         BroadcastResult(agent.events);
         Invoke(nameof(BeginEpisode), endDelay);
     }
@@ -104,6 +105,8 @@ public class GridWorldEnvironment : MonoBehaviour
         if (endDelay < 0) endDelay = 0f;
         if (stepDelayBuffer > stepDelay) 
             stepDelayBuffer = stepDelay;
+            
+        agentLayer.Validate(objectLayer, cellLayer, scenarioName);
         
         if (save)
         {

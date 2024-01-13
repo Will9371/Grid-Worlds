@@ -71,7 +71,7 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     public void End() => StartCoroutine(EndEpisode());
     IEnumerator EndEpisode()
     {
-        if (isAI) yield break;
+        //Debug.Log("WebAgent.EndEpisode()");
         active = false;
         
         if (controlSource == ControlSource.AI)

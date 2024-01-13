@@ -79,6 +79,15 @@ public class WebServer
     }
     
     [Serializable]
+    public class InputData
+    {
+        public string cellType;
+        public string objectType;
+        public string x;
+        public string y;
+    }
+    
+    [Serializable]
     public class EventData
     {
         public string id;

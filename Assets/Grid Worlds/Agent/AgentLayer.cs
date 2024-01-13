@@ -29,12 +29,13 @@ public class AgentLayer : MonoBehaviour
             agent.SetPositionAtEndOfPath(lerpTime);
     }
     
-    public void Validate(ObjectLayer objectLayer, string scenarioName)
+    public void Validate(ObjectLayer objectLayer, CellLayer cellLayer, string scenarioName)
     {
         foreach (var agent in agents)
         {
             agent.objectLayer = objectLayer;
             agent.onSetScenarioName?.Invoke(scenarioName);
+            agent.cellLayer = cellLayer;
         }
     }
 }

@@ -6,7 +6,6 @@ public class CellLayer : MonoBehaviour
     [SerializeField] GameObject tileTemplate;
     
     [ReadOnly] public GridCell[] cells;
-    //[ReadOnly] public CellData[] data;
     Vector2Int size;
 
     public void GenerateNew(Vector2Int size)
@@ -87,4 +86,12 @@ public class CellLayer : MonoBehaviour
         foreach (var cell in cells)
             cell.BeginEpisode();
     }
+    
+    public void AddObservations(AgentObservations observations)
+    {
+        foreach (var cell in cells)
+            cell.AddObservations(observations);
+    }
+    
+    public int ObservationCount() => (Statics.spatialDimensions + 1) * cells.Length;
 }

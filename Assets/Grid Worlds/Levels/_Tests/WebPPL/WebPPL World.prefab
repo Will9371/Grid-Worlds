@@ -16771,7 +16771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 5
   interaction: {fileID: 0}
-  instanceInfo: {fileID: 11400000, guid: db4dc14707c5dd74dbf662221c3270fd, type: 2}
+  instanceInfo: {fileID: 11400000, guid: 0c2b084483d6de9489b7463413d4a068, type: 2}
 --- !u!114 &1723719226582854979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16787,10 +16787,10 @@ MonoBehaviour:
   cell: {fileID: 3553220823991819790}
   lookup: {fileID: 11400000, guid: e22347f7288abae43af0ec3fe7d86e85, type: 2}
   directions:
-    left: 0
+    left: 1
     right: 1
     up: 0
-    down: 1
+    down: 0
 --- !u!212 &5576922350056288024
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16832,7 +16832,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 440d6ee8d0a3d5342b1c8594200c5d15, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06f6df2420898a44cbd042dd534c9a79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -16950,7 +16950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 5
   interaction: {fileID: 0}
-  instanceInfo: {fileID: 11400000, guid: 621ed9d057b7f644d9d00968e0048cce, type: 2}
+  instanceInfo: {fileID: 11400000, guid: b8715629eb859c444a3ff455f72caaa4, type: 2}
 --- !u!114 &7337980441732765784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16966,9 +16966,9 @@ MonoBehaviour:
   cell: {fileID: 8190755119251323752}
   lookup: {fileID: 11400000, guid: e22347f7288abae43af0ec3fe7d86e85, type: 2}
   directions:
-    left: 1
+    left: 0
     right: 1
-    up: 1
+    up: 0
     down: 0
 --- !u!212 &8429686842753417929
 SpriteRenderer:
@@ -17011,7 +17011,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b65ce5fc9fec364b86df908ff1fc8d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4d170644c0984264d948a49ac575c7f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20448,7 +20448,7 @@ MonoBehaviour:
   tick: 0
   refreshCellData: 0
   refreshObjectData: 0
-  toggle: 0
+  toggle: 1
 --- !u!1 &6524024351393748436
 GameObject:
   m_ObjectHideFlags: 0
@@ -26420,6 +26420,10 @@ PrefabInstance:
       propertyPath: moveType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
+      propertyPath: cellLayer
+      value: 
+      objectReference: {fileID: 2128659975388477958}
     - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: m_Enabled
       value: 1

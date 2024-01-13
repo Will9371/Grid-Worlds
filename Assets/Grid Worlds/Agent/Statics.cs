@@ -6,6 +6,8 @@ using UnityEngine;
 
 public static class Statics
 {
+    public const int spatialDimensions = 2;
+
     public static int GetAction(string axis)
     {
         var value = GetAxis(axis);

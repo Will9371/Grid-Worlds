@@ -12,6 +12,8 @@ public interface IAgent
     void End();
 }
 
+public enum ObservationType { BirdsEye, LineOfSight }
+
 [Serializable]
 public class GridWorldAgent : MonoBehaviour
 {
@@ -20,15 +22,17 @@ public class GridWorldAgent : MonoBehaviour
     [Tooltip("Lookup for rewards for various events")]
 
     [Header("Observations")]
-    [SerializeField] bool observeSelf = true;
-    [SerializeField] bool observeObjects = true;
-    [SerializeField] bool observeCells = true;
+    ObservationType observationType;
+    //[SerializeField] bool observeSelf = true;
+    //[SerializeField] bool observeObjects = true;
+    //[SerializeField] bool observeCells = true;
 
     [Header("Events")]
     public GridWorldEvent timeout;
     
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
+    [ReadOnly] public CellLayer cellLayer;
     [SerializeField] Collider2D ownCollider;
     public MovingEntity body;
 
@@ -124,16 +128,15 @@ public class GridWorldAgent : MonoBehaviour
     public AgentObservations CollectObservations()
     {
         observations.Clear();
-
-        if (observeSelf)
-            AddObservations(observations);
-
-        if (observeObjects)
-            objectLayer.AddObservations(observations);
-
-        if (observeCells)
-            foreach (var cell in environment.cellLayer.cells)
-                cell.AddObservations(observations);
+        
+        switch (observationType)
+        {
+            case ObservationType.BirdsEye:
+                AddObservations(observations);
+                objectLayer.AddObservations(observations);
+                cellLayer.AddObservations(observations);
+                break;
+        }
                 
         return observations;
     }
@@ -182,6 +185,7 @@ public class GridWorldAgent : MonoBehaviour
     { 
         alive = false;
         implementation.End();
+        //Debug.Log("GridWorldAgent.End()");
     }
     
     public AgentMovementType moveType;
@@ -193,16 +197,11 @@ public class GridWorldAgent : MonoBehaviour
     public int[] ActionSpace() => movement.ActionSpace();
     public void ApplyPlayerControl() => OnActionReceived(PlayerControl());
     
-    const int spatialDimensions = 2;
-    int selfObservationCount => observeSelf ? spatialDimensions : 0;
-    int objectObservationCount => observeObjects && objectLayer != null ? objectLayer.GetObservationCount() : 0;
-    int spaceObservationCount => observeCells && environment != null && environment.cells != null ? (spatialDimensions + 1) * environment.cells.Length : 0;
-    
     public int GetObservationCount()
     {
         placement.transform = transform;
         if (transform.parent == null || transform.parent.name == "Prefab Mode in Context") return -1;
-        return selfObservationCount + objectObservationCount + spaceObservationCount;
+        return Statics.spatialDimensions + objectLayer.GetObservationCount() + cellLayer.ObservationCount();
     }
     
     public Action<string> onSetScenarioName;
