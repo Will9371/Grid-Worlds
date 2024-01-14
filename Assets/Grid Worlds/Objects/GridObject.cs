@@ -67,7 +67,7 @@ public class GridObject : MonoBehaviour
         this.name = data.name;
         gameObject.name = data.name;
         gameObject.SetActive(!data.hide);
-        Debug.Log($"Initializing {data.name}, active = {!data.hide}");
+        //Debug.Log($"Initializing {data.name}, active = {!data.hide}");
         transform.localPosition = new Vector3(data.position.x, data.position.y, 0f);
         positioner.transform = transform;
         positioner.xRange = data.xPlaceRange;
@@ -88,8 +88,9 @@ public class GridObject : MonoBehaviour
     
     public void AddObservations(AgentObservations sensor) 
     {
-        positioner.AddObservations(sensor);
-        sensor.Add($"{data.name}", (float)lookup.GetObjectIndex(data.touchInfo));
+        //positioner.AddObservations(sensor);
+        sensor.Add(Statics.PositionString(transform), "", data.name);
+        //sensor.Add($"{data.name}", (float)lookup.GetObjectIndex(data.touchInfo));
         observable?.AddObservations(sensor);
     }
     

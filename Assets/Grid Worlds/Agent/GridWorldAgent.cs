@@ -141,7 +141,8 @@ public class GridWorldAgent : MonoBehaviour
         return observations;
     }
     
-    public void AddObservations(AgentObservations sensor) => placement.AddObservations(sensor);
+    public void AddObservations(AgentObservations sensor) => sensor.Add(Statics.PositionString(transform), "", "Agent");
+        //placement.AddObservations(sensor);
     
     public void OnActionReceived(int[] actions)
     {

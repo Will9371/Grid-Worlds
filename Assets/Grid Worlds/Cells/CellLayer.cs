@@ -90,7 +90,7 @@ public class CellLayer : MonoBehaviour
     public void AddObservations(AgentObservations observations)
     {
         foreach (var cell in cells)
-            cell.AddObservations(observations);
+            cell.AddObservations(observations, transform.localPosition);
     }
     
     public int ObservationCount() => (Statics.spatialDimensions + 1) * cells.Length;

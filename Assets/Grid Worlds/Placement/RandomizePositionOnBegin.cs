@@ -62,5 +62,5 @@ public class RandomizePositionOnBegin
     public void SetCenter() =>
         center = new Vector2(Mathf.RoundToInt(transform.localPosition.x), Mathf.RoundToInt(transform.localPosition.y));
     
-    public void AddObservations(AgentObservations sensor) => location.AddObservations(sensor);
+    //public void AddObservations(AgentObservations sensor) => location.AddObservations(sensor);
 }

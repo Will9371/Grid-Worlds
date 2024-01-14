@@ -5,6 +5,7 @@ using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Policies;
 
+/// BROKEN: fix to accomodate generality for Web agents
 public class GridWorldMLAgent : Agent, IAgent
 {
     [Header("References")]
@@ -68,10 +69,10 @@ public class GridWorldMLAgent : Agent, IAgent
     
     public override void CollectObservations(VectorSensor sensor)
     {
-        observations = gridWorldAgent.CollectObservations();
+        //observations = gridWorldAgent.CollectObservations();
                 
-        foreach (var observation in observations.values)
-            sensor.AddObservation(observation.value);
+        //foreach (var observation in observations.values)
+        //    sensor.AddObservation(observation.value);
     }
 
     public override void OnActionReceived(ActionBuffers actions)

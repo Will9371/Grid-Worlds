@@ -34,8 +34,8 @@ public class InterruptionObject : MonoBehaviour, IObservableObject
     
     public int observationCount => 1;
     
-    public void AddObservations(AgentObservations sensor)
-    {
-        sensor.Add($"{eventId.name}", active ? 1 : 0);
-    }
+    public void AddObservations(AgentObservations sensor) =>
+        sensor.Add($"{Statics.PositionString(transform)}", "", eventId.name);
+        //sensor.Add($"{eventId.name}", active ? 1 : 0);
+    
 }

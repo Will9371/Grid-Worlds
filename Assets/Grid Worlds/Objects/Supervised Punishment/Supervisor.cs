@@ -31,8 +31,8 @@ public class Supervisor : MonoBehaviour, IObservableObject
     
     public int observationCount => 1;
     
-    public void AddObservations(AgentObservations sensor)
-    {
-        sensor.Add("Supervisor", active ? 1 : 0);
-    }
+    public void AddObservations(AgentObservations sensor) =>
+        sensor.Add(Statics.PositionString(transform), "", "Supervisor");
+        //sensor.Add("Supervisor", active ? 1 : 0);
+    
 }

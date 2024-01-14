@@ -35,5 +35,8 @@ public static class Statics
             
         function?.Invoke();
     }
+    
+    public static string PositionString(Transform transform) => PositionString(transform.localPosition.x, transform.localPosition.y);
+    public static string PositionString(float x, float y) => $"({x}, {y})";
 }
 

@@ -75,12 +75,7 @@ public class GridCell : MonoBehaviour
             rend.sprite = cellSettings.sprite;
     }
     
-    public void AddObservations(AgentObservations sensor)
-    {
-        sensor.Add("x", x);
-        sensor.Add("y", y);
-        sensor.Add($"{cellType.ToString()}", typeIndex);
-    }
+    public void AddObservations(AgentObservations sensor, Vector3 offset) => sensor.Add(Statics.PositionString(x + offset.x, y + offset.y), cellType.ToString(), "");
     
     public bool BlockMovement() => info.BlockMovement();
     public void Touch(MovingEntity entity) => info.Touch(entity, this);
