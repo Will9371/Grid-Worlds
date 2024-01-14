@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 
+[Serializable]
 public class AgentObservations
 {
     public List<AgentObservation> values = new();
@@ -16,13 +18,20 @@ public class AgentObservations
         return result;
     }
     
-    public float[] GetValues(AgentObservations source)
+    public float[] GetValuesNumeric(AgentObservations source)
     {
         values = source.values;
         return GetValues();
     }
+    
+    public AgentObservation[] GetValues(AgentObservations source)
+    {
+        values = source.values;
+        return values.ToArray();
+    }
 }
 
+[Serializable]
 public struct AgentObservation
 {
     public string key;

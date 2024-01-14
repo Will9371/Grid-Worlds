@@ -25,8 +25,9 @@ public class WebServer
     public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
     public IEnumerator SendEvent(GridWorldEvent value) { yield return SendDataToServer(agentEvent, new EventData { id = value.name }); }
 
-    public IEnumerator SendData(float[] observations, int[] actions)
+    public IEnumerator SendData(AgentObservation[] observations, int[] actions)
     {
+        //Debug.Log($"Observation count = {observations.Length}, output count = {actions.Length}");
         ResponseData data = new ResponseData { input = observations, output = actions };
         yield return SendDataToServer(observe, data);
     }
@@ -74,17 +75,8 @@ public class WebServer
     [Serializable]
     public class ResponseData
     {
-        public float[] input;
-        public int[] output;
-    }
-    
-    [Serializable]
-    public class InputData
-    {
-        public string cellType;
-        public string objectType;
-        public string x;
-        public string y;
+        public AgentObservation[] input;
+        public int[] output;    // Change to string and interpret on receive
     }
     
     [Serializable]

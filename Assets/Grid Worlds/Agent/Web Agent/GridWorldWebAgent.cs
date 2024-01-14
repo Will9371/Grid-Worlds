@@ -50,7 +50,8 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     
     IEnumerator CollectObservations()
     {
-        var inputs = observations.GetValues(agent.CollectObservations());
+        var inputs = observations.GetValues(agent.CollectObservations()); //GetValues(agent.CollectObservations());
+        Debug.Log($"Observation count = {observations.values.Count}");
         var actions = agent.ActionSpace();
         yield return server.SendData(inputs, actions);
     }
