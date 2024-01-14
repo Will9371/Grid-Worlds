@@ -23,9 +23,6 @@ public class GridWorldAgent : MonoBehaviour
 
     [Header("Observations")]
     ObservationType observationType;
-    //[SerializeField] bool observeSelf = true;
-    //[SerializeField] bool observeObjects = true;
-    //[SerializeField] bool observeCells = true;
 
     [Header("Events")]
     public GridWorldEvent timeout;
@@ -142,7 +139,6 @@ public class GridWorldAgent : MonoBehaviour
     }
     
     public void AddObservations(AgentObservations sensor) => sensor.Add(Statics.PositionString(transform), "", "Agent");
-        //placement.AddObservations(sensor);
     
     public void OnActionReceived(int[] actions)
     {

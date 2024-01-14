@@ -88,9 +88,7 @@ public class GridObject : MonoBehaviour
     
     public void AddObservations(AgentObservations sensor) 
     {
-        //positioner.AddObservations(sensor);
         sensor.Add(Statics.PositionString(transform), "", data.name);
-        //sensor.Add($"{data.name}", (float)lookup.GetObjectIndex(data.touchInfo));
         observable?.AddObservations(sensor);
     }
     

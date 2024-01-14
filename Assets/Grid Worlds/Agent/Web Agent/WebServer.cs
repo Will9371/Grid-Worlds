@@ -16,7 +16,7 @@ public class WebServer
     const string observe = "/observe";
     const string agentEvent = "/agentEvent";
     
-    public Action<int[]> onGetActions;
+    public Action<string[]> onGetActions;
     public Action<string> onGetParameters;
     
     public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
@@ -25,7 +25,7 @@ public class WebServer
     public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
     public IEnumerator SendEvent(GridWorldEvent value) { yield return SendDataToServer(agentEvent, new EventData { id = value.name }); }
 
-    public IEnumerator SendData(AgentObservation[] observations, int[] actions)
+    public IEnumerator SendData(AgentObservation[] observations, string[] actions)
     {
         //Debug.Log($"Observation count = {observations.Length}, output count = {actions.Length}");
         ResponseData data = new ResponseData { input = observations, output = actions };
@@ -36,7 +36,7 @@ public class WebServer
     {
         // Convert the data to a JSON string
         var jsonData = JsonUtility.ToJson(data);
-        Debug.Log($"Sending data to server: {jsonData}");
+        //Debug.Log($"Sending data to server: {jsonData}");
 
         // Set up the UnityWebRequest with POST method and the server URL
         var request = new UnityWebRequest(serverURL + route, "POST");
@@ -65,6 +65,7 @@ public class WebServer
             case observe:
                 var responseData = JsonUtility.FromJson<ResponseData>(response);
                 onGetActions?.Invoke(responseData.output);
+                //Debug.Log(responseData.output[0]);
                 break;
             case getParameters:
                 onGetParameters?.Invoke(response);
@@ -76,7 +77,7 @@ public class WebServer
     public class ResponseData
     {
         public AgentObservation[] input;
-        public int[] output;    // Change to string and interpret on receive
+        public string[] output;
     }
     
     [Serializable]

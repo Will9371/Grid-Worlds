@@ -71,10 +71,36 @@ app.post('/observe', (req, res) => {
     res.json(responseData);
 });
 
-function processWithWebPPLAlgorithm(data) 
-{
-    // Placeholder function, replace with call to actual WebPPL logic
-    return { output: generateRandomNumbers(data.output, data.output.length) };
+/// Placeholder function, replace with call to actual WebPPL logic
+function processWithWebPPLAlgorithm(data) {
+
+    var randomNumbers = generateRandomNumbers(data.output, data.output.length);
+    var mappedStrings = randomNumbers.map(mapActionIdToName);
+    return { output: mappedStrings };
+}
+
+function mapActionIdToName(number) {
+    //console.log(number);
+    switch (number) {
+        case 0: return "Move Stay";
+        case 1: return "Move Down";
+        case 2: return "Move Up";
+        case 3: return "Move Left";
+        case 4: return "Move Right";
+        default: return "Move Unknown";
+    }
+}
+
+function mapActionNameToId(name) {
+    //console.log(name);
+    switch (name) {
+        case "Move Stay": return 0;
+        case "Move Down": return 1;
+        case "Move Up": return 2;
+        case "Move Left": return 3;
+        case "Move Right": return 4;
+        default: return -1;
+    }
 }
 
 var generateRandomNumbers = function(actions, index) 
@@ -90,7 +116,11 @@ var generateRandomNumbers = function(actions, index)
     }
     // Recursive case: generate a random number and concatenate it with the rest of the array
     else {
-        return [randomInteger(0, actions[actions.length - index])].concat(generateRandomNumbers(actions, index - 1));
+        const actionName = actions[actions.length - index];
+        const actionId = mapActionNameToId(actionName);
+        const randomNumber = randomInteger(0, actionId);
+        //console.log('randomNumber:', randomNumber, 'action:', actionId);
+        return [randomNumber].concat(generateRandomNumbers(actions, index - 1));
     }
 };
 

@@ -71,6 +71,9 @@ public class MovingEntity
         var cell = other.GetComponent<GridCell>();
         if (cell) return cell.BlockMovement();
         
+        var agent = other.transform.parent.GetComponent<GridWorldAgent>();
+        if (agent) return true;
+        
         return false;
     }
     

@@ -50,13 +50,13 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     
     IEnumerator CollectObservations()
     {
-        var inputs = observations.GetValues(agent.CollectObservations()); //GetValues(agent.CollectObservations());
-        Debug.Log($"Observation count = {observations.values.Count}");
-        var actions = agent.ActionSpace();
-        yield return server.SendData(inputs, actions);
+        var inputs = observations.GetValues(agent.CollectObservations());
+        var actionIds = agent.ActionSpace();
+        var actionNames = Statics.ActionIdsToNames(actionIds);
+        yield return server.SendData(inputs, actionNames);
     }
     
-    void BeginReceiveActions(int[] actions) => StartCoroutine(ReceiveActions(actions));
+    void BeginReceiveActions(string[] actions) => StartCoroutine(ReceiveActions(Statics.ActionNamesToIds(actions)));
     IEnumerator ReceiveActions(int[] actions)
     {
         if (!active || !isAI) yield break;
