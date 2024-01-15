@@ -1,13 +1,12 @@
-using System;
 using UnityEngine;
 
 public class ValidateBumper : MonoBehaviour
 {
     [SerializeField] GridCell cell;
     [SerializeField] BumperLookup lookup;
-    [SerializeField] Bool4 directions;
+    public Bool4 directions;
     
-    void OnValidate()
+    public void OnValidate()
     {
         if (cell.cellType != GridCellType.Bumper) return;
         var binding = lookup.GetBinding(directions);

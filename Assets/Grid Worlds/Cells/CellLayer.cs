@@ -58,7 +58,7 @@ public class CellLayer : MonoBehaviour
         
         // Set cell data
         for (int i = 0; i < transform.childCount; i++)
-            cells[i].SetData(data[i].type);
+            cells[i].SetData(data[i]);
     }
     
     IEnumerator GenerateCell(GameObject prefab, Transform container, int x, int y)

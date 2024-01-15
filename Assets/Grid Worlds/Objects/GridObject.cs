@@ -19,7 +19,7 @@ public class GridObject : MonoBehaviour
     [Range(0, 1)] public float gizmoRadius = 0.25f;
     
     [Header("References")]
-    public ObjectCollider colliderInterface;
+    //public ObjectCollider colliderInterface;
     public SpriteRenderer rend;
     IObservableObject observable;
     
@@ -38,7 +38,7 @@ public class GridObject : MonoBehaviour
         }
     
         gameObject.name = name;
-        colliderInterface.info = info;
+        //colliderInterface.info = info;
         editPosition.OnValidate(this, SetCenter);
 
         positioner.xRange = xRange;
@@ -47,7 +47,7 @@ public class GridObject : MonoBehaviour
         positioner.gizmoRadius = gizmoRadius;
         positioner.transform = transform;
         
-        if (!rend) rend = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        if (!rend) rend = GetComponent<SpriteRenderer>();
         if (!overrideColor) rend.color = data.color;
 
         data = new GridObjectData(this);
@@ -78,6 +78,9 @@ public class GridObject : MonoBehaviour
     }
     
     public void SetRandomPosition() => positioner.SetRandomPosition();
+    
+    public bool BlockMovement(bool isAgent) => info.BlockMovement(isAgent);
+    public void Touch(MovingEntity entity) => info.Touch(entity, gameObject);
     
     public int GetObservationCount()
     {

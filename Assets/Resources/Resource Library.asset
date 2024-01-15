@@ -65,7 +65,7 @@ MonoBehaviour:
     rewardOnTouch: 0
     displayResultColorOnEpisodeEnd: 0
     setPerInstance: 0
-  - info: {fileID: 0}
+  - info: {fileID: 11400000, guid: 1490c871efff6da4fa840967a5cb28b3, type: 2}
     id: 5
     color: {r: 1, g: 1, b: 1, a: 1}
     sprite: {fileID: 0}

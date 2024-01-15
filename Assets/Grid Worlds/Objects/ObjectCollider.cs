@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/// OBSOLETE: delete when removed/verified from all objects
 public class ObjectCollider : MonoBehaviour
 {
     public GridObjectInfo info;

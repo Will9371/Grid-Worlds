@@ -65,13 +65,13 @@ public class MovingEntity
     
     bool IsBlocker(Collider2D other)
     {
-        var gridObject = other.GetComponent<ObjectCollider>();
+        var gridObject = other.GetComponent<GridObject>();
         if (gridObject) return gridObject.BlockMovement(isAgent);
         
         var cell = other.GetComponent<GridCell>();
         if (cell) return cell.BlockMovement();
         
-        var agent = other.transform.parent.GetComponent<GridWorldAgent>();
+        var agent = other.GetComponent<GridWorldAgent>();
         if (agent) return true;
         
         return false;
@@ -94,7 +94,7 @@ public class MovingEntity
     
     void TouchObject(Collider2D other)
     {
-        var gridObject = other.GetComponent<ObjectCollider>();
+        var gridObject = other.GetComponent<GridObject>();
         if (gridObject) gridObject.Touch(this);
     }
     
@@ -153,10 +153,9 @@ public class MovingEntity
             {
                 var percent = (Time.time - startTime)/segmentDuration;
                 
-                if (i < 0 || i >= stepPath.Count || i + 1 < 0 || i + 1 >= stepPath.Count)
-                    Debug.LogError($"{i}, {stepPath.Count}");   // Error (line 156) with i=1
-                
-                transform.localPosition = Vector3.Lerp(stepPath[i], stepPath[i+1], percent);
+                // Skip lerp if stepPath.Count has changed during movement
+                if (i < stepPath.Count - 1)
+                    transform.localPosition = Vector3.Lerp(stepPath[i], stepPath[i+1], percent);
                 
                 yield return null;
             }            

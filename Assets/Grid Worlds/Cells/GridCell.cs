@@ -58,6 +58,20 @@ public class GridCell : MonoBehaviour
         SetData(cellType);
         if (cellSettings.setPerInstance && instanceInfo) instanceInfo.LateValidate(this);
     }
+    
+    public void SetData(CellData data)
+    {
+        SetData(data.type);
+        
+        switch (cellType)
+        {
+            case GridCellType.Bumper: 
+                var bumper = GetComponent<ValidateBumper>();
+                bumper.directions = data.directions;
+                bumper.OnValidate(); 
+                break;
+        }
+    }
 
     public void SetData(GridCellType cellType)
     {
@@ -69,10 +83,11 @@ public class GridCell : MonoBehaviour
         boxCollider.enabled = cellSettings.hasCollider;
         rend.color = cellSettings.color;
         
-        if (cellType != GridCellType.Bumper)
+        if (!cellSettings.setPerInstance)
+        {
             instanceInfo = null;
-        if (!instanceInfo)
             rend.sprite = cellSettings.sprite;
+        }
     }
     
     public void AddObservations(AgentObservations sensor, Vector3 offset) => sensor.Add(Statics.PositionString(x + offset.x, y + offset.y), cellType.ToString(), "");
@@ -80,10 +95,18 @@ public class GridCell : MonoBehaviour
     public bool BlockMovement() => info.BlockMovement();
     public void Touch(MovingEntity entity) => info.Touch(entity, this);
     
-    
     public void Exit() => info.Exit(this);
     
     GridCellType startType;
     void Awake() => startType = cellType;
     public void BeginEpisode() => SetData(startType);
+    
+    public Bool4 GetDirections()
+    {
+        switch (cellType)
+        {
+            case GridCellType.Bumper: return GetComponent<ValidateBumper>().directions;
+            default: return new Bool4();
+        }
+    }
 }

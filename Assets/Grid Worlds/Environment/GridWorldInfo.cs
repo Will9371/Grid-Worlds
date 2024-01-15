@@ -39,11 +39,18 @@ public class GridWorldInfo : ScriptableObject
 public struct CellData
 {
     public GridCellType type;
+    public Bool4 directions;
     
     public CellData(Transform transform)
     {
         var cell = transform.GetComponent<GridCell>();
+        this = new CellData(cell);
+    }
+    
+    public CellData(GridCell cell)
+    {
         type = cell.cellType;
+        directions = cell.GetDirections();
     }
 }
 

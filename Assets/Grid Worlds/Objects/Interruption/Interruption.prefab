@@ -85,7 +85,6 @@ MonoBehaviour:
   overrideColor: 0
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   gizmoRadius: 0.25
-  colliderInterface: {fileID: 4220639896643574837}
   rend: {fileID: 5078810699761503014}
   positioner:
     xRange: {x: 0, y: 0}
