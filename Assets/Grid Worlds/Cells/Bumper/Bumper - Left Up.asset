@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellType: 5
   solid: 0
-  setPerInstance: 0
+  setPerInstance: 1
   pushLeftChance: 0.333333
   pushRightChance: 0
   pushUpChance: 0.3333333
