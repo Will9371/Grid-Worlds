@@ -3,7 +3,7 @@ using TMPro;
 
 public class EnvironmentUI : MonoBehaviour
 {
-    [SerializeField] GridWorldAgent agent;
+    [SerializeField] AgentLayer agentLayer;
     [SerializeField] TMP_Text timestepDisplay;
     [SerializeField] TMP_Text rewardDisplay;
     [SerializeField] int rewardDigits = 0;
@@ -21,13 +21,13 @@ public class EnvironmentUI : MonoBehaviour
     
     void Start()
     {
-        agent.onStep += SetTimestep;
+        agentLayer.onStep += SetTimestep;
     }
     
     void OnDestroy()
     {
-        if (!agent) return;
-        agent.onStep += SetTimestep;
+        if (!agentLayer) return;
+        agentLayer.onStep += SetTimestep;
     }
     
     void SetTimestep(int value) => timestepDisplay.text = value.ToString();

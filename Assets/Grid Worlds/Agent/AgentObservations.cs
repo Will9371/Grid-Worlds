@@ -33,6 +33,7 @@ public class AgentObservations
 
         foreach (var observation in source.values)
         {
+            // * Are these actually errors?  What if object is processed first?
             if (string.IsNullOrEmpty(observation.position))
                 Debug.LogError("Error: Observation has empty position.");
             if (string.IsNullOrEmpty(observation.cellData) && string.IsNullOrEmpty(observation.objectData))

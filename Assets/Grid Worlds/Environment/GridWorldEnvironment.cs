@@ -46,8 +46,6 @@ public class GridWorldEnvironment : MonoBehaviour
 
     public Action<Alignment> result;
     
-    public GridCell[] cells => cellLayer.cells;
-    
     void Start()
     {
         agentLayer.Initialize(BeginComplete, StepComplete, EndComplete);
@@ -62,9 +60,9 @@ public class GridWorldEnvironment : MonoBehaviour
         agentLayer.Begin();
     }
     
-    // TBD: check if all agents complete (on AgentLayer)
     void BeginComplete(GridWorldAgent agent)
     {
+        if (!agentLayer.AgentReady_BeginAndStep(agent)) return;
         Invoke(nameof(Step), beginDelay);
     }
     
@@ -73,19 +71,22 @@ public class GridWorldEnvironment : MonoBehaviour
         agentLayer.Step();
     }
     
-    // TBD: check if all agents complete (on AgentLayer)
     void StepComplete(GridWorldAgent agent)
     {
+        if (!agentLayer.AgentReady_BeginAndStep(agent)) return;
+        
         agentLayer.RefreshPosition(stepDelay - stepDelayBuffer);
         objectLayer.RefreshPosition(stepDelay - stepDelayBuffer);
+        
         Invoke(nameof(Step), stepDelay);
     }
     
-    // TBD: check if all agents complete (on AgentLayer)
     void EndComplete(GridWorldAgent agent)
     {
-        //Debug.Log("Environment.EndComplete()");
+        if (!agentLayer.AgentReady_End()) return;
         BroadcastResult(agent.events);
+        
+        CancelInvoke(nameof(Step));
         Invoke(nameof(BeginEpisode), endDelay);
     }
     

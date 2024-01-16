@@ -17,15 +17,14 @@ public enum ObservationType { BirdsEye, LineOfSight }
 [Serializable]
 public class GridWorldAgent : MonoBehaviour
 {
-    [Header("Settings")]
-    [SerializeField] int lifetime = 30;
-    [Tooltip("Lookup for rewards for various events")]
+    //[Header("Settings")]
+    //[SerializeField] int lifetime = 30;
 
     [Header("Observations")]
     ObservationType observationType;
 
-    [Header("Events")]
-    public GridWorldEvent timeout;
+    //[Header("Events")]
+    //public GridWorldEvent timeout;
     
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
@@ -73,8 +72,8 @@ public class GridWorldAgent : MonoBehaviour
     public void StepComplete() => stepComplete?.Invoke(this);
     public void EndComplete() => endComplete?.Invoke(this);
 
-    int stepCount;
-    public Action<int> onStep;
+    //nt stepCount;
+    //public Action<int> onStep;
     
     public void Initialize(Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
     {
@@ -99,8 +98,8 @@ public class GridWorldAgent : MonoBehaviour
     
     public void Begin()
     {
-        stepCount = 0;
-        onStep?.Invoke(0);
+        //stepCount = 0;
+        //onStep?.Invoke(0);
         
         actionModifiers.Clear();
         events.Clear();
@@ -118,8 +117,8 @@ public class GridWorldAgent : MonoBehaviour
     
     public void Step() 
     {
-        if (!alive) return;
-        implementation.Step();
+        if (!alive) StepComplete();
+        else implementation.Step();
     }
     
     public AgentObservations CollectObservations()
@@ -146,6 +145,7 @@ public class GridWorldAgent : MonoBehaviour
         body.moveDirection = nextPosition - body.position;
         body.AddToPathIfOpen(nextPosition, false);
 
+        /*
         stepCount++;
         onStep?.Invoke(stepCount);
         
@@ -154,6 +154,7 @@ public class GridWorldAgent : MonoBehaviour
             AddEvent(timeout);
             End();
         }
+        */
         
         StepComplete();
     }
