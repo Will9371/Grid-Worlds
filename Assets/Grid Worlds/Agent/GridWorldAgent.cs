@@ -17,14 +17,10 @@ public enum ObservationType { BirdsEye, LineOfSight }
 [Serializable]
 public class GridWorldAgent : MonoBehaviour
 {
-    //[Header("Settings")]
-    //[SerializeField] int lifetime = 30;
+    public string id;
 
-    [Header("Observations")]
-    ObservationType observationType;
-
-    //[Header("Events")]
-    //public GridWorldEvent timeout;
+    [Tooltip("Future Use")]
+    public ObservationType observationType = ObservationType.BirdsEye;
     
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
@@ -35,35 +31,13 @@ public class GridWorldAgent : MonoBehaviour
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;
     
-    #region Dependencies
-    GridWorldEnvironment environment
-    {
-        get
-        {
-            if (!_environment)
-            {
-                if (!transform.parent.parent)
-                    Debug.LogError("Agent has no environment!");
-                    
-                _environment = transform.parent.parent.GetComponent<GridWorldEnvironment>();
-                
-                if (!_environment)
-                    Debug.LogError($"No GridWorldEnvironment attached to parent {transform.parent.name} of GridWorldAgent", transform.parent.parent.gameObject);
-            }
-            
-            return _environment;
-        }
-    }
-    GridWorldEnvironment _environment;
-    
     IAgent implementation;
-    #endregion
     
     [ReadOnly] public List<AgentEffect> actionModifiers = new();
     [ReadOnly] public List<GridWorldEvent> events = new();
     [ReadOnly, SerializeField] List<GridWorldEvent> inventory = new();
     
-    AgentObservations observations = new();
+    [NonSerialized] public AgentObservations observations = new();
     
     Action<GridWorldAgent> beginComplete;
     Action<GridWorldAgent> stepComplete;
@@ -71,9 +45,6 @@ public class GridWorldAgent : MonoBehaviour
     public void BeginComplete() => beginComplete?.Invoke(this);
     public void StepComplete() => stepComplete?.Invoke(this);
     public void EndComplete() => endComplete?.Invoke(this);
-
-    //nt stepCount;
-    //public Action<int> onStep;
     
     public void Initialize(Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
     {
@@ -92,15 +63,11 @@ public class GridWorldAgent : MonoBehaviour
             case AgentMovementType.Direction4 : movement = new AgentMovement4Direction(); break;
         }
         movement.Awake(new DiscretePlacement(transform), actionModifiers);
-        
         placement.Awake();
     }
     
     public void Begin()
     {
-        //stepCount = 0;
-        //onStep?.Invoke(0);
-        
         actionModifiers.Clear();
         events.Clear();
         inventory.Clear();
@@ -121,41 +88,32 @@ public class GridWorldAgent : MonoBehaviour
         else implementation.Step();
     }
     
-    public AgentObservations CollectObservations()
+    public ObservationData RefreshObservations() => observations.GetObservationData(this);
+    
+    public void AddCellObservations(AgentObservations observations)
     {
-        observations.Clear();
+        ObserveOwnCell(observations);
         
         switch (observationType)
         {
             case ObservationType.BirdsEye:
-                AddObservations(observations);
                 objectLayer.AddObservations(observations);
                 cellLayer.AddObservations(observations);
                 break;
+            default: 
+                Debug.LogError($"{observationType} not implemented");
+                break;
         }
-                
-        return observations;
     }
     
-    public void AddObservations(AgentObservations sensor) => sensor.Add(Statics.PositionString(transform), "", "Agent");
+    /// Add observations of own state
+    public void ObserveOwnCell(AgentObservations sensor) => sensor.Add(Statics.PositionString(transform), "", $"Agent {id}");
     
     public void OnActionReceived(int[] actions)
     {
         var nextPosition = movement.Move(actions);
         body.moveDirection = nextPosition - body.position;
         body.AddToPathIfOpen(nextPosition, false);
-
-        /*
-        stepCount++;
-        onStep?.Invoke(stepCount);
-        
-        if (stepCount >= lifetime)
-        {
-            AddEvent(timeout);
-            End();
-        }
-        */
-        
         StepComplete();
     }
     
@@ -193,6 +151,8 @@ public class GridWorldAgent : MonoBehaviour
     public int[] PlayerControl() => movement.PlayerControl();
     public bool MoveKeyPressed() => movement.MoveKeyPressed();
     public int[] ActionSpace() => movement.ActionSpace();
+    public string[] ActionNames() => Statics.ActionIdsToNames(ActionSpace());
+    
     public void ApplyPlayerControl() => OnActionReceived(PlayerControl());
     
     public int GetObservationCount()
@@ -215,4 +175,19 @@ public class GridWorldAgent : MonoBehaviour
         }
         return false;
     }
+    
+    public AgentObservationData GetSelfDescription() => new (id, GetInventoryDescriptions(), GetLastStepDescriptions());
+    
+    public string[] GetInventoryDescriptions() 
+    {
+        var result = new string[inventory.Count];
+        
+        for (int i = 0; i < inventory.Count; i++)
+            result[i] = inventory[i].name;
+            
+        return result;
+    }
+    
+    /// TBD:
+    public string[] GetLastStepDescriptions() => new [] { "" };
 }

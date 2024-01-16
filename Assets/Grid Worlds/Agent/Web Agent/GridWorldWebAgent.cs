@@ -7,7 +7,7 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     GridWorldAgent agent;
     [SerializeField] WebParametersInfo parameters;
     
-    AgentObservations observations = new();
+    //AgentObservations observations => agent.observations;
     WebServer server = new();
     
     [ReadOnly, SerializeField] bool active;
@@ -50,10 +50,9 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     
     IEnumerator CollectObservations()
     {
-        var inputs = observations.GetValues(agent.CollectObservations());
-        var actionIds = agent.ActionSpace();
-        var actionNames = Statics.ActionIdsToNames(actionIds);
-        yield return server.SendData(inputs, actionNames);
+        var input = agent.RefreshObservations();
+        var output = agent.ActionNames();
+        yield return server.SendData(input, output);
     }
     
     void BeginReceiveActions(string[] actions) => StartCoroutine(ReceiveActions(Statics.ActionNamesToIds(actions)));

@@ -90,11 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a00db38f473fdb241a2bd74ae0e0c535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 50
-  timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
+  id: 
+  observationType: 0
   objectLayer: {fileID: 0}
   cellLayer: {fileID: 0}
-  ownCollider: {fileID: 0}
+  ownCollider: {fileID: 8795134058396057368}
   placement:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}

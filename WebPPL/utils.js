@@ -1,3 +1,4 @@
+// Action name/id mapping
 function mapActionIdToName(number) {
     switch (number) {
         case 0: return "Move Stay";
@@ -20,6 +21,7 @@ function mapActionNameToId(name) {
     }
 }
 
+// Get/Set parameters
 const fs = require('fs');
 const path = require('path');
 
@@ -53,6 +55,7 @@ function setParameters(req, res) {
     });
 }
 
+// Generate random numbers
 var generateRandomNumbers = function(actions, index)
 {
     // Ensure that length is a non-negative integer
@@ -78,6 +81,7 @@ function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Exports
 module.exports = {
     mapActionIdToName,
     mapActionNameToId,

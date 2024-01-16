@@ -1282,7 +1282,7 @@ Transform:
   m_GameObject: {fileID: 468029537497986487}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1342,14 +1342,14 @@ MonoBehaviour:
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: -3, y: 0}
+    center: {x: 1, y: 0}
     transform: {fileID: 3931875530079635581}
     gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
   data:
     name: Key
     touchInfo: {fileID: 11400000, guid: 2681e28457902fd45a2ce5437e2e4ad1, type: 2}
-    position: {x: -3, y: 0}
+    position: {x: 1, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -1481,7 +1481,7 @@ Transform:
   m_GameObject: {fileID: 579225006390035175}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1541,14 +1541,14 @@ MonoBehaviour:
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
-    center: {x: -2, y: 0}
+    center: {x: -1, y: 0}
     transform: {fileID: 1043723210918028395}
     gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
     gizmoRadius: 0.25
   data:
     name: Key
     touchInfo: {fileID: 11400000, guid: 2681e28457902fd45a2ce5437e2e4ad1, type: 2}
-    position: {x: -2, y: 0}
+    position: {x: -1, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -3882,8 +3882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 2
-  interaction: {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}
+  cellType: 0
+  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
   instanceInfo: {fileID: 0}
 --- !u!114 &185665001690136570
 MonoBehaviour:
@@ -3945,7 +3945,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5aa9473bfa36af047a7d265200ae38ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3963,7 +3963,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614685092506051278}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -3975,7 +3975,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614685092506051278}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -12902,7 +12902,6 @@ MonoBehaviour:
   timeout: {fileID: 11400000, guid: 928499dbc9a141f4787d4dfd76e15c80, type: 2}
   agents:
   - {fileID: 7046242698376439691}
-  - {fileID: 8471440950976895463}
 --- !u!1 &4869238660638424284
 GameObject:
   m_ObjectHideFlags: 0
@@ -20590,8 +20589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 2
-  interaction: {fileID: 11400000, guid: 99571c6dad9d8de41bac45f227afbe3b, type: 2}
+  cellType: 0
+  interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
   instanceInfo: {fileID: 0}
 --- !u!114 &7838093904257356738
 MonoBehaviour:
@@ -20653,7 +20652,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5aa9473bfa36af047a7d265200ae38ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 654dc3d04fe8a434da7fb901d548700d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -20671,7 +20670,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7231555985360945159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff74ae096226d434b80216c674ee44d4, type: 3}
   m_Name: 
@@ -20683,7 +20682,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7231555985360945159}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -25943,6 +25942,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2649895206663170242}
     m_Modifications:
     - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
+      propertyPath: id
+      value: Santiago
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: rewards
       value: 
       objectReference: {fileID: 11400000, guid: 1e01d13a671ed2843b19d155f5fb2814, type: 2}
@@ -25992,7 +25995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5674029028538938679, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7526238815045591020, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26044,17 +26047,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7526238815045591020, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
   m_PrefabInstance: {fileID: 7516404317062036063}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8471440950976895463 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
-  m_PrefabInstance: {fileID: 7516404317062036063}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a00db38f473fdb241a2bd74ae0e0c535, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8941460728476845107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26063,6 +26055,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2649895206663170242}
     m_Modifications:
+    - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
+      propertyPath: id
+      value: Rufus
+      objectReference: {fileID: 0}
     - target: {fileID: 2152504354443961272, guid: 90d25e7a262d31340a86e86e141bd3fe, type: 3}
       propertyPath: rewards
       value: 

@@ -409,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2456327160239572258, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: toggle
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2498859220472659964, guid: a1cea470cfe5d1740924a2998e5fafa8, type: 3}
       propertyPath: data.position.x

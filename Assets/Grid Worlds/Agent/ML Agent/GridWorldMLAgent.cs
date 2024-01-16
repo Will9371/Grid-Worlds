@@ -22,9 +22,7 @@ public class GridWorldMLAgent : Agent, IAgent
     
     [Header("Parameters")]
     public AgentEventRewards rewards;
-
-    AgentObservations observations = new();
-
+    
     float stepDelay => 1f/speed;
     
     public void Inject(GridWorldAgent agent) => gridWorldAgent = agent;

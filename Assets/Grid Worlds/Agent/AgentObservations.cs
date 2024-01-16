@@ -6,32 +6,28 @@ using UnityEngine;
 [Serializable]
 public class AgentObservations
 {
-    public List<AgentObservation> values = new();
-    public void Add(string position, string cellData, string objectData) => values.Add(new AgentObservation(position, cellData, objectData));
-    public void Clear() => values.Clear();
+    [SerializeField] List<CellObservation> cellObservations = new();
     
-    // Rewrite to extract data from AgentObservation[], wait until needed for use case (i.e. MLAgent)
-    /*public float[] GetValues()
+    /// Add a cell observation (consider rename)
+    public void Add(string position, string cellData, string objectData) => cellObservations.Add(new CellObservation(position, cellData, objectData));
+    void ClearCells() => cellObservations.Clear();
+    
+    public ObservationData GetObservationData(GridWorldAgent agent)
     {
-        float[] result = new float[values.Count];
+        var agentData = new AgentObservationData(agent);
         
-        for (int i = 0; i < result.Length; i++)
-            result[i] = values[i].value;
-            
-        return result;
+        ClearCells();
+        agent.AddCellObservations(this);
+        var cellData = ProcessCellObservations();
+        
+        return new ObservationData(agentData, cellData);
     }
     
-    public float[] GetValuesNumeric(AgentObservations source)
+    CellObservation[] ProcessCellObservations()
     {
-        values = source.values;
-        return GetValues();
-    }*/
-    
-    public AgentObservation[] GetValues(AgentObservations source)
-    {
-        Dictionary<string, AgentObservation> processedObservations = new Dictionary<string, AgentObservation>();
+        Dictionary<string, CellObservation> processedObservations = new Dictionary<string, CellObservation>();
 
-        foreach (var observation in source.values)
+        foreach (var observation in cellObservations)
         {
             // * Are these actually errors?  What if object is processed first?
             if (string.IsNullOrEmpty(observation.position))
@@ -47,36 +43,87 @@ public class AgentObservations
                 if (string.IsNullOrEmpty(processedObservations[observation.position].cellData) && string.IsNullOrEmpty(observation.cellData))
                     Debug.LogError($"Error: Both cellData fields are empty for position: {observation.position}.  Object data is: {observation.objectData}");
                 
-                processedObservations[observation.position] = new AgentObservation(
+                processedObservations[observation.position] = new CellObservation(
                     processedObservations[observation.position],
                     observation
                 );
             }
         }
 
-        values = processedObservations.Values.ToList();
+        cellObservations = processedObservations.Values.ToList();
         return processedObservations.Values.ToArray();
     }
 }
 
 [Serializable]
-public struct AgentObservation
+public struct ObservationData
+{
+    public AgentObservationData agent;
+    public CellObservation[] cells;
+    
+    public ObservationData(AgentObservationData agent, CellObservation[] cells)
+    {
+        this.agent = agent;
+        this.cells = cells;
+    }
+}
+
+[Serializable]
+public struct AgentObservationData
+{
+    public string id;
+    public string[] inventory;
+    public string[] lastStepResults;
+    
+    public AgentObservationData(GridWorldAgent agent)
+    {
+        this = agent.GetSelfDescription();
+    }
+    
+    public AgentObservationData(string id, string[] inventory, string[] lastStepResults)
+    {
+        this.id = id;
+        this.inventory = inventory;
+        this.lastStepResults = lastStepResults;
+    }
+}
+
+[Serializable]
+public struct CellObservation
 {
     public string position;
     public string cellData;
     public string objectData;
     
-    public AgentObservation(string position, string cellData, string objectData)
+    public CellObservation(string position, string cellData, string objectData)
     {
         this.position = position;
         this.cellData = cellData;
         this.objectData = objectData;
     }
     
-    public AgentObservation(AgentObservation o1, AgentObservation o2)
+    public CellObservation(CellObservation o1, CellObservation o2)
     {
         position = o1.position;
         cellData = o1.cellData == "" ? o2.cellData : o1.cellData;
         objectData = o1.objectData == "" ? o2.objectData : o1.objectData;
     }
 }
+
+
+// Rewrite to extract data from AgentObservation[], wait until needed for use case (i.e. MLAgent)
+/*public float[] GetValues()
+{
+    float[] result = new float[values.Count];
+
+    for (int i = 0; i < result.Length; i++)
+        result[i] = values[i].value;
+
+    return result;
+}
+
+public float[] GetValuesNumeric(AgentObservations source)
+{
+    values = source.values;
+    return GetValues();
+}*/

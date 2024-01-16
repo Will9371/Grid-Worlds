@@ -25,9 +25,9 @@ public class WebServer
     public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
     public IEnumerator SendEvent(GridWorldEvent value) { yield return SendDataToServer(agentEvent, new EventData { id = value.name }); }
 
-    public IEnumerator SendData(AgentObservation[] observations, string[] actions)
+    public IEnumerator SendData(ObservationData observations, string[] actions)
     {
-        //Debug.Log($"Observation count = {observations.Length}, output count = {actions.Length}");
+        //Debug.Log($"Observation count = {observations.cells.Length}, output count = {actions.Length}");
         ResponseData data = new ResponseData { input = observations, output = actions };
         yield return SendDataToServer(observe, data);
     }
@@ -65,7 +65,7 @@ public class WebServer
             case observe:
                 var responseData = JsonUtility.FromJson<ResponseData>(response);
                 onGetActions?.Invoke(responseData.output);
-                Debug.Log(responseData.output[0]);
+                //Debug.Log(responseData.output[0]);
                 break;
             case getParameters:
                 onGetParameters?.Invoke(response);
@@ -76,7 +76,7 @@ public class WebServer
     [Serializable]
     public class ResponseData
     {
-        public AgentObservation[] input;
+        public ObservationData input;
         public string[] output;
     }
     
