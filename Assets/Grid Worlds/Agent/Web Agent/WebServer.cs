@@ -15,9 +15,11 @@ public class WebServer
     const string endEpisode = "/endEpisode";
     const string observe = "/observe";
     const string agentEvent = "/agentEvent";
+    const string query = "/query";
     
     public Action<string[]> onGetActions;
     public Action<string> onGetParameters;
+    public Action<string> onGetQueryOutput;
     
     public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
     public IEnumerator SetParameters(WebParameters parameters) { yield return SendDataToServer(setParameters, parameters); }
@@ -25,10 +27,9 @@ public class WebServer
     public IEnumerator EndEpisode() { yield return SendDataToServer(endEpisode); }
     public IEnumerator SendEvent(GridWorldEvent value) { yield return SendDataToServer(agentEvent, new EventData { id = value.name }); }
 
-    public IEnumerator SendData(ObservationData observations, string[] actions)
+    public IEnumerator SendObservations(ObservationData observations, ResponseData response)
     {
-        //Debug.Log($"Observation count = {observations.cells.Length}, output count = {actions.Length}");
-        ResponseData data = new ResponseData { input = observations, output = actions };
+        IOData data = new IOData { input = observations, output = response };
         yield return SendDataToServer(observe, data);
     }
     
@@ -36,7 +37,7 @@ public class WebServer
     {
         // Convert the data to a JSON string
         var jsonData = JsonUtility.ToJson(data);
-        Debug.Log($"Sending data to server: {jsonData}");
+        //Debug.Log($"Sending data to server: {jsonData}");
 
         // Set up the UnityWebRequest with POST method and the server URL
         var request = new UnityWebRequest(serverURL + route, "POST");
@@ -60,29 +61,45 @@ public class WebServer
         
         // Request was successful. Handle response, if applicable
         var response = request.downloadHandler.text;
-        switch (route)
+        //Debug.Log($"{route}, {response}");
+        
+        if (route == getParameters)
+            onGetParameters?.Invoke(response);
+        else if (route == observe || route == query)
         {
-            case observe:
-                var responseData = JsonUtility.FromJson<ResponseData>(response);
-                onGetActions?.Invoke(responseData.output);
-                //Debug.Log(responseData.output[0]);
-                break;
-            case getParameters:
-                onGetParameters?.Invoke(response);
-                break;
+            var responseData = JsonUtility.FromJson<ResponseData>(response);
+            
+            if (responseData.mode == "action")
+                onGetActions?.Invoke(responseData.actions);
+            else if (responseData.mode == "query")
+                yield return SendDataToServer(query, data);
         }
     }
 
     [Serializable]
-    public class ResponseData
+    public class IOData
     {
         public ObservationData input;
-        public string[] output;
+        public ResponseData output;
     }
     
+    /// Obsolete, merge into ObservationData
     [Serializable]
     public class EventData
     {
         public string id;
+    }
+}
+
+[Serializable]
+public struct ResponseData
+{
+    public string mode;
+    public string[] actions;
+    
+    public ResponseData(string mode, string[] actions)
+    {
+        this.mode = mode;
+        this.actions = actions;
     }
 }

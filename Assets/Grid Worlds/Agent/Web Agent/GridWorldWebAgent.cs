@@ -51,8 +51,8 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     IEnumerator CollectObservations()
     {
         var input = agent.RefreshObservations();
-        var output = agent.ActionNames();
-        yield return server.SendData(input, output);
+        var output = new ResponseData("action", agent.ActionNames());
+        yield return server.SendObservations(input, output);
     }
     
     void BeginReceiveActions(string[] actions) => StartCoroutine(ReceiveActions(Statics.ActionNamesToIds(actions)));

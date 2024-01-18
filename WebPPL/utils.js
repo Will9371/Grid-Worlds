@@ -81,12 +81,12 @@ function randomInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-// Exports
 module.exports = {
     mapActionIdToName,
     mapActionNameToId,
     getParameters,
     setParameters,
-    generateRandomNumbers
+    generateRandomNumbers,
+    randomInteger,
 };
 
