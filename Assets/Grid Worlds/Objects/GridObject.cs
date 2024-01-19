@@ -121,6 +121,12 @@ public class GridObject : MonoBehaviour
         if (!movement) return;
         movement.RefreshPosition(lerpTime);
     }
+    
+    public void OnSetSimulated(bool value)
+    {
+        if (movement) 
+            movement.process.OnSetSimulated(value);
+    }
 }
 
 [Serializable]

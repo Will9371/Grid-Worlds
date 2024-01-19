@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f2578160e7236146b6c77add2a625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environment: {fileID: 0}
   cellType: 0
   interaction: {fileID: 11400000, guid: 531adb29fbfa35c4d837f011e8d0112c, type: 2}
   instanceInfo: {fileID: 0}

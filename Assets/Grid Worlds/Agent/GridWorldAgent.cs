@@ -59,8 +59,11 @@ public class GridWorldAgent : MonoBehaviour
         get => _simulated;
         set
         {
+            if (value == _simulated) return;
             _simulated = value;
             sprite.color = value ? simulatedColor : activeColor;
+            environment.SetSimulated(value);
+            body.OnSetSimulated(value);
         }
     }
     

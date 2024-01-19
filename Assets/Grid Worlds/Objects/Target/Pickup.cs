@@ -8,7 +8,7 @@ public class Pickup : GridObjectInfo
     public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
         if (!entity.agent) return;
-        gridObject.SetActive(false);
+        if (!entity.simulated) gridObject.SetActive(false);     // Differentiate between simulated and real deactivations
         entity.AddEvent(id);
     }
 }

@@ -27,10 +27,16 @@ public class ObjectLayer : MonoBehaviour
             element.gameObject.SetActive(!element.data.hide);
     }
     
+    GridWorldEnvironment environment;
     public void Initialize(GridWorldEnvironment environment)
     {
+        this.environment = environment;
+    
         foreach (var element in elements)
+        {
             element.environment = environment;
+            environment.onSetSimulated += element.OnSetSimulated;
+        }
     }
     
     public void BeginEpisode()
@@ -93,6 +99,7 @@ public class ObjectLayer : MonoBehaviour
         for (int i = elements.Length - 1; i >= 0; i--)
         {
             if (!elements[i]) continue;
+            environment.onSetSimulated -= elements[i].OnSetSimulated;
             StartCoroutine(DestroyObject(elements[i].gameObject));
         }
     }
@@ -101,6 +108,13 @@ public class ObjectLayer : MonoBehaviour
     {
         yield return null;
         DestroyImmediate(value);
+    }
+    
+    void OnDestroy()
+    {
+        foreach (var element in elements)
+            if (element != null)
+                environment.onSetSimulated -= element.OnSetSimulated;
     }
 }
 

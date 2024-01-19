@@ -16,16 +16,13 @@ public class AgentLayer : MonoBehaviour
     
     int stepCount;
     public Action<int> onStep;
-    GridWorldEnvironment environment;
     
-    public void Initialize(GridWorldEnvironment environment, Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
+    public void Initialize(GridWorldEnvironment environment)
     {
-        this.environment = environment;
-    
         foreach (var agent in agents)
         {
             agent.environment = environment;
-            agent.Initialize(beginComplete, stepComplete, endComplete);
+            agent.Initialize(environment.BeginComplete, environment.StepComplete, environment.EndComplete);
         }
     }
     

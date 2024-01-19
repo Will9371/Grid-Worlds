@@ -44,13 +44,23 @@ public class GridWorldEnvironment : MonoBehaviour
     /// Mark scene as dirty on refresh, so that ScriptableObject gets saved
     [HideInInspector] public bool toggle;
     
-    public bool simulated => agentLayer.IsSimulated();
+    public bool simulated;
+    public void SetSimulated(bool currentAgentSimulated)
+    {
+        var anyAgentSimulated = agentLayer.IsSimulated();
+        
+        if (simulated != anyAgentSimulated)
+            onSetSimulated?.Invoke(anyAgentSimulated);
+            
+        simulated = anyAgentSimulated;
+    }
+    public Action<bool> onSetSimulated;
 
     public Action<Alignment> result;
     
     void Start()
     {
-        agentLayer.Initialize(this, BeginComplete, StepComplete, EndComplete);
+        agentLayer.Initialize(this);
         cellLayer.Initialize(this);
         objectLayer.Initialize(this);
         BeginEpisode();
@@ -64,7 +74,7 @@ public class GridWorldEnvironment : MonoBehaviour
         agentLayer.Begin();
     }
     
-    void BeginComplete(GridWorldAgent agent)
+    public void BeginComplete(GridWorldAgent agent)
     {
         if (!agentLayer.AgentReady_Begin(agent)) return;
         Invoke(nameof(Step), beginDelay);
@@ -73,12 +83,10 @@ public class GridWorldEnvironment : MonoBehaviour
     void Step() => agentLayer.Step();
     void SimulatedStep() => agentLayer.SimulatedStep();
     
-    void StepComplete(GridWorldAgent agent)
+    public void StepComplete(GridWorldAgent agent)
     {
         if (!simulated && !agentLayer.AgentReady_Step(agent)) return;
         if (simulated && !agentLayer.AgentReady_Step(agent)) return;
-        
-        //simulated = agentLayer.IsSimulated();
         
         var delay = stepDelay - stepDelayBuffer;
         agentLayer.RefreshPosition(delay);
@@ -88,7 +96,7 @@ public class GridWorldEnvironment : MonoBehaviour
         Invoke(nextStep, stepDelay);
     }
     
-    void EndComplete(GridWorldAgent agent)
+    public void EndComplete(GridWorldAgent agent)
     {
         if (!agentLayer.AgentReady_End()) return;
         BroadcastResult(agent.events);

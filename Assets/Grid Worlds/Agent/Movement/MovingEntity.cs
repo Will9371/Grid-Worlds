@@ -9,7 +9,7 @@ public class MovingEntity
     MonoBehaviour mono;
     public GridWorldAgent agent;
     public GridWorldEnvironment environment;
-    bool simulated => environment.simulated;
+    public bool simulated => environment.simulated;
     
     Vector3 startPosition;
     public Vector3 position => transform.localPosition;
@@ -170,7 +170,8 @@ public class MovingEntity
         
         if (!isAlive)
         {
-            if (isAgent) agent.End();
+            if (isAgent && !diedDuringSimulation) agent.End();
+            else if (diedDuringSimulation) mono.GetComponent<SpriteRenderer>().enabled = false;
             else mono.gameObject.SetActive(false);
         }
     }
@@ -186,7 +187,24 @@ public class MovingEntity
     
     public void Die()
     {
-        if (simulated) return;
+        if (simulated)
+            diedDuringSimulation = true;
+        
         isAlive = false;
     }
+    
+    public void OnSetSimulated(bool value)
+    {
+        if (!value)
+        {
+            if (diedDuringSimulation)
+            {
+                isAlive = true;
+                mono.GetComponent<SpriteRenderer>().enabled = true;
+                diedDuringSimulation = false;
+            }
+        }
+    }
+    
+    bool diedDuringSimulation;
 }
