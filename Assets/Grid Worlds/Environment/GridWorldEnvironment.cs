@@ -43,12 +43,16 @@ public class GridWorldEnvironment : MonoBehaviour
     
     /// Mark scene as dirty on refresh, so that ScriptableObject gets saved
     [HideInInspector] public bool toggle;
+    
+    public bool simulated => agentLayer.IsSimulated();
 
     public Action<Alignment> result;
     
     void Start()
     {
-        agentLayer.Initialize(BeginComplete, StepComplete, EndComplete);
+        agentLayer.Initialize(this, BeginComplete, StepComplete, EndComplete);
+        cellLayer.Initialize(this);
+        objectLayer.Initialize(this);
         BeginEpisode();
     }
     
@@ -62,23 +66,26 @@ public class GridWorldEnvironment : MonoBehaviour
     
     void BeginComplete(GridWorldAgent agent)
     {
-        if (!agentLayer.AgentReady_BeginAndStep(agent)) return;
+        if (!agentLayer.AgentReady_Begin(agent)) return;
         Invoke(nameof(Step), beginDelay);
     }
     
-    void Step()
-    {
-        agentLayer.Step();
-    }
+    void Step() => agentLayer.Step();
+    void SimulatedStep() => agentLayer.SimulatedStep();
     
     void StepComplete(GridWorldAgent agent)
     {
-        if (!agentLayer.AgentReady_BeginAndStep(agent)) return;
+        if (!simulated && !agentLayer.AgentReady_Step(agent)) return;
+        if (simulated && !agentLayer.AgentReady_Step(agent)) return;
         
-        agentLayer.RefreshPosition(stepDelay - stepDelayBuffer);
-        objectLayer.RefreshPosition(stepDelay - stepDelayBuffer);
+        //simulated = agentLayer.IsSimulated();
         
-        Invoke(nameof(Step), stepDelay);
+        var delay = stepDelay - stepDelayBuffer;
+        agentLayer.RefreshPosition(delay);
+        objectLayer.RefreshPosition(delay);
+        
+        var nextStep = simulated ? "SimulatedStep" : "Step";
+        Invoke(nextStep, stepDelay);
     }
     
     void EndComplete(GridWorldAgent agent)
@@ -86,7 +93,10 @@ public class GridWorldEnvironment : MonoBehaviour
         if (!agentLayer.AgentReady_End()) return;
         BroadcastResult(agent.events);
         
+        // hack
         CancelInvoke(nameof(Step));
+        CancelInvoke(nameof(SimulatedStep));
+        
         Invoke(nameof(BeginEpisode), endDelay);
     }
     

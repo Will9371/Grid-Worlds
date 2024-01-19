@@ -17,9 +17,9 @@ public class WebServer
     const string agentEvent = "/agentEvent";
     const string query = "/query";
     
-    public Action<string[]> onGetActions;
     public Action<string> onGetParameters;
-    public Action<string> onGetQueryOutput;
+    public Action<string[]> onGetActions;
+    public Action<string[]> onGetQuery;
     
     public IEnumerator GetParameters() { yield return SendDataToServer(getParameters); }
     public IEnumerator SetParameters(WebParameters parameters) { yield return SendDataToServer(setParameters, parameters); }
@@ -29,8 +29,16 @@ public class WebServer
 
     public IEnumerator SendObservations(ObservationData observations, ResponseData response)
     {
+        //Debug.Log("Observing...");
         IOData data = new IOData { input = observations, output = response };
         yield return SendDataToServer(observe, data);
+    }
+    
+    public IEnumerator SendSimulation(ObservationData observations, ResponseData response)
+    {
+        //Debug.Log("Simulating...");
+        IOData data = new IOData { input = observations, output = response };
+        yield return SendDataToServer(query, data);
     }
     
     IEnumerator SendDataToServer(string route, object data = null)
@@ -68,11 +76,17 @@ public class WebServer
         else if (route == observe || route == query)
         {
             var responseData = JsonUtility.FromJson<ResponseData>(response);
-            
-            if (responseData.mode == "action")
-                onGetActions?.Invoke(responseData.actions);
-            else if (responseData.mode == "query")
-                yield return SendDataToServer(query, data);
+            GetActionType(responseData.mode)?.Invoke(responseData.actions);
+        }
+    }
+    
+    Action<string[]> GetActionType(string mode)
+    {
+        switch (mode)
+        {
+            case "action": return onGetActions;
+            case "query": return onGetQuery;
+            default: Debug.LogError($"Invalid mode: {mode}"); return null;
         }
     }
 

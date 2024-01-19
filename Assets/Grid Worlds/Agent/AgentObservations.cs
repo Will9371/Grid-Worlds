@@ -40,8 +40,9 @@ public class AgentObservations
             
             else
             {
-                if (string.IsNullOrEmpty(processedObservations[observation.position].cellData) && string.IsNullOrEmpty(observation.cellData))
-                    Debug.LogError($"Error: Both cellData fields are empty for position: {observation.position}.  Object data is: {observation.objectData}");
+                // Error spam, uncomment when this becomes relevant
+                //if (string.IsNullOrEmpty(processedObservations[observation.position].cellData) && string.IsNullOrEmpty(observation.cellData))
+                //    Debug.LogError($"Error: Both cellData fields are empty for position: {observation.position}.  Object data is: {observation.objectData}");
                 
                 processedObservations[observation.position] = new CellObservation(
                     processedObservations[observation.position],

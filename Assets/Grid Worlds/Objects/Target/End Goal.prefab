@@ -85,7 +85,7 @@ MonoBehaviour:
   overrideColor: 1
   color: {r: 1, g: 1, b: 1, a: 1}
   gizmoRadius: 0.25
-  rend: {fileID: 0}
+  rend: {fileID: 6673166739622995265}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}

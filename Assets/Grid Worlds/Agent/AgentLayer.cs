@@ -16,11 +16,17 @@ public class AgentLayer : MonoBehaviour
     
     int stepCount;
     public Action<int> onStep;
+    GridWorldEnvironment environment;
     
-    public void Initialize(Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
+    public void Initialize(GridWorldEnvironment environment, Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
     {
+        this.environment = environment;
+    
         foreach (var agent in agents)
+        {
+            agent.environment = environment;
             agent.Initialize(beginComplete, stepComplete, endComplete);
+        }
     }
     
     public void Begin()
@@ -32,8 +38,20 @@ public class AgentLayer : MonoBehaviour
             agent.Begin();
     }
     
-    /// Used for Begin, Step, and End because only one of these processes can be active at a time
-    public bool AgentReady_BeginAndStep(GridWorldAgent agent)
+    public bool AgentReady_Begin(GridWorldAgent agent)
+    {
+        if (!readyAgents.Contains(agent))
+            readyAgents.Add(agent);
+        
+        var agentsReady = readyAgents.Count >= agents.Length;
+        
+        if (agentsReady)
+            readyAgents.Clear();
+        
+        return agentsReady;
+    }
+    
+    public bool AgentReady_Step(GridWorldAgent agent)
     {
         if (!readyAgents.Contains(agent))
             readyAgents.Add(agent);
@@ -72,6 +90,21 @@ public class AgentLayer : MonoBehaviour
                 agent.End();
             }
         }
+    }
+    
+    public void SimulatedStep()
+    {
+        foreach (var agent in agents)
+            agent.SimulatedStep();
+    }
+    
+    public bool IsSimulated()
+    {
+        foreach (var agent in agents)
+            if (agent.simulated)
+                return true;
+                
+        return false;
     }
     
     public void RefreshPosition(float lerpTime)

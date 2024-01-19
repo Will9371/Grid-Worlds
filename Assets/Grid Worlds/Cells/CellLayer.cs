@@ -7,6 +7,12 @@ public class CellLayer : MonoBehaviour
     
     [ReadOnly] public GridCell[] cells;
     Vector2Int size;
+    
+    public void Initialize(GridWorldEnvironment environment)
+    {
+        foreach (var cell in cells)
+            cell.environment = environment;
+    }
 
     public void GenerateNew(Vector2Int size)
     {

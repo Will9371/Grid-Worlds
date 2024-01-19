@@ -95,6 +95,9 @@ MonoBehaviour:
   objectLayer: {fileID: 0}
   cellLayer: {fileID: 0}
   ownCollider: {fileID: 8795134058396057368}
+  sprite: {fileID: 7260495702507120051}
+  activeColor: {r: 0, g: 0.7490196, b: 1, a: 1}
+  simulatedColor: {r: 1, g: 1, b: 1, a: 1}
   placement:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}

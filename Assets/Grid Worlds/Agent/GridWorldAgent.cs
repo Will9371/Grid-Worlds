@@ -9,6 +9,7 @@ public interface IAgent
     
     void Begin();
     void Step();
+    void SimulatedStep();
     void End();
 }
 
@@ -26,7 +27,13 @@ public class GridWorldAgent : MonoBehaviour
     [ReadOnly] public ObjectLayer objectLayer;
     [ReadOnly] public CellLayer cellLayer;
     [SerializeField] Collider2D ownCollider;
+    [SerializeField] SpriteRenderer sprite;
     public MovingEntity body;
+    
+    [SerializeField] Color activeColor;
+    [SerializeField] Color simulatedColor;
+    
+    [NonSerialized] public GridWorldEnvironment environment;
 
     [Header("Starting Position")]
     [SerializeField] RandomizePositionOnBegin placement;
@@ -46,6 +53,17 @@ public class GridWorldAgent : MonoBehaviour
     public void StepComplete() => stepComplete?.Invoke(this);
     public void EndComplete() => endComplete?.Invoke(this);
     
+    bool _simulated;
+    public bool simulated
+    {
+        get => _simulated;
+        set
+        {
+            _simulated = value;
+            sprite.color = value ? simulatedColor : activeColor;
+        }
+    }
+    
     public void Initialize(Action<GridWorldAgent> beginComplete, Action<GridWorldAgent> stepComplete, Action<GridWorldAgent> endComplete)
     {
         this.beginComplete = beginComplete;
@@ -56,6 +74,7 @@ public class GridWorldAgent : MonoBehaviour
         implementation.Inject(this);
         
         body = new MovingEntity(transform, ownCollider, this, this);
+        body.environment = environment;
 
         switch (moveType)
         {
@@ -88,6 +107,12 @@ public class GridWorldAgent : MonoBehaviour
         else implementation.Step();
     }
     
+    public void SimulatedStep() 
+    {
+        if (!alive) StepComplete();
+        else implementation.SimulatedStep();
+    }
+    
     public ObservationData RefreshObservations() => observations.GetObservationData(this);
     
     public void AddCellObservations(AgentObservations observations)
@@ -112,6 +137,17 @@ public class GridWorldAgent : MonoBehaviour
     public void OnActionReceived(int[] actions)
     {
         var nextPosition = movement.Move(actions);
+        //Debug.Log($"action: {actions[0]}");
+        body.moveDirection = nextPosition - body.position;
+        body.AddToPathIfOpen(nextPosition, false);
+        StepComplete();
+    }
+    
+    // * Generate clone and make it carry out the rest...
+    public void OnSimulatedActionReceived(int[] actions)
+    {
+        var nextPosition = movement.Move(actions);
+        //Debug.Log($"simulation: {actions[0]}");
         body.moveDirection = nextPosition - body.position;
         body.AddToPathIfOpen(nextPosition, false);
         StepComplete();
@@ -120,6 +156,7 @@ public class GridWorldAgent : MonoBehaviour
     public void SetPositionAtEndOfPath(float lerpTime) 
     {
         body.RequestLeaveCell();
+        //Debug.Log(environment.simulated);
         body.RefreshPosition(lerpTime);
     }
     

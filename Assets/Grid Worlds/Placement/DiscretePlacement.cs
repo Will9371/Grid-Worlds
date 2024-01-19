@@ -24,12 +24,6 @@ public class DiscretePlacement
     public Vector3 Up() => position + Vector2.up;
     public Vector3 Down() => position + Vector2.down;
     public Vector3 Zero() => position;
-    
-    /*public void AddObservations(AgentObservations sensor)
-    {
-        sensor.Add("x", x);
-        sensor.Add("y", y);
-    }*/
 }
     
 

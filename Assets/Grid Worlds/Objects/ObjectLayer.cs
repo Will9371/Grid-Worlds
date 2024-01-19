@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using Unity.MLAgents.Sensors;
 
 public class ObjectLayer : MonoBehaviour
 {
@@ -26,6 +25,12 @@ public class ObjectLayer : MonoBehaviour
         
         foreach (var element in _elements)
             element.gameObject.SetActive(!element.data.hide);
+    }
+    
+    public void Initialize(GridWorldEnvironment environment)
+    {
+        foreach (var element in elements)
+            element.environment = environment;
     }
     
     public void BeginEpisode()

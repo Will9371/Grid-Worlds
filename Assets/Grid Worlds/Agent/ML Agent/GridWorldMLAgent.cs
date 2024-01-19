@@ -64,6 +64,7 @@ public class GridWorldMLAgent : Agent, IAgent
     
     // TBD: implement centralized timer refactor
     public void Step() { } 
+    public void SimulatedStep() { }
     
     public override void CollectObservations(VectorSensor sensor)
     {

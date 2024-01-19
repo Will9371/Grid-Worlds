@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class MovingEntity
 {
-    public Transform transform;
-    public Collider2D collider;
-    public GridWorldAgent agent;
+    Transform transform;
+    Collider2D collider;
     MonoBehaviour mono;
+    public GridWorldAgent agent;
+    public GridWorldEnvironment environment;
+    bool simulated => environment.simulated;
     
     Vector3 startPosition;
     public Vector3 position => transform.localPosition;
     bool isAgent => agent != null;
     
     bool isAlive;
-
+    public Vector3 moveDirection;
+    
     public MovingEntity(Transform transform, Collider2D collider, MonoBehaviour mono, GridWorldAgent agent = null)
     {
         this.transform = transform;
@@ -104,6 +107,7 @@ public class MovingEntity
         if (cell) cell.Touch(this);        
     }
     
+    /// Triggers activated walls
     public void RequestLeaveCell()
     {
         if (atLastPosition) return;
@@ -122,6 +126,7 @@ public class MovingEntity
     void AddToPath(Vector3 value) => stepPath.Add(value);
     void RemoveLastFromPath() => stepPath.RemoveAt(stepPath.Count - 1);
     public Vector3 lastPosition => stepPath[^1];
+    public Vector3 firstPosition => stepPath[0];
     public bool atLastPosition => transform.localPosition == lastPosition;
     
     public void RefreshPosition(float lerpTime)
@@ -160,7 +165,7 @@ public class MovingEntity
                 yield return null;
             }            
         }
-        transform.localPosition = lastPosition;
+        transform.localPosition = simulated ? firstPosition: lastPosition;
         ResetPath();
         
         if (!isAlive)
@@ -177,16 +182,11 @@ public class MovingEntity
         moveDirection = Vector3.zero;
     }
     
-    public Vector3 moveDirection;
-    
-    public void AddEvent(GridWorldEvent id)
-    {
-        if (agent) agent.AddEvent(id);
-    }
+    public void AddEvent(GridWorldEvent id) { if (agent) agent.AddEvent(id); }
     
     public void Die()
     {
-        //if (agent) agent.End();
+        if (simulated) return;
         isAlive = false;
     }
 }

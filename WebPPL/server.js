@@ -48,6 +48,7 @@ function handleInput(data, res) {
 // Placeholder function to check if there is a query
 function hasQuery() {
     return queryCount < 4;
+    //return false;
 }
 
 function processQuery(data, res) {
@@ -67,6 +68,6 @@ function generateQuery() {
 function processAction(data, res) {
     const actions = processWithWebPPLAlgorithm(data);
     const output = { mode: "action", actions: actions }
-    console.log(output.mode, actions);
+    //console.log(output.mode, actions);
     res.json(output);
 }

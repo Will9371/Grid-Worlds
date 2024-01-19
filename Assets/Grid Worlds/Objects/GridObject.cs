@@ -3,7 +3,17 @@ using UnityEngine;
 
 public class GridObject : MonoBehaviour
 {
-    Lookup lookup => Lookup.instance;
+    GridWorldEnvironment _environment;
+    public GridWorldEnvironment environment
+    {
+        get => _environment;
+        set
+        {
+            _environment = value;
+            var moveMono = GetComponent<MovingEntityMono>();
+            if (moveMono) moveMono.process.environment = value;
+        }
+    }
 
     [Header("Settings")]
     public new string name;
