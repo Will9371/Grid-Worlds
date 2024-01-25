@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum GridCellType { Empty, Wall, Lava, Ice, ActivatedWall, Bumper }
@@ -53,6 +54,11 @@ public class GridCell : MonoBehaviour
     public float y => transform.localPosition.y;
     public float typeIndex => (float)cellType;
     
+    [NonSerialized] public GridWorldEnvironment environment;
+    bool simulated => environment && environment.simulated;
+    bool cellTypeChangedOnSimulation => realCellType != cellType;
+    GridCellType realCellType;
+    
     void OnValidate()
     {
         SetData(cellType);
@@ -75,6 +81,9 @@ public class GridCell : MonoBehaviour
 
     public void SetData(GridCellType cellType)
     {
+        if (!simulated)
+            realCellType = cellType;
+    
         this.cellType = cellType;
         cellSettings = lookup.GetGridCellSettings(cellType);
         interaction = lookup.GetInteractable(cellType);
@@ -110,5 +119,18 @@ public class GridCell : MonoBehaviour
         }
     }
     
+    public void OnEndSimulatedStep()
+    {
+        if (cellTypeChangedOnSimulation)
+        {
+            SetData(realCellType);
+            realCellType = cellType;
+        }
+    }
     
+    void OnDestroy()
+    {
+        if (environment)
+            environment.onEndSimulatedStep -= OnEndSimulatedStep;
+    }
 }

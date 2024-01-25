@@ -10,8 +10,11 @@ public class CellLayer : MonoBehaviour
     
     public void Initialize(GridWorldEnvironment environment)
     {
-        //foreach (var cell in cells)
-        //    cell.environment = environment;
+        foreach (var cell in cells)
+        {
+            cell.environment = environment;
+            environment.onEndSimulatedStep += cell.OnEndSimulatedStep;
+        }
     }
 
     public void GenerateNew(Vector2Int size)

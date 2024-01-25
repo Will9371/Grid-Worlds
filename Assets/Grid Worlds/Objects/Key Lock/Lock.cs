@@ -15,7 +15,6 @@ public class Lock : GridObjectInfo
         if (!consumeKey) return;
         
         // Success: lock opens
-        Debug.Log(entity.simulated);
         if (entity.simulated)
             gridObject.GetComponent<GridObject>().SetVisible(false);
         else 
