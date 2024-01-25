@@ -23,6 +23,7 @@ public class AgentLayer : MonoBehaviour
         {
             agent.environment = environment;
             agent.Initialize(environment.BeginComplete, environment.StepComplete, environment.EndComplete);
+            environment.onEndSimulatedStep += agent.OnEndSimulatedStep;
         }
     }
     

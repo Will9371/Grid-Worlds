@@ -12,7 +12,7 @@ public class MovingEntityMono : MonoBehaviour
         get
         {
             if (_process == null)
-                _process = new MovingEntity(root, collider, this);
+                _process = new MovingEntity(this);
             return _process;
         }
     }

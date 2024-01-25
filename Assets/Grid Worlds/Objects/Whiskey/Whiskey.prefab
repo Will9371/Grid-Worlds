@@ -86,6 +86,7 @@ MonoBehaviour:
   color: {r: 0.5754717, g: 0.25142437, b: 0, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 4481315485572234268}
+  collider: {fileID: 6297765588111746878}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}

@@ -10,11 +10,17 @@ public class Lock : GridObjectInfo
     {
         if (!entity.agent) return;
         
+        // Condition: attempt to remove a key from inventory
         var consumeKey = entity.agent.TakeInventoryItem(key);
         if (!consumeKey) return;
         
         // Success: lock opens
-        gridObject.SetActive(false);
+        Debug.Log(entity.simulated);
+        if (entity.simulated)
+            gridObject.GetComponent<GridObject>().SetVisible(false);
+        else 
+            gridObject.SetActive(false);
+            
         entity.AddEvent(unlock);
     }
 }

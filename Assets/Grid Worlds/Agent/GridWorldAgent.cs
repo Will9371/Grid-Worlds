@@ -44,6 +44,10 @@ public class GridWorldAgent : MonoBehaviour
     [ReadOnly] public List<GridWorldEvent> events = new();
     [ReadOnly, SerializeField] List<GridWorldEvent> inventory = new();
     
+    List<GridWorldEvent> eventsAddedOnSimulation = new();
+    List<GridWorldEvent> inventoryAddedOnSimulation = new();
+    List<GridWorldEvent> inventoryRemovedOnSimulation = new();
+    
     [NonSerialized] public AgentObservations observations = new();
     
     Action<GridWorldAgent> beginComplete;
@@ -62,8 +66,7 @@ public class GridWorldAgent : MonoBehaviour
             if (value == _simulated) return;
             _simulated = value;
             sprite.color = value ? simulatedColor : activeColor;
-            environment.SetSimulated(value);
-            body.OnSetSimulated(value);
+            environment.RefreshSimulated();
         }
     }
     
@@ -76,7 +79,7 @@ public class GridWorldAgent : MonoBehaviour
         implementation = GetComponent<IAgent>();
         implementation.Inject(this);
         
-        body = new MovingEntity(transform, ownCollider, this, this);
+        body = new MovingEntity(this, this);
         body.environment = environment;
 
         switch (moveType)
@@ -168,9 +171,15 @@ public class GridWorldAgent : MonoBehaviour
     public void AddEvent(GridWorldEvent info)
     {
         events.Add(info);
+        if (simulated)
+            eventsAddedOnSimulation.Add(info);
         
         if (info.inventoryItem)
+        {
             inventory.Add(info);
+            if (simulated)
+                inventoryAddedOnSimulation.Add(info);
+        }
         
         implementation.AddEvent(info);
     }
@@ -206,17 +215,21 @@ public class GridWorldAgent : MonoBehaviour
 
     void OnDrawGizmos() => placement.OnDrawGizmos();
     
+    public AgentObservationData GetSelfDescription() => new (id, GetInventoryDescriptions(), GetLastStepDescriptions());
+    
     public bool TakeInventoryItem(GridWorldEvent item)
     {
         if (inventory.Contains(item))
         {
             inventory.Remove(item);
+            
+            if (simulated)
+                inventoryRemovedOnSimulation.Add(item);
+            
             return true;
         }
         return false;
     }
-    
-    public AgentObservationData GetSelfDescription() => new (id, GetInventoryDescriptions(), GetLastStepDescriptions());
     
     public string[] GetInventoryDescriptions() 
     {
@@ -230,4 +243,26 @@ public class GridWorldAgent : MonoBehaviour
     
     /// TBD:
     public string[] GetLastStepDescriptions() => new [] { "" };
+    
+    public void OnEndSimulatedStep()
+    {
+        body.OnEndSimulatedStep();
+        
+        foreach (var item in inventoryAddedOnSimulation)
+            inventory.Remove(item);
+        foreach (var item in inventoryRemovedOnSimulation)
+            inventory.Add(item);
+        foreach (var item in eventsAddedOnSimulation)
+            events.Remove(item);
+            
+        inventoryAddedOnSimulation.Clear();
+        inventoryRemovedOnSimulation.Clear();
+        eventsAddedOnSimulation.Clear();
+    }
+    
+    void OnDestroy()
+    {
+        if (environment)
+            environment.onEndSimulatedStep -= OnEndSimulatedStep;
+    }
 }

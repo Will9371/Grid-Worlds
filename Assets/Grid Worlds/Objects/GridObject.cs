@@ -29,8 +29,8 @@ public class GridObject : MonoBehaviour
     [Range(0, 1)] public float gizmoRadius = 0.25f;
     
     [Header("References")]
-    //public ObjectCollider colliderInterface;
     public SpriteRenderer rend;
+    public Collider2D collider;
     IObservableObject observable;
     
     [ReadOnly] public RandomizePositionOnBegin positioner = new();
@@ -59,6 +59,7 @@ public class GridObject : MonoBehaviour
         
         if (!rend) rend = GetComponent<SpriteRenderer>();
         if (!overrideColor) rend.color = data.color;
+        if (!collider) collider = GetComponent<Collider2D>();
 
         data = new GridObjectData(this);
         observable = GetComponent<IObservableObject>(); 
@@ -122,10 +123,21 @@ public class GridObject : MonoBehaviour
         movement.RefreshPosition(lerpTime);
     }
     
-    public void OnSetSimulated(bool value)
+    public void OnEndSimulatedStep()
     {
         if (movement) 
-            movement.process.OnSetSimulated(value);
+            movement.process.OnEndSimulatedStep();
+        else if (!visible)
+            SetVisible(true);
+    }
+    
+    bool visible;
+    public void SetVisible(bool value)
+    {
+        //Debug.Log($"{gameObject.name} {value}");
+        visible = value;
+        collider.enabled = value;
+        rend.enabled = value;
     }
 }
 

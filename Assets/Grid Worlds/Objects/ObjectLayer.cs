@@ -35,7 +35,7 @@ public class ObjectLayer : MonoBehaviour
         foreach (var element in elements)
         {
             element.environment = environment;
-            environment.onSetSimulated += element.OnSetSimulated;
+            environment.onEndSimulatedStep += element.OnEndSimulatedStep;
         }
     }
     
@@ -99,7 +99,7 @@ public class ObjectLayer : MonoBehaviour
         for (int i = elements.Length - 1; i >= 0; i--)
         {
             if (!elements[i]) continue;
-            environment.onSetSimulated -= elements[i].OnSetSimulated;
+            environment.onEndSimulatedStep -= elements[i].OnEndSimulatedStep;
             StartCoroutine(DestroyObject(elements[i].gameObject));
         }
     }
@@ -114,7 +114,7 @@ public class ObjectLayer : MonoBehaviour
     {
         foreach (var element in elements)
             if (element != null)
-                environment.onSetSimulated -= element.OnSetSimulated;
+                environment.onEndSimulatedStep -= element.OnEndSimulatedStep;
     }
 }
 

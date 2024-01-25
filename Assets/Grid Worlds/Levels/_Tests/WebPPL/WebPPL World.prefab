@@ -1339,6 +1339,7 @@ MonoBehaviour:
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 2825153158281849954}
+  collider: {fileID: 7846653864994242717}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -1538,6 +1539,7 @@ MonoBehaviour:
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 466102859926403955}
+  collider: {fileID: 6267814570147870363}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -2275,6 +2277,7 @@ MonoBehaviour:
   color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 5019198011668205087}
+  collider: {fileID: 943417046373886974}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -5187,6 +5190,7 @@ MonoBehaviour:
   color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 8498477621229499451}
+  collider: {fileID: 2392645506967642248}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -6295,6 +6299,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 4237708381840613055}
+  collider: {fileID: 6669393677325670418}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -12988,6 +12993,7 @@ MonoBehaviour:
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 9098547561616645222}
+  collider: {fileID: 994811142813487537}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -18525,8 +18531,10 @@ MonoBehaviour:
   scenarioName: WebPPL
   objective: {fileID: 11400000, guid: 38821551f70a2294ebfb1e5d528d9f64, type: 2}
   size: {x: 13, y: 10}
-  stepDelay: 0.25
-  stepDelayBuffer: 0.05
+  realStepDelay: 0.25
+  realStepDelayBuffer: 0.05
+  simulatedStepDelay: 0.15
+  simulatedStepDelayBuffer: 0.05
   beginDelay: 0.5
   endDelay: 0.5
   generateNew: 0
@@ -19162,6 +19170,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 8750697986893794964}
+  collider: {fileID: 6076220493559799510}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -21881,6 +21890,7 @@ MonoBehaviour:
   color: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 1346022424666129098}
+  collider: {fileID: 2867876356519532573}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -23870,6 +23880,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 6645269027040323316}
+  collider: {fileID: 4992556980516314210}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}
@@ -24786,6 +24797,7 @@ MonoBehaviour:
   color: {r: 0.754717, g: 0.58912313, b: 0.39634505, a: 1}
   gizmoRadius: 0.25
   rend: {fileID: 7752214344640484531}
+  collider: {fileID: 7363063594804823832}
   positioner:
     xRange: {x: 0, y: 0}
     yRange: {x: 0, y: 0}

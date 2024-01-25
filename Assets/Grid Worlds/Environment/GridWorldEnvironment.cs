@@ -15,9 +15,13 @@ public class GridWorldEnvironment : MonoBehaviour
     [VectorLabels("Width", "Height")]
     public Vector2Int size;
     [Tooltip("Delay between each timestep. Set to 0 for max speed.")]
-    [SerializeField] float stepDelay = .25f;
+    [SerializeField] float realStepDelay = .25f;
     [Tooltip("Forces moving objects to pause between steps. Cannot be greater than stepDelay.")]
-    [SerializeField] float stepDelayBuffer = .05f;
+    [SerializeField] float realStepDelayBuffer = .05f;
+    [Tooltip("Delay between each timestep. Set to 0 for max speed.")]
+    [SerializeField] float simulatedStepDelay = .15f;
+    [Tooltip("Forces moving objects to pause between steps. Cannot be greater than stepDelay.")]
+    [SerializeField] float simulatedStepDelayBuffer = .05f;
     [Tooltip("Delay before episode begins")]
     [SerializeField] float beginDelay = .5f;
     [Tooltip("Delay before episode ends")]
@@ -45,7 +49,7 @@ public class GridWorldEnvironment : MonoBehaviour
     [HideInInspector] public bool toggle;
     
     public bool simulated;
-    public void SetSimulated(bool currentAgentSimulated)
+    public void RefreshSimulated()
     {
         var anyAgentSimulated = agentLayer.IsSimulated();
         
@@ -55,6 +59,7 @@ public class GridWorldEnvironment : MonoBehaviour
         simulated = anyAgentSimulated;
     }
     public Action<bool> onSetSimulated;
+    public Action onEndSimulatedStep;
 
     public Action<Alignment> result;
     
@@ -81,12 +86,20 @@ public class GridWorldEnvironment : MonoBehaviour
     }
     
     void Step() => agentLayer.Step();
-    void SimulatedStep() => agentLayer.SimulatedStep();
+    
+    void SimulatedStep() 
+    {
+        onEndSimulatedStep?.Invoke();
+        agentLayer.SimulatedStep();
+    }
     
     public void StepComplete(GridWorldAgent agent)
     {
         if (!simulated && !agentLayer.AgentReady_Step(agent)) return;
         if (simulated && !agentLayer.AgentReady_Step(agent)) return;
+        
+        var stepDelay = simulated ? simulatedStepDelay : realStepDelay;
+        var stepDelayBuffer = simulated ? simulatedStepDelayBuffer : realStepDelayBuffer;
         
         var delay = stepDelay - stepDelayBuffer;
         agentLayer.RefreshPosition(delay);
@@ -119,11 +132,14 @@ public class GridWorldEnvironment : MonoBehaviour
     {
         if (tick) tick = false;
         
-        if (stepDelay < 0) stepDelay = 0f;
         if (beginDelay < 0) beginDelay = 0f;
         if (endDelay < 0) endDelay = 0f;
-        if (stepDelayBuffer > stepDelay) 
-            stepDelayBuffer = stepDelay;
+        if (realStepDelay < 0) realStepDelay = 0f;
+        if (realStepDelayBuffer < 0) realStepDelayBuffer = 0f;
+        if (simulatedStepDelay < 0) simulatedStepDelay = 0f;
+        if (simulatedStepDelayBuffer < 0) simulatedStepDelayBuffer = 0f;
+        if (realStepDelayBuffer > realStepDelay) realStepDelayBuffer = realStepDelay;
+        if (simulatedStepDelayBuffer > simulatedStepDelay) simulatedStepDelayBuffer = simulatedStepDelay;
             
         agentLayer.Validate(objectLayer, cellLayer, scenarioName);
         

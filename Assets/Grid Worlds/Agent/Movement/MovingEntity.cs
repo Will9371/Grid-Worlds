@@ -6,6 +6,7 @@ public class MovingEntity
 {
     Transform transform;
     Collider2D collider;
+    SpriteRenderer rend;
     MonoBehaviour mono;
     public GridWorldAgent agent;
     public GridWorldEnvironment environment;
@@ -18,12 +19,13 @@ public class MovingEntity
     bool isAlive;
     public Vector3 moveDirection;
     
-    public MovingEntity(Transform transform, Collider2D collider, MonoBehaviour mono, GridWorldAgent agent = null)
+    public MovingEntity(MonoBehaviour mono, GridWorldAgent agent = null)
     {
-        this.transform = transform;
-        this.collider = collider;
         this.agent = agent;
         this.mono = mono;
+        transform = mono.transform;
+        collider = mono.GetComponent<Collider2D>();
+        rend = mono.GetComponent<SpriteRenderer>();
         startPosition = transform.localPosition;
     }
     
@@ -147,6 +149,8 @@ public class MovingEntity
         {
             transform.localPosition = lastPosition;
             ResetPath();
+            //if (agent && simulated)
+            //    environment.onEndSimulatedStep?.Invoke();
             yield break;
         }
         
@@ -174,6 +178,9 @@ public class MovingEntity
             else if (diedDuringSimulation) mono.GetComponent<SpriteRenderer>().enabled = false;
             else mono.gameObject.SetActive(false);
         }
+        
+        //if (agent && simulated)
+        //    environment.onEndSimulatedStep?.Invoke();
     }
     
     void ResetPath()
@@ -193,17 +200,21 @@ public class MovingEntity
         isAlive = false;
     }
     
-    public void OnSetSimulated(bool value)
+    public void OnEndSimulatedStep()
     {
-        if (!value)
+        //Debug.Log($"{mono.name} {diedDuringSimulation}");
+        if (diedDuringSimulation)
         {
-            if (diedDuringSimulation)
-            {
-                isAlive = true;
-                mono.GetComponent<SpriteRenderer>().enabled = true;
-                diedDuringSimulation = false;
-            }
+            isAlive = true;
+            SetVisible(true);
+            diedDuringSimulation = false;
         }
+    }
+    
+    public void SetVisible(bool value)
+    {
+        rend.enabled = value;
+        collider.enabled = value;
     }
     
     bool diedDuringSimulation;

@@ -26,6 +26,7 @@ app.post('/query', (req, res) => { handleQuery(req, res); });
 // Placeholder algorithm, replace with call to WebPPL logic
 function processWithWebPPLAlgorithm(data) {
     return randomAction(data);
+    //return ["Move Right"];
 }
 
 function handleObservations(req, res) {
@@ -61,7 +62,7 @@ function processQuery(data, res) {
 
 // Replace this with your actual logic for generating queries
 function generateQuery() {
-    const directions = [["Move Up"], ["Move Down"], ["Move Left"], ["Move Right"]];
+    const directions = [["Move Left"], ["Move Right"], ["Move Up"], ["Move Down"]];
     return directions[queryCount];
 }
 
