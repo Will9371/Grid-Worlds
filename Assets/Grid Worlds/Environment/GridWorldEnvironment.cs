@@ -187,4 +187,7 @@ public class GridWorldEnvironment : MonoBehaviour
         cellLayer.SetArrayFromHierarchy();
         objectLayer.SetArrayFromHierarchy();
     }
+    
+    [SerializeField] SimulatedAgentGenerator simulatedAgentGenerator;
+    public void GenerateSimulacrum(List<Vector3> path) => simulatedAgentGenerator.GenerateSimulacrum(path, simulatedStepDelay, simulatedStepDelayBuffer);
 }

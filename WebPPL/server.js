@@ -55,7 +55,7 @@ function hasQuery() {
 function processQuery(data, res) {
     const query = generateQuery();
     const output = { mode: "query", actions: query }
-    console.log("query", queryCount, output);
+    //console.log("query", queryCount, output);
     res.json(output);
     queryCount++;
 }

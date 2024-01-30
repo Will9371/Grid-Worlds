@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class MovingEntityMono : MonoBehaviour
 {
-    [SerializeField] Transform root;
-    [SerializeField] Collider2D collider;
-    //[SerializeField] bool lightweight;
-
     MovingEntity _process;
     public MovingEntity process
     {

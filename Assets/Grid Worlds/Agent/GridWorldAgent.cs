@@ -22,6 +22,7 @@ public class GridWorldAgent : MonoBehaviour
 
     [Tooltip("Future Use")]
     public ObservationType observationType = ObservationType.BirdsEye;
+    [SerializeField, Range(0,1)] float simulationOpacity = .5f;
     
     [Header("References")]
     [ReadOnly] public ObjectLayer objectLayer;
@@ -29,9 +30,6 @@ public class GridWorldAgent : MonoBehaviour
     [SerializeField] Collider2D ownCollider;
     [SerializeField] SpriteRenderer sprite;
     public MovingEntity body;
-    
-    [SerializeField] Color activeColor;
-    [SerializeField] Color simulatedColor;
     
     [NonSerialized] public GridWorldEnvironment environment;
 
@@ -65,7 +63,6 @@ public class GridWorldAgent : MonoBehaviour
         {
             if (value == _simulated) return;
             _simulated = value;
-            sprite.color = value ? simulatedColor : activeColor;
             environment.RefreshSimulated();
         }
     }
@@ -140,29 +137,22 @@ public class GridWorldAgent : MonoBehaviour
     /// Add observations of own state
     public void ObserveOwnCell(AgentObservations sensor) => sensor.Add(Statics.PositionString(transform), "", $"Agent {id}");
     
-    public void OnActionReceived(int[] actions)
+    public void OnActionReceived(int[] actions, bool simulated = false)
     {
         var nextPosition = movement.Move(actions);
-        //Debug.Log($"action: {actions[0]}");
         body.moveDirection = nextPosition - body.position;
         body.AddToPathIfOpen(nextPosition, false);
-        StepComplete();
-    }
-    
-    // * Generate clone and make it carry out the rest...
-    public void OnSimulatedActionReceived(int[] actions)
-    {
-        var nextPosition = movement.Move(actions);
-        //Debug.Log($"simulation: {actions[0]}");
-        body.moveDirection = nextPosition - body.position;
-        body.AddToPathIfOpen(nextPosition, false);
+        
+        var opacity = simulated ? simulationOpacity : 1f;
+        body.SetOpacity(opacity);
+        if (simulated) environment.GenerateSimulacrum(body.stepPath);
+        
         StepComplete();
     }
     
     public void SetPositionAtEndOfPath(float lerpTime) 
     {
         body.RequestLeaveCell();
-        //Debug.Log(environment.simulated);
         body.RefreshPosition(lerpTime);
     }
     

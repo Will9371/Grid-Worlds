@@ -84,7 +84,7 @@ public class GridWorldWebAgent : MonoBehaviour, IAgent
     {
         agent.simulated = true;
         if (!active || !isAI) yield break;
-        agent.OnSimulatedActionReceived(actions);
+        agent.OnActionReceived(actions, true);
     }
     
     public void AddEvent(GridWorldEvent info) 

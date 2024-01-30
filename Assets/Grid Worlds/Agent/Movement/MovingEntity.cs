@@ -10,7 +10,9 @@ public class MovingEntity
     MonoBehaviour mono;
     public GridWorldAgent agent;
     public GridWorldEnvironment environment;
-    public bool simulated => environment.simulated;
+    public bool real => environment && !environment.simulated;
+    public bool simulated => !real;
+    bool isSimulacrum => transform.name.Contains("Simulacrum");
     
     Vector3 startPosition;
     public Vector3 position => transform.localPosition;
@@ -131,6 +133,13 @@ public class MovingEntity
     public Vector3 firstPosition => stepPath[0];
     public bool atLastPosition => transform.localPosition == lastPosition;
     
+    public void CopyPath(List<Vector3> originalPath)
+    {
+        stepPath.Clear();
+        foreach (var step in originalPath)
+            AddToPath(step);
+    }
+    
     public void RefreshPosition(float lerpTime)
     {
         if (stepPath.Count == 0 || !mono.isActiveAndEnabled) return;
@@ -149,14 +158,18 @@ public class MovingEntity
         {
             transform.localPosition = lastPosition;
             ResetPath();
-            //if (agent && simulated)
-            //    environment.onEndSimulatedStep?.Invoke();
             yield break;
         }
+        
+        // NG: "Web Agent" for all...even though simulacrums are moving!!!
+        //Debug.Log($"Simulation mode: {simulated}, Simulacrum: {isSimulacrum}, Object: {transform.name}", transform.gameObject); 
+        var fixPosition = simulated && !isSimulacrum;
         
         var segmentDuration = lerpTime/(stepPath.Count - 1);
         for (int i = 0; i < stepPath.Count - 1; i++)
         {
+            if (fixPosition) continue;
+        
             var startTime = Time.time;
             while (Time.time - startTime < segmentDuration)
             {
@@ -169,18 +182,22 @@ public class MovingEntity
                 yield return null;
             }            
         }
-        transform.localPosition = simulated ? firstPosition: lastPosition;
+        
+        transform.localPosition = simulated ? firstPosition : lastPosition;
         ResetPath();
         
         if (!isAlive)
         {
-            if (isAgent && !diedDuringSimulation) agent.End();
-            else if (diedDuringSimulation) mono.GetComponent<SpriteRenderer>().enabled = false;
-            else mono.gameObject.SetActive(false);
+            if (isAgent)
+            {
+                if (!diedDuringSimulation)
+                    agent.End();
+            }
+            else if (diedDuringSimulation) 
+                mono.GetComponent<SpriteRenderer>().enabled = false;
+            else 
+                mono.gameObject.SetActive(false);
         }
-        
-        //if (agent && simulated)
-        //    environment.onEndSimulatedStep?.Invoke();
     }
     
     void ResetPath()
@@ -217,5 +234,20 @@ public class MovingEntity
         collider.enabled = value;
     }
     
+    public void SetOpacity(float alpha = 1f)
+    {
+        var oldColor = rend.color;
+        rend.color = new Color(oldColor.r, oldColor.g, oldColor.b, alpha);
+        //collider.enabled = alpha == 1f;
+    }
+    
     bool diedDuringSimulation;
+    
+    public void PrintStepPath(string prefix = "")
+    {
+        var message = "";
+        foreach (var step in stepPath)
+            message += step;
+        Debug.Log($"{prefix}{message}");
+    }
 }
