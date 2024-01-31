@@ -10,10 +10,21 @@ public class CellLayer : MonoBehaviour
     
     public void Initialize(GridWorldEnvironment environment)
     {
+        if (cells == null || cells.Length == 0 || cells[0] == null)
+            SetArrayFromHierarchy();
+    
+        int i = 0;
         foreach (var cell in cells)
         {
+            if (cell == null)
+            {
+                Debug.LogError($"Cell {i} is null!");
+                continue;
+            }
+        
             cell.environment = environment;
             environment.onEndSimulatedStep += cell.OnEndSimulatedStep;
+            i++;
         }
     }
 

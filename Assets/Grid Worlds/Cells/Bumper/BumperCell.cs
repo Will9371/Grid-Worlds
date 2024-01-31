@@ -40,6 +40,7 @@ public class BumperCell : GridCellInfo
         var moveDirection = GetRandomDirection();
         if (moveDirection == Vector3.zero) return;
         var nextPosition = entity.lastPosition + moveDirection;
+        entity.moveDirection = moveDirection;
         entity.AddToPathIfOpen(nextPosition, true);
     }
     
