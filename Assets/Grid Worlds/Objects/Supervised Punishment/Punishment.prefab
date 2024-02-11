@@ -78,6 +78,7 @@ MonoBehaviour:
   name: Punishment
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: 620d7b061ce9ee447ad3516f115f1183, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

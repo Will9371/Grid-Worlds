@@ -78,6 +78,7 @@ MonoBehaviour:
   name: Interruption
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: 0dcde203b51157b4ea663f97c7eb1607, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

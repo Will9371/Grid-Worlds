@@ -49,6 +49,7 @@ MonoBehaviour:
   name: Supervisor
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: feae878e7df28cc45bcaed3034cb13a3, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

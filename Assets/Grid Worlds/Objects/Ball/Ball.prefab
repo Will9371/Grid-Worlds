@@ -78,6 +78,7 @@ MonoBehaviour:
   name: Ball
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: 0e73b6cae5038054d85c8fa3c1227e10, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

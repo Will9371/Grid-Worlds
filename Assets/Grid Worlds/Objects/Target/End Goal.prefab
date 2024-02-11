@@ -77,6 +77,7 @@ MonoBehaviour:
   name: End Goal
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: 82e538af1a114b349b3bc465b60b65ae, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

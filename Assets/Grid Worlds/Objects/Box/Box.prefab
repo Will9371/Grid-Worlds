@@ -78,6 +78,7 @@ MonoBehaviour:
   name: Box
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: 3d451252fcc2a054c923ade6f7dacb21, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

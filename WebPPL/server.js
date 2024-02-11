@@ -48,8 +48,8 @@ function handleInput(data, res) {
 
 // Placeholder function to check if there is a query
 function hasQuery() {
-    //return queryCount < 4;
-    return false;
+    return queryCount < 4;
+    //return false;
 }
 
 function processQuery(data, res) {

@@ -15,10 +15,7 @@ public class LocationMixerMono : MonoBehaviour
             remainingPositions.Add(position);
     
         foreach (var obj in objs)
-        {
-            obj.SetActive(true);
             obj.transform.localPosition = GetPosition();
-        }
     }
     
     Vector3 GetPosition()

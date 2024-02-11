@@ -77,6 +77,7 @@ MonoBehaviour:
   name: Reward Pickup
   setNameFromInfo: 0
   info: {fileID: 11400000, guid: 630af450b1a4c1541a265d372774d892, type: 2}
+  applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
     refreshRate: 0.1

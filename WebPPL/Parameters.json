@@ -1,6 +1,11 @@
 {
   "items": [
     {
+      "key": "goal0",
+      "description": "Low delta",
+      "value": "0"
+    },
+    {
       "key": "goal1",
       "description": "Low delta",
       "value": "1"
@@ -14,6 +19,16 @@
       "key": "goal3",
       "description": "High delta",
       "value": "3"
+    },
+    {
+      "key": "goal4",
+      "description": "Target path end",
+      "value": "4"
+    },
+    {
+      "key": "pickup-2",
+      "description": "Target path middle",
+      "value": "-2"
     }
   ]
 }

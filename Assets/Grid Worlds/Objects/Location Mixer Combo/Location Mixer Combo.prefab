@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1781460102072553289}
   - component: {fileID: 5656020870727508997}
-  - component: {fileID: 7232898494499355283}
+  - component: {fileID: 6847494623142880030}
   m_Layer: 0
-  m_Name: Location Mixer
+  m_Name: Location Mixer Combo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e4c5e10aaa210469974fe8894ebb3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Location Mixer
+  name: Location Mixer Combo
   setNameFromInfo: 0
-  info: {fileID: 11400000, guid: f9748b62bc31dd5419e60b8b64888793, type: 2}
+  info: {fileID: 11400000, guid: 712a0ddbe33338a43a3dae45c48b68bd, type: 2}
   applyInternalPositionRandomizer: 0
   editPosition:
     watch: 1
@@ -67,15 +67,15 @@ MonoBehaviour:
     gizmoColor: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
   data:
-    name: Location Mixer
-    touchInfo: {fileID: 11400000, guid: f9748b62bc31dd5419e60b8b64888793, type: 2}
+    name: Location Mixer Combo
+    touchInfo: {fileID: 11400000, guid: 712a0ddbe33338a43a3dae45c48b68bd, type: 2}
     position: {x: -1, y: 0}
     xPlaceRange: {x: 0, y: 0}
     yPlaceRange: {x: 0, y: 0}
     color: {r: 1, g: 1, b: 1, a: 1}
     gizmoRadius: 0.25
     hide: 0
---- !u!114 &7232898494499355283
+--- !u!114 &6847494623142880030
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 894865589463349074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd1c875a5af52e448c0c6f91adf3081, type: 3}
+  m_Script: {fileID: 11500000, guid: f07a9248f3df9d748a0ec23c3c7a7479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   objs: []
