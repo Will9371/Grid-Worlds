@@ -9,4 +9,5 @@ public class GridObjectInfo : ScriptableObject
     
     public virtual bool BlockMovement(bool sourceIsAgent) => solid || !sourceIsAgent;
     public virtual void Touch(MovingEntity source, GameObject self) { }
+    public virtual void BeginEpisode(GameObject self) { }
 }

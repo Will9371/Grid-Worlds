@@ -103,6 +103,7 @@ public class MovingEntity
     {
         var gridObject = other.GetComponent<GridObject>();
         if (gridObject) gridObject.Touch(this);
+        if (agent && gridObject) agent.AddTouchId(gridObject.name);
     }
     
     void TouchCell(Collider2D other)

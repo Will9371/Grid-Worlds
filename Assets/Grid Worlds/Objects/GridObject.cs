@@ -19,6 +19,7 @@ public class GridObject : MonoBehaviour
     public new string name;
     [SerializeField] bool setNameFromInfo = true;
     public GridObjectInfo info;
+    [SerializeField] bool applyInternalPositionRandomizer;
     public WatchTransformInEditor editPosition;
     [VectorLabels("Min", "Max")]
     public Vector2 xRange;
@@ -88,7 +89,7 @@ public class GridObject : MonoBehaviour
         if (!overrideColor) rend.color = data.color;
     }
     
-    public void SetRandomPosition() => positioner.SetRandomPosition();
+    void SetRandomPosition() => positioner.SetRandomPosition();
     
     public bool BlockMovement(bool isAgent) => info.BlockMovement(isAgent);
     public void Touch(MovingEntity entity) => info.Touch(entity, gameObject);
@@ -109,10 +110,11 @@ public class GridObject : MonoBehaviour
     public void BeginEpisode()
     {
         //Debug.Log($"GridObject.BeginEpisode({data.hide})", gameObject);
+        info.BeginEpisode(gameObject);
         gameObject.SetActive(!data.hide);
         movement = GetComponent<MovingEntityMono>();
         if (movement) movement.Begin();
-        SetRandomPosition();
+        if (applyInternalPositionRandomizer) SetRandomPosition();
     }
     
     MovingEntityMono movement;
@@ -136,8 +138,8 @@ public class GridObject : MonoBehaviour
     {
         //Debug.Log($"{gameObject.name} {value}");
         visible = value;
-        collider.enabled = value;
-        rend.enabled = value;
+        if (collider) collider.enabled = value;
+        if (rend) rend.enabled = value;
     }
 }
 

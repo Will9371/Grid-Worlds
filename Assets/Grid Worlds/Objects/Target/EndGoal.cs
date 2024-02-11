@@ -7,6 +7,11 @@ public class EndGoal : GridObjectInfo
 
     public override void Touch(MovingEntity entity, GameObject gridObject) 
     {
+        if (entity.simulated)
+            gridObject.GetComponent<GridObject>().SetVisible(false);
+        else 
+            gridObject.SetActive(false);
+    
         entity.AddEvent(eventId);
         entity.Die();
     }

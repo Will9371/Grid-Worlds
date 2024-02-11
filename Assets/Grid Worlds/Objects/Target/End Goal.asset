@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7520592589302154403, guid: 40fbe7a7aa4588441a80701bcbb71b8b, type: 3}
   solid: 0
-  destructible: 0
   eventId: {fileID: 11400000, guid: 64645dcf8a08eeb47b30afcfee95312c, type: 2}

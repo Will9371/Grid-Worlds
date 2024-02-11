@@ -5,6 +5,15 @@ using UnityEngine;
 public class WebParametersInfo : ScriptableObject
 {
     public WebParameters data;
+    
+    public float GetReward(string touchId)
+    {
+        foreach (var item in data.items)
+            if (item.key == touchId)
+                return float.Parse(item.value);
+        
+        return 0;
+    }
 }
 
 [Serializable]

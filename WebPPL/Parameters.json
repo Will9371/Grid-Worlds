@@ -1,19 +1,19 @@
 {
   "items": [
     {
-      "key": "aspirationLow",
-      "description": "Minimal total reward",
-      "value": "-100"
-    },
-    {
-      "key": "aspirationHigh",
-      "description": "Maximal total reward",
-      "value": "100"
-    },
-    {
-      "key": "entropyPenalty",
-      "description": "Unpredictable behavior penalization",
+      "key": "goal1",
+      "description": "Low delta",
       "value": "1"
+    },
+    {
+      "key": "goal2",
+      "description": "Target delta",
+      "value": "2"
+    },
+    {
+      "key": "goal3",
+      "description": "High delta",
+      "value": "3"
     }
   ]
 }

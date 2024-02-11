@@ -34,10 +34,11 @@ public class WebServer
         yield return SendDataToServer(observe, data);
     }
     
-    public IEnumerator SendSimulation(ObservationData observations, ResponseData response)
+    // TBD: send a collection of observations, each with a probability
+    public IEnumerator SendSimulation(SimObservationData[] observations, ResponseData response)
     {
         //Debug.Log("Simulating...");
-        IOData data = new IOData { input = observations, output = response };
+        SimIOData data = new SimIOData { inputs = observations, output = response };
         yield return SendDataToServer(query, data);
     }
     
@@ -95,6 +96,14 @@ public class WebServer
     {
         public ObservationData input;
         public ResponseData output;
+    }
+    
+    /// Future Use
+    [Serializable]
+    public class SimIOData
+    {
+        public SimObservationData[] inputs;
+        public ResponseData output; 
     }
     
     /// Obsolete, merge into ObservationData

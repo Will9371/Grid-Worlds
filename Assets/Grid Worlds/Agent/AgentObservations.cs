@@ -56,6 +56,20 @@ public class AgentObservations
     }
 }
 
+/// Future Use
+[Serializable]
+public struct SimObservationData
+{
+    public float probability;
+    public ObservationData observation;
+    
+    public SimObservationData(ObservationData observation, float probability = 1f)
+    {
+        this.probability = probability;
+        this.observation = observation;
+    }
+}
+
 [Serializable]
 public struct ObservationData
 {
@@ -74,7 +88,7 @@ public struct AgentObservationData
 {
     public string id;
     public string[] inventory;
-    public string[] lastStepResults;
+    public string[] lastStepResults; // Future use
     
     public AgentObservationData(GridWorldAgent agent)
     {

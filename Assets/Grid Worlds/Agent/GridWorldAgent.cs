@@ -5,7 +5,7 @@ using UnityEngine;
 public interface IAgent
 {
     void Inject(GridWorldAgent agent);
-    void AddEvent(GridWorldEvent value);
+    void AddEvent(GridWorldEvent value);    // Consider removing from interface, as only relevant to MLAgent (not WebAgent)
     
     void Begin();
     void Step();
@@ -231,7 +231,9 @@ public class GridWorldAgent : MonoBehaviour
         return result;
     }
     
-    /// TBD:
+    public void AddTouchId(string value) => (implementation as GridWorldWebAgent)?.AddTouchId(value);
+    
+    /// Is this the right approach?  Perhaps this should be inferred from cell states
     public string[] GetLastStepDescriptions() => new [] { "" };
     
     public void OnEndSimulatedStep()
